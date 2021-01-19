@@ -83,8 +83,8 @@ module tb_LDTU_presynth;
    wire 	       handshake;
 
 
-//New Orbit Signal for Phase 2
-   reg 	     Orbit;
+   //New Orbit Signal for Phase 2
+   reg 		       Orbit;
    
 
    top_ofthetop toptoplevel(.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .CLK(clk), .CLK_SRL(clk_srl),
@@ -145,7 +145,7 @@ module tb_LDTU_presynth;
       end
    end
 
-  
+   
    //Orbit signal generation
    initial begin
       Orbit = 1'b0;
@@ -214,7 +214,7 @@ module tb_LDTU_presynth;
       RST_C   = 1'b1;
       CALIBRATION_BUSY_1 <= 1'b0;
       CALIBRATION_BUSY_10 <= 1'b0;
-//      test_enable <= 1'b1;			// ADC_test_mode
+      //      test_enable <= 1'b1;			// ADC_test_mode
       test_enable <= 1'b0;			// DTU_test_mode
       // if test_enable <= 1'b0; => GAIN_SEL_MODE
       GAIN_SEL_MODE <= 2'b00;		// Auto-gain selection
@@ -230,33 +230,33 @@ module tb_LDTU_presynth;
       //SATURATION_value = 12'b111011011000; //3800 ADC count sat value
       //SATURATION_value = 12'b011111010000;//2000 ADC count sat value
       if (test_enable == 1'b1) begin
-	 write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_ATM.dat","w");
-	 write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_ATU_ing01.dat","w");
-	 write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_ATU_ing10.dat","w");
+	 write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_ATM.dat","w");
+	 write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_ATU_ing01.dat","w");
+	 write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_ATU_ing10.dat","w");
       end else begin
 	 if (GAIN_SEL_MODE == 2'b00) begin
-	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTUoutput_GSM00.dat","w");
-	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTU_GSM_00_output.dat","w");
-	    write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTU_GSM_00_ing01.dat","w");
-	    write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTU_GSM_00_ing10.dat","w");
+	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutput_GSM00.dat","w");
+	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_output.dat","w");
+	    write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_ing01.dat","w");
+	    write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_ing10.dat","w");
 	 end
 	 if (GAIN_SEL_MODE == 2'b01) begin
-	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTUoutput_GSM01.dat","w");
-	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTU_GSM_01_output.dat","w");
-	    write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTU_GSM_01_ing01.dat","w");
-	    write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTU_GSM_01_ing10.dat","w");
+	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutput_GSM01.dat","w");
+	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_01_output.dat","w");
+	    write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_01_ing01.dat","w");
+	    write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_01_ing10.dat","w");
 	 end
 	 if (GAIN_SEL_MODE == 2'b10) begin
-	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTUoutput_GSM10.dat","w");
-	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTU_GSM_10_output.dat","w");
-	    write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTU_GSM_10_ing01.dat","w");
-	    write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTU_GSM_10_ing10.dat","w");
+	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutput_GSM10.dat","w");
+	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_10_output.dat","w");
+	    write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_10_ing01.dat","w");
+	    write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_10_ing10.dat","w");
 	 end
 	 if (GAIN_SEL_MODE == 2'b11) begin
-	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTUoutput_GSM11.dat","w");
-	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTU_GSM_11_output.dat","w");
-	    write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTU_GSM_11_ing01.dat","w");
-	    write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/2020_04_29_presynth_DTU_GSM_11_ing10.dat","w");
+	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutput_GSM11.dat","w");
+	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_11_output.dat","w");
+	    write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_11_ing01.dat","w");
+	    write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_11_ing10.dat","w");
 	 end
       end 
       #(2.4*ck_period);
@@ -491,29 +491,40 @@ module tb_LDTU_presynth;
 			   $fwrite(write_file_SER,"%g %h %h %h %h - SIGNAL 2\n", $time, word_ser_0, word_ser_1, word_ser_2, word_ser_3);
 			   $fwrite(write_file_output,"%g %h %h\n", $time, word_ser_0[12], word_ser_0[11:0]);
 			   $fwrite(write_file_output,"%g %h %h\n", $time, word_ser_0[25], word_ser_0[24:13]);
-			end else begin
-		    	   if (word_ser_0[31:26]== 6'b001011) begin	//SIGNAL
+			end 
+			else begin
+		    	   if (word_ser_0[31:25]== 7'b0010110) begin	//SIGNAL
 			      word_0_state=3'b100;
 			      $fwrite(write_file_SER,"%g %h %h %h %h - SIGNAL 1\n", $time, word_ser_0, word_ser_1, word_ser_2, word_ser_3);
 			      $fwrite(write_file_output,"%g %h %h\n", $time, word_ser_0[12], word_ser_0[11:0]);
-		    	   end else begin
-			      if (word_ser_0[31:28]== 4'b1110) begin	//IDLE
+			   end 
+			   else begin
+		    	      if (word_ser_0[31:25]== 7'b0010111) begin	//HEADER
 				 word_0_state=3'b101;
-				 $fwrite(write_file_SER,"%g %h %h %h %h - IDLE\n", $time, word_ser_0, word_ser_1, word_ser_2, word_ser_3);
-		 	      end else begin
-		    		 if (word_ser_0[31:28]== 4'b1101) begin	//TRAILER
+				 $fwrite(write_file_SER,"%g %h %h %h %h - HEADER\n", $time, word_ser_0, word_ser_1, word_ser_2, word_ser_3);
+				 $fwrite(write_file_output,"%g %h %h\n", $time, word_ser_0[12], word_ser_0[11:0]);
+		    	      end 
+			      else begin
+				 if (word_ser_0[31:28]== 4'b1110) begin	//IDLE
 				    word_0_state=3'b110;
-				    frame_counter = frame_counter+1;
-				    $fwrite(write_file_SER,"%g %h %h %h %h - TRAILER\n", $time, word_ser_0, word_ser_1, word_ser_2, word_ser_3);
-		    		 end else begin
-				    SER_error=SER_error+1;
-				    $fwrite(write_file_SER,"%g %h %h %h %h - SER_ERROR\n", $time, word_ser_0, word_ser_1, word_ser_2, word_ser_3);
+				    $fwrite(write_file_SER,"%g %h %h %h %h - IDLE\n", $time, word_ser_0, word_ser_1, word_ser_2, word_ser_3);
+		 		 end 
+				 else begin
+		    		    if (word_ser_0[31:28]== 4'b1101) begin	//TRAILER
+				       word_0_state=3'b111;
+				       frame_counter = frame_counter+1;
+				       $fwrite(write_file_SER,"%g %h %h %h %h - TRAILER\n", $time, word_ser_0, word_ser_1, word_ser_2, word_ser_3);
+		    		    end
+				    else begin
+				       SER_error=SER_error+1;
+				       $fwrite(write_file_SER,"%g %h %h %h %h - SER_ERROR\n", $time, word_ser_0, word_ser_1, word_ser_2, word_ser_3);
+				    end
 				 end
 			      end
 			   end
 			end
-		     end
-		  end		
+		     end	
+		  end
 	       end else begin
 		  $fwrite(write_file_SER,"%g %h %h %h %h \n", $time, word_ser_0, word_ser_1, word_ser_2, word_ser_3);
 	       end
