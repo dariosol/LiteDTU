@@ -217,7 +217,7 @@ module tb_LDTU_presynth;
       //      test_enable <= 1'b1;			// ADC_test_mode
       test_enable <= 1'b0;			// DTU_test_mode
       // if test_enable <= 1'b0; => GAIN_SEL_MODE
-      GAIN_SEL_MODE <= 2'b00;		// Auto-gain selection
+      GAIN_SEL_MODE <= 2'b01;		// Auto-gain selection
       //GAIN_SEL_MODE <= 2'b01;		// Auto-gain selection
       //GAIN_SEL_MODE <= 2'b10;		// Gain selection: 10
       //GAIN_SEL_MODE <= 2'b11;			// Gain selection: 1
@@ -284,8 +284,8 @@ module tb_LDTU_presynth;
       //$timeformat(-9, 2, " ns", 10); 
       /* ------------------------------------------------------------------------------------------------------------------------- */
 
-      data_file_read01 = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene5GeV_DT_50bx_g01_mod.dat","r");	// Data reading - GAIN = 1
-      data_file_read10 = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene5GeV_DT_50bx_g10_mod.dat","r");	// Data reading - GAIN = 10
+      data_file_read01 = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene5GeV_DT_50bx_g01_mod_saturation3.dat","r");	// Data reading - GAIN = 1
+      data_file_read10 = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene5GeV_DT_50bx_g10_mod_saturation3.dat","r");	// Data reading - GAIN = 10
 
 
       if (data_file_read01 == 0) begin

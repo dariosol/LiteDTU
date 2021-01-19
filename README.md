@@ -6,9 +6,20 @@ Presynthesis simulation with Questa sim.
 - Simona was doing the sim with Cadence. All the presynth needed files are in folder FromSimona...
 - New simulation for v2.0: 1) LiteDTUv2.0 contains files to be shared with Gianni 2) AuxiliaryForSimulation contains the serializer, 
 the Test Bench and all the other stuff needed to simuate.
-
+*******************************************
 NOTE
 AuxiliaryForSimulation/SyncUnit_v1bTMR.v is there but it's not used
+*******************************************
+ORBIT TEST: December 2020
+INPUT FILE: Ene5GeV_DT_50bx_g10_mod.dat
+has been used to scan the Orbit signal in different samples (baseline, baseline1, signal...) to check that the FSM doesn't fail.
+Fake inputs have been added to create patterns to test
+
+*******************************************
+WINDOW TEST: Jannuary 2021
+INPUT FILE: Ene5GeV_DT_50bx_g10_mod_saturation1.dat
+Add certain number of consecutive saturated values
+
 
 NOTE FROM GIANNI Regarding files in the topFilesv1.2 folder
 
