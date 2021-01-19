@@ -11,6 +11,7 @@ NOTE
 AuxiliaryForSimulation/SyncUnit_v1bTMR.v is there but it's not used
 
 NOTE FROM GIANNI Regarding files in the topFilesv1.2 folder
+
 Ciao Dario,
 ti allego i verilog del datapath della LiTE-DTU. Ecco qualche spiegazione :
 
