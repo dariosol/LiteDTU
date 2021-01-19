@@ -1,0 +1,5 @@
+INCLUDE $INCISIVE_DIR/tools/inca/files/cds.lib
+DEFINE tcbn65lp_lib /tech_libs/tsmc_cern/tsmc65rf_IP/Front_End/verilog/tcbn65lp_200a/tcbn65lp_lib_15.20
+DEFINE tcbn65lp_pwr_lib /tech_libs/tsmc_cern/tsmc65rf_IP/Front_End/verilog/tcbn65lp_200a/tcbn65lp_pwr_lib_15.20
+DEFINE worklib          ./worklib
+

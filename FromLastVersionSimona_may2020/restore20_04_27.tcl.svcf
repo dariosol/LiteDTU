@@ -1,0 +1,1007 @@
+# SimVision Command Script (Mon Apr 27 02:36:40 PM CEST 2020)
+#
+# Version 15.20.s038
+#
+# You can restore this configuration with:
+#
+#      ncsim -cdslib /export/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre-synth/cds.lib -logfile ncsim.log -errormax 15 -status worklib.tb_LDTU_presynth:module -tcl -update -input /export/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre-synth/restore20_04_27.tcl
+#
+
+
+#
+# Preferences
+#
+preferences set toolbar-Standard-WatchWindow {
+  usual
+  shown 0
+}
+preferences set plugin-enable-svdatabrowser-new 1
+preferences set toolbar-Windows-WatchWindow {
+  usual
+  shown 0
+}
+preferences set toolbar-sendToIndago-WaveWindow {
+  usual
+  position -pos 1
+}
+preferences set toolbar-Standard-Console {
+  usual
+  position -pos 1
+}
+preferences set toolbar-Search-Console {
+  usual
+  position -pos 2
+}
+preferences set plugin-enable-groupscope 0
+preferences set plugin-enable-interleaveandcompare 0
+preferences set plugin-enable-waveformfrequencyplot 0
+preferences set toolbar-SimControl-WatchWindow {
+  usual
+  shown 0
+}
+preferences set toolbar-TimeSearch-WatchWindow {
+  usual
+  shown 0
+}
+
+#
+# Simulator
+#
+database require simulator -hints {
+	simulator "ncsim -gui -cdslib /export/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre-synth/cds.lib -logfile ncsim.log -errormax 15 -status worklib.tb_LDTU_presynth:module -tcl -update -input restore20_04_27.tcl"
+}
+
+#
+# Mnemonic Maps
+#
+mmap new -reuse -name {Boolean as Logic} -radix %b -contents {{%c=FALSE -edgepriority 1 -shape low}
+{%c=TRUE -edgepriority 1 -shape high}}
+mmap new -reuse -name {Example Map} -radix %x -contents {{%b=11???? -bgcolor orange -label REG:%x -linecolor yellow -shape bus}
+{%x=1F -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=2C -bgcolor red -label ERROR -linecolor white -shape EVENT}
+{%x=* -label %x -linecolor gray -shape bus}}
+
+#
+# Design Browser windows
+#
+if {[catch {window new WatchList -name "Design Browser 1" -geometry 730x500+261+33}] != ""} {
+    window geometry "Design Browser 1" 730x500+261+33
+}
+window target "Design Browser 1" on
+browser using {Design Browser 1}
+browser set -scope [subst  {simulator::[format {tb_LDTU_presynth.tadc_test_unit}]} ]
+browser set \
+    -signalsort name
+browser yview see [subst  {simulator::[format {tb_LDTU_presynth.tadc_test_unit}]} ]
+browser timecontrol set -lock 0
+
+#
+# Waveform windows
+#
+if {[catch {window new WaveWindow -name "Waveform 1" -geometry 1024x669+-10+20}] != ""} {
+    window geometry "Waveform 1" 1024x669+-10+20
+}
+window target "Waveform 1" on
+waveform using {Waveform 1}
+waveform sidebar visibility partial
+waveform set \
+    -primarycursor TimeA \
+    -signalnames name \
+    -signalwidth 278 \
+    -units ps \
+    -valuewidth 75
+waveform baseline set -time 0
+
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataInH[11:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataInHA[11:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataInHB[11:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataInHC[11:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataInL[11:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataInLA[11:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataInLB[11:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataInLC[11:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntH0A[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntH0B[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntH0C[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntH1A[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntH1B[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntH1C[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntH2A[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntH2B[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntH2C[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntH3A[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntH3B[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntH3C[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntL0A[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntL0B[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntL0C[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntL1A[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntL1B[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntL1C[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntL2A[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntL2B[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntL2C[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntL3A[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntL3B[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataIntL3C[15:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataOutHe[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataOutHo[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataOutLe[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DataOutLo[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutHe[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutHeA[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutHeB[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutHeC[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutHeTmrError}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutHo[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutHoA[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutHoB[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutHoC[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutHoTmrError}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutLe[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutLeA[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutLeB[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutLeC[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutLeTmrError}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutLo[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutLoA[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutLoB[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutLoC[31:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.DoutLoTmrError}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.NBitsADC}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.NBitsOut}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.cStateA[2:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.cStateB[2:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.cStateC[2:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.clockA}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.clockB}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.clockC}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.idle}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.ld_intA[3:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.ld_intB[3:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.ld_intC[3:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.load_eA}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.load_eB}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.load_eC}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.load_oA}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.load_oB}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.load_oC}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.nStateA[2:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.nStateB[2:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.nStateC[2:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.nStateTmrErrorA}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.nStateTmrErrorB}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.nStateTmrErrorC}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.nStateVotedA[2:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.nStateVotedB[2:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.nStateVotedC[2:0]}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.rst_bA}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.rst_bB}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.rst_bC}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.test_enable}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.test_enableA}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.test_enableB}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.test_enableC}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.tmrError}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.tmrErrorA}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.tmrErrorB}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.tadc_test_unit.tmrErrorC}]}
+	} ]]
+waveform format $id -color #00ffff -namecolor #00ffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.AAA[2:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.BBB[2:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.BSL_VAL_g01[7:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.BSL_VAL_g10[7:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.CALIBRATION_BUSY}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.CALIBRATION_BUSY_1}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.CALIBRATION_BUSY_10}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.CALIBRATION_BUSY_A}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.CALIBRATION_BUSY_B}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.CALIBRATION_BUSY_C}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.CCC[2:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.CLK_B}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.CLK_C}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.DATA12_g01[11:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.DATA12_g10[11:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.DATA_32[31:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.DATA_from_CU[31:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.DATA_gain_01[11:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.DATA_gain_10[11:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.DATA_to_enc[12:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.DCLK_1}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.DCLK_10}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.GAIN_SEL_MODE[1:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.Load}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.RD_to_SERIALIZER}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.RST_A}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.RST_B}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.RST_C}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.SATURATION_value[11:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.TEST_ENABLE}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.TEST_ENABLE_A}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.TEST_ENABLE_B}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.TEST_ENABLE_C}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.baseline_flag}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.decode_signal}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.full}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.StorageFIFO.empty_signal}]}
+	} ]]
+waveform format $id -color #ffffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.CLK_A}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.StorageFIFO.read_signal}]}
+	} ]]
+waveform format $id -color #ffffff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.handshake}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.DATA32_to_SER_1[31:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.DATA32_to_SER_2[31:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.DATA32_to_SER_3[31:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.DATA32_to_SER_4[31:0]}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.losing_data}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.write_signal}]}
+	} ]]
+waveform format $id -color #99ff00 -namecolor #99ff00
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.StorageFIFO.data_output_0_A[31:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.StorageFIFO.data_output_0_B[31:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.StorageFIFO.data_output_0_C[31:0]}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_LiTE_DTU.StorageFIFO.signal_flag}]}
+	} ]]
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.tmrError}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.pointer_ser_C[4:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.pointer_ser_B[4:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.pointer_ser_A[4:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.pointer_serTmrError}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.pointer_ser[4:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.output_ser_4}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.output_ser_3}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.output_ser_2}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.output_ser_1}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.handshake_C}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.handshake_B}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.handshake_A}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.handshakeTmrError}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.handshake}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.decode_signal_C}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.decode_signal_B}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.decode_signal_A}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.decode_signal}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.data_to_ser_4_C[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.data_to_ser_4_B[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.data_to_ser_4_A[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.data_to_ser_3_C[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.data_to_ser_3_B[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.data_to_ser_3_A[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.data_to_ser_2_C[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.data_to_ser_2_B[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.data_to_ser_2_A[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.TEST_ENABLE_C}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.TEST_ENABLE_B}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.TEST_ENABLE_A}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.TEST_ENABLE}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.Serializer_4tmrError}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.Serializer_3tmrError}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.Serializer_2tmrError}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.Serializer_1tmrError}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.START_SER_C}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.START_SER_B}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.START_SER_A}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.START_SERTmrError}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.START_SER}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.RST_C}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.RST_B}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.RST_A}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.Nbits_32}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.Nbits_5}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.IDLE_pattern_ser}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.IDLE_pattern}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_4_C[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_4_B[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_4_A[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_4[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_3_C[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_3_B[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_3_A[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_3[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_2_C[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_2_B[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_2_A[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_2[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_1_C[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_1_B[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_1_A[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_to_SER_1[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_4_C[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_4_B[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_4_A[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_4[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_3_C[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_3_B[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_3_A[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_3[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_2_C[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_2_B[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_2_A[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_2[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_1_C[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_1_B[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_1_A[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.DATA32_ADC_TEST_UNIT_1[31:0]}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+set id [waveform add -signals [subst  {
+	{simulator::[format {tb_LDTU_presynth.toptoplevel.top_level_SER_TMRG.CLK_SRL}]}
+	} ]]
+waveform format $id -color #ff00ff -namecolor #ff00ff
+
+waveform xview limits 41401014ps 172953242ps
+
+#
+# Waveform Window Links
+#
+
+#
+# Console windows
+#
+console set -windowname Console
+window geometry Console 730x492+251+197
+
+#
+# Layout selection
+#
+

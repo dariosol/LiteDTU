@@ -1,0 +1,22 @@
+ncsim(64): 15.20-s038: (c) Copyright 1995-2017 Cadence Design Systems, Inc.
+ncvlog: Memory Usage - 21.3M program + 29.0M data = 50.4M total
+ncvlog: CPU Usage - 0.1s system + 0.0s user = 0.1s total (0.6s, 13.1% cpu)
+
+-------------------------------------
+Relinquished control to SimVision...
+ncsim> 
+ncsim> source /eda/cadence/2017-18/RHELx86/INCISIVE_15.20.038/tools/inca/files/ncsimrc
+ncsim> # Restoring simulation environment...
+ncsim> input -quiet .reinvoke.sim
+ncsim> file delete .reinvoke.sim
+ncsim> run
+File 1 aperto!
+File 2 aperto!
+End of reading process
+End of reading process
+Simulation complete via $finish(1) at time 141676080 NS + 0
+./TB_LDTU_new.v:306 				# (ck_period) $finish;
+ncsim> ^C
+ncsim> exit
+ncsim: Memory Usage - 38.5M program + 200.7M data = 239.3M total (244.2M Peak)
+ncsim: CPU Usage - 150.0s system + 65.5s user = 215.5s total (10862.1s, 2.0% cpu)

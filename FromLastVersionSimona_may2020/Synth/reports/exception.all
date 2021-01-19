@@ -1,0 +1,14 @@
+Total numbers of exceptions: 12
+
+/designs/LiTE_DTU_160MHz_v1_2/modes/default_mode/exceptions/path_disables/LiTE_DTU_160MHz_v1_2_line_59
+/designs/LiTE_DTU_160MHz_v1_2/modes/default_mode/exceptions/path_disables/LiTE_DTU_160MHz_v1_2_line_60
+/designs/LiTE_DTU_160MHz_v1_2/modes/default_mode/exceptions/path_disables/zipped_path_disable_0
+/designs/LiTE_DTU_160MHz_v1_2/modes/default_mode/exceptions/path_disables/zipped_path_disable_1
+/designs/LiTE_DTU_160MHz_v1_2/modes/default_mode/exceptions/path_groups/DCLK_1
+/designs/LiTE_DTU_160MHz_v1_2/modes/default_mode/exceptions/path_groups/DCLK_10
+/designs/LiTE_DTU_160MHz_v1_2/modes/default_mode/exceptions/path_groups/CLK_A
+/designs/LiTE_DTU_160MHz_v1_2/modes/default_mode/exceptions/path_groups/CLK_B
+/designs/LiTE_DTU_160MHz_v1_2/modes/default_mode/exceptions/path_groups/CLK_C
+/designs/LiTE_DTU_160MHz_v1_2/modes/default_mode/exceptions/path_groups/C2O
+/designs/LiTE_DTU_160MHz_v1_2/modes/default_mode/exceptions/path_groups/I2C
+/designs/LiTE_DTU_160MHz_v1_2/modes/default_mode/exceptions/path_groups/I2O

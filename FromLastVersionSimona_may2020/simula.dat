@@ -1,0 +1,35 @@
+ncvlog -work worklib -cdslib /export/elt159xl/disk0/users/cometti/proj\
+ect/LiTE-DTU_v1.2-simulations/pre-synth/cds.lib -logfile ncvlog.log -errormax 15\
+ -update -linedebug -status /export/elt159xl/disk0/users/cometti/project/LiTE-DT\
+U_v1.2-simulations/pre-synth/1_LDTU_Baseline_subtraction_TMR.v /export/elt159xl/\
+disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre-synth/2_LDTU_iFIFO_TMR\
+.v /export/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre-sy\
+nth/3_LDTU_FSM_TMR.v /export/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2-\
+simulations/pre-synth/3_LDTU_only_encoder_TMR.v /export/elt159xl/disk0/users/com\
+etti/project/LiTE-DTU_v1.2-simulations/pre-synth/4_LDTU_CU_TMR.v /export/elt159x\
+l/disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre-synth/5_0_LDTU_Hamm_\
+TRX.v /export/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre\
+-synth/5_1_LDTU_Hamm_oFIFO_TMR.v /export/elt159xl/disk0/users/cometti/project/Li\
+TE-DTU_v1.2-simulations/pre-synth/5_2_LDTU_Hamm_RX.v /export/elt159xl/disk0/user\
+s/cometti/project/LiTE-DTU_v1.2-simulations/pre-synth/5_3_LDTU_Hamm_top.v /expor\
+t/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre-synth/6_LiT\
+E-DTU_top_160MHz_TMR_v1_2.v /export/elt159xl/disk0/users/cometti/project/LiTE-DT\
+U_v1.2-simulations/pre-synth/7_SER_shift_TMRG.v /export/elt159xl/disk0/users/com\
+etti/project/LiTE-DTU_v1.2-simulations/pre-synth/7_Serializers_LiTE_DTU_v1_2_TMR\
+G.v /export/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre-s\
+ynth/AdcTestUnitTMR.v /export/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2\
+-simulations/pre-synth/8_top.v 
+
+ncvlog -work worklib -cdslib /export/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre-synth/cds.lib -logfile ncvlog.log -errormax 15 -update -linedebug -status /export/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre-synth/TB_LDTU_new.v 
+
+
+ncvlog -work worklib -cdslib /export/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre-synth/cds.lib -logfile ncvlog.log -errormax 15 -update -linedebug -status -unit worklib.tb_LDTU_presynth 
+
+
+ncelab -work worklib -cdslib /export/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre-synth/cds.lib -logfile ncelab.log -errormax 15 -access +wc -status worklib.tb_LDTU_presynth 
+
+
+ncsim -gui -cdslib /export/elt159xl/disk0/users/cometti/project/LiTE-DTU_v1.2-simulations/pre-synth/cds.lib -logfile ncsim.log -errormax 15 -status worklib.tb_LDTU_presynth:module 
+
+
+
