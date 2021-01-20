@@ -49,10 +49,11 @@ module LDTU_iFIFOTMR(
 	parameter    Nbits_12 = 12;
 	parameter    FifoDepth2 = 16;
 	parameter    FifoDepth = 8;
-	parameter    NBitsCnt = 3;
-	parameter    RefSample = 3'b011;
+   	parameter    LookAheadDepth = 16;
+	parameter    NBitsCnt = 4;
+	parameter    RefSample = 4'b0011;
 	//parameter    RefSample2 = 3'b110;
-	parameter    RefSample2 = 3'b101;
+	parameter    RefSample2 = 4'b0110;
 
 
 // Input ports
@@ -87,12 +88,12 @@ module LDTU_iFIFOTMR(
 	reg [Nbits_12-1:0] SATval_B;
 	reg [Nbits_12-1:0] SATval_C;
 
-	reg [Nbits_12-1:0] FIFO_g1_A [FifoDepth-1:0];
-	reg [Nbits_12-1:0] FIFO_g10_A [FifoDepth-1:0];
-	reg [Nbits_12-1:0] FIFO_g1_B [FifoDepth-1:0];
-	reg [Nbits_12-1:0] FIFO_g10_B [FifoDepth-1:0];
-	reg [Nbits_12-1:0] FIFO_g1_C [FifoDepth-1:0];
-	reg [Nbits_12-1:0] FIFO_g10_C [FifoDepth-1:0];
+	reg [Nbits_12-1:0] FIFO_g1_A [LookAheadDepth-1:0];
+	reg [Nbits_12-1:0] FIFO_g10_A [LookAheadDepth-1:0];
+	reg [Nbits_12-1:0] FIFO_g1_B [LookAheadDepth-1:0];
+	reg [Nbits_12-1:0] FIFO_g10_B [LookAheadDepth-1:0];
+	reg [Nbits_12-1:0] FIFO_g1_C [LookAheadDepth-1:0];
+	reg [Nbits_12-1:0] FIFO_g10_C [LookAheadDepth-1:0];
 
 	reg [NBitsCnt-1:0] rd_ptr_A;
 	reg [NBitsCnt-1:0] rd_ptr_B;
@@ -156,40 +157,40 @@ module LDTU_iFIFOTMR(
 
 // WRITE POINTERS : @(posedge DCLK)
 	always @(posedge DCLK_10) begin
-		if (reset_A == 1'b0) wrH_ptr_A <= 3'b000;
-		else wrH_ptr_A <= wrH_ptr_A+3'b001;
+		if (reset_A == 1'b0) wrH_ptr_A <= 4'b0000;
+		else wrH_ptr_A <= wrH_ptr_A+4'b0001;
 	end
 
 	always @(posedge DCLK_10) begin
-		if (reset_B == 1'b0) wrH_ptr_B <= 3'b000;
-		else wrH_ptr_B <= wrH_ptr_B+3'b001;
+		if (reset_B == 1'b0) wrH_ptr_B <= 4'b0000;
+		else wrH_ptr_B <= wrH_ptr_B+4'b0001;
 	end
 
 	always @(posedge DCLK_10) begin
-		if (reset_C == 1'b0) wrH_ptr_C <= 3'b000;
-		else wrH_ptr_C <= wrH_ptr_C+3'b001;
+		if (reset_C == 1'b0) wrH_ptr_C <= 4'b0000;
+		else wrH_ptr_C <= wrH_ptr_C+4'b0001;
 	end
 
 	always @(posedge DCLK_1) begin
-		if (reset_A == 1'b0) wrL_ptr_A <= 3'b000;
-		else wrL_ptr_A <= wrL_ptr_A+3'b001;
+		if (reset_A == 1'b0) wrL_ptr_A <= 4'b0000;
+		else wrL_ptr_A <= wrL_ptr_A+4'b0001;
 	end
 
 	always @(posedge DCLK_1) begin
-		if (reset_B == 1'b0) wrL_ptr_B <= 3'b000;
-		else wrL_ptr_B <= wrL_ptr_B+3'b001;
+		if (reset_B == 1'b0) wrL_ptr_B <= 4'b0000;
+		else wrL_ptr_B <= wrL_ptr_B+4'b0001;
 	end
 
 	always @(posedge DCLK_1) begin
-		if (reset_C == 1'b0) wrL_ptr_C <= 3'b000;
-		else wrL_ptr_C <= wrL_ptr_C+3'b001;
+		if (reset_C == 1'b0) wrL_ptr_C <= 4'b0000;
+		else wrL_ptr_C <= wrL_ptr_C+4'b0001;
 	end
 
 // WRITING in FIFO GAIN 1
 
 	always @(posedge DCLK_1) begin
 		if (reset_A == 1'b0) begin
-			for (iLA = 0; iLA < FifoDepth; iLA = iLA +1) begin
+			for (iLA = 0; iLA < LookAheadDepth; iLA = iLA +1) begin
 				FIFO_g1_A[iLA] <= 12'b0;
 			end
 		end else begin
@@ -199,7 +200,7 @@ module LDTU_iFIFOTMR(
 
 	always @(posedge DCLK_1) begin
 		if (reset_B == 1'b0) begin
-			for (iLB = 0; iLB < FifoDepth; iLB = iLB +1) begin
+			for (iLB = 0; iLB < LookAheadDepth; iLB = iLB +1) begin
 				FIFO_g1_B[iLB] <= 12'b0;
 			end
 		end else begin
@@ -209,7 +210,7 @@ module LDTU_iFIFOTMR(
 
 	always @(posedge DCLK_1) begin
 		if (reset_C == 1'b0) begin
-			for (iLC = 0; iLC < FifoDepth; iLC = iLC +1) begin
+			for (iLC = 0; iLC < LookAheadDepth; iLC = iLC +1) begin
 				FIFO_g1_C[iLC] <= 12'b0;
 			end
 		end else begin
@@ -222,7 +223,7 @@ module LDTU_iFIFOTMR(
 
 	always @(posedge DCLK_10) begin
 		if (reset_A == 1'b0) begin
-			for (iHA = 0; iHA < FifoDepth; iHA = iHA +1) begin
+			for (iHA = 0; iHA < LookAheadDepth; iHA = iHA +1) begin
 				FIFO_g10_A[iHA] <= 12'b0;
 			end
 		end else begin
@@ -232,7 +233,7 @@ module LDTU_iFIFOTMR(
 
 	always @(posedge DCLK_10) begin
 		if (reset_B == 1'b0) begin
-			for (iHB = 0; iHB < FifoDepth; iHB = iHB +1) begin
+			for (iHB = 0; iHB < LookAheadDepth; iHB = iHB +1) begin
 				FIFO_g10_B[iHB] <= 12'b0;
 			end
 		end else begin
@@ -242,7 +243,7 @@ module LDTU_iFIFOTMR(
 
 	always @(posedge DCLK_10) begin
 		if (reset_C == 1'b0) begin
-			for (iHC = 0; iHC < FifoDepth; iHC = iHC +1) begin
+			for (iHC = 0; iHC < LookAheadDepth; iHC = iHC +1) begin
 				FIFO_g10_C[iHC] <= 12'b0;
 			end
 		end else begin
@@ -257,18 +258,18 @@ module LDTU_iFIFOTMR(
 	//assign rd_ptr_C = wr_ptr_C + 3'b001;
 
 	always @(posedge CLK_A) begin
-		if (reset_A == 1'b0) rd_ptr_A <= 3'b010;
-			else rd_ptr_A <= rd_ptr_A+3'b001;
+		if (reset_A == 1'b0) rd_ptr_A <= 4'b0010;
+			else rd_ptr_A <= rd_ptr_A+4'b0001;
 	end
 
 	always @(posedge CLK_B) begin
-		if (reset_B == 1'b0) rd_ptr_B <= 3'b010;
-			else rd_ptr_B <= rd_ptr_B+3'b001;
+		if (reset_B == 1'b0) rd_ptr_B <= 4'b0010;
+			else rd_ptr_B <= rd_ptr_B+4'b0001;
 	end
 
 	always @(posedge CLK_C) begin
-		if (reset_C == 1'b0) rd_ptr_C <= 3'b010;
-			else rd_ptr_C <= rd_ptr_C+3'b001;
+		if (reset_C == 1'b0) rd_ptr_C <= 4'b0010;
+			else rd_ptr_C <= rd_ptr_C+4'b0001;
 	end
 
 

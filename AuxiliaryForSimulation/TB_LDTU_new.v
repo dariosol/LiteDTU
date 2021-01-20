@@ -20,7 +20,7 @@ module tb_LDTU_presynth;
    parameter Nbits_8 	= 8;
    parameter Nbits_12	= 12;
    parameter FifoDepth = 8;
-   parameter NBitsCnt 	= 3;
+   parameter NBitsCnt 	= 4;
    parameter Nbits_32 	= 32;
    parameter ck_period = 6240;
    parameter crcBits = 12;
@@ -284,8 +284,8 @@ module tb_LDTU_presynth;
       //$timeformat(-9, 2, " ns", 10); 
       /* ------------------------------------------------------------------------------------------------------------------------- */
 
-      data_file_read01 = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene5GeV_DT_50bx_g01_mod_saturation3.dat","r");	// Data reading - GAIN = 1
-      data_file_read10 = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene5GeV_DT_50bx_g10_mod_saturation3.dat","r");	// Data reading - GAIN = 10
+      data_file_read01 = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene5GeV_DT_50bx_g01_mod_saturation1.dat","r");	// Data reading - GAIN = 1
+      data_file_read10 = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene5GeV_DT_50bx_g10_mod_saturation1.dat","r");	// Data reading - GAIN = 10
 
 
       if (data_file_read01 == 0) begin

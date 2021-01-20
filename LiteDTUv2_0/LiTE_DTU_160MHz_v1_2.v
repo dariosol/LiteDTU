@@ -9,7 +9,7 @@ module LiTE_DTU_160MHz_v1_2 (DCLK_1, DCLK_10, CLK_A, CLK_B, CLK_C, RST_A, RST_B,
 	parameter Nbits_12 	= 12;
 	parameter Nbits_32 	= 32;
 	parameter FifoDepth = 8;
-	parameter NBitsCnt 	= 3;
+	parameter NBitsCnt 	= 4;
 	parameter crcBits = 12;
 	parameter FifoDepth_buff = 16;
 	parameter bits_ptr = 4;
