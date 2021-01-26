@@ -284,8 +284,8 @@ module tb_LDTU_presynth;
       //$timeformat(-9, 2, " ns", 10); 
       /* ------------------------------------------------------------------------------------------------------------------------- */
 
-      data_file_read01 = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene5GeV_DT_50bx_g01_mod_saturation1.dat","r");	// Data reading - GAIN = 1
-      data_file_read10 = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene5GeV_DT_50bx_g10_mod_saturation1.dat","r");	// Data reading - GAIN = 10
+      data_file_read01 = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat","r");	// Data reading - GAIN = 1
+      data_file_read10 = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat","r");	// Data reading - GAIN = 10
 
 
       if (data_file_read01 == 0) begin

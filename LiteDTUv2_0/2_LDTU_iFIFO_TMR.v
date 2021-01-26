@@ -53,7 +53,7 @@ module LDTU_iFIFOTMR(
 	parameter    NBitsCnt = 4;
 	parameter    RefSample = 4'b0011;
 	//parameter    RefSample2 = 3'b110;
-	parameter    RefSample2 = 4'b0110;
+	parameter    RefSample2 = 4'b1000;
 
 
 // Input ports
@@ -258,17 +258,17 @@ module LDTU_iFIFOTMR(
 	//assign rd_ptr_C = wr_ptr_C + 3'b001;
 
 	always @(posedge CLK_A) begin
-		if (reset_A == 1'b0) rd_ptr_A <= 4'b0010;
+		if (reset_A == 1'b0) rd_ptr_A <= 4'b0111;
 			else rd_ptr_A <= rd_ptr_A+4'b0001;
 	end
 
 	always @(posedge CLK_B) begin
-		if (reset_B == 1'b0) rd_ptr_B <= 4'b0010;
+		if (reset_B == 1'b0) rd_ptr_B <= 4'b0111;
 			else rd_ptr_B <= rd_ptr_B+4'b0001;
 	end
 
 	always @(posedge CLK_C) begin
-		if (reset_C == 1'b0) rd_ptr_C <= 4'b0010;
+		if (reset_C == 1'b0) rd_ptr_C <= 4'b0111;
 			else rd_ptr_C <= rd_ptr_C+4'b0001;
 	end
 
