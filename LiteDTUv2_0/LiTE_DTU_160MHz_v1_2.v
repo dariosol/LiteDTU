@@ -1,7 +1,7 @@
 
 `timescale  1ps/1ps
 
-module LiTE_DTU_160MHz_v1_2 (DCLK_1, DCLK_10, CLK_A, CLK_B, CLK_C, RST_A, RST_B, RST_C, CALIBRATION_BUSY_1, CALIBRATION_BUSY_10, TEST_ENABLE, GAIN_SEL_MODE, DATA12_g01, DATA12_g10, SATURATION_value, BSL_VAL_g01, BSL_VAL_g10, losing_data, totalError, DATA32_ATU_0, DATA32_ATU_1, DATA32_ATU_2, DATA32_ATU_3, Orbit, DATA32_0, DATA32_1, DATA32_2, DATA32_3, handshake);
+module LiTE_DTU_160MHz_v1_2 (DCLK_1, DCLK_10, CLK_A, CLK_B, CLK_C, RST_A, RST_B, RST_C, CALIBRATION_BUSY_1, CALIBRATION_BUSY_10, TEST_ENABLE, GAIN_SEL_MODE, DATA12_g01, DATA12_g10, SATURATION_value, BSL_VAL_g01, BSL_VAL_g10, losing_data, totalError, DATA32_ATU_0, DATA32_ATU_1, DATA32_ATU_2, DATA32_ATU_3, Orbit, shift_gain_10, DATA32_0, DATA32_1, DATA32_2, DATA32_3, handshake);
 	
 		
 // Internal constants
@@ -39,6 +39,7 @@ module LiTE_DTU_160MHz_v1_2 (DCLK_1, DCLK_10, CLK_A, CLK_B, CLK_C, RST_A, RST_B,
 	input [Nbits_32-1:0] DATA32_ATU_2;
 	input [Nbits_32-1:0] DATA32_ATU_3;
         input Orbit;
+        input [1:0] shift_gain_10;
    
  // Output ports
 	output losing_data;
@@ -103,7 +104,7 @@ LDTU_BSTMR #(.Nbits_12(Nbits_12), .Nbits_8(Nbits_8))
 
 // **** Input FIFOs Module **** //
 LDTU_iFIFOTMR #(.Nbits_12(Nbits_12), .FifoDepth(FifoDepth), .NBitsCnt(NBitsCnt))
-	Selection_TMR (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .CLK_A(CLK_A), .CLK_B(CLK_B), .CLK_C(CLK_C), .reset_A(reset_A), .reset_B(reset_B), .reset_C(reset_C), .GAIN_SEL_MODE(GAIN_SEL_MODE), .DATA_gain_01(DATA_gain_01), .DATA_gain_10(DATA_gain_10), .SATURATION_value(SATURATION_value), .DATA_to_enc(DATA_to_enc), .baseline_flag(baseline_flag), .tmrError(tmrError_iFIFO));
+	Selection_TMR (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .CLK_A(CLK_A), .CLK_B(CLK_B), .CLK_C(CLK_C), .reset_A(reset_A), .reset_B(reset_B), .reset_C(reset_C), .GAIN_SEL_MODE(GAIN_SEL_MODE), .DATA_gain_01(DATA_gain_01), .DATA_gain_10(DATA_gain_10), .SATURATION_value(SATURATION_value), .shift_gain_10(shift_gain_10), .DATA_to_enc(DATA_to_enc), .baseline_flag(baseline_flag), .tmrError(tmrError_iFIFO));
 
 
 //  **** Encoder Module ****  //

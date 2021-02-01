@@ -4,7 +4,7 @@
 // Last modification	: 
 // Test bench for ECAL Data Transmission Unit - 1 channel verbose version
 
-//			- reset: 1'b0 LiTe-DTU INACTIVE- 1'b1: LiTe-DTU ACTIVE
+//			- reset 1'b0 LiTe-DTU INACTIVE- 1'b1: LiTe-DTU ACTIVE
 //			- GAIN_SEL_MODE:	2'b00: Gain selection ACTIVE - window width : 8 samples
 //						2'b01: Gain selection ACTIVE - window width : 16 samples
 //						2'b10: Gain selection INACTIVE - transmitted only gain x10 samples
@@ -43,6 +43,7 @@ module tb_LDTU_presynth;
    reg [Nbits_8-1:0]  BSL_VAL_g01 = 8'b0;
    reg [Nbits_8-1:0]  BSL_VAL_g10 = 8'b0;
    reg [Nbits_12-1:0] SATURATION_value = 12'b111111111111;
+   reg [1:0] shift_gain_10 = 2'b01;
    //reg [Nbits_8-1:0] BSL_VAL_g01 = 8'b1000;
    //reg [Nbits_8-1:0] BSL_VAL_g10 = 8'b1000;
    wire 	      losing_data;
@@ -94,6 +95,7 @@ module tb_LDTU_presynth;
 			    .DATA12_g01(DATA12_g01), .DATA12_g10(DATA12_g10), 
 			    .SATURATION_value(SATURATION_value), .BSL_VAL_g01(BSL_VAL_g01), .BSL_VAL_g10(BSL_VAL_g10),
 			    .Orbit(Orbit),
+			    .shift_gain_10(shift_gain_10),
 			    .losing_data(losing_data), 
 			    .totalError(totalError), .handshake(handshake), 
 			    .output_ser_0(output_ser_0), .output_ser_1(output_ser_1), 
@@ -269,7 +271,15 @@ module tb_LDTU_presynth;
       #(0.3*ck_period);
       CALIBRATION_BUSY_10 <= 1'b0;	// --------------- end of calibration ADC_H
 
-
+      #(500*ck_period);	// --------------- system reset
+      RST_A = 1'b1;
+      RST_B = 1'b1;
+      RST_C = 1'b1;
+      #(1*ck_period);	// --------------- system reset
+      RST_A = 1'b1;
+      RST_B = 1'b1;
+      RST_C = 1'b1;
+     
 
    end
 

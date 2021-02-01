@@ -38,6 +38,7 @@ module LDTU_iFIFOTMR(
 	DATA_gain_01,
 	DATA_gain_10,
 	SATURATION_value,
+	shift_gain_10,	     
 	DATA_to_enc,
 	baseline_flag,
 	tmrError
@@ -68,6 +69,8 @@ module LDTU_iFIFOTMR(
 	input [Nbits_12-1:0] DATA_gain_01;
 	input [Nbits_12-1:0] DATA_gain_10;
 	input [Nbits_12-1:0] SATURATION_value;
+      input [1:0] shift_gain_10;
+   
 
 // Output ports
 	output [Nbits_12:0] DATA_to_enc;
@@ -142,15 +145,15 @@ module LDTU_iFIFOTMR(
 // SATval: saturation value tunable  : @(posedge CLK)
 	always @(posedge CLK_A) begin
 		if (reset_A == 1'b0) SATval_A <= 12'hfff;
-		else SATval_A <= SATURATION_value;
+		else SATval_A <= SATURATION_value >> shift_gain_10;
 	end
 	always @(posedge CLK_B) begin
 		if (reset_B == 1'b0) SATval_B <= 12'hfff;
-		else SATval_B <= SATURATION_value;
+		else SATval_B <= SATURATION_value >> shift_gain_10;
 	end
 	always @(posedge CLK_C) begin
 		if (reset_C == 1'b0) SATval_C <= 12'hfff;
-		else SATval_C <= SATURATION_value;
+		else SATval_C <= SATURATION_value >> shift_gain_10;
 	end
 
 
@@ -226,7 +229,7 @@ module LDTU_iFIFOTMR(
 				FIFO_g10_A[iHA] <= 12'b0;
 			end
 		end else begin
-			FIFO_g10_A[wrH_ptr_A] <= DATA_gain_10;
+			FIFO_g10_A[wrH_ptr_A] <= DATA_gain_10 >> shift_gain_10;
 		end
 	end
 
@@ -236,7 +239,7 @@ module LDTU_iFIFOTMR(
 				FIFO_g10_B[iHB] <= 12'b0;
 			end
 		end else begin
-			FIFO_g10_B[wrH_ptr_B] <= DATA_gain_10;
+			FIFO_g10_B[wrH_ptr_B] <= DATA_gain_10 >> shift_gain_10;
 		end
 	end
 
@@ -246,7 +249,7 @@ module LDTU_iFIFOTMR(
 				FIFO_g10_C[iHC] <= 12'b0;
 			end
 		end else begin
-			FIFO_g10_C[wrH_ptr_C] <= DATA_gain_10;
+			FIFO_g10_C[wrH_ptr_C] <= DATA_gain_10 >> shift_gain_10;
 		end
 	end
 

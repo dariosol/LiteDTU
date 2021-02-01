@@ -17,7 +17,8 @@ module top_ofthetop (
 	SATURATION_value,
 	BSL_VAL_g01, 
 	BSL_VAL_g10,
-	Orbit,//for v2.0	     
+	Orbit,//for v2.0// 
+	shift_gain_10,  	     
 	losing_data, 
 	totalError, 
 	handshake,
@@ -36,7 +37,7 @@ module top_ofthetop (
 	parameter crcBits = 12;
 	parameter FifoDepth_buff = 16;
 	parameter bits_ptr = 4;
-	parameter    Nbits_5=5;
+	parameter Nbits_5=5;
 
 // Input ports
 	input DCLK_1;
@@ -55,7 +56,8 @@ module top_ofthetop (
 	input [Nbits_12-1:0] SATURATION_value;
 	input [Nbits_8-1:0] BSL_VAL_g01;
 	input [Nbits_8-1:0] BSL_VAL_g10;
-   input 		    Orbit;
+        input 		    Orbit;
+        input[1:0] shift_gain_10;
    
  // Output ports
 	output losing_data;
@@ -79,7 +81,7 @@ module top_ofthetop (
 		.CALIBRATION_BUSY_1(CALIBRATION_BUSY_1), .CALIBRATION_BUSY_10(CALIBRATION_BUSY_10), 
 		.TEST_ENABLE(TEST_ENABLE), .GAIN_SEL_MODE(GAIN_SEL_MODE), .DATA12_g01(DATA12_g01), 
 		.DATA12_g10(DATA12_g10), .SATURATION_value(SATURATION_value), .BSL_VAL_g01(BSL_VAL_g01), 
-		.BSL_VAL_g10(BSL_VAL_g10), .Orbit(Orbit), .losing_data(losing_data), .totalError(totalError), 
+		.BSL_VAL_g10(BSL_VAL_g10), .Orbit(Orbit), .shift_gain_10(shift_gain_10), .losing_data(losing_data), .totalError(totalError), 
 		.DATA32_ATU_0(DATA32_ATU_0), .DATA32_ATU_1(DATA32_ATU_1), 
 		.DATA32_ATU_2(DATA32_ATU_2), .DATA32_ATU_3(DATA32_ATU_3), 
 		.DATA32_0(DATA32_0), .DATA32_1(DATA32_1), 
