@@ -1,7 +1,7 @@
 
 `timescale  1ps/1ps
 
-module LiTE_DTU_160MHz_v1_2 (DCLK_1, DCLK_10, CLK_A, CLK_B, CLK_C, RST_A, RST_B, RST_C, CALIBRATION_BUSY_1, CALIBRATION_BUSY_10, TEST_ENABLE, GAIN_SEL_MODE, DATA12_g01, DATA12_g10, SATURATION_value, BSL_VAL_g01, BSL_VAL_g10, losing_data, totalError, DATA32_ATU_0, DATA32_ATU_1, DATA32_ATU_2, DATA32_ATU_3, Orbit, shift_gain_10, DATA32_0, DATA32_1, DATA32_2, DATA32_3, handshake);
+module LiTE_DTU_160MHz_v1_2 (DCLK_1, DCLK_10, CLK_A, CLK_B, CLK_C, RST_A, RST_B, RST_C, CALIBRATION_BUSY_1, CALIBRATION_BUSY_10, TEST_ENABLE, GAIN_SEL_MODE, fallback, DATA12_g01, DATA12_g10, SATURATION_value, BSL_VAL_g01, BSL_VAL_g10, losing_data, totalError, DATA32_ATU_0, DATA32_ATU_1, DATA32_ATU_2, DATA32_ATU_3, Orbit, shift_gain_10, DATA32_0, DATA32_1, DATA32_2, DATA32_3, handshake);
 	
 		
 // Internal constants
@@ -24,6 +24,7 @@ module LiTE_DTU_160MHz_v1_2 (DCLK_1, DCLK_10, CLK_A, CLK_B, CLK_C, RST_A, RST_B,
 	input RST_A;
 	input RST_B;
 	input RST_C;
+        input fallback;
 	input CALIBRATION_BUSY_1;
 	input CALIBRATION_BUSY_10;
 	input TEST_ENABLE;
@@ -56,7 +57,9 @@ module LiTE_DTU_160MHz_v1_2 (DCLK_1, DCLK_10, CLK_A, CLK_B, CLK_C, RST_A, RST_B,
 	wire [Nbits_12:0]  DATA_to_enc;				// Input FIFOs Module
 	wire baseline_flag;					// Input FIFOs Module //***
 	wire [Nbits_32-1:0] DATA_32;				// Encoder Module //***
+   	wire [Nbits_32-1:0] DATA_32_FB;				// Encoder Module //***
 	wire Load;						// Encoder Module //***
+        wire Load_FB;						// Encoder Module //***
 	wire write_signal;					// Control Unit Module
 	wire [Nbits_32-1:0] DATA_from_CU;			// Control Unit Module
 	wire full;						// Output FIFO Module
@@ -71,7 +74,10 @@ module LiTE_DTU_160MHz_v1_2 (DCLK_1, DCLK_10, CLK_A, CLK_B, CLK_C, RST_A, RST_B,
 	wire CALIBRATION_BUSY_C;
 	wire TEST_ENABLE_C;
 	wire RD_to_SERIALIZER;						// Control Unit Module
-
+   wire      fallback_A;
+   wire      fallback_B;
+   wire      fallback_C;
+   
 
 	assign CALIBRATION_BUSY = CALIBRATION_BUSY_1 | CALIBRATION_BUSY_10;
 
@@ -109,12 +115,17 @@ LDTU_iFIFOTMR #(.Nbits_12(Nbits_12), .FifoDepth(FifoDepth), .NBitsCnt(NBitsCnt))
 
 //  **** Encoder Module ****  //
 LDTU_EncoderTMR #(.Nbits_12(Nbits_12), .Nbits_32(Nbits_32))
-	Encoder (.CLK_A(CLK_A), .CLK_B(CLK_B), .CLK_C(CLK_C), .reset_A(reset_A), .reset_B(reset_B), .reset_C(reset_C), .baseline_flag(baseline_flag), .Orbit(Orbit), .DATA_to_enc(DATA_to_enc), .DATA_32(DATA_32), .Load(Load), .tmrError(tmrError_enc));
+	Encoder (.CLK_A(CLK_A), .CLK_B(CLK_B), .CLK_C(CLK_C), .reset_A(reset_A), .reset_B(reset_B), .reset_C(reset_C), .baseline_flag(baseline_flag), .Orbit(Orbit), .fallback_A(fallback_A),.fallback_B(fallback_B),.fallback_C(fallback_C),.DATA_to_enc(DATA_to_enc), .DATA_32(DATA_32), .DATA_32_FB(DATA_32_FB), .Load(Load),.Load_FB(Load_FB), .tmrError(tmrError_enc));
 
 
 //  **** Control Unit ****  //
 	LDTU_CUTMR #(.Nbits_32(Nbits_32))
-	Control_Unit (.CLK_A(CLK_A), .CLK_B(CLK_B), .CLK_C(CLK_C), .reset_A(reset_A), .reset_B(reset_B), .reset_C(reset_C), .Load_data(Load), .DATA_32(DATA_32), .full(full), .DATA_from_CU(DATA_from_CU), .losing_data(losing_data), .write_signal(write_signal), .read_signal(RD_to_SERIALIZER), .tmrError(tmrError_CU), .handshake(handshake));// , .empty_signal(empty));
+	Control_Unit (.CLK_A(CLK_A), .CLK_B(CLK_B), .CLK_C(CLK_C), 
+		      .reset_A(reset_A), .reset_B(reset_B), .reset_C(reset_C), 
+		      .fallback_A(fallback_A), .fallback_B(fallback_B),.fallback_C(fallback_C),
+		      .Load_data(Load), .DATA_32(DATA_32), 
+		      .Load_data_FB(Load_FB), .DATA_32_FB(DATA_32_FB), 
+		      .full(full), .DATA_from_CU(DATA_from_CU), .losing_data(losing_data), .write_signal(write_signal), .read_signal(RD_to_SERIALIZER), .tmrError(tmrError_CU), .handshake(handshake));// , .empty_signal(empty));
 	 
 
 //  **** outputFIFO ****  //
@@ -151,6 +162,13 @@ fanout TEST_ENABLEFanout (
 		.outA(TEST_ENABLE_A),
 		.outB(TEST_ENABLE_B),
 		.outC(TEST_ENABLE_C)
+		);
+
+   fanout FALLBACKFanout (
+		.in(fallback),
+		.outA(fallback_A),
+		.outB(fallback_B),
+		.outC(fallback_C)
 		);
 
 endmodule

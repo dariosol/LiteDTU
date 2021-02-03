@@ -23,14 +23,20 @@ module LDTU_EncoderTMR(
 		       reset_B,
 		       reset_C,
 		       Orbit,
+		       fallback_A,
+		       fallback_B,
+		       fallback_C,
 		       baseline_flag,
 		       DATA_to_enc,
 		       DATA_32,
 		       Load,
+		       DATA_32_FB,
+		       Load_FB,
 		       tmrError
 		       );
 
    parameter SIZE=4;
+
    parameter Nbits_6=6;
    parameter Nbits_12=12;
    parameter Nbits_32=32;
@@ -44,10 +50,10 @@ module LDTU_EncoderTMR(
    parameter three=12'b000011000000;
    parameter four=6'b000100;
    parameter Initial=32'b11110000000000000000000000000000;
-/////////////////////////////////////////////////////////////////
+   parameter Initial_FB=32'b00000000000000000000000000000000;
+   /////////////////////////////////////////////////////////////////
+   //v1.2
    parameter header_synch  = 13'b1111000001111;
-
-
    parameter IDLE=5'b00000;
    parameter bas_0=5'b00001;
    parameter bas_1=5'b00010;
@@ -64,7 +70,7 @@ module LDTU_EncoderTMR(
    parameter sign_0_bis=5'b01101;
    parameter sign_1_bis=5'b01110;
    //////////////////////////////////////////////
-   
+   //Registers for orbits
    parameter bc0_0     = 5'b01111;
    parameter bc0_1     = 5'b10000;
    parameter bc0_2     = 5'b10001;
@@ -75,7 +81,18 @@ module LDTU_EncoderTMR(
    parameter bc0_s0    = 5'b10110;
    parameter header_s0 = 5'b10111;
    parameter bc0_s0_bis= 5'b11000;
+   //////////////////////////////////////////////
+   //FallBack
+   parameter SIZE_FB=3;   
    
+   parameter IDLE_FB=3'b000;
+   parameter data_odd=3'b001;
+   parameter latency1=3'b010;
+   parameter data_even=3'b011;
+   parameter latency2=3'b100;
+   
+   //////////////////////////////////////////////
+   //PORTS
    input CLK_A;
    input CLK_B;
    input CLK_C;
@@ -83,11 +100,15 @@ module LDTU_EncoderTMR(
    input reset_B;
    input reset_C;
    input Orbit;
-   
+   input fallback_A;
+   input fallback_B;
+   input fallback_C;
    input baseline_flag;
    input [Nbits_12:0] DATA_to_enc;
    output [Nbits_32-1:0] DATA_32;
    output 		 Load;
+   output [Nbits_32-1:0] DATA_32_FB;
+   output 		 Load_FB;
    output 		 tmrError;
 
    wire [1:0] 		 code_sel_bas;
@@ -132,12 +153,30 @@ module LDTU_EncoderTMR(
    wor 			 DATA_32TmrError;
    wire 		 fsm_TmrError;
 
+   reg [Nbits_12:0] 	 Ld_sign_FB_A;
+   reg [Nbits_12:0] 	 Ld_sign_FB_B;
+   reg [Nbits_12:0] 	 Ld_sign_FB_C;
+   reg [Nbits_32-1:0] 	 DATA_32_FB_A;
+   reg [Nbits_32-1:0] 	 DATA_32_FB_B;
+   reg [Nbits_32-1:0] 	 DATA_32_FB_C;
+   reg 			 Load_FB_A;
+   reg 			 Load_FB_B;
+   reg 			 Load_FB_C;
+   wire [SIZE_FB:0] 	 Current_state_FB_C;
+   wire [SIZE_FB:0] 	 Current_state_FB_B;
+   wire [SIZE_FB:0] 	 Current_state_FB_A;
+   wor 			 LoadTmrError_FB;
+   wor 			 DATA_32TmrError_FB;
+   wire 		 fsm_TmrError_FB;
+
    Delay_enc delay_A (CLK_A, reset_A, DATA_to_enc, dDATA_to_enc_A);
    Delay_enc delay_B (CLK_B, reset_B, DATA_to_enc, dDATA_to_enc_B);
    Delay_enc delay_C (CLK_C, reset_C, DATA_to_enc, dDATA_to_enc_C);
 
-   LDTU_FSMTMR fsm(.CLK_A(CLK_A), .CLK_B(CLK_B), .CLK_C(CLK_C), .reset_A(reset_A), .reset_B(reset_B), .reset_C(reset_C), .baseline_flag(baseline_flag),.Orbit(Orbit),
-		   .Current_state_A(Current_state_A), .Current_state_B(Current_state_B), .Current_state_C(Current_state_C), .tmrError(fsm_TmrError));
+   LDTU_FSMTMR fsm(.CLK_A(CLK_A), .CLK_B(CLK_B), .CLK_C(CLK_C), .reset_A(reset_A), .reset_B(reset_B), .reset_C(reset_C), .baseline_flag(baseline_flag),.Orbit(Orbit),.fallback_A(fallback_A),.fallback_B(fallback_B),.fallback_C(fallback_C),
+		   .Current_state_A(Current_state_A), .Current_state_B(Current_state_B), .Current_state_C(Current_state_C), 
+		   .Current_state_FB_A(Current_state_FB_A),.Current_state_FB_B(Current_state_FB_B),.Current_state_FB_C(Current_state_FB_C),
+		   .tmrError(fsm_TmrError),.tmrError_FB(fsm_TmrError_FB));
 
    assign code_sel_bas = (baseline_flag==1'b1) ? code_sel_bas1 : code_sel_bas2;
    assign code_sel_sign = (baseline_flag==1'b0) ? code_sel_sign1 : code_sel_sign2;
@@ -146,7 +185,7 @@ module LDTU_EncoderTMR(
 
    always @( posedge CLK_A )
      begin : FSM_seq_outputA
-	if (reset_A==1'b0)
+	if (reset_A==1'b0 || fallback_A==1'b1)
 	  begin
 	     Ld_bas_1_A <= 6'b0;
 	     Ld_bas_2_A <= 6'b0;
@@ -332,7 +371,7 @@ end
 
    always @( posedge CLK_B )
      begin : FSM_seq_outputB
-	if (reset_B==1'b0)
+	if (reset_B==1'b0 || fallback_B==1'b1)
 	  begin
 	     Ld_bas_1_B <= 6'b0;
 	     Ld_bas_2_B <= 6'b0;
@@ -517,7 +556,7 @@ end
 
    always @( posedge CLK_C )
      begin : FSM_seq_outputC
-	if (reset_C==1'b0)
+	if (reset_C==1'b0 || fallback_C==1'b1)
 	  begin
 	     Ld_bas_1_C <= 6'b0;
 	     Ld_bas_2_C <= 6'b0;
@@ -704,6 +743,132 @@ end
      end
 
 
+
+   always @( posedge CLK_A )
+     begin : FSM_seq_output_FB_A
+	if (reset_A==1'b0 || fallback_A==1'b0)
+	  begin
+	     Load_FB_A <= 1'b0;
+	     DATA_32_FB_A <= Initial;
+             Ld_sign_FB_A<=13'b0;
+         end
+	else
+	  begin
+       	     case (Current_state_FB_A)
+       	       data_odd : //close previous baseline
+       		 begin
+       		    Load_FB_A <= 1'b0;
+       		    Ld_sign_FB_A <= dDATA_to_enc_A;
+       		 end 
+	       latency1 :
+		 begin
+		    Load_FB_A <=1'b0;
+		 end
+	       data_even :
+		 begin
+		    Load_FB_A<=1'b1;
+	            DATA_32_FB_A <= {2'b11,2'b11, ~^dDATA_to_enc_A, ~^Ld_sign_FB_A, dDATA_to_enc_A, Ld_sign_FB_A};
+		 end
+
+	       latency2 :
+		 begin
+		    Load_FB_A <=1'b0;
+		 end
+	       
+	       default :
+		 begin
+		    Load_FB_A <= 1'b0;		    
+		    DATA_32_FB_A <= Initial;
+   
+end
+	     endcase // case (Current_state_A)
+	  end // else: !if(reset_A==1'b0 || fallback_A==1'b0)
+     end // block: FSM_seq_output_FB_A
+   
+   
+   always @( posedge CLK_B )
+     begin : FSM_seq_output_FB_B
+	if (reset_B==1'b0 || fallback_B==1'b0)
+	  begin
+	     Load_FB_B <= 1'b0;
+	     DATA_32_FB_B <= Initial;
+   Ld_sign_FB_B<=13'b0;
+end
+	else
+	  begin
+       	     case (Current_state_FB_B)
+       	       data_odd : //close previous baseline
+       		 begin
+       		    Load_FB_B <= 1'b0;
+       		    Ld_sign_FB_B <= dDATA_to_enc_B;
+       		 end 
+	       latency1 :
+		 begin
+		    Load_FB_B <=1'b0;
+
+		 end
+	       data_even :
+		 begin
+		    Load_FB_B<=1'b1;
+	            DATA_32_FB_B <= {2'b11,2'b11, ~^dDATA_to_enc_B, ~^Ld_sign_FB_B, dDATA_to_enc_B, Ld_sign_FB_B};
+		 end
+	       latency2 :
+		 begin
+		    Load_FB_B <=1'b0;
+		 end
+	       default :
+		 begin
+		    Load_FB_B <= 1'b0;		    
+		    DATA_32_FB_B <= Initial;
+   
+end
+	     endcase // case (Current_state_B)
+	  end // else: !if(reset_B==1'b0 || fallback_B==1'b0)
+     end // block: FSM_seq_output_FB_B
+
+
+   always @( posedge CLK_C )
+     begin : FSM_seq_output_FB_C
+	if (reset_C==1'b0 || fallback_C==1'b0)
+	  begin
+	     Load_FB_C <= 1'b0;
+	     DATA_32_FB_C <= Initial;
+   Ld_sign_FB_C<=13'b0;   
+end
+	else
+	  begin
+       	     case (Current_state_FB_C)
+       	       data_odd : //close previous baseline
+       		 begin
+       		    Load_FB_C <= 1'b0;
+       		    Ld_sign_FB_C <= dDATA_to_enc_C;
+
+       		 end 
+	       latency1 :
+		 begin
+		    Load_FB_C <=1'b0;
+		 end
+	       data_even :
+		 begin
+		    Load_FB_C<=1'b1;
+	            DATA_32_FB_C <= {2'b11,2'b11, ~^dDATA_to_enc_C, ~^Ld_sign_FB_C, dDATA_to_enc_C, Ld_sign_FB_C};
+		 end
+	       latency2 :
+		 begin
+		    Load_FB_C <=1'b0;
+		 end
+	       default :
+		 begin
+		    Load_FB_C <= 1'b0;		    
+		    DATA_32_FB_C <= Initial;
+   
+end
+	     endcase // case (Current_state_C)
+	  end // else: !if(reset_C==1'b0 || fallback_C==1'b0)
+     end // block: FSM_seq_output_FB_C
+
+
+   
    majorityVoter LoadVoter (
 			    .inA(Load_A),
 			    .inB(Load_B),
@@ -712,6 +877,15 @@ end
 			    .tmrErr(LoadTmrError)
 			    );
 
+
+   majorityVoter LoadVoter_FB (
+			       .inA(Load_FB_A),
+			       .inB(Load_FB_B),
+			       .inC(Load_FB_C),
+			       .out(Load_FB),
+			       .tmrErr(LoadTmrError_FB)
+			       );
+
    majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA_32Voter (
 													   .inA(DATA_32_A),
 													   .inB(DATA_32_B),
@@ -719,9 +893,20 @@ end
 													   .out(DATA_32),
 													   .tmrErr(DATA_32TmrError)
 													   );
+   
 
 
-   assign tmrError = LoadTmrError | DATA_32TmrError | fsm_TmrError;
+
+   majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA_32Voter_FB (
+													      .inA(DATA_32_FB_A),
+													      .inB(DATA_32_FB_B),
+													      .inC(DATA_32_FB_C),
+													      .out(DATA_32_FB),
+													      .tmrErr(DATA_32TmrError_FB)
+													      );
+
+
+   assign tmrError = LoadTmrError | DATA_32TmrError | fsm_TmrError | LoadTmrError_FB | DATA_32TmrError_FB | fsm_TmrError_FB;
 
 
 

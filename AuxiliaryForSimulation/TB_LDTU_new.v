@@ -36,6 +36,8 @@ module tb_LDTU_presynth;
    reg RST_C;
    //	reg GAIN_SEL_MODE;
    reg [1:0] GAIN_SEL_MODE;
+   reg 	     fallback;
+   
    reg 	     CALIBRATION_BUSY_1;
    reg 	     CALIBRATION_BUSY_10;
    reg [Nbits_12-1:0] DATA12_g01;
@@ -43,7 +45,7 @@ module tb_LDTU_presynth;
    reg [Nbits_8-1:0]  BSL_VAL_g01 = 8'b0;
    reg [Nbits_8-1:0]  BSL_VAL_g10 = 8'b0;
    reg [Nbits_12-1:0] SATURATION_value = 12'b111111111111;
-   reg [1:0] shift_gain_10 = 2'b01;
+   reg [1:0] shift_gain_10 = 2'b00;
    //reg [Nbits_8-1:0] BSL_VAL_g01 = 8'b1000;
    //reg [Nbits_8-1:0] BSL_VAL_g10 = 8'b1000;
    wire 	      losing_data;
@@ -91,7 +93,7 @@ module tb_LDTU_presynth;
    top_ofthetop toptoplevel(.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .CLK(clk), .CLK_SRL(clk_srl),
 			    .RST_A(RST_A),  .RST_B(RST_B), .RST_C(RST_C), 
 			    .CALIBRATION_BUSY_1(CALIBRATION_BUSY_1), .CALIBRATION_BUSY_10(CALIBRATION_BUSY_10), 
-			    .TEST_ENABLE(test_enable), .GAIN_SEL_MODE(GAIN_SEL_MODE), 
+			    .TEST_ENABLE(test_enable), .GAIN_SEL_MODE(GAIN_SEL_MODE),.fallback(fallback), 
 			    .DATA12_g01(DATA12_g01), .DATA12_g10(DATA12_g10), 
 			    .SATURATION_value(SATURATION_value), .BSL_VAL_g01(BSL_VAL_g01), .BSL_VAL_g10(BSL_VAL_g10),
 			    .Orbit(Orbit),
@@ -219,7 +221,8 @@ module tb_LDTU_presynth;
       //      test_enable <= 1'b1;			// ADC_test_mode
       test_enable <= 1'b0;			// DTU_test_mode
       GAIN_SEL_MODE <= 2'b00;		// Auto-gain selection
-
+      fallback=1'b1;
+      
       #(0.7*ck_period);	// --------------- system reset
       RST_A = 1'b0;
       RST_B = 1'b0;

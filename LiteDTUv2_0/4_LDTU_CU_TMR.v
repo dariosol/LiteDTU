@@ -8,8 +8,13 @@ module LDTU_CUTMR(
 	reset_A,
 	reset_B,
 	reset_C,
+	fallback_A,
+	fallback_B,
+	fallback_C,
 	Load_data,
 	DATA_32,
+	Load_data_FB,
+	DATA_32_FB,
 	full,
 	DATA_from_CU,
 	losing_data,
@@ -37,8 +42,14 @@ module LDTU_CUTMR(
 	input reset_A;
 	input reset_B;
 	input reset_C;
+        input fallback_A;
+        input fallback_B;
+        input fallback_C;
+   
 	input Load_data;
 	input [Nbits_32-1:0] DATA_32;
+   	input Load_data_FB;
+	input [Nbits_32-1:0] DATA_32_FB;
 	input full;
 	input  handshake;
 
@@ -71,6 +82,12 @@ module LDTU_CUTMR(
 	wire Load_data_C;
 	wire Load_data_B;
 	wire Load_data_A;
+   	wire [Nbits_32-1:0] DATA_32_FB_C;
+	wire [Nbits_32-1:0] DATA_32_FB_B;
+	wire [Nbits_32-1:0] DATA_32_FB_A;
+	wire Load_data_FB_C;
+	wire Load_data_FB_B;
+	wire Load_data_FB_A;
 	wire full_C;
 	wire full_B;
 	wire full_A;
@@ -135,9 +152,9 @@ module LDTU_CUTMR(
 	SumValue SumValue_B ( .data(DATA_32_B[31:24]), .sum_val(sum_val_B));
 	SumValue SumValue_C ( .data(DATA_32_C[31:24]), .sum_val(sum_val_C));
 
-
+//////CRC calculation, not done if FALLBACK
 	always @( posedge CLK_A ) begin
-		if (reset_A==1'b0) begin
+		if (reset_A==1'b0 || fallback_A==1'b1) begin
 			NSample_A <= 8'b0;
 			Nlimit_A <= 6'b0;
 			NFrame_A <= 8'b0;
@@ -162,7 +179,7 @@ module LDTU_CUTMR(
 		end
 	end
 
-	always @( posedge CLK_B ) begin
+	always @( posedge CLK_B || fallback_B==1'b1) begin
 		if (reset_B==1'b0) begin
 			NSample_B <= 8'b0;
 			Nlimit_B <= 6'b0;
@@ -189,7 +206,7 @@ module LDTU_CUTMR(
 	end
 
 	always @( posedge CLK_C ) begin
-		if (reset_C==1'b0) begin
+		if (reset_C==1'b0 || fallback_C==1'b1) begin
 			NSample_C <= 8'b0;
 			Nlimit_C <= 6'b0;
 			NFrame_C <= 8'b0;
@@ -213,16 +230,17 @@ module LDTU_CUTMR(
 			end
 		end
 	end
-
+/////////////////////////////////////////////////////////
+   //Writing Process
 	always @( posedge CLK_A ) begin
 		if (reset_A==1'b0) begin
 			DATA_from_CU_A = Initial;
 			losing_data_A = 1'b0;
 			write_signal_A = 1'b0;
 		end else begin
-			if (Load_data_A == 1'b0) begin
+			if (Load_data_A == 1'b0 && Load_data_FB_A == 1'b0) begin
 				losing_data_A = 1'b0;
-				if (check_limit_A==1'b1) begin
+				if (check_limit_A==1'b1 && fallback_A==1'b0) begin
 					if (full_A==1'b0) begin
 						DATA_from_CU_A = wireTrailer_A;
 						write_signal_A = 1'b1;
@@ -232,11 +250,16 @@ module LDTU_CUTMR(
 				end else begin
 					write_signal_A = 1'b0;
 				end
-			end else begin
-				if (full_A==1'b0) begin
+			end 
+			else begin
+				if (full_A==1'b0 && fallback_A==1'b0) begin
 					write_signal_A = 1'b1;
 					losing_data_A = 1'b0;
 					DATA_from_CU_A = DATA_32_A;
+				end else if (full_A==1'b0 && fallback_A==1'b1) begin
+				   write_signal_A = 1'b1;
+				   losing_data_A = 1'b0;
+				   DATA_from_CU_A = DATA_32_FB_A;
 				end else begin
 					losing_data_A = 1'b1;
 					write_signal_A = 1'b0;
@@ -244,16 +267,16 @@ module LDTU_CUTMR(
 			end
 		end
 	end
-
-	always @( posedge CLK_B ) begin
+////////////
+	   	always @( posedge CLK_B ) begin
 		if (reset_B==1'b0) begin
 			DATA_from_CU_B = Initial;
 			losing_data_B = 1'b0;
 			write_signal_B = 1'b0;
 		end else begin
-			if (Load_data_B == 1'b0) begin
+			if (Load_data_B == 1'b0 && Load_data_FB_B == 1'b0) begin
 				losing_data_B = 1'b0;
-				if (check_limit_B==1'b1) begin
+				if (check_limit_B==1'b1 && fallback_B==1'b0) begin
 					if (full_B==1'b0) begin
 						DATA_from_CU_B = wireTrailer_B;
 						write_signal_B = 1'b1;
@@ -263,11 +286,16 @@ module LDTU_CUTMR(
 				end else begin
 					write_signal_B = 1'b0;
 				end
-			end else begin
-				if (full_B==1'b0) begin
+			end 
+			else begin
+				if (full_B==1'b0 && fallback_B==1'b0) begin
 					write_signal_B = 1'b1;
 					losing_data_B = 1'b0;
 					DATA_from_CU_B = DATA_32_B;
+				end else if (full_B==1'b0 && fallback_B==1'b1) begin
+				   write_signal_B = 1'b1;
+				   losing_data_B = 1'b0;
+				   DATA_from_CU_B = DATA_32_FB_B;
 				end else begin
 					losing_data_B = 1'b1;
 					write_signal_B = 1'b0;
@@ -275,16 +303,16 @@ module LDTU_CUTMR(
 			end
 		end
 	end
-
-	always @( posedge CLK_C ) begin
+////////////
+		   	always @( posedge CLK_C ) begin
 		if (reset_C==1'b0) begin
 			DATA_from_CU_C = Initial;
 			losing_data_C = 1'b0;
 			write_signal_C = 1'b0;
 		end else begin
-			if (Load_data_C == 1'b0) begin
+			if (Load_data_C == 1'b0 && Load_data_FB_C == 1'b0) begin
 				losing_data_C = 1'b0;
-				if (check_limit_C==1'b1) begin
+				if (check_limit_C==1'b1 && fallback_C==1'b0) begin
 					if (full_C==1'b0) begin
 						DATA_from_CU_C = wireTrailer_C;
 						write_signal_C = 1'b1;
@@ -294,11 +322,16 @@ module LDTU_CUTMR(
 				end else begin
 					write_signal_C = 1'b0;
 				end
-			end else begin
-				if (full_C==1'b0) begin
+			end 
+			else begin
+				if (full_C==1'b0 && fallback_C==1'b0) begin
 					write_signal_C = 1'b1;
 					losing_data_C = 1'b0;
 					DATA_from_CU_C = DATA_32_C;
+				end else if (full_C==1'b0 && fallback_C==1'b1) begin
+				   write_signal_C = 1'b1;
+				   losing_data_C = 1'b0;
+				   DATA_from_CU_C = DATA_32_FB_C;
 				end else begin
 					losing_data_C = 1'b1;
 					write_signal_C = 1'b0;
@@ -306,6 +339,7 @@ module LDTU_CUTMR(
 			end
 		end
 	end
+
 
 	always @( posedge CLK_A ) begin
 		if (reset_A == 1'b0) read_signal_A = 1'b0;
@@ -378,11 +412,25 @@ fanout #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1)
 	.outC(DATA_32_C)
 	);
 
+   fanout #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA_32Fanout_FB (
+	.in(DATA_32_FB),
+	.outA(DATA_32_FB_A),
+	.outB(DATA_32_FB_B),
+	.outC(DATA_32_FB_C)
+	);
+
 fanout Load_dataFanout (
 	.in(Load_data),
 	.outA(Load_data_A),
 	.outB(Load_data_B),
 	.outC(Load_data_C)
+	);
+
+   fanout Load_dataFanout_FB (
+	.in(Load_data_FB),
+	.outA(Load_data_FB_A),
+	.outB(Load_data_FB_B),
+	.outC(Load_data_FB_C)
 	);
 
 fanout handshakeFanout (

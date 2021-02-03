@@ -20,12 +20,19 @@ module LDTU_FSMTMR(
 		   reset_A,
 		   reset_B,
 		   reset_C,
+		   fallback_A,
+		   fallback_B,
+		   fallback_C,
 		   Orbit,
 		   baseline_flag,
 		   Current_state_A,
 		   Current_state_B,
 		   Current_state_C,
-		   tmrError
+		   tmrError,
+		   Current_state_FB_A,
+		   Current_state_FB_B,
+		   Current_state_FB_C,
+		   tmrError_FB
 		   );
 
    parameter SIZE=4;
@@ -62,6 +69,9 @@ module LDTU_FSMTMR(
    input reset_A;
    input reset_B;
    input reset_C;
+   input fallback_A;
+   input fallback_B;
+   input fallback_C;
    input Orbit;
    input baseline_flag;
    output reg [SIZE:0] Current_state_A;
@@ -73,9 +83,30 @@ module LDTU_FSMTMR(
    wire [SIZE:0]       Current_state;
    reg [SIZE:0]        Next_state;
 
+//////////////////////////////////////////////////////
+//Fallback registers
+   parameter SIZE_FB=3;
+   output reg [SIZE_FB:0] Current_state_FB_A;
+   output reg [SIZE_FB:0] Current_state_FB_B;
+   output reg [SIZE_FB:0] Current_state_FB_C;
+   output 	       tmrError_FB;
 
+   wor 		       Current_stateTmrError_FB;
+   wire [SIZE_FB:0]    Current_state_FB;
+   reg [SIZE_FB:0]     Next_state_FB;
+   
+   parameter IDLE_FB=3'b000;
+   parameter data_odd=3'b001;
+   parameter latency1=3'b010;
+   parameter data_even=3'b011;
+   parameter latency2=3'b100;
+   
+/////////////////////////////////////////////////////
+
+
+   //Standard FSM
    always @( posedge CLK_A ) begin : FSM_SEQA
-      if (reset_A==1'b0) begin
+      if (reset_A==1'b0 || fallback_A==1'b1) begin
 	 Current_state_A <= IDLE;
       end else begin
 	 Current_state_A <= Next_state;
@@ -83,7 +114,7 @@ module LDTU_FSMTMR(
    end
 
    always @( posedge CLK_B ) begin : FSM_SEQB
-      if (reset_B==1'b0) begin
+      if (reset_B==1'b0 || fallback_B==1'b1) begin
 	 Current_state_B <= IDLE;
       end else begin
 	 Current_state_B <= Next_state;
@@ -91,7 +122,7 @@ module LDTU_FSMTMR(
 
    end
    always @( posedge CLK_C ) begin : FSM_SEQC
-      if (reset_C==1'b0) begin
+      if (reset_C==1'b0 || fallback_C==1'b1) begin
 	 Current_state_C <= IDLE;
       end else begin
 	 Current_state_C <= Next_state;
@@ -327,6 +358,74 @@ module LDTU_FSMTMR(
       endcase
    end
 
+
+
+   //FALLBACK FSM
+      always @( posedge CLK_A ) begin : FSM_SEQ_FB_A
+      if (reset_A==1'b0 || fallback_A==1'b0) begin
+	 Current_state_FB_A <= IDLE_FB;
+      end else begin
+	 Current_state_FB_A <= Next_state_FB;
+      end
+   end
+
+   always @( posedge CLK_B ) begin : FSM_SEQ_FB_B
+      if (reset_B==1'b0 || fallback_B==1'b0) begin
+	 Current_state_FB_B <= IDLE_FB;
+      end else begin
+	 Current_state_FB_B <= Next_state_FB;
+      end
+
+   end
+   always @( posedge CLK_C ) begin : FSM_SEQ_FB_C
+      if (reset_C==1'b0 || fallback_C==1'b0) begin
+	 Current_state_FB_C <= IDLE_FB;
+      end else begin
+	 Current_state_FB_C <= Next_state_FB;
+      end
+   end
+
+
+   always @( Current_state_FB or Orbit ) begin : FSM_COMB_FB
+      Next_state_FB = IDLE_FB;
+      
+      case (Current_state_FB)
+	IDLE_FB :
+	  begin
+	       Next_state_FB = data_odd;
+	  end 
+
+	data_odd:
+	  begin
+	     Next_state_FB = latency1;
+	  end
+	
+        latency1:
+	  begin
+	     Next_state_FB = data_even;
+	  end
+
+	data_even:
+	  begin
+	     Next_state_FB = latency2;
+	  end
+
+	latency2:
+	  begin
+	     Next_state_FB = data_odd;
+	  end
+       
+	default : Next_state_FB = IDLE_FB;
+	
+      endcase // case (Current_state)
+   end // block: FSM_FS_A
+
+   
+
+
+
+
+   
    majorityVoter #(.WIDTH(((SIZE)>(0)) ? ((SIZE)-(0)+1) : ((0)-(SIZE)+1))) Current_stateVoter (
 											       .inA(Current_state_A),
 											       .inB(Current_state_B),
@@ -335,7 +434,17 @@ module LDTU_FSMTMR(
 											       .tmrErr(Current_stateTmrError)
 											       );
 
+   
+   majorityVoter #(.WIDTH(((SIZE_FB)>(0)) ? ((SIZE_FB)-(0)+1) : ((0)-(SIZE_FB)+1))) Current_stateVoter_FB (
+											       .inA(Current_state_FB_A),
+											       .inB(Current_state_FB_B),
+											       .inC(Current_state_FB_C),
+											       .out(Current_state_FB),
+											       .tmrErr(Current_stateTmrError_FB)
+											       );
+
    assign tmrError = Current_stateTmrError;
+   assign tmrError_FB = Current_stateTmrError_FB;
 
 
 endmodule
