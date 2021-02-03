@@ -78,7 +78,7 @@ module top_ofthetop (
 	wire [Nbits_32-1:0] DATA32_2;
 	wire [Nbits_32-1:0] DATA32_3;
 
-	LiTE_DTU_160MHz_v1_2 top_level_LiTE_DTU (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), 
+	LiTE_DTU_160MHz_v2_0 top_level_LiTE_DTU (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), 
 		.CLK_A(CLK), .CLK_B(CLK), .CLK_C(CLK), .RST_A(RST_A),  .RST_B(RST_B), .RST_C(RST_C), 
 		.CALIBRATION_BUSY_1(CALIBRATION_BUSY_1), .CALIBRATION_BUSY_10(CALIBRATION_BUSY_10), 
 		.TEST_ENABLE(TEST_ENABLE), .GAIN_SEL_MODE(GAIN_SEL_MODE), .fallback(fallback),						 

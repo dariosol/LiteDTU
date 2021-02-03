@@ -8,7 +8,7 @@ vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_
 vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0/5_2_LDTU_Hamm_RX.v
 vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0/5_3_LDTU_Hamm_top.v
 vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0/6_LDTU_DATA32mux.v
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0/LiTE_DTU_160MHz_v1_2.v
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0/LiTE_DTU_160MHz_v2_0.v
 vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/8_SER_shift_TMRG.v
 vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/8_Serializers_LiTE_DTU_v1_2_TMRG.v
 vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/9_AdcTestUnitTMR.v
