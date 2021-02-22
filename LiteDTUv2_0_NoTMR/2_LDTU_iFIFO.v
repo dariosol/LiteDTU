@@ -48,6 +48,7 @@ module LDTU_iFIFO(
 	parameter    FifoDepth = 8;
 	parameter    NBitsCnt = 3;
 	parameter    RefSample = 3'b011;
+	//parameter    RefSample2 = 3'b110;
 	parameter    RefSample2 = 3'b101;
 
 
@@ -84,6 +85,7 @@ module LDTU_iFIFO(
 	wire [Nbits_12-1:0] FIFO_g10_ref_;
 	wire ref_sat_;
 
+
 	reg [FifoDepth-1:0] gain_sel_;
 	reg [FifoDepth2-1:0] gain_sel2_;
 
@@ -96,7 +98,7 @@ module LDTU_iFIFO(
 	wire baseline_flag_;
 	wire baseline_flagTmrError;
 
-	wire [1:0] GAIN_SEL_MODE_;
+	wire [1:0] GAIN_SEL_MODE_ = GAIN_SEL_MODE;
 
 	integer iH;
 	integer iL;
@@ -107,19 +109,16 @@ module LDTU_iFIFO(
 		else SATval_ <= SATURATION_value >> shift_gain_10;
 	end
 
-
 // WRITE POINTERS : @(posedge DCLK)
 	always @(posedge DCLK_10) begin
 		if (reset_ == 1'b0) wrH_ptr_ <= 3'b000;
 		else wrH_ptr_ <= wrH_ptr_+3'b001;
 	end
 
-
 	always @(posedge DCLK_1) begin
 		if (reset_ == 1'b0) wrL_ptr_ <= 3'b000;
 		else wrL_ptr_ <= wrL_ptr_+3'b001;
 	end
-
 
 // WRITING in FIFO GAIN 1
 
@@ -146,6 +145,11 @@ module LDTU_iFIFO(
 		end
 	end
 
+// READ POINTERS : @(posedge CLK)
+	//assign rd_ptr_A = wr_ptr_A + 3'b001;
+	//assign rd_ptr_B = wr_ptr_B + 3'b001;
+	//assign rd_ptr_C = wr_ptr_C + 3'b001;
+
 	always @(posedge CLK_) begin
 		if (reset_ == 1'b0) rd_ptr_ <= 3'b010;
 			else rd_ptr_ <= rd_ptr_+3'b001;
@@ -153,6 +157,7 @@ module LDTU_iFIFO(
 
 // REF POINTERS : @(posedge CLK)
 	assign ref_ptr_ = (GAIN_SEL_MODE_ == 2'b01) ? (rd_ptr_ + RefSample2) : (rd_ptr_ + RefSample);
+
 
 	assign FIFO_g10_ref_ = FIFO_g10_[ref_ptr_];
 
@@ -169,7 +174,7 @@ module LDTU_iFIFO(
 			end
 		end
 	end
-	
+
 // Registri per aumentare la finestra
 	always @(posedge CLK_) begin
 		if (reset_ == 1'b0) gain_sel2_ <= 16'b0;
@@ -178,13 +183,14 @@ module LDTU_iFIFO(
 			else gain_sel2_ <= 16'b0;
 		end
 	end
-	
+
 	assign dout_g1_ = FIFO_g1_[rd_ptr_];
 	assign dout_g10_ = FIFO_g10_[rd_ptr_];
 
 	wire decision1_, decision2_;
 	assign decision1_ = (gain_sel_ == 8'b0) ? 1'b1 : 1'b0;
  	assign decision2_ = (gain_sel2_ == 16'b0) ? 1'b1 : 1'b0;
+
 	assign DATA_to_enc_ = (decision1_ && decision2_) ? {1'b0,dout_g10_} : {1'b1,dout_g1_};
 
 	wire bas_flag_;
@@ -196,8 +202,11 @@ module LDTU_iFIFO(
 
 	assign baseline_flag_ = (reset_ == 1'b0) ? 1'b1 : (GAIN_SEL_MODE_[1] == 1'b0) ? bas_flag_ : b_flag_;
 
+   assign DATA_to_enc = DATA_to_enc_;
+   assign baseline_flag = baseline_flag_;
+   
+ 
 
-assign tmrError = DATA_to_encTmrError | baseline_flagTmrError;
 
 
 endmodule

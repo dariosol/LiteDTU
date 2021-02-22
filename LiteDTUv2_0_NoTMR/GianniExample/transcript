@@ -1,0 +1,622 @@
+# //  Questa Sim-64
+# //  Version 2019.4 linux_x86_64 Oct 15 2019
+# //
+# //  Copyright 1991-2019 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+cd /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_NoTMR
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/1_LDTU_Baseline_subtraction.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 10:33:14 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/1_LDTU_Baseline_subtraction.v 
+# -- Compiling module LDTU_BS
+# 
+# Top level modules:
+# 	LDTU_BS
+# End time: 10:33:14 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/2_LDTU_iFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 10:33:16 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/2_LDTU_iFIFO.v 
+# -- Compiling module LDTU_iFIFO
+# 
+# Top level modules:
+# 	LDTU_iFIFO
+# End time: 10:33:16 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/3_LDTU_FSM.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 10:33:17 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/3_LDTU_FSM.v 
+# -- Compiling module LDTU_FSM
+# 
+# Top level modules:
+# 	LDTU_FSM
+# End time: 10:33:17 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 10:51:59 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module LDTU_Encoder
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(126): (vlog-2730) Undefined variable: 'SeuError_FSM'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(142): (vlog-2730) Undefined variable: 'fallback_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(182): (vlog-2730) Undefined variable: 'Ld_sign_1_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(228): (vlog-2730) Undefined variable: 'dDATA_to_enc_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(331): (vlog-2730) Undefined variable: 'fallback_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'LoadTmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'DATA_32TmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'fsm_TmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'LoadTmrError_FB'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'DATA_32TmrError_FB'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'fsm_TmrError_FB'.
+# -- Compiling module Delay_enc
+# End time: 10:51:59 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 11, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 10:52:25 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module LDTU_Encoder
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(142): (vlog-2730) Undefined variable: 'fallback_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(182): (vlog-2730) Undefined variable: 'Ld_sign_1_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(228): (vlog-2730) Undefined variable: 'dDATA_to_enc_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(331): (vlog-2730) Undefined variable: 'fallback_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'LoadTmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'DATA_32TmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'fsm_TmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'LoadTmrError_FB'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'DATA_32TmrError_FB'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'fsm_TmrError_FB'.
+# -- Compiling module Delay_enc
+# End time: 10:52:25 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 10, Warnings: 0
+# /export/elt181xl/disk0/eda/mentor/2019-20/RHELx86/QUESTA-CORE-PRIME_2019.4/questasim/linux_x86_64/vlog failed.
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 10:52:53 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module LDTU_Encoder
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(182): (vlog-2730) Undefined variable: 'Ld_sign_1_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(228): (vlog-2730) Undefined variable: 'dDATA_to_enc_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'LoadTmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'DATA_32TmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'fsm_TmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'LoadTmrError_FB'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'DATA_32TmrError_FB'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'fsm_TmrError_FB'.
+# -- Compiling module Delay_enc
+# End time: 10:52:53 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 8, Warnings: 0
+# /export/elt181xl/disk0/eda/mentor/2019-20/RHELx86/QUESTA-CORE-PRIME_2019.4/questasim/linux_x86_64/vlog failed.
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 10:53:11 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module LDTU_Encoder
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(228): (vlog-2730) Undefined variable: 'dDATA_to_enc_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'LoadTmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'DATA_32TmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'fsm_TmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'LoadTmrError_FB'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'DATA_32TmrError_FB'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'fsm_TmrError_FB'.
+# -- Compiling module Delay_enc
+# End time: 10:53:11 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 7, Warnings: 0
+# /export/elt181xl/disk0/eda/mentor/2019-20/RHELx86/QUESTA-CORE-PRIME_2019.4/questasim/linux_x86_64/vlog failed.
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 10:53:37 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module LDTU_Encoder
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'LoadTmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'DATA_32TmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'fsm_TmrError'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'LoadTmrError_FB'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'DATA_32TmrError_FB'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): (vlog-2730) Undefined variable: 'fsm_TmrError_FB'.
+# -- Compiling module Delay_enc
+# End time: 10:53:37 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 6, Warnings: 0
+# /export/elt181xl/disk0/eda/mentor/2019-20/RHELx86/QUESTA-CORE-PRIME_2019.4/questasim/linux_x86_64/vlog failed.
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 10:54:13 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module LDTU_Encoder
+# -- Compiling module Delay_enc
+# 
+# Top level modules:
+# 	LDTU_Encoder
+# End time: 10:54:13 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:04:28 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v 
+# -- Compiling module LDTU_CU
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v(125): (vlog-2730) Undefined variable: 'check_limit'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v(127): (vlog-2730) Undefined variable: 'wireTrailer'.
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# End time: 11:04:28 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:05:21 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v 
+# -- Compiling module LDTU_CU
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v(99): (vlog-2730) Undefined variable: 'full_'.
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# End time: 11:05:21 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /export/elt181xl/disk0/eda/mentor/2019-20/RHELx86/QUESTA-CORE-PRIME_2019.4/questasim/linux_x86_64/vlog failed.
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:05:53 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v 
+# -- Compiling module LDTU_CU
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v(119): (vlog-2110) Illegal reference to net "DATA_from_CU".
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v(140): (vlog-2110) Illegal reference to net "DATA_from_CU".
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v(144): (vlog-2110) Illegal reference to net "DATA_from_CU".
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# End time: 11:05:53 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+# /export/elt181xl/disk0/eda/mentor/2019-20/RHELx86/QUESTA-CORE-PRIME_2019.4/questasim/linux_x86_64/vlog failed.
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:08:58 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v 
+# -- Compiling module LDTU_CU
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v(99): (vlog-2730) Undefined variable: 'check_limit_'.
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# End time: 11:08:58 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /export/elt181xl/disk0/eda/mentor/2019-20/RHELx86/QUESTA-CORE-PRIME_2019.4/questasim/linux_x86_64/vlog failed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:09:02 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v 
+# -- Compiling module LDTU_CU
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v(99): (vlog-2730) Undefined variable: 'check_limit_'.
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# End time: 11:09:02 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# /export/elt181xl/disk0/eda/mentor/2019-20/RHELx86/QUESTA-CORE-PRIME_2019.4/questasim/linux_x86_64/vlog failed.
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:09:14 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v 
+# -- Compiling module LDTU_CU
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# 
+# Top level modules:
+# 	LDTU_CU
+# End time: 11:09:15 on Feb 22,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:15:41 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v 
+# -- Compiling module LDTU_CU
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# 
+# Top level modules:
+# 	LDTU_CU
+# End time: 11:15:42 on Feb 22,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:19:31 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v 
+# -- Compiling module LDTU_oFIFO
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(54): (vlog-2388) 'ptr_write' already declared in this scope (LDTU_oFIFO) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(52).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(55): (vlog-2388) 'ptr_read' already declared in this scope (LDTU_oFIFO) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(51).
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(67): (vlog-2730) Undefined variable: 'ptr_write_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(74): (vlog-2730) Undefined variable: 'start_write_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(75): (vlog-2730) Undefined variable: 'full_signal_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(86): (vlog-2730) Undefined variable: 'read_signal_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(87): (vlog-2730) Undefined variable: 'empty_signal_'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(88): (vlog-2730) Undefined variable: 'ptr_read_'.
+# End time: 11:19:31 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 8, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:20:57 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v 
+# -- Compiling module LDTU_oFIFO
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(54): (vlog-2388) 'ptr_write' already declared in this scope (LDTU_oFIFO) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(52).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(55): (vlog-2388) 'ptr_read' already declared in this scope (LDTU_oFIFO) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(51).
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(75): (vlog-2730) Undefined variable: 'full_signal_'.
+# End time: 11:20:57 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:21:12 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v 
+# -- Compiling module LDTU_oFIFO
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(54): (vlog-2388) 'ptr_write' already declared in this scope (LDTU_oFIFO) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(52).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(55): (vlog-2388) 'ptr_read' already declared in this scope (LDTU_oFIFO) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(51).
+# End time: 11:21:12 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:21:15 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v 
+# -- Compiling module LiTE_DTU_160MHz_v2_0
+# 
+# Top level modules:
+# 	LiTE_DTU_160MHz_v2_0
+# End time: 11:21:15 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Load canceled
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 11:21:41 on Feb 22,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(369): Register is illegal in left-hand side of continuous assignment
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(370): Register is illegal in left-hand side of continuous assignment
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v(82): Register is illegal in left-hand side of continuous assignment
+# Optimization failed
+# Error loading design
+# End time: 11:21:46 on Feb 22,2021, Elapsed time: 0:00:05
+# Errors: 3, Warnings: 0
+vlog -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:22:38 on Feb 22,2021
+# vlog -reportprogress 300 -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module LDTU_Encoder
+# -- Compiling module Delay_enc
+# 
+# Top level modules:
+# 	LDTU_Encoder
+# End time: 11:22:38 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 11:22:44 on Feb 22,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v(82): Register is illegal in left-hand side of continuous assignment
+# Optimization failed
+# Error loading design
+# End time: 11:22:44 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vlog -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:24:01 on Feb 22,2021
+# vlog -reportprogress 300 -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v 
+# -- Compiling module LDTU_CU
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# 
+# Top level modules:
+# 	LDTU_CU
+# End time: 11:24:01 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 11:24:06 on Feb 22,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(122): (vopt-2912) Port 'CLK_' not found in module 'LDTU_iFIFO' (3rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(132): (vopt-2912) Port 'CLK_' not found in module 'LDTU_CU' (1st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(132): (vopt-2912) Port 'fallback_' not found in module 'LDTU_CU' (3rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(132): (vopt-2912) Port 'seuError' not found in module 'LDTU_CU' (13th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'CLK' not found in module 'LDTU_oFIFO_top' (1st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'rst_b' not found in module 'LDTU_oFIFO_top' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'SeuError' not found in module 'LDTU_oFIFO_top' (8th connection).
+# Optimization failed
+# Error loading design
+# End time: 11:24:06 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 7, Warnings: 0
+vlog -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:26:21 on Feb 22,2021
+# vlog -reportprogress 300 -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v 
+# -- Compiling module LDTU_oFIFO
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(54): (vlog-2388) 'ptr_write' already declared in this scope (LDTU_oFIFO) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(52).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(55): (vlog-2388) 'ptr_read' already declared in this scope (LDTU_oFIFO) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(51).
+# End time: 11:26:22 on Feb 22,2021, Elapsed time: 0:00:01
+# Errors: 2, Warnings: 0
+# /export/elt181xl/disk0/eda/mentor/2019-20/RHELx86/QUESTA-CORE-PRIME_2019.4/questasim/linux_x86_64/vlog failed.
+vlog -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:24 on Feb 22,2021
+# vlog -reportprogress 300 -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v 
+# -- Compiling module LDTU_oFIFO
+# 
+# Top level modules:
+# 	LDTU_oFIFO
+# End time: 11:27:24 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 11:27:33 on Feb 22,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(122): (vopt-2912) Port 'CLK_' not found in module 'LDTU_iFIFO' (3rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(132): (vopt-2912) Port 'CLK_' not found in module 'LDTU_CU' (1st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(132): (vopt-2912) Port 'fallback_' not found in module 'LDTU_CU' (3rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(132): (vopt-2912) Port 'seuError' not found in module 'LDTU_CU' (13th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v(75): (vopt-2912) Port 'reset_' not found in module 'LDTU_oFIFO' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v(75): (vopt-2912) Port 'tmrError' not found in module 'LDTU_oFIFO' (9th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'CLK' not found in module 'LDTU_oFIFO_top' (1st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'rst_b' not found in module 'LDTU_oFIFO_top' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'SeuError' not found in module 'LDTU_oFIFO_top' (8th connection).
+# Optimization failed
+# Error loading design
+# End time: 11:27:33 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 9, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:45 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v 
+# -- Compiling module LDTU_BS
+# 
+# Top level modules:
+# 	LDTU_BS
+# End time: 11:27:45 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_MIO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:45 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_MIO.v 
+# -- Compiling module LDTU_BS
+# 
+# Top level modules:
+# 	LDTU_BS
+# End time: 11:27:45 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/2_LDTU_iFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:46 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/2_LDTU_iFIFO.v 
+# -- Compiling module LDTU_iFIFO
+# 
+# Top level modules:
+# 	LDTU_iFIFO
+# End time: 11:27:46 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:46 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module LDTU_Encoder
+# -- Compiling module Delay_enc
+# 
+# Top level modules:
+# 	LDTU_Encoder
+# End time: 11:27:46 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_FSM.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:47 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_FSM.v 
+# -- Compiling module LDTU_FSM
+# 
+# Top level modules:
+# 	LDTU_FSM
+# End time: 11:27:47 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:47 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v 
+# -- Compiling module LDTU_CU
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# 
+# Top level modules:
+# 	LDTU_CU
+# End time: 11:27:47 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_0_LDTU_Hamm_TRX.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:52 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_0_LDTU_Hamm_TRX.v 
+# -- Compiling module Hamm_TRX
+# 
+# Top level modules:
+# 	Hamm_TRX
+# End time: 11:27:52 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:52 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v 
+# -- Compiling module LDTU_oFIFO
+# 
+# Top level modules:
+# 	LDTU_oFIFO
+# End time: 11:27:52 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_2_LDTU_Hamm_RX.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:53 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_2_LDTU_Hamm_RX.v 
+# -- Compiling module Hamm_RX
+# 
+# Top level modules:
+# 	Hamm_RX
+# End time: 11:27:53 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:53 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v 
+# -- Compiling module LDTU_oFIFO_top
+# 
+# Top level modules:
+# 	LDTU_oFIFO_top
+# End time: 11:27:53 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:54 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v 
+# -- Compiling module LDTU_DATA32_ATU_DTUTMR
+# 
+# Top level modules:
+# 	LDTU_DATA32_ATU_DTUTMR
+# End time: 11:27:54 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:54 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v 
+# -- Compiling module LiTE_DTU_160MHz_v2_0
+# 
+# Top level modules:
+# 	LiTE_DTU_160MHz_v2_0
+# End time: 11:27:54 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 11:28:08 on Feb 22,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(117): (vopt-2912) Port 'rst_b' not found in module 'LDTU_BS' (3rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(117): (vopt-2912) Port 'SeuError' not found in module 'LDTU_BS' (10th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(122): (vopt-2912) Port 'CLK' not found in module 'LDTU_iFIFO' (3rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(122): (vopt-2912) Port 'rst_b' not found in module 'LDTU_iFIFO' (4th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(122): (vopt-2912) Port 'SeuError' not found in module 'LDTU_iFIFO' (12th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(130): (vopt-2912) Port 'CLK' not found in module 'LDTU_FSM' (1st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(130): (vopt-2912) Port 'rst_b' not found in module 'LDTU_FSM' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(130): (vopt-2912) Port 'fallback' not found in module 'LDTU_FSM' (5th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(130): (vopt-2912) Port 'Current_state' not found in module 'LDTU_FSM' (6th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(130): (vopt-2912) Port 'Current_state_FB' not found in module 'LDTU_FSM' (7th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(130): (vopt-2912) Port 'SeuError' not found in module 'LDTU_FSM' (8th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(132): (vopt-2912) Port 'fallback_' not found in module 'LDTU_CU' (3rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(132): (vopt-2912) Port 'seuError' not found in module 'LDTU_CU' (13th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v(75): (vopt-2912) Port 'reset_' not found in module 'LDTU_oFIFO' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v(75): (vopt-2912) Port 'tmrError' not found in module 'LDTU_oFIFO' (9th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'CLK' not found in module 'LDTU_oFIFO_top' (1st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'rst_b' not found in module 'LDTU_oFIFO_top' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'SeuError' not found in module 'LDTU_oFIFO_top' (8th connection).
+# Optimization failed
+# Error loading design
+# End time: 11:28:08 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 18, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/1_LDTU_Baseline_subtraction.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:28:48 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/1_LDTU_Baseline_subtraction.v 
+# -- Compiling module LDTU_BS
+# 
+# Top level modules:
+# 	LDTU_BS
+# End time: 11:28:48 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/2_LDTU_iFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:28:50 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/2_LDTU_iFIFO.v 
+# -- Compiling module LDTU_iFIFO
+# 
+# Top level modules:
+# 	LDTU_iFIFO
+# End time: 11:28:50 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/2_LDTU_iFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:28:52 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/2_LDTU_iFIFO.v 
+# -- Compiling module LDTU_iFIFO
+# 
+# Top level modules:
+# 	LDTU_iFIFO
+# End time: 11:28:53 on Feb 22,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/3_LDTU_FSM.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:28:53 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/GianniExample/3_LDTU_FSM.v 
+# -- Compiling module LDTU_FSM
+# 
+# Top level modules:
+# 	LDTU_FSM
+# End time: 11:28:54 on Feb 22,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 11:28:58 on Feb 22,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(132): (vopt-2912) Port 'fallback_' not found in module 'LDTU_CU' (3rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(132): (vopt-2912) Port 'seuError' not found in module 'LDTU_CU' (13th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v(75): (vopt-2912) Port 'reset_' not found in module 'LDTU_oFIFO' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v(75): (vopt-2912) Port 'tmrError' not found in module 'LDTU_oFIFO' (9th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'CLK' not found in module 'LDTU_oFIFO_top' (1st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'rst_b' not found in module 'LDTU_oFIFO_top' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'SeuError' not found in module 'LDTU_oFIFO_top' (8th connection).
+# Optimization failed
+# Error loading design
+# End time: 11:28:58 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 7, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 11:29:26 on Feb 22,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(132): (vopt-2912) Port 'fallback_' not found in module 'LDTU_CU' (3rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(132): (vopt-2912) Port 'seuError' not found in module 'LDTU_CU' (13th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v(75): (vopt-2912) Port 'reset_' not found in module 'LDTU_oFIFO' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v(75): (vopt-2912) Port 'tmrError' not found in module 'LDTU_oFIFO' (9th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'CLK' not found in module 'LDTU_oFIFO_top' (1st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'rst_b' not found in module 'LDTU_oFIFO_top' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'SeuError' not found in module 'LDTU_oFIFO_top' (8th connection).
+# Optimization failed
+# Error loading design
+# End time: 11:29:26 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 7, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:29:43 on Feb 22,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v 
+# -- Compiling module LiTE_DTU_160MHz_v2_0
+# 
+# Top level modules:
+# 	LiTE_DTU_160MHz_v2_0
+# End time: 11:29:43 on Feb 22,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 11:29:45 on Feb 22,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(132): (vopt-2912) Port 'seuError' not found in module 'LDTU_CU' (13th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v(75): (vopt-2912) Port 'reset_' not found in module 'LDTU_oFIFO' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v(75): (vopt-2912) Port 'tmrError' not found in module 'LDTU_oFIFO' (9th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'CLK' not found in module 'LDTU_oFIFO_top' (1st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'rst_b' not found in module 'LDTU_oFIFO_top' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v(142): (vopt-2912) Port 'SeuError' not found in module 'LDTU_oFIFO_top' (8th connection).
+# Optimization failed
+# Error loading design
+# End time: 11:29:46 on Feb 22,2021, Elapsed time: 0:00:01
+# Errors: 6, Warnings: 0

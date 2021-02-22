@@ -16,21 +16,20 @@
 
 `timescale	 1ps/1ps
 module LDTU_Encoder(
-		       CLK_,
-		       reset_,
+		       CLK,
+		       rst_b,
 		       Orbit,
-		       fallback_,
+		       fallback,
 		       baseline_flag,
 		       DATA_to_enc,
 		       DATA_32,
 		       Load,
 		       DATA_32_FB,
 		       Load_FB,
-		       tmrError
+		       SeuError
 		       );
 
    parameter SIZE=4;
-
    parameter Nbits_6=6;
    parameter Nbits_12=12;
    parameter Nbits_32=32;
@@ -87,240 +86,237 @@ module LDTU_Encoder(
    
    //////////////////////////////////////////////
    //PORTS
-   input CLK_;
-   input reset_;
+   input CLK;
+   input rst_b;
    input Orbit;
-   input fallback_;
+   input fallback;
    input baseline_flag;
    input [Nbits_12:0] DATA_to_enc;
    output [Nbits_32-1:0] DATA_32;
    output 		 Load;
    output [Nbits_32-1:0] DATA_32_FB;
    output 		 Load_FB;
-   output 		 tmrError;
+   output 		 SeuError;
 
    wire [1:0] 		 code_sel_bas;
    wire [5:0] 		 code_sel_sign;
+
+
+
+   reg [Nbits_6-1:0] 	 Ld_bas_1;
+   reg [Nbits_6-1:0] 	 Ld_bas_2;
+   reg [Nbits_6-1:0] 	 Ld_bas_3;
+   reg [Nbits_6-1:0] 	 Ld_bas_4;
+   reg [Nbits_6-1:0] 	 Ld_bas_5;
+   reg [Nbits_12:0] 	 Ld_sign_1;
+   reg [Nbits_12:0] 	 Ld_sign_2;
+   reg [Nbits_32-1:0] 	 DATA_32;
+   reg 			 Load;
+   wire [SIZE:0] 	 Current_state;
    wire [Nbits_12:0] 	 dDATA_to_enc;
+   reg [Nbits_12:0] 	 Ld_sign_FB;
+   reg [Nbits_32-1:0] 	 DATA_32_FB;
+   reg 			 Load_FB;
+   wire [SIZE_FB:0] 	 Current_state_FB;
 
+   wire 		 SeuError_FSM;
+   
+   wire 		 tmrError = 1'b0;
+   wire                  tmrErrorVoted = tmrError;
+   assign                SeuError = tmrErrorVoted | SeuError_FSM;
+   
+   Delay_enc delay(CLK, rst_b, DATA_to_enc, dDATA_to_enc);
 
-   reg [Nbits_6-1:0] 	 Ld_bas_1_;
-   reg [Nbits_6-1:0] 	 Ld_bas_2_;
-   reg [Nbits_6-1:0] 	 Ld_bas_3_;
-   reg [Nbits_6-1:0] 	 Ld_bas_4_;
-   reg [Nbits_6-1:0] 	 Ld_bas_5_;
-   reg [Nbits_12:0] 	 Ld_sign_1_;
-   reg [Nbits_12:0] 	 Ld_sign_2_;
-   reg [Nbits_32-1:0] 	 DATA_32_;
-   reg 			 Load_;
-   reg 			 Load_B;
-   reg 			 Load_C;
-   wire [SIZE:0] 	 Current_state_;
-   wire [Nbits_12:0] 	 dDATA_to_enc_;
-   wor 			 LoadTmrError;
-   wor 			 DATA_32TmrError;
-   wire 		 fsm_TmrError;
-
-   reg [Nbits_12:0] 	 Ld_sign_FB_;
-   reg [Nbits_32-1:0] 	 DATA_32_FB_;
-   reg 			 Load_FB_;
-   wire [SIZE_FB:0] 	 Current_state_FB_;
-   wor 			 LoadTmrError_FB;
-   wor 			 DATA_32TmrError_FB;
-   wire 		 fsm_TmrError_FB;
-
-   Delay_enc delay_ (CLK_, reset_, DATA_to_enc, dDATA_to_enc_);
-
-   LDTU_FSMTMR fsm(.CLK_(CLK_), .reset_(reset_), .baseline_flag(baseline_flag),.Orbit(Orbit),.fallback_(fallback_),
-		   .Current_state_(Current_state_), 
-		   .Current_state_FB_(Current_state_FB_),
-		   .tmrError(fsm_TmrError));
+   LDTU_FSM fsm(.CLK(CLK), .rst_b(rst_b), .baseline_flag(baseline_flag),.Orbit(Orbit),.fallback(fallback),
+		   .Current_state(Current_state), 
+		   .Current_state_FB(Current_state_FB),
+		   .SeuError(SeuError_FSM));
 
    assign code_sel_bas = (baseline_flag==1'b1) ? code_sel_bas1 : code_sel_bas2;
    assign code_sel_sign = (baseline_flag==1'b0) ? code_sel_sign1 : code_sel_sign2;
 
 
 
-   always @( posedge CLK_ )
+   always @( posedge CLK)
      begin : FSM_seq_output
-	if (reset_==1'b0 || fallback_==1'b1)
+	if (rst_b==1'b0 || fallback==1'b1)
 	  begin
-	     Ld_bas_1_ <= 6'b0;
-	     Ld_bas_2_ <= 6'b0;
-	     Ld_bas_3_ <= 6'b0;
-	     Ld_bas_4_ <= 6'b0;
-	     Ld_bas_5_ <= 6'b0;
-	     Ld_sign_1_ <= 13'b0;
-	     Ld_sign_2_ <= 13'b0;
-	     Load_ <= 1'b0;
-	     DATA_32_ <= Initial;
+	     Ld_bas_1 <= 6'b0;
+	     Ld_bas_2 <= 6'b0;
+	     Ld_bas_3 <= 6'b0;
+	     Ld_bas_4 <= 6'b0;
+	     Ld_bas_5 <= 6'b0;
+	     Ld_sign_1 <= 13'b0;
+	     Ld_sign_2 <= 13'b0;
+	     Load <= 1'b0;
+	     DATA_32 <= Initial;
 end
 	else
 	  begin
-       	     case (Current_state_)
+       	     case (Current_state)
        	       bc0_0 : //close previous baseline
        		 begin
-       		    Load_ <= 1'b1;
-       		    DATA_32_ <= {code_sel_bas2,one,Ld_bas_1_};
-       		    Ld_sign_1_ <= dDATA_to_enc_ ;
+       		    Load <= 1'b1;
+       		    DATA_32 <= {code_sel_bas2,one,Ld_bas_1};
+       		    Ld_sign_1 <= dDATA_to_enc ;
        		 end 
 	       
        	       bc0_1 : //close previous baseline
        		 begin
-       		    Load_ <= 1'b1;
-       		    DATA_32_ <= {code_sel_bas2,two,Ld_bas_2_,Ld_bas_1_};
-                    Ld_sign_1_ <= dDATA_to_enc_;
+       		    Load <= 1'b1;
+       		    DATA_32 <= {code_sel_bas2,two,Ld_bas_2,Ld_bas_1};
+                    Ld_sign_1 <= dDATA_to_enc;
        	    	 end
 	       
        	       bc0_2 : //close previous baseline
        		 begin
-       		    Load_ <= 1'b1;
-       		    DATA_32_ <= {code_sel_bas2,three,Ld_bas_3_,Ld_bas_2_,Ld_bas_1_};
-                    Ld_sign_1_ <= dDATA_to_enc_;
+       		    Load <= 1'b1;
+       		    DATA_32 <= {code_sel_bas2,three,Ld_bas_3,Ld_bas_2,Ld_bas_1};
+                    Ld_sign_1 <= dDATA_to_enc;
        	    	 end
 	       
        	       bc0_3 : //close previous baseline
        		 begin
-       		    Load_ <= 1'b1;
-                    DATA_32_ <= {code_sel_bas2,four,Ld_bas_4_,Ld_bas_3_,Ld_bas_2_,Ld_bas_1_};
-                    Ld_sign_1_<= dDATA_to_enc_;
+       		    Load <= 1'b1;
+                    DATA_32 <= {code_sel_bas2,four,Ld_bas_4,Ld_bas_3,Ld_bas_2,Ld_bas_1};
+                    Ld_sign_1 <= dDATA_to_enc;
        	    	 end
 	       
        	       bc0_4 : //close previous baseline
        		 begin
-       		    Load_ <= 1'b1;
-                    DATA_32_ <= {code_sel_bas1,Ld_bas_5_,Ld_bas_4_,Ld_bas_3_,Ld_bas_2_,Ld_bas_1_};
-                    Ld_sign_1_<= dDATA_to_enc_;
+       		    Load <= 1'b1;
+                    DATA_32 <= {code_sel_bas1,Ld_bas_5,Ld_bas_4,Ld_bas_3,Ld_bas_2,Ld_bas_1};
+                    Ld_sign_1 <= dDATA_to_enc;
        	    	 end
 	       
        	       bc0_s0 : //Close previous signal
        		 begin
-       		    Load_ <= 1'b1;
-       		    DATA_32_ <= {code_sel_sign1,Ld_sign_2_,Ld_sign_1_};
-       		    Ld_sign_1_ <= dDATA_to_enc_;
+       		    Load <= 1'b1;
+       		    DATA_32 <= {code_sel_sign1,Ld_sign_2,Ld_sign_1};
+       		    Ld_sign_1 <= dDATA_to_enc;
        		 end
 	       
        	       bc0_s0_bis : // BC0 with signal
        		 begin
-       		    Load_ <= 1'b1;
-       		    DATA_32_ <= {code_sel_sign2,sync,Ld_sign_1_};
-       		    Ld_sign_1_ <= dDATA_to_enc_;
+       		    Load <= 1'b1;
+       		    DATA_32 <= {code_sel_sign2,sync,Ld_sign_1};
+       		    Ld_sign_1 <= dDATA_to_enc;
        		 end  
 	       
        	       
        	       header_s0 : // BC0 with signal
        		 begin
-       		    Load_ <= 1'b1;
-       		    DATA_32_ <= {code_sel_sign2,header_synch,Ld_sign_1_};
-       		    Ld_bas_1_ <= dDATA_to_enc_;
-       		    Ld_sign_1_ <= dDATA_to_enc_;
+       		    Load <= 1'b1;
+       		    DATA_32 <= {code_sel_sign2,header_synch,Ld_sign_1};
+       		    Ld_bas_1 <= dDATA_to_enc;
+       		    Ld_sign_1 <= dDATA_to_enc;
        		 end
 	       
 	       
        	       header : // go  back normal stream
        		 begin
-       		    Load_ <= 1'b1;
-       		    DATA_32_ <= {code_sel_sign2,header_synch,Ld_sign_1_};
-       		    Ld_bas_1_ <= dDATA_to_enc_;
-       		    Ld_sign_1_ <= dDATA_to_enc_;
+       		    Load <= 1'b1;
+       		    DATA_32 <= {code_sel_sign2,header_synch,Ld_sign_1};
+       		    Ld_bas_1 <= dDATA_to_enc;
+       		    Ld_sign_1 <= dDATA_to_enc;
        	 	 end
 	       
                header_b0 : // go back to normal stream
        		 begin
-       		    Load_ <= 1'b1;
-       		    DATA_32_ <= {code_sel_sign2,header_synch,Ld_sign_1_};
-       		    Ld_bas_1_ <= dDATA_to_enc_[Nbits_6-1:0] ;
-       		    Ld_sign_1_ <= dDATA_to_enc_;
+       		    Load <= 1'b1;
+       		    DATA_32 <= {code_sel_sign2,header_synch,Ld_sign_1};
+       		    Ld_bas_1 <= dDATA_to_enc[Nbits_6-1:0] ;
+       		    Ld_sign_1 <= dDATA_to_enc;
 		 end
 	       
 	       IDLE : 
 		 begin
-		    Load_ <= 1'b0;
-		    DATA_32_ <= Initial;
+		    Load <= 1'b0;
+		    DATA_32 <= Initial;
 end
 	       bas_0 : 
 		 begin
-		    Load_ <= 1'b0;
-		    Ld_bas_2_ <= dDATA_to_enc_[Nbits_6-1:0] ;
+		    Load <= 1'b0;
+		    Ld_bas_2 <= dDATA_to_enc[Nbits_6-1:0] ;
 		 end
 	       bas_0_bis : 
 		 begin
-		    Load_ <= 1'b1;
-		    DATA_32_ <= {code_sel_bas2,one,Ld_bas_1_};
-		    Ld_sign_1_ <= dDATA_to_enc_;
+		    Load <= 1'b1;
+		    DATA_32 <= {code_sel_bas2,one,Ld_bas_1};
+		    Ld_sign_1 <= dDATA_to_enc;
 		 end
 	       bas_1 : 
 		 begin
-		    Load_ <= 1'b0;
-		    Ld_bas_3_ <= dDATA_to_enc_[Nbits_6-1:0] ;
+		    Load <= 1'b0;
+		    Ld_bas_3 <= dDATA_to_enc[Nbits_6-1:0] ;
 		 end
 	       bas_1_bis : 
 		 begin
-		    Load_ <= 1'b1;
-		    DATA_32_ <= {code_sel_bas2,two,Ld_bas_2_,Ld_bas_1_};
-		    Ld_sign_1_ <= dDATA_to_enc_;
+		    Load <= 1'b1;
+		    DATA_32 <= {code_sel_bas2,two,Ld_bas_2,Ld_bas_1};
+		    Ld_sign_1 <= dDATA_to_enc;
 		 end
 	       bas_2 : 
 		 begin
-		    Load_ <= 1'b0;
-		    Ld_bas_4_ <= dDATA_to_enc_[Nbits_6-1:0] ;
+		    Load <= 1'b0;
+		    Ld_bas_4 <= dDATA_to_enc[Nbits_6-1:0] ;
 		 end
 	       bas_2_bis : 
 		 begin
-		    Load_ <= 1'b1;
-		    DATA_32_ <= {code_sel_bas2,three,Ld_bas_3_,Ld_bas_2_,Ld_bas_1_};
-		    Ld_sign_1_ <= dDATA_to_enc_;
+		    Load <= 1'b1;
+		    DATA_32 <= {code_sel_bas2,three,Ld_bas_3,Ld_bas_2,Ld_bas_1};
+		    Ld_sign_1 <= dDATA_to_enc;
 		 end
 	       bas_3 : 
 		 begin
-		    Load_ <= 1'b0;
-		    Ld_bas_5_ <= dDATA_to_enc_[Nbits_6-1:0] ;
+		    Load <= 1'b0;
+		    Ld_bas_5 <= dDATA_to_enc[Nbits_6-1:0] ;
 		 end
 	       bas_3_bis : 
 		 begin
-		    Load_ <= 1'b1;
-		    DATA_32_ <= {code_sel_bas2,four,Ld_bas_4_,Ld_bas_3_,Ld_bas_2_,Ld_bas_1_};
-		    Ld_sign_1_ <= dDATA_to_enc_;
+		    Load <= 1'b1;
+		    DATA_32 <= {code_sel_bas2,four,Ld_bas_4,Ld_bas_3,Ld_bas_2,Ld_bas_1};
+		    Ld_sign_1 <= dDATA_to_enc;
 		 end
 	       bas_4 : 
 		 begin
-		    Load_ <= 1'b1;
-		    DATA_32_ <= {code_sel_bas1,Ld_bas_5_,Ld_bas_4_,Ld_bas_3_,Ld_bas_2_,Ld_bas_1_};
-		    Ld_bas_1_ <= dDATA_to_enc_[Nbits_6-1:0] ;
+		    Load <= 1'b1;
+		    DATA_32 <= {code_sel_bas1,Ld_bas_5,Ld_bas_4,Ld_bas_3,Ld_bas_2,Ld_bas_1};
+		    Ld_bas_1 <= dDATA_to_enc[Nbits_6-1:0] ;
 		 end
 	       bas_4_bis : 
 		 begin
-		    Load_ <= 1'b1;
-		    DATA_32_ <= {code_sel_bas1,Ld_bas_5_,Ld_bas_4_,Ld_bas_3_,Ld_bas_2_,Ld_bas_1_};
-		    Ld_sign_1_ <= dDATA_to_enc_;
+		    Load <= 1'b1;
+		    DATA_32 <= {code_sel_bas1,Ld_bas_5,Ld_bas_4,Ld_bas_3,Ld_bas_2,Ld_bas_1};
+		    Ld_sign_1 <= dDATA_to_enc;
 		 end
 	       sign_0 : 
 		 begin
-		    Load_ <= 1'b0;
-		    Ld_sign_2_ <= dDATA_to_enc_;
+		    Load <= 1'b0;
+		    Ld_sign_2 <= dDATA_to_enc;
 		 end
 	       sign_0_bis : 
 		 begin
-		    Load_ <= 1'b1;
-		    DATA_32_ <= {code_sel_sign2,sync,Ld_sign_1_};
-		    Ld_bas_1_ <= dDATA_to_enc_[Nbits_6-1:0] ;
+		    Load <= 1'b1;
+		    DATA_32 <= {code_sel_sign2,sync,Ld_sign_1};
+		    Ld_bas_1 <= dDATA_to_enc[Nbits_6-1:0] ;
 		 end
 	       sign_1 : 
 		 begin
-		    Load_ <= 1'b1;
-		    DATA_32_ <= {code_sel_sign1,Ld_sign_2_,Ld_sign_1_};
-		    Ld_sign_1_ <= dDATA_to_enc_;
+		    Load <= 1'b1;
+		    DATA_32 <= {code_sel_sign1,Ld_sign_2,Ld_sign_1};
+		    Ld_sign_1 <= dDATA_to_enc;
 		 end
 	       sign_1_bis : 
 		 begin
-		    Load_ <= 1'b1;
-		    DATA_32_ <= {code_sel_sign1,Ld_sign_2_,Ld_sign_1_};
-		    Ld_bas_1_ <= dDATA_to_enc_[Nbits_6-1:0] ;
+		    Load <= 1'b1;
+		    DATA_32 <= {code_sel_sign1,Ld_sign_2,Ld_sign_1};
+		    Ld_bas_1 <= dDATA_to_enc[Nbits_6-1:0] ;
 		 end
 	       default : 
 		 begin
-		    Load_ <= 1'b0;
-		    DATA_32_ <= Initial;
+		    Load <= 1'b0;
+		    DATA_32 <= Initial;
 end
 	     endcase
 	  end
@@ -330,48 +326,49 @@ end
 
 
 
-   always @( posedge CLK_ )
-     begin : FSM_seq_output_FB_
-	if (reset_==1'b0 || fallback_==1'b0)
+   always @( posedge CLK )
+     begin : FSM_seq_output_FB
+	if (rst_b==1'b0 || fallback==1'b0)
 	  begin
-	     Load_FB_ <= 1'b0;
-	     DATA_32_FB_ <= Initial;
-             Ld_sign_FB_<=13'b0;
+	     Load_FB <= 1'b0;
+	     DATA_32_FB <= Initial;
+             Ld_sign_FB<=13'b0;
          end
 	else
 	  begin
-       	     case (Current_state_FB_)
+       	     case (Current_state_FB)
        	       data_odd : //close previous baseline
        		 begin
-       		    Load_FB_ <= 1'b0;
-       		    Ld_sign_FB_ <= dDATA_to_enc_;
+       		    Load_FB <= 1'b0;
+       		    Ld_sign_FB <= dDATA_to_enc;
        		 end 
 	       latency1 :
 		 begin
-		    Load_FB_ <=1'b0;
+		    Load_FB <=1'b0;
 		 end
 	       data_even :
 		 begin
-		    Load_FB_<=1'b1;
-	            DATA_32_FB_ <= {2'b11,2'b11, ~^dDATA_to_enc_, ~^Ld_sign_FB_, dDATA_to_enc_, Ld_sign_FB_};
+		    Load_FB<=1'b1;
+	            DATA_32_FB <= {2'b11,2'b11, ~^dDATA_to_enc, ~^Ld_sign_FB, dDATA_to_enc, Ld_sign_FB};
 		 end
 
 	       latency2 :
 		 begin
-		    Load_FB_ <=1'b0;
+		    Load_FB <=1'b0;
 		 end
 	       
 	       default :
 		 begin
-		    Load_FB_ <= 1'b0;		    
-		    DATA_32_FB_ <= Initial;
+		    Load_FB <= 1'b0;		    
+		    DATA_32_FB <= Initial;
    
 end
 	     endcase // case (Current_state_)
-	  end // else: !if(reset_==1'b0 || fallback_==1'b0)
-     end // block: FSM_seq_output_FB_
-   assign tmrError = LoadTmrError | DATA_32TmrError | fsm_TmrError | LoadTmrError_FB | DATA_32TmrError_FB | fsm_TmrError_FB;
-
+	  end // else: !if(rst_b==1'b0 || fallback==1'b0)
+     end // block: FSM_seq_output_FB
+//   assign DATA_32 = DATA_32;
+//   assign DATA_32_FB = DATA_32_FB;
+   
 
 
 endmodule

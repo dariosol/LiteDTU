@@ -19,99 +19,95 @@
 
 `timescale	 1ps/1ps
 module LDTU_oFIFO(
-	CLK,
-	reset_,
-	start_write,
-	read_signal,
-	data_input,
-	data_output,
-	empty_signal,
-	full_signal,
-	decode_signal,
-	tmrError
-);
+		  CLK,
+		  rst_b,
+		  start_write,
+		  read_signal,
+		  data_input,
+		  data_output,
+		  empty_signal,
+		  full_signal,
+		  decode_signal,
+		  SeuError
+		  );
 
-	parameter	Nbits_ham=38;
-	parameter	FifoDepth_buff=16;
-	parameter	bits_ptr=4;
+   parameter	Nbits_ham=38;
+   parameter	FifoDepth_buff=16;
+   parameter	bits_ptr=4;
 
-	output tmrError;
-	output empty_signal;
-	output full_signal;
-	output reg [Nbits_ham-1:0] data_output;
-	output	decode_signal;
+   output SeuError;
+   output empty_signal;
+   output full_signal;
+   output reg [Nbits_ham-1:0] data_output;
+   output 		      decode_signal;
 
-	input CLK;
-	input reset_;
-	input start_write;
-	input read_signal;
-	input [Nbits_ham-1:0] data_input;
+   input 		      CLK;
+   input 		      rst_b;
+   input 		      start_write;
+   input 		      read_signal;
+   input [Nbits_ham-1:0]      data_input;
 
-	wire reset;
-	wire [bits_ptr-1:0] ptr_read;
-	wire [bits_ptr-1:0] ptr_write;
-	wire resetTmrError;
-	wire ptr_readTmrError;
-	wire ptr_writeTmrError;
-	wire decode_signalTmrError;
-	reg	decode_signal_;
-	reg	[bits_ptr-1:0] ptr_write_;
-	reg	[bits_ptr-1:0] ptr_read_;
-	reg	[Nbits_ham-1:0] memory [ FifoDepth_buff-1 : 0 ] ;
-	wire read_signal_;
- 	wire start_write_;
-	wire empty_signal_;
-	wire emptyTmrError;
-	wire full_signal_;
-	wire fullTmrError;
+   reg 			      decode_signal;
+   reg [bits_ptr-1:0] 	      ptr_write;
+   reg [bits_ptr-1:0] 	      ptr_read;
+   reg [Nbits_ham-1:0] 	      memory [ FifoDepth_buff-1 : 0 ] ;
+   wire 		      read_signal;
+   wire 		      start_write;
+   wire 		      empty_signal;
+   wire 		      full_signal;
 
+   wire 		      tmrError = 1'b0;
+   wire 		      tmrErrorVoted = tmrError;
+   assign SeuError = tmrErrorVoted;
+   
 
-	assign empty_signal_ = (ptr_read_ == ptr_write_);
-	assign full_signal_ = ((ptr_read_ == ptr_write_ + 4'b1)||((ptr_read_ == 4'b0)&&(ptr_write_ == (4'b1111))));
+   assign empty_signal = (ptr_read == ptr_write);
+   assign full_signal = ((ptr_read == ptr_write + 4'b1)||((ptr_read == 4'b0)&&(ptr_write == (4'b1111))));
 
-	always @( posedge CLK ) begin
-		if (reset_==1'b0) ptr_write_ <= 4'b0;
-		else begin
-			if (start_write_==1'b1) begin
-				if (full_signal_==1'b0) ptr_write_ <= ptr_write_+4'b1;
-				else ptr_write_ <= ptr_write_;
-			end else ptr_write_ <= ptr_write_;
-		end
-	end
+   
+   always @( posedge CLK ) begin
+      if (rst_b==1'b0) ptr_write <= 4'b0;
+      else begin
+	 if (start_write ==1'b1) begin
+	    if (full_signal ==1'b0) ptr_write <= ptr_write +4'b1;
+	    else ptr_write <= ptr_write;
+	 end else ptr_write <= ptr_write;
+      end
+   end
 
-	always @( posedge CLK ) begin
-		if (reset_==1'b0) begin
-			ptr_read_ <= 4'b0;
-			decode_signal_ <= 1'b0;
-		end else begin
-			if (read_signal_==1'b1) begin
-				if (empty_signal_==1'b0) begin
-					ptr_read_ <= ptr_read_+4'b1;
-					decode_signal_ <= 1'b1;
-				end else begin
-					ptr_read_ <= ptr_read_;
-					decode_signal_ <= 1'b0;
-				end
-			end else begin
-				ptr_read_ <= ptr_read_;
-				decode_signal_ <= 1'b0;
-			end
-		end
-	end
+   always @( posedge CLK ) begin
+      if (rst_b==1'b0) begin
+	 ptr_read <= 4'b0;
+	 decode_signal <= 1'b0;
+      end else begin
+	 if (read_signal ==1'b1) begin
+	    if (empty_signal ==1'b0) begin
+	       ptr_read <= ptr_read + 4'b1;
+	       decode_signal <= 1'b1;
+	    end else begin
+	       ptr_read <= ptr_read;
+	       decode_signal <= 1'b0;
+	    end
+	 end else begin
+	    ptr_read <= ptr_read;
+	    decode_signal <= 1'b0;
+	 end
+      end
+   end
 
-	always @( posedge CLK ) begin
-		if (reset==1'b0)
-			memory[ptr_write]	<= 38'b0;
-		else begin
-			if (start_write==1'b1) begin
-				if (full_signal==1'b0) memory[ptr_write] <= data_input;
-			end
-		end
-	end
-	always @( posedge CLK ) begin
-		if (reset==1'b0) data_output = 38'b01000000000000000000000000000000;
-		else data_output = memory[ptr_read] ;
-	end
+   always @( posedge CLK ) begin
+      if (rst_b==1'b0)
+	memory[ptr_write]	<= 38'b0;
+      else begin
+	 if (start_write==1'b1) begin
+	    if (full_signal==1'b0) memory[ptr_write] <= data_input;
+	 end
+      end
+   end
+   always @( posedge CLK ) begin
+      if (rst_b==1'b0) data_output = 38'b01000000000000000000000000000000;
+      else data_output = memory[ptr_read] ;
+   end
 
 
 endmodule

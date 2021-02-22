@@ -221,7 +221,7 @@ module tb_LDTU_presynth;
       //      test_enable <= 1'b1;			// ADC_test_mode
       test_enable <= 1'b0;			// DTU_test_mode
       GAIN_SEL_MODE <= 2'b00;		// Auto-gain selection
-      fallback=1'b1;
+      fallback=1'b0;
       
       #(0.7*ck_period);	// --------------- system reset
       RST_A = 1'b0;
