@@ -47,9 +47,8 @@ entity LDTUv1b_SeuTeste is
     nsamples_error 	: out std_logic;
     nframe_error 	: out std_logic;        
     read_fd_error       : out std_logic;
-    read_idle_errors    : out std_logic;
-    read_data_errors    : out std_logic;
-    read_header_errors  : out std_logic
+    read_idle_error     : out std_logic;
+    read_data_errors    : out std_logic
     );
 
 end LDTUv1b_SeuTeste;
@@ -61,7 +60,6 @@ architecture rtl of LDTUv1b_SeuTeste is
   signal s_nsamples    : std_logic_vector(7 downto 0);
   signal s_nwords      : std_logic_vector(7 downto 0);
   signal s_nframe      : std_logic_vector(7 downto 0);     
-  signal s_data_write  : std_logic;
   
   component DataTest is
     Port(
@@ -85,20 +83,16 @@ begin
       s_data_valid <= (others => '0');
       
     elsif (clock'event and clock = '1') then
-      s_data_write <= data_write; -- registered to trigger the check process.
-                                  -- the check must be done every time i write
-                                  -- a word. If timing of data_errors are bad,
-                                  -- more registers can be add to delay the
-                                  -- check process.
-
       if (data_write = '1') then
         s_data_valid <= data_in;
+      else
+        s_data_valid <= (others => '0');        
       end if;
     end if;
   end process;
 
   --Check Process:
-  process(reset,s_data_write) is --data can be always the same,
+  process(reset,clock) is --data can be always the same,
                                    --check every time I write
   begin
     if(reset = '1') then
@@ -114,11 +108,10 @@ begin
       nidle_error        <= '0';
       crc_error          <= '0';
       read_fd_error      <= '0';
-      read_idle_errors   <= '0';
+      read_idle_error   <= '0';
       read_data_errors   <= '0';
-      read_header_errors <= '0';
 
-    elsif(s_data_write='1') then --data write must trigger the checks
+    elsif (clock'event and clock = '1') then
       
       if (s_data_valid(31 downto 30) = "01") then --baseline
 
@@ -136,9 +129,8 @@ begin
         nidle_error        <= '0';        
 
         read_fd_error      <= '0';
-        read_idle_errors   <= '0';
+        read_idle_error    <= '0';
         read_data_errors   <= '1';
-        read_header_errors <= '0';
         
       elsif(s_data_valid(31 downto 28) = "1110") then --idle keep the counters at
                                                       --the same value
@@ -159,9 +151,8 @@ begin
         crc_error          <= '0';
 
         read_fd_error      <= '0';
-        read_idle_errors   <= '1';
+        read_idle_error   <= '1';
         read_data_errors   <= '0';
-        read_header_errors <= '0';
         
       elsif(s_data_valid(31 downto 28) = "1101") then --frame delimiter
 
@@ -180,9 +171,8 @@ begin
         end if;
 
         read_fd_error      <= '1';
-        read_idle_errors   <= '0';
+        read_idle_error    <= '0';
         read_data_errors   <= '0';
-        read_header_errors <= '0';
 
         nidle_error        <= '0';        
         data_errors  <= (others => '0');
@@ -190,15 +180,15 @@ begin
         s_nwords     <= (others => '0');
         s_nsamples   <= (others => '0');
         
-      else -- header not identified -> dangerous, i can mis id everything
-        data_errors  <= (others => '0');
-        s_nwords     <= (others => '0');
-        s_nsamples   <= (others => '0');
+      else 
+        data_errors  <= (others =>'0');
+        s_nwords     <= s_nwords;
+        s_nsamples   <= s_nsamples;
+        s_nframe     <= s_nframe;
         nidle_error        <= '0';        
         read_fd_error      <= '0';
-        read_idle_errors   <= '0';
+        read_idle_error    <= '0';
         read_data_errors   <= '0';
-        read_header_errors <= '1';
       end if;
     end if;
   end process;        
