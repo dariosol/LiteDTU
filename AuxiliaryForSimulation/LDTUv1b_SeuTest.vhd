@@ -43,6 +43,7 @@ entity LDTUv1b_SeuTeste is
     data_errors 	: out std_logic_vector(4 downto 0);
     crc_error 		: out std_logic;
     nwords_error 	: out std_logic;
+    nidle_error 	: out std_logic;        
     nsamples_error 	: out std_logic;
     nframe_error 	: out std_logic;        
     read_fd_error       : out std_logic;
@@ -110,6 +111,7 @@ begin
       nsamples_error     <= '0';
       nwords_error       <= '0';
       nframe_error       <= '0';
+      nidle_error        <= '0';
       crc_error          <= '0';
       read_fd_error      <= '0';
       read_idle_errors   <= '0';
@@ -131,6 +133,7 @@ begin
         nwords_error       <= '0';
         crc_error          <= '0';
         nframe_error       <= '0';        
+        nidle_error        <= '0';        
 
         read_fd_error      <= '0';
         read_idle_errors   <= '0';
@@ -139,6 +142,12 @@ begin
         
       elsif(s_data_valid(31 downto 28) = "1110") then --idle keep the counters at
                                                       --the same value
+        if(s_data_valid(27 downto 0) /= "1010101010101010101010101010") then
+          nidle_error        <= '1';
+        else
+          nidle_error        <= '0';
+        end if;
+
         data_errors <= (others => '0');
         s_nwords <= s_nwords; 
         s_nsamples <= s_nsamples;
@@ -174,8 +183,10 @@ begin
         read_idle_errors   <= '0';
         read_data_errors   <= '0';
         read_header_errors <= '0';
-        
+
+        nidle_error        <= '0';        
         data_errors  <= (others => '0');
+
         s_nwords     <= (others => '0');
         s_nsamples   <= (others => '0');
         
@@ -183,7 +194,7 @@ begin
         data_errors  <= (others => '0');
         s_nwords     <= (others => '0');
         s_nsamples   <= (others => '0');
-        
+        nidle_error        <= '0';        
         read_fd_error      <= '0';
         read_idle_errors   <= '0';
         read_data_errors   <= '0';
