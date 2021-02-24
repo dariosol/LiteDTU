@@ -358,8 +358,8 @@ module tb_LDTU_presynth;
 	 if (CALIBRATION_BUSY != 2'b00) DATA12_g01 = 12'bx;
 	 else begin			
 	    if (!eof1) begin
-	       scan_file1 = $fscanf(data_file_read01, "%b\n", DATA12_g01);
-	       //DATA12_g01 = 12'b0;	       
+	       //scan_file1 = $fscanf(data_file_read01, "%b\n", DATA12_g01);
+	       DATA12_g01 = 12'b0;	       
 	    end else begin // End of the input file
 	       $display("End of reading process");
 	       #(ck_period)
@@ -388,8 +388,8 @@ module tb_LDTU_presynth;
 	 if (CALIBRATION_BUSY != 2'b00) DATA12_g10 = 12'bx;
 	 else begin
 	    if (!eof2) begin
-	       scan_file2 = $fscanf(data_file_read10, "%b\n", DATA12_g10);
-//	       DATA12_g10 = 12'b0;
+//	       scan_file2 = $fscanf(data_file_read10, "%b\n", DATA12_g10);
+	       DATA12_g10 = 12'b0;
 	       
 	    end else begin // End of the input file
 	       $display("End of reading process");

@@ -185,7 +185,9 @@ begin
         s_nwords     <= s_nwords;
         s_nsamples   <= s_nsamples;
         s_nframe     <= s_nframe;
-        nidle_error        <= '0';        
+        nidle_error        <= '0';
+        nwords_error       <= '0';
+        nsamples_error     <= '0';
         read_fd_error      <= '0';
         read_idle_error    <= '0';
         read_data_errors   <= '0';
