@@ -151,8 +151,9 @@ begin
         crc_error          <= '0';
 
         read_fd_error      <= '0';
-        read_idle_error   <= '1';
+        read_idle_error    <= '1';
         read_data_errors   <= '0';
+
         
       elsif(s_data_valid(31 downto 28) = "1101") then --frame delimiter
 
@@ -170,6 +171,11 @@ begin
           nframe_error <='1';
         end if;
 
+        if(s_data_valid(19 downto 8)) /= X"AE8" then
+          crc_error <= '1';
+        end if;
+
+        
         read_fd_error      <= '1';
         read_idle_error    <= '0';
         read_data_errors   <= '0';
@@ -192,6 +198,7 @@ begin
         read_fd_error      <= '0';
         read_idle_error    <= '0';
         read_data_errors   <= '0';
+        crc_error          <= '0';
       end if;
     end if;
   end process;        
