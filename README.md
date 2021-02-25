@@ -9,6 +9,11 @@ the Test Bench and all the other stuff needed to simuate.
 *******************************************
 NOTE
 AuxiliaryForSimulation/SyncUnit_v1bTMR.v is there but it's not used
+
+TRIPLICATION:
+Simona sent me files with code already triplicated, but mostly by hand. The idea is to use the CERN tool TMRG which allows the code to be triplicated automatically.
+I removed the triplication in folder (LiteDTU_v2.0_NOTMR) and the automatic triplicated code is in LiteDTU_v2.0_AUTOTMR. Because the triplication will be strongly different from the Simona's one, a new testbench has been created in the folder AuxiliaryForSimulation_AUTOTMR. 
+
 *******************************************
 ORBIT TEST: December 2020
 INPUT FILE: Ene5GeV_DT_50bx_g10_mod.dat

@@ -1,1 +1,8 @@
 *~
+\#*\#
+*.bkp
+*.bak
+sim_results/
+work/
+transcript
+vsim*
