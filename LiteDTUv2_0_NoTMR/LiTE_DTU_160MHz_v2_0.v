@@ -4,8 +4,8 @@
 module LiTE_DTU_160MHz_v2_0 (
 			     DCLK_1, 
 			     DCLK_10, 
-			     CLK_, 
-			     RST_, 
+			     CLK, 
+			     RST, 
 			     CALIBRATION_BUSY_1, 
 			     CALIBRATION_BUSY_10, 
 			     TEST_ENABLE, 
@@ -45,8 +45,8 @@ module LiTE_DTU_160MHz_v2_0 (
    // Input ports
    input DCLK_1;
    input DCLK_10;
-   input CLK_;
-   input RST_;
+   input CLK;
+   input RST;
    input fallback;
    input CALIBRATION_BUSY_1;
    input CALIBRATION_BUSY_10;
@@ -86,21 +86,19 @@ module LiTE_DTU_160MHz_v2_0 (
    wire 		 write_signal;					// Control Unit Module
    wire [Nbits_32-1:0] 	 DATA_from_CU;			// Control Unit Module
    wire 		 full;						// Output FIFO Module
-   wire 		 reset_A;
-   wire 		 reset_B;
-   wire 		 reset_C;
-   wire 		 CALIBRATION_BUSY_;
+   wire 		 reset;
+   wire 		 CALIBRATION_BUSY;
    wire 		 RD_to_SERIALIZER;						// Control Unit Module
 
    
 
-   assign CALIBRATION_BUSY_ = CALIBRATION_BUSY_1 | CALIBRATION_BUSY_10;
+   assign CALIBRATION_BUSY = CALIBRATION_BUSY_1 | CALIBRATION_BUSY_10;
 
    // LiTe-DTU resets
    wire [2:0] 		 AA;
-   assign AA = {RST_, CALIBRATION_BUSY_, TEST_ENABLE};
+   assign AA = {RST, CALIBRATION_BUSY, TEST_ENABLE};
 
-   assign reset_ = (AA == 3'b100) ? 1'b1 : 1'b0;
+   assign reset = (AA == 3'b100) ? 1'b1 : 1'b0;
 
    wire 		 tmrError_BS;
    wire 		 tmrError_iFIFO;
@@ -113,23 +111,23 @@ module LiTE_DTU_160MHz_v2_0 (
 
    // ****  Baseline Subtraction Module **** //
    LDTU_BS #(.Nbits_12(Nbits_12), .Nbits_8(Nbits_8))
-   B_subtraction (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .rst_b(reset_), .DATA12_g01(DATA12_g01), .DATA12_g10(DATA12_g10), .BSL_VAL_g01(BSL_VAL_g01), .BSL_VAL_g10(BSL_VAL_g10), .DATA_gain_01(DATA_gain_01), .DATA_gain_10(DATA_gain_10), .SeuError(tmrError_BS));
+   B_subtraction (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .rst_b(reset), .DATA12_g01(DATA12_g01), .DATA12_g10(DATA12_g10), .BSL_VAL_g01(BSL_VAL_g01), .BSL_VAL_g10(BSL_VAL_g10), .DATA_gain_01(DATA_gain_01), .DATA_gain_10(DATA_gain_10), .SeuError(tmrError_BS));
 
 
    // **** Input FIFOs Module **** //
    LDTU_iFIFO #(.Nbits_12(Nbits_12), .FifoDepth(FifoDepth), .NBitsCnt(NBitsCnt))
-   Selection (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .CLK(CLK_), .rst_b(reset_), .GAIN_SEL_MODE(GAIN_SEL_MODE), .DATA_gain_01(DATA_gain_01), .DATA_gain_10(DATA_gain_10), .SATURATION_value(SATURATION_value), .shift_gain_10(shift_gain_10), .DATA_to_enc(DATA_to_enc), .baseline_flag(baseline_flag), .SeuError(tmrError_iFIFO));
+   Selection (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .CLK(CLK), .rst_b(reset), .GAIN_SEL_MODE(GAIN_SEL_MODE), .DATA_gain_01(DATA_gain_01), .DATA_gain_10(DATA_gain_10), .SATURATION_value(SATURATION_value), .shift_gain_10(shift_gain_10), .DATA_to_enc(DATA_to_enc), .baseline_flag(baseline_flag), .SeuError(tmrError_iFIFO));
 
 
    //  **** Encoder Module ****  //
    LDTU_Encoder #(.Nbits_12(Nbits_12), .Nbits_32(Nbits_32))
-   Encoder (.CLK(CLK_), .rst_b(reset_), .baseline_flag(baseline_flag), .Orbit(Orbit), .fallback(fallback),.DATA_to_enc(DATA_to_enc), .DATA_32(DATA_32), .DATA_32_FB(DATA_32_FB), .Load(Load),.Load_FB(Load_FB), .SeuError(tmrError_enc));
+   Encoder (.CLK(CLK), .rst_b(reset), .baseline_flag(baseline_flag), .Orbit(Orbit), .fallback(fallback),.DATA_to_enc(DATA_to_enc), .DATA_32(DATA_32), .DATA_32_FB(DATA_32_FB), .Load(Load),.Load_FB(Load_FB), .SeuError(tmrError_enc));
 
 
    //  **** Control Unit ****  //
    LDTU_CU #(.Nbits_32(Nbits_32))
-   Control_Unit (.CLK(CLK_), 
-		 .rst_b(reset_), 
+   Control_Unit (.CLK(CLK), 
+		 .rst_b(reset), 
 		 .fallback(fallback),
 		 .Load_data(Load), .DATA_32(DATA_32), 
 		 .Load_data_FB(Load_FB), .DATA_32_FB(DATA_32_FB), 
@@ -138,24 +136,23 @@ module LiTE_DTU_160MHz_v2_0 (
 
    //  **** outputFIFO ****  //
    LDTU_oFIFO_top  #(.Nbits_32(Nbits_32), .FifoDepth_buff(FifoDepth_buff), .bits_ptr(bits_ptr))
-   StorageFIFO (.CLK(CLK_),
-		.rst_b(reset_), 
+   StorageFIFO (.CLK(CLK),
+		.rst_b(reset), 
 		.write_signal(write_signal), .read_signal(RD_to_SERIALIZER), 
 		.data_in_32(DATA_from_CU), .full_signal(full), .DATA32_DTU(DATA32_DTU), 
 		.SeuError(tmrError_oFIFO)); //.decode_signal(decode_signal));
 
 
-   LDTU_DATA32_ATU_DTUTMR #(.Nbits_32(Nbits_32))
-   DATA32_mux ( .CLK_A(CLK_), .CLK_B(CLK_), .CLK_C(CLK_),
-		.RST_A(reset_), .RST_B(reset_), .RST_C(reset_),
-		.CALIBRATION_BUSY_A(CALIBRATION_BUSY_), .CALIBRATION_BUSY_B(CALIBRATION_BUSY_),
-		.CALIBRATION_BUSY_C(CALIBRATION_BUSY_), .TEST_ENABLE_A(TEST_ENABLE),
-		.TEST_ENABLE_B(TEST_ENABLE), .TEST_ENABLE_C(TEST_ENABLE),
+   LDTU_DATA32_ATU_DTU #(.Nbits_32(Nbits_32))
+   DATA32_mux ( .CLK(CLK),
+		.RST(reset),
+		.CALIBRATION_BUSY(CALIBRATION_BUSY),
+		.TEST_ENABLE(TEST_ENABLE),		
 		.DATA32_ATU_0(DATA32_ATU_0), .DATA32_ATU_1(DATA32_ATU_1),
 		.DATA32_ATU_2(DATA32_ATU_2), .DATA32_ATU_3(DATA32_ATU_3),
 		.DATA32_DTU(DATA32_DTU), //.decode_signal(decode_signal),
 		.DATA32_0(DATA32_0), .DATA32_1(DATA32_1),
-		.DATA32_2(DATA32_2), .DATA32_3(DATA32_3), .tmrError(tmrError_mux));
+		.DATA32_2(DATA32_2), .DATA32_3(DATA32_3), .SeuError(tmrError_mux));
    
 
 endmodule

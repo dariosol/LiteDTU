@@ -15,6 +15,23 @@
 // *************************************************************************************************
 
 `timescale	 1ps/1ps
+
+module Delay_enc (clk, reset, D, Dd);
+  // tmrg do_not_touch
+   // input
+   input clk, reset;
+   input [12:0] D;
+   // output
+   output reg [12:0] Dd;
+
+   always @ (posedge clk) begin
+      if (reset == 1'b0)
+	Dd <= 13'b0;
+      else
+	Dd <= D;
+   end	
+endmodule // Delay_enc
+
 module LDTU_Encoder(
 		       CLK,
 		       rst_b,
@@ -119,18 +136,23 @@ module LDTU_Encoder(
    reg 			 Load_FB;
    wire [SIZE_FB:0] 	 Current_state_FB;
 
-   wire 		 SeuError_FSM;
+   wire 		 fsm_SeuError;
    
    wire 		 tmrError = 1'b0;
    wire                  tmrErrorVoted = tmrError;
-   assign                SeuError = tmrErrorVoted | SeuError_FSM;
+   assign                SeuError = tmrErrorVoted | fsm_SeuError;
    
-   Delay_enc delay(CLK, rst_b, DATA_to_enc, dDATA_to_enc);
+   Delay_enc delay(
+		   .clk(CLK), 
+		   .reset(rst_b), 
+		   .D(DATA_to_enc), 
+		   .Dd(dDATA_to_enc));
+   
 
    LDTU_FSM fsm(.CLK(CLK), .rst_b(rst_b), .baseline_flag(baseline_flag),.Orbit(Orbit),.fallback(fallback),
 		   .Current_state(Current_state), 
 		   .Current_state_FB(Current_state_FB),
-		   .SeuError(SeuError_FSM));
+		   .SeuError(fsm_SeuError));
 
    assign code_sel_bas = (baseline_flag==1'b1) ? code_sel_bas1 : code_sel_bas2;
    assign code_sel_sign = (baseline_flag==1'b0) ? code_sel_sign1 : code_sel_sign2;
@@ -372,18 +394,3 @@ end
 
 
 endmodule
-
-module Delay_enc (clk, reset, D, Dd);
-   // input
-   input clk, reset;
-   input [12:0] D;
-   // output
-   output reg [12:0] Dd;
-
-   always @ (posedge clk) begin
-      if (reset == 1'b0)
-	Dd <= 13'b0;
-      else
-	Dd <= D;
-   end	
-endmodule // Delay_enc

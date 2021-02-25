@@ -23,7 +23,7 @@ module Hamm_TRX (
 	write_signal,
 	start_write
 );
-
+// tmrg do_not_touch
 
 // Internal constants
 	parameter Nbits_32 = 32;

@@ -23,7 +23,7 @@ module Hamm_RX (
 	data_output,
 	HammError
 	);
-
+// tmrg do_not_touch
 
 // Internal constants
 	parameter Nbits_32 = 32;

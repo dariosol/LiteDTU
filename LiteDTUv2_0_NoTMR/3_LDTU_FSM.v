@@ -10,19 +10,21 @@
 //	Output:	- Current_state
 //		- tmrError
 //
+//	 4.02.21 : Manual triplication removed - Gianni
+//
 // *************************************************************************************************
 
 `timescale	 1ps/1ps
 module LDTU_FSM(
-		CLK_,
-		reset_,
-		fallback_,
-		Orbit,
-		baseline_flag,
-		Current_state_,
-		tmrError,
-		Current_state_FB_,
-		);
+		   CLK,
+		   rst_b,
+		   fallback,
+		   Orbit,
+		   baseline_flag,
+		   Current_state,
+		   Current_state_FB,
+		   SeuError
+		   );
 
    parameter SIZE=4;
    parameter IDLE=4'b0000;
@@ -40,7 +42,7 @@ module LDTU_FSM(
    parameter bas_4_bis=4'b1100;
    parameter sign_0_bis=4'b1101;
    parameter sign_1_bis=4'b1110;
-   ///////////////////////////////////////////////
+///////////////////////////////////////////////
    parameter bc0_0      = 5'b01111;
    parameter bc0_1      = 5'b10000;
    parameter bc0_2      = 5'b10001;
@@ -52,26 +54,24 @@ module LDTU_FSM(
    parameter header_s0  = 5'b10111;
    parameter bc0_s0_bis = 5'b11000;
 
-   input CLK_;
-   input reset_;
-   input fallback_;
+   input CLK;
+   input rst_b;
+   input fallback;
    input Orbit;
    input baseline_flag;
-   output reg [SIZE:0] Current_state_;
-   output 	       tmrError;
+   output reg [SIZE:0] Current_state;
+   output 	       SeuError;
 
-   wor 		       Current_stateTmrError;
-   wire [SIZE:0]       Current_state;
-   reg [SIZE:0]        Next_state;
+   reg [SIZE:0]        nState;
+   wire[SIZE:0]        nStateVoted = nState;
 
-   //////////////////////////////////////////////////////
-   //Fallback registers
+//////////////////////////////////////////////////////
+//Fallback registers
    parameter SIZE_FB=3;
-   output reg [SIZE_FB:0] Current_state_FB_;
+   output reg [SIZE_FB:0] Current_state_FB;
 
-   wor 			  Current_state_FBTmrError;
-   wire [SIZE_FB:0] 	  Current_state_FB;
-   reg [SIZE_FB:0] 	  Next_state_FB;
+   reg [SIZE_FB:0]     nState_FB;
+   wire[SIZE_FB:0]     nState_FBVoted = nState_FB;
    
    parameter IDLE_FB=3'b000;
    parameter data_odd=3'b001;
@@ -79,302 +79,290 @@ module LDTU_FSM(
    parameter data_even=3'b011;
    parameter latency2=3'b100;
    
-   /////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
 
+   wire 	       tmrError = 1'b0;
+   wire 	       tmrErrorVoted = tmrError;
+   assign SeuError = tmrErrorVoted;
 
    //Standard FSM
-   always @( posedge CLK_ ) begin : FSM_SEQ
-      if (reset_==1'b0 || fallback_==1'b1) begin
-	 Current_state_ <= IDLE;
+   always @( posedge CLK ) begin : FSM_SEQ
+      if (rst_b==1'b0 || fallback==1'b1) begin
+	 Current_state <= IDLE;
       end else begin
-	 Current_state_ <= Next_state;
+	 Current_state <= nStateVoted;
       end
    end
 
-
    always @( Current_state or baseline_flag or Orbit ) begin : FSM_COMB
-      Next_state = IDLE;
-      case (Current_state)		  
+      nState = IDLE;
+       case (Current_state)		  
 	IDLE : 
 	  begin
 	     if (baseline_flag==1'b1 && Orbit == 1'b0)
-	       Next_state = bas_0;	     
+	       nState = bas_0;	     
 	     else if (Orbit == 1'b1)
-	       Next_state = header;	     
+	       nState = header;	     
 	     else
-	       Next_state = sign_0;
+	       nState = sign_0;
 	  end
 	bas_0_bis : //**********************
 	  begin
 	     if (baseline_flag==1'b1 && Orbit == 1'b0)
-	       Next_state = sign_0_bis;
+	       nState = sign_0_bis;
              else if(Orbit == 1'b1)
-               Next_state = bc0_s0_bis;		        
+               nState = bc0_s0_bis;		        
 	     else
-	       Next_state = sign_0;
+	       nState = sign_0;
 	  end
 	bas_0 : ///////////////////////////
 	  begin
 	     if (baseline_flag==1'b1 && Orbit == 1'b0)
-	       Next_state = bas_1;
+	       nState = bas_1;
 	     else if(Orbit == 1'b1)
-	       Next_state = bc0_1;
+	       nState = bc0_1;
 	     else
-	       Next_state = bas_1_bis;
+	       nState = bas_1_bis;
 	  end
 	bas_1_bis : //**********************
 	  begin
 	     if (baseline_flag==1'b1 && Orbit == 1'b0)
-	       Next_state = sign_0_bis;
+	       nState = sign_0_bis;
 	     else if(Orbit == 1'b1)
-               Next_state = bc0_s0_bis;
+               nState = bc0_s0_bis;
 	     else
-	       Next_state = sign_0;
+	       nState = sign_0;
 	  end
 	bas_1 : ////////////////////////////////
 	  begin
 	     if (baseline_flag==1'b1 && Orbit == 1'b0)
-	       Next_state = bas_2;
+	       nState = bas_2;
 	     else if(Orbit == 1'b1)
-	       Next_state = bc0_2;
+	       nState = bc0_2;
 	     else
-	       Next_state = bas_2_bis;
+	       nState = bas_2_bis;
 	  end
 	
 	bas_2_bis : //**********************
 	  begin
 	     if (baseline_flag==1'b1  && Orbit == 1'b0)
-	       Next_state = sign_0_bis;
+	       nState = sign_0_bis;
 	     else if(Orbit == 1'b1)
-               Next_state = bc0_s0_bis;	     
+               nState = bc0_s0_bis;	     
 	     else
-	       Next_state = sign_0;
+	       nState = sign_0;
 	  end
 	bas_2 : ///////////////////////////
 	  begin
 	     if (baseline_flag==1'b1  && Orbit == 1'b0)
-	       Next_state = bas_3;
+	       nState = bas_3;
 	     else if(Orbit == 1'b1)
-	       Next_state = bc0_3;
+	       nState = bc0_3;
 	     else
-	       Next_state = bas_3_bis;
+	       nState = bas_3_bis;
 	  end
 	bas_3_bis : //**********************
 	  begin
 	     if (baseline_flag==1'b1 && Orbit == 1'b0)
-	       Next_state = sign_0_bis;
+	       nState = sign_0_bis;
 	     else if(Orbit == 1'b1)
-               Next_state = bc0_s0_bis;
+               nState = bc0_s0_bis;
 	     else
-	       Next_state = sign_0;
+	       nState = sign_0;
 	  end
 	bas_3 : ////////////////////////////
 	  begin
 	     if (baseline_flag==1'b1  && Orbit == 1'b0)
-	       Next_state = bas_4;
+	       nState = bas_4;
 	     else if(Orbit == 1'b1)
-	       Next_state = bc0_4;
+	       nState = bc0_4;
 	     else
-	       Next_state = bas_4_bis;
+	       nState = bas_4_bis;
 	  end
 	bas_4_bis : //**********************
 	  begin
 	     if (baseline_flag==1'b1  && Orbit == 1'b0)
-	       Next_state = sign_0_bis;
+	       nState = sign_0_bis;
 	     else if(Orbit == 1'b1)
-               Next_state = bc0_s0_bis;
+               nState = bc0_s0_bis;
 	     else
-	       Next_state = sign_0;
+	       nState = sign_0;
 	  end
 	bas_4 : /////////////////////////////////
 	  begin
 	     if (baseline_flag==1'b1  && Orbit == 1'b0)
-	       Next_state = bas_0;
+	       nState = bas_0;
 	     else if(Orbit == 1'b1)
-	       Next_state = bc0_0;
+	       nState = bc0_0;
 	     else
-	       Next_state = bas_0_bis;
+	       nState = bas_0_bis;
 	  end
 	sign_0_bis : //sssssssssssssssssssssssssssss
 	  begin
 	     if (baseline_flag==1'b0 && Orbit == 1'b0)
-	       Next_state = bas_0_bis;	
+	       nState = bas_0_bis;	
              else if( Orbit == 1'b1)
-               Next_state = bc0_0;	   
+               nState = bc0_0;	   
 	     else
-	       Next_state = bas_0;
+	       nState = bas_0;
 	  end
 	sign_0 : //s22222222222222222222222222222222222
 	  begin
 	     if (baseline_flag==1'b0  && Orbit == 1'b0)
-	       Next_state = sign_1;
+	       nState = sign_1;
              else if(Orbit == 1'b1)
-               Next_state = bc0_s0;				
+               nState = bc0_s0;				
 	     else
-	       Next_state = sign_1_bis;
+	       nState = sign_1_bis;
 	  end
 	sign_1_bis : //sssssssssssssssssssssssssssss
 	  begin
 	     if (baseline_flag==1'b0 && Orbit == 1'b0)
-	       Next_state = bas_0_bis;
+	       nState = bas_0_bis;
              else if( Orbit == 1'b1)
-               Next_state = bc0_0;			       
+               nState = bc0_0;			       
 	     else
-	       Next_state = bas_0;
+	       nState = bas_0;
 	  end
 	sign_1 : //s11111111111111111111111111111111
 	  begin
 	     if (baseline_flag==1'b0 && Orbit == 1'b0)
-	       Next_state = sign_0;
+	       nState = sign_0;
 	     else if( Orbit == 1'b1)
-               Next_state = bc0_s0_bis;				     
+               nState = bc0_s0_bis;				     
 	     else
-	       Next_state = sign_0_bis;
+	       nState = sign_0_bis;
 	  end
 
 	
 	bc0_0 :
 	  begin
 	     if (baseline_flag==1'b0)
-	       Next_state = header_s0;
+	       nState = header_s0;
 	     else
-	       Next_state = header_b0;
+	       nState = header_b0;
 	  end
 
 	bc0_1 :
 	  begin
 	     if (baseline_flag==1'b0)
-	       Next_state = header_s0;
+	       nState = header_s0;
 	     else
-	       Next_state = header_b0;
+	       nState = header_b0;
 	  end
 
 	bc0_2 :
 	  begin
 	     if (baseline_flag==1'b0)
-	       Next_state = header_s0;
+	       nState = header_s0;
 	     else
-	       Next_state = header_b0;
+	       nState = header_b0;
 	  end
 	
 	bc0_3 :
 	  begin
 	     if (baseline_flag==1'b0)
-	       Next_state = header_s0;
+	       nState = header_s0;
 	     else
-	       Next_state = header_b0;
+	       nState = header_b0;
 	  end
 
 	bc0_4 :
 	  begin
 	     if (baseline_flag==1'b0)
-	       Next_state = header_s0;
+	       nState = header_s0;
 	     else
-	       Next_state = header_b0;
+	       nState = header_b0;
 	  end		       
 	
 	bc0_s0:
 	  begin
-	     Next_state = header;
+	       nState = header;
 	  end
 	
 	bc0_s0_bis :
 	  begin
 	     if (baseline_flag==1'b0)
-	       Next_state = header_s0;
-	     else
-	       Next_state = header_b0;	     
+	       nState = header_s0;
+	      else
+	       nState = header_b0;	     
 	  end
 	
 	header :
 	  begin
 	     if (baseline_flag==1'b0)
-	       Next_state = sign_0;
+	       nState = sign_0;
 	     else
-	       Next_state = bas_0;
+	       nState = bas_0;
 	  end
 
 	
 	header_s0 :
 	  begin
 	     if (baseline_flag==1'b0)
-	       Next_state = sign_0;
+	       nState = sign_0;
 	     else
-	       Next_state = sign_0_bis;
+	       nState = sign_0_bis;
 	  end
 
 
 	header_b0 :
 	  begin
 	     if (baseline_flag==1'b0)
-	       Next_state = bas_0_bis;
+	       nState = bas_0_bis;
 	     else
-	       Next_state = bas_0;
+	       nState = bas_0;
 	  end
 
-
-
-	
-	
-	
-	default : Next_state = IDLE;
+	default : nState = IDLE;
       endcase
    end
 
 
 
    //FALLBACK FSM
-   always @( posedge CLK_ ) begin : FSM_SEQ_FB_
-      if (reset_==1'b0 || fallback_==1'b0) begin
-	 Current_state_FB_ <= IDLE_FB;
+      always @( posedge CLK ) begin : FSM_SEQ_FB
+      if (rst_b==1'b0 || fallback==1'b0) begin
+	 Current_state_FB <= IDLE_FB;
       end else begin
-	 Current_state_FB_ <= Next_state_FB;
+	 Current_state_FB <= nState_FBVoted;
       end
    end
 
 
+
    always @( Current_state_FB or Orbit ) begin : FSM_COMB_FB
-      Next_state_FB = IDLE_FB;
+      nState_FB = IDLE_FB;
       
       case (Current_state_FB)
 	IDLE_FB :
 	  begin
-	     Next_state_FB = data_odd;
+	       nState_FB = data_odd;
 	  end 
 
 	data_odd:
 	  begin
-	     Next_state_FB = latency1;
+	     nState_FB = latency1;
 	  end
 	
         latency1:
 	  begin
-	     Next_state_FB = data_even;
+	     nState_FB = data_even;
 	  end
 
 	data_even:
 	  begin
-	     Next_state_FB = latency2;
+	     nState_FB = latency2;
 	  end
 
 	latency2:
 	  begin
-	     Next_state_FB = data_odd;
+	     nState_FB = data_odd;
 	  end
-	
-	default : Next_state_FB = IDLE_FB;
+       
+	default : nState_FB = IDLE_FB;
 	
       endcase // case (Current_state)
-   end // block: FSM_FS_
-
-   
-
-
-
-
-   
-
-   assign tmrError = Current_stateTmrError | Current_state_FBTmrError;
-
+   end // block: FSM_COMB_FB
 
 endmodule

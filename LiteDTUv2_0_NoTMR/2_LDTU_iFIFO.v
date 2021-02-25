@@ -21,6 +21,8 @@
 //	19.5.2020	: distance between write and read pointers increased to 2 to avoid synchronization
 //				  problems. RefSample2 updated in order to avoid superposition with the write pointer
 //
+//   4.02.2021	: Manual triplication removed - Gianni
+//
 // *************************************************************************************************
  
 `timescale   1ps/1ps
@@ -28,8 +30,8 @@
 module LDTU_iFIFO(
 	DCLK_1,
 	DCLK_10,
-	CLK_,
-	reset_,
+	CLK,
+	rst_b,
 	GAIN_SEL_MODE,
 	DATA_gain_01,
 	DATA_gain_10,
@@ -37,7 +39,7 @@ module LDTU_iFIFO(
 	shift_gain_10,	     
 	DATA_to_enc,
 	baseline_flag,
-	tmrError
+	SeuError
 	);
 
 // Internal constants
@@ -55,80 +57,86 @@ module LDTU_iFIFO(
 // Input ports
 	input DCLK_1;
 	input DCLK_10;
-	input CLK_;
-	input reset_;
+	input CLK;
+	input rst_b;
 	input [1:0] GAIN_SEL_MODE;
 	input [Nbits_12-1:0] DATA_gain_01;
 	input [Nbits_12-1:0] DATA_gain_10;
 	input [Nbits_12-1:0] SATURATION_value;
-      input [1:0] shift_gain_10;
+    input [1:0] shift_gain_10;
    
 
 // Output ports
-	output [Nbits_12:0] DATA_to_enc;
-	output baseline_flag;
-	output tmrError;
+	output reg[Nbits_12:0] DATA_to_enc;
+	output reg baseline_flag;
+	output SeuError;
 
-// TMR variables
-	reg [NBitsCnt-1:0] wrH_ptr_;	// Write pointer for gain 10
+	wire tmrError = 1'b0;
+	wire errorVoted = tmrError;
+	assign SeuError = errorVoted;
 
-	reg [NBitsCnt-1:0] wrL_ptr_;	// Write pointer for gain 1
+	reg[NBitsCnt-1:0] 	wrH_ptr;	// Write pointer for gain 10
+	reg[NBitsCnt-1:0] 	wrL_ptr;	// Write pointer for gain 1
 
-	reg [Nbits_12-1:0] SATval_;
+	wire[NBitsCnt-1:0] wrH_ptrVoted = wrH_ptr;
+	wire[NBitsCnt-1:0] wrL_ptrVoted = wrL_ptr;
 
-	reg [Nbits_12-1:0] FIFO_g1_ [FifoDepth-1:0];
-	reg [Nbits_12-1:0] FIFO_g10_ [FifoDepth-1:0];
+	reg [Nbits_12-1:0] 	SATval;
 
-	reg [NBitsCnt-1:0] rd_ptr_;
+	reg [Nbits_12-1:0] 	FIFO_g1 [FifoDepth-1:0];
+	reg [Nbits_12-1:0] 	FIFO_g10 [FifoDepth-1:0];
 
-	wire [NBitsCnt-1:0] ref_ptr_;
-	wire [Nbits_12-1:0] FIFO_g10_ref_;
-	wire ref_sat_;
+	reg[NBitsCnt-1:0]  rd_ptr;
+	wire[NBitsCnt-1:0] rd_ptrVoted 	= rd_ptr;
 
+	wire [NBitsCnt-1:0] ref_ptr;
+	wire [NBitsCnt-1:0] ref_ptrVoted = ref_ptr;
+	wire [Nbits_12-1:0] FIFO_g10_ref;
+	wire ref_sat;
 
-	reg [FifoDepth-1:0] gain_sel_;
-	reg [FifoDepth2-1:0] gain_sel2_;
+	reg [FifoDepth-1:0] 	gain_sel;
+	reg [FifoDepth2-1:0] 	gain_sel2;
 
-	wire [Nbits_12-1:0] dout_g1_;
-	wire [Nbits_12-1:0] dout_g10_;
+	wire [Nbits_12-1:0] 	dout_g1;
+	wire [Nbits_12-1:0] 	dout_g10;
 
-	wire [Nbits_12:0] DATA_to_enc_;
-	wire DATA_to_encTmrError;
+	wire [Nbits_12:0] 		d2enc;
+	wire [Nbits_12:0] 		d2encVoted = d2enc;
 
-	wire baseline_flag_;
-	wire baseline_flagTmrError;
+	wire bsflag;
+	wire bsflagVoted;
 
-	wire [1:0] GAIN_SEL_MODE_ = GAIN_SEL_MODE;
+	wire [1:0] GAIN_SEL_MODE;
 
 	integer iH;
 	integer iL;
 
 // SATval: saturation value tunable  : @(posedge CLK)
-	always @(posedge CLK_) begin
-		if (reset_ == 1'b0) SATval_ <= 12'hfff;
-		else SATval_ <= SATURATION_value >> shift_gain_10;
+	always @(posedge CLK) begin
+		if (rst_b == 1'b0) SATval <= 12'hfff;
+		else SATval <= SATURATION_value >> shift_gain_10;
 	end
 
 // WRITE POINTERS : @(posedge DCLK)
 	always @(posedge DCLK_10) begin
-		if (reset_ == 1'b0) wrH_ptr_ <= 3'b000;
-		else wrH_ptr_ <= wrH_ptr_+3'b001;
+		if (rst_b == 1'b0) wrH_ptr <= 3'b000;
+		else wrH_ptr <= wrH_ptrVoted+3'b001;
 	end
 
 	always @(posedge DCLK_1) begin
-		if (reset_ == 1'b0) wrL_ptr_ <= 3'b000;
-		else wrL_ptr_ <= wrL_ptr_+3'b001;
+		if (rst_b == 1'b0) wrL_ptr <= 3'b000;
+		else wrL_ptr <= wrL_ptrVoted+3'b001;
 	end
 
 // WRITING in FIFO GAIN 1
 
 	always @(posedge DCLK_1) begin
-		if (reset_ == 1'b0) begin
+		if (rst_b == 1'b0) begin
 			for (iL = 0; iL < FifoDepth; iL = iL +1) begin
-				FIFO_g1_[iL] <= 12'b0;
+				FIFO_g1[iL] <= 12'b0;
 			end
 		end else begin
-			FIFO_g1_[wrL_ptr_] <= DATA_gain_01;
+			FIFO_g1[wrL_ptrVoted] <= DATA_gain_01;
 		end
 	end
 
@@ -136,77 +144,76 @@ module LDTU_iFIFO(
 // WRITING in FIFO GAIN 10
 
 	always @(posedge DCLK_10) begin
-		if (reset_ == 1'b0) begin
+		if (rst_b == 1'b0) begin
 			for (iH = 0; iH < FifoDepth; iH = iH +1) begin
-				FIFO_g10_[iH] <= 12'b0;
+				FIFO_g10[iH] <= 12'b0;
 			end
 		end else begin
-			FIFO_g10_[wrH_ptr_] <= DATA_gain_10 >> shift_gain_10;
+			FIFO_g10[wrH_ptrVoted] <= DATA_gain_10 >> shift_gain_10;
 		end
 	end
 
-// READ POINTERS : @(posedge CLK)
-	//assign rd_ptr_A = wr_ptr_A + 3'b001;
-	//assign rd_ptr_B = wr_ptr_B + 3'b001;
-	//assign rd_ptr_C = wr_ptr_C + 3'b001;
 
-	always @(posedge CLK_) begin
-		if (reset_ == 1'b0) rd_ptr_ <= 3'b010;
-			else rd_ptr_ <= rd_ptr_+3'b001;
+// READ POINTERS : @(posedge CLK)
+
+	always @(posedge CLK) begin
+		if (rst_b == 1'b0) rd_ptr <= 3'b010;
+			else rd_ptr <= rd_ptr+3'b001;
 	end
 
+
 // REF POINTERS : @(posedge CLK)
-	assign ref_ptr_ = (GAIN_SEL_MODE_ == 2'b01) ? (rd_ptr_ + RefSample2) : (rd_ptr_ + RefSample);
+	assign ref_ptr = (GAIN_SEL_MODE == 2'b01) ? (rd_ptr + RefSample2) : (rd_ptr + RefSample);
+	assign FIFO_g10_ref = FIFO_g10[ref_ptrVoted];
+	assign ref_sat = (GAIN_SEL_MODE == 2'b11) ? 1'b1 : (GAIN_SEL_MODE == 2'b10) ? 1'b0 : (FIFO_g10_ref >= SATval) ? 1'b1 : 1'b0;
 
 
-	assign FIFO_g10_ref_ = FIFO_g10_[ref_ptr_];
-
-
-	assign ref_sat_ = (GAIN_SEL_MODE_ == 2'b11) ? 1'b1 : (GAIN_SEL_MODE_ == 2'b10) ? 1'b0 : (FIFO_g10_ref_ >= SATval_) ? 1'b1 : 1'b0;
-
-	always @(posedge CLK_) begin
-		if (reset_ == 1'b0) gain_sel_ <= 8'b0;
+	always @(posedge CLK) begin
+		if (rst_b == 1'b0) gain_sel <= 8'b0;
 		else begin
-			if (GAIN_SEL_MODE_ == 2'b00) gain_sel_ <= {gain_sel_[FifoDepth-2:0] ,ref_sat_};
+			if (GAIN_SEL_MODE == 2'b00) gain_sel <= {gain_sel[FifoDepth-2:0] ,ref_sat};
 			else begin
-				if (GAIN_SEL_MODE_ == 2'b11) gain_sel_ <= {gain_sel_[FifoDepth-2:0] ,ref_sat_};
-				else gain_sel_ <= 8'b0;
+				if (GAIN_SEL_MODE == 2'b11) gain_sel <= {gain_sel[FifoDepth-2:0] ,ref_sat};
+				else gain_sel <= 8'b0;
 			end
 		end
 	end
-
+	
 // Registri per aumentare la finestra
-	always @(posedge CLK_) begin
-		if (reset_ == 1'b0) gain_sel2_ <= 16'b0;
+	always @(posedge CLK) begin
+		if (rst_b == 1'b0) gain_sel2 <= 16'b0;
 		else begin
-			if (GAIN_SEL_MODE_ == 2'b01) gain_sel2_ <= {gain_sel2_[FifoDepth2-2:0] ,ref_sat_};
-			else gain_sel2_ <= 16'b0;
+			if (GAIN_SEL_MODE == 2'b01) gain_sel2 <= {gain_sel2[FifoDepth2-2:0] ,ref_sat};
+			else gain_sel2 <= 16'b0;
+		end
+	end
+	
+	assign dout_g1 = FIFO_g1[rd_ptrVoted];
+	assign dout_g10 = FIFO_g10[rd_ptrVoted];
+
+	wire decision1, decision2;
+	assign decision1 = (gain_sel == 8'b0) ? 1'b1 : 1'b0;
+ 	assign decision2 = (gain_sel2 == 16'b0) ? 1'b1 : 1'b0;
+
+	assign d2enc = (decision1 && decision2) ? {1'b0,dout_g10} : {1'b1,dout_g1};
+
+	always @(posedge CLK) begin
+		if (rst_b == 1'b0) begin
+			DATA_to_enc = 12'h000;
+			baseline_flag = 1'b1;
+		end else begin
+			DATA_to_enc = d2encVoted;
+			//baseline_flag = bsflagVoted; //NON LO PILOTA NEMMENO TRIPLICATO
+		   baseline_flag = bsflag; //MOD: Per simularlo senza triplicazione, devo togliere il voted, se no non e' pilotato
 		end
 	end
 
-	assign dout_g1_ = FIFO_g1_[rd_ptr_];
-	assign dout_g10_ = FIFO_g10_[rd_ptr_];
+	wire bas_flag;
+	wire b_flag;
 
-	wire decision1_, decision2_;
-	assign decision1_ = (gain_sel_ == 8'b0) ? 1'b1 : 1'b0;
- 	assign decision2_ = (gain_sel2_ == 16'b0) ? 1'b1 : 1'b0;
-
-	assign DATA_to_enc_ = (decision1_ && decision2_) ? {1'b0,dout_g10_} : {1'b1,dout_g1_};
-
-	wire bas_flag_;
-	wire b_flag_;
-
-
-	assign bas_flag_ = (DATA_to_enc_[12:6] == 7'b0) ? 1'b1 : 1'b0;
-	assign b_flag_ = (DATA_to_enc_[11:6] == 6'b0) ? 1'b1 : 1'b0;
-
-	assign baseline_flag_ = (reset_ == 1'b0) ? 1'b1 : (GAIN_SEL_MODE_[1] == 1'b0) ? bas_flag_ : b_flag_;
-
-   assign DATA_to_enc = DATA_to_enc_;
-   assign baseline_flag = baseline_flag_;
-   
- 
-
-
+	assign bas_flag = (d2encVoted[12:6] == 7'b0) ? 1'b1 : 1'b0;
+	assign b_flag 	= (d2encVoted[11:6] == 6'b0) ? 1'b1 : 1'b0;
+	assign bsflag 	= (GAIN_SEL_MODE[1] == 1'b0) ? bas_flag : b_flag;
 
 endmodule
+

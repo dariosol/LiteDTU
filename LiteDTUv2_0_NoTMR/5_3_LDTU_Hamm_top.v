@@ -27,7 +27,7 @@ module LDTU_oFIFO_top (
 		       full_signal,
 		       SeuError
 		       );
-
+   
    // Internal constants
    parameter Nbits_32 = 32;
    parameter Nbits_ham = 38;
@@ -71,15 +71,17 @@ module LDTU_oFIFO_top (
    
 
    Hamm_TRX #(.Nbits_32(Nbits_32), .Nbits_ham(Nbits_ham))
-   Hamming_32_38 (.CLK(CLK), .reset(rst_b), .data_input(data_in_32), .data_ham_in(data_in_38), 
+   Hamming_32_38 (.CLK(CLK), .reset(rst_b), 
+		  .data_input(data_in_32), .data_ham_in(data_in_38), 
 		  .write_signal(write_signal), .start_write(start_write));
 
 
-   LDTU_oFIFO #(.Nbits_ham(Nbits_ham))		FIFO (.CLK(CLK), .rst_b(rst_b), 
-						      .start_write(start_write), .read_signal(read_signal),
-						      .data_input(data_in_38), .data_output(data_out_38), .full_signal(full_signal), 
-						      .decode_signal(decode_signal), .SeuError(tmrError_oFIFO), .empty_signal(empty_signal)); 
-
+   LDTU_oFIFO #(.Nbits_ham(Nbits_ham)) 
+   FIFO (.CLK(CLK), .rst_b(rst_b), 
+	 .start_write(start_write), .read_signal(read_signal),
+	 .data_input(data_in_38), .data_output(data_out_38), .full_signal(full_signal), 
+	 .decode_signal(decode_signal), .SeuError(tmrError_oFIFO), .empty_signal(empty_signal)); 
+   
 
    Hamm_RX #(.Nbits_32(Nbits_32), .Nbits_ham(Nbits_ham))
    Hamming_38_32 (.CLK(CLK), .reset(rst_b), .decode_signal(decode_signal), .data_ham_out(data_out_38), 

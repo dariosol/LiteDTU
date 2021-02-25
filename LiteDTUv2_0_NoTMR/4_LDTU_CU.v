@@ -1,7 +1,7 @@
 
 
 `timescale 1ps/1ps
-module LDTU_CUTMR(
+module LDTU_CU(
 		  CLK,
 		  rst_b,
 		  fallback,
@@ -177,6 +177,7 @@ endmodule
 
 
 module CRC_calc (reset,data,crc,newcrc);
+  // tmrg do_not_touch
    parameter Nbits_32=32;
    parameter crcBits=12;
    input reset;
@@ -206,6 +207,7 @@ endmodule
 
 
 module SumValue (data, sum_val);
+  // tmrg do_not_touch
    input [7:0] data;
    output reg [7:0] sum_val;
 

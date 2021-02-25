@@ -18,6 +18,7 @@
 // ********************************************************************************************************
 
 `timescale	 1ps/1ps
+
 module LDTU_oFIFO(
 		  CLK,
 		  rst_b,
@@ -30,7 +31,6 @@ module LDTU_oFIFO(
 		  decode_signal,
 		  SeuError
 		  );
-
    parameter	Nbits_ham=38;
    parameter	FifoDepth_buff=16;
    parameter	bits_ptr=4;
