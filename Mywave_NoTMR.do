@@ -1,23 +1,26 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
+add wave -noupdate -divider INPUT
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DCLK_1
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DCLK_10
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/reset_
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY_
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/TEST_ENABLE
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/Orbit
-add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA12_g10
+add wave -noupdate /tb_LDTU_presynth/toptoplevel/DATA12_g10
+add wave -noupdate /tb_LDTU_presynth/toptoplevel/DATA12_g01
+add wave -noupdate -divider -height 30 {BASELINE SUB}
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/BSL_VAL_g01
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/BSL_VAL_g10
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/B_subtraction/DATA12_g01
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/B_subtraction/DATA12_g10
+add wave -noupdate -divider -height 30 iFIFO
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection/DATA_gain_01
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection/DATA_gain_10
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection/DATA_to_enc
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection/baseline_flag
+add wave -noupdate -divider -height 30 ENCODER
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/Current_state
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/Load
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/DATA_32
+add wave -noupdate -divider -height 30 {Control Unit}
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/handshake
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/Load_data
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/DATA_32
@@ -29,16 +32,23 @@ add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/wireTrailer
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/losing_data
 add wave -noupdate -color Red -itemcolor Red /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/full
+add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/check_limit
+add wave -noupdate -divider -height 30 oFIFO
+add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/data_in_32
+add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/Hamming_32_38/start_write
+add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/Hamming_32_38/data_input
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/full_signal
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/data_input
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/read_signal
+add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/data_input
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/decode_signal
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/data_output
+add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/Hamming_32_38/write_signal
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/start_write
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/ptr_write
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/ptr_read
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/memory
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/check_limit
+add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/DATA32_DTU
+add wave -noupdate -divider -height 30 {OUTPUT DATA}
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_0
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_1
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_2
@@ -56,10 +66,6 @@ add wave -noupdate -color {Spring Green} -itemcolor {Spring Green} -radix hexade
 add wave -noupdate -color {Spring Green} -itemcolor {Spring Green} -radix hexadecimal /tb_LDTU_presynth/toptoplevel/Serializers/DataIn1
 add wave -noupdate -color {Spring Green} -itemcolor {Spring Green} -radix hexadecimal /tb_LDTU_presynth/toptoplevel/Serializers/DataIn2
 add wave -noupdate -color {Spring Green} -itemcolor {Spring Green} -radix hexadecimal /tb_LDTU_presynth/toptoplevel/Serializers/DataIn3
-add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/DataOut0
-add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/DataOut1
-add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/DataOut2
-add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/DataOut3
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/rst_bA
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/rst_bB
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/rst_bC
@@ -67,7 +73,7 @@ add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_2
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_3
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {274560000 ps} 0} {{Cursor 2} {319056 ps} 1}
+WaveRestoreCursors {{Cursor 1} {272543942 ps} 0} {{Cursor 2} {319056 ps} 1}
 quietly wave cursor active 1
 configure wave -namecolwidth 751
 configure wave -valuecolwidth 100
@@ -83,4 +89,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ps} {752631808 ps}
+WaveRestoreZoom {0 ps} {944780988 ps}

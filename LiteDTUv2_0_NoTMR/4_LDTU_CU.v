@@ -1,22 +1,21 @@
 
-
 `timescale 1ps/1ps
 module LDTU_CU(
-		  CLK,
-		  rst_b,
-		  fallback,
-		  Load_data,
-		  DATA_32,
-		  Load_data_FB,
-		  DATA_32_FB,
-		  full,
-		  DATA_from_CU,
-		  losing_data,
-		  write_signal,
-		  read_signal,
-		  SeuError,
-		  handshake
-		  );
+	       CLK,
+	       rst_b,
+	       fallback,
+	       Load_data,
+	       DATA_32,
+	       Load_data_FB,
+	       DATA_32_FB,
+	       full,
+	       DATA_from_CU,
+	       losing_data,
+	       write_signal,
+	       read_signal,
+	       SeuError,
+	       handshake
+	       );
 
 
    parameter Nbits_32=32;
@@ -41,54 +40,49 @@ module LDTU_CU(
    input 		full;
    input 		handshake;
 
-   output 		losing_data;
-   output 		write_signal;
-   output [Nbits_32-1:0] DATA_from_CU;
-   output 		 read_signal;
-   output 		 SeuError;
+   output reg 		losing_data;
+   output reg		write_signal;
+   output reg [Nbits_32-1:0] DATA_from_CU;
+   output reg		     read_signal;
+   output reg		     SeuError;
 
-   reg [7:0] 		 NSample;
-   reg [5:0] 		 Nlimit;
-   reg [7:0] 		 NFrame;
-   reg [crcBits-1:0] 	 crc;
+   reg [7:0] 		     NSample;
+   reg [5:0] 		     Nlimit;
+   reg [7:0] 		     NFrame;
+   reg [crcBits-1:0] 	     crc;
 
-   wire [Nbits_32-1:0] 	 DATA_32;
-   wire 		 Load_data;
-   wire [Nbits_32-1:0] 	 DATA_32_FB;
-   wire 		 Load_data_FB;
-   //	wire full;
-   reg 			 r_read_signal;
-   reg 			 r_losing_data;
-   reg 			 r_write_signal;
+//   reg 			     r_read_signal;
+//   reg 			     r_losing_data;
+//   reg 			     r_write_signal;
+//   reg [Nbits_32-1:0] 	     r_DATA_from_CU;
+   
+   wire [crcBits-1:0] 	     out_crc;
 
+   wire 		     check_limit;
 
-   wire [crcBits-1:0] 	 out_crc;
+   wire [7:0] 		     NSamples;
 
-   wire 		 check_limit;
-
-   wire [7:0] 		 NSamples;
-
-   wire [Nbits_32-1:0] 	 wireTrailer;
+   wire [Nbits_32-1:0] 	     wireTrailer;
 
 
    assign check_limit = (Nlimit>limit) ? 1'b1 : 1'b0;
    assign NSamples = (Nlimit==6'b0) ? 8'b0 : NSample;
    assign wireTrailer = {4'b1101,NSamples,crc,NFrame};
 
-   reg [Nbits_32-1:0] 	 DATA_from_CU;
 
-   wire [crcBits-1:0] 	 wcrc;
+
+   wire [crcBits-1:0] 	     wcrc;
 
    assign wcrc = crc;
-   assign read_signal = r_read_signal;
-   assign write_signal = r_write_signal;
-   assign losing_data = r_losing_data;
-
+//   wire 		     tmrError = 1'b0;
+   
+//   assign SeuError = 1'b0;
+   
    CRC_calc calc_crc (.reset(rst_b), .data(DATA_32), .crc(wcrc), .newcrc(out_crc));
    
 
 
-   wire [7:0] 		 sum_val;
+   wire [7:0] 		     sum_val;
    //	wire handshake;
 
    SumValue SumValue ( .data(DATA_32[31:24]), .sum_val(sum_val));
@@ -126,58 +120,74 @@ module LDTU_CU(
    always @( posedge CLK ) begin
       if (rst_b==1'b0) begin
 	 DATA_from_CU = Initial;
-   r_losing_data = 1'b0;
-   r_write_signal = 1'b0;
+   losing_data = 1'b0;
+   write_signal = 1'b0;
 end 
       else begin
 	 if (Load_data == 1'b0 && Load_data_FB == 1'b0) begin
-	    r_losing_data = 1'b0;
+	    losing_data = 1'b0;
 	    if (check_limit==1'b1 && fallback==1'b0) begin
 	       if (full==1'b0) begin
 		  DATA_from_CU = wireTrailer;
-		  r_write_signal = 1'b1;
+		  write_signal = 1'b1;
 	       end 
 	       else begin
-		  r_write_signal = 1'b0;
+		  write_signal = 1'b0;
 	       end
 	    end 
 	    else begin
-	       r_write_signal = 1'b0;
+	       write_signal = 1'b0;
 	    end
 	 end 
 	 else begin
 	    if (full==1'b0 && fallback==1'b0) begin
-	       r_write_signal = 1'b1;
-	       r_losing_data = 1'b0;
+	       write_signal = 1'b1;
+	       losing_data = 1'b0;
 	       DATA_from_CU = DATA_32;
 	    end else if (full==1'b0 && fallback==1'b1) begin
-	       r_write_signal = 1'b1;
-	       r_losing_data = 1'b0;
+	       write_signal = 1'b1;
+	       losing_data = 1'b0;
 	       DATA_from_CU = DATA_32_FB;
 	    end else begin
-	       r_losing_data = 1'b1;
-	       r_write_signal = 1'b0;
+	       losing_data = 1'b1;
+	       write_signal = 1'b0;
 	    end
 	 end
       end
    end
 
    always @( posedge CLK ) begin
-      if (rst_b == 1'b0) r_read_signal = 1'b0;
+      if (rst_b == 1'b0) read_signal = 1'b0;
       else begin
 	 if (handshake == 1'b1) begin
-	    r_read_signal = 1'b1;
+	    read_signal = 1'b1;
 	 end 
-	 else r_read_signal = 1'b0;
+	 else read_signal = 1'b0;
       end
    end
-
+/*
+   always @( posedge CLK ) begin
+      if (rst_b == 1'b0) begin
+	 read_signal <= 1'b0;
+	 DATA_from_CU <= Initial;
+   losing_data <= 1'b0;
+   write_signal <= 1'b0;   
+end 
+      else 
+	begin
+	   read_signal  <= r_read_signal;
+	   write_signal <= r_write_signal;
+	   losing_data  <= r_losing_data;
+	   DATA_from_CU <= r_DATA_from_CU;	 
+	end
+   end
+*/
 endmodule
-   
+
 
 
 module CRC_calc (reset,data,crc,newcrc);
-  // tmrg do_not_touch
+   // tmrg do_not_touch
    parameter Nbits_32=32;
    parameter crcBits=12;
    input reset;
@@ -207,7 +217,7 @@ endmodule
 
 
 module SumValue (data, sum_val);
-  // tmrg do_not_touch
+   // tmrg do_not_touch
    input [7:0] data;
    output reg [7:0] sum_val;
 

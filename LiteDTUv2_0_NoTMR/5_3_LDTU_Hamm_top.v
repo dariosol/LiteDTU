@@ -44,7 +44,8 @@ module LDTU_oFIFO_top (
    input [Nbits_32-1:0] data_in_32;
 
    // Output ports
-   output [Nbits_32-1:0] DATA32_DTU;
+
+   output reg [Nbits_32-1:0] DATA32_DTU;
    output 		 full_signal;
    output 		 SeuError;
 
@@ -61,13 +62,13 @@ module LDTU_oFIFO_top (
    wire 		 empty_signal; 
 
    
-   reg [Nbits_32-1:0] 	 DATA32_DTU;
-   wire 		 DATA32_DTUTmrError;
+  // reg [Nbits_32-1:0] 	 r_DATA32_DTU;
+   
+//   wire 		 DATA32_DTUTmrError;
    wire 		 decode_signal;
    
    wire 		 tmrError = 1'b0;
-   wire 		 tmrErrorVoted = tmrError;
-   assign SeuError = tmrErrorVoted;
+   assign SeuError = tmrError | tmrError_oFIFO;
    
 
    Hamm_TRX #(.Nbits_32(Nbits_32), .Nbits_ham(Nbits_ham))
@@ -101,6 +102,14 @@ module LDTU_oFIFO_top (
 	 end
       end
    end
-
-   
+/*
+      always @(posedge CLK) begin
+      if (rst_b == 1'b0) begin
+	 DATA32_DTU = idle_patternEA;
+end 
+      else begin
+	 DATA32_DTU = r_DATA32_DTU;
+      end
+   end
+*/
 endmodule

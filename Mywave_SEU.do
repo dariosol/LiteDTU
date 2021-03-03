@@ -1,54 +1,31 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
-add wave -noupdate -divider INPUT
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/DCLK_10
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/DCLK_1
-add wave -noupdate /tb_LDTU_presynth/Orbit
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/DATA12_g10
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/DATA12_g01
-add wave -noupdate -divider -height 30 {BASELLINE SUB}
+add wave -noupdate -color Coral -itemcolor Coral /tb_LDTU_presynth/toptoplevel/tadc_test_unit/tmrErrorC
+add wave -noupdate -color Coral -itemcolor Coral /tb_LDTU_presynth/toptoplevel/tadc_test_unit/tmrErrorB
+add wave -noupdate -color Coral -itemcolor Coral /tb_LDTU_presynth/toptoplevel/tadc_test_unit/tmrErrorA
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/tadc_test_unit/tmrError
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/tadc_test_unit/test_enable
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/tadc_test_unit/rst_bC
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/tadc_test_unit/rst_bB
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/tadc_test_unit/rst_bA
+add wave -noupdate -color {Pale Green} -itemcolor {Pale Green} /tb_LDTU_presynth/toptoplevel/tadc_test_unit/clockC
+add wave -noupdate -color {Pale Green} -itemcolor {Pale Green} /tb_LDTU_presynth/toptoplevel/tadc_test_unit/clockB
+add wave -noupdate -color {Pale Green} -itemcolor {Pale Green} /tb_LDTU_presynth/toptoplevel/tadc_test_unit/clockA
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/tadc_test_unit/DataOutLo
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/tadc_test_unit/DataOutLe
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/tadc_test_unit/DataOutHo
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/tadc_test_unit/DataOutHe
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/tadc_test_unit/DataInL
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/tadc_test_unit/DataInH
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/BSL_VAL_g01
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/BSL_VAL_g10
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/B_subtraction/DATA12_g01
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/B_subtraction/DATA12_g10
-add wave -noupdate -divider -height 30 iFIFO
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection_TMR/DATA_gain_01
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection_TMR/DATA_gain_10
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection_TMR/DATA_to_enc
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection_TMR/baseline_flag
-add wave -noupdate -divider -height 30 ENCODER
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/Current_state_A
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/Load_A
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/DATA_32_A
-add wave -noupdate -divider -height 30 {CONTROL UNIT}
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/handshake
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/Load_data
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/DATA_32
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/NSample_A
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/NFrame_A
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/read_signal
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/write_signal
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/DATA_from_CU
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/wireTrailer_A
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/losing_data
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/full_A
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/check_limit_A
-add wave -noupdate -divider -height 30 oFIFO
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/data_in_32
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/Hamming_32_38/start_write
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/start_write
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/Hamming_32_38/data_input
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/full_signal
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/read_signal_A
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/data_input
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/decode_signal_A
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/data_output
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/Hamming_32_38/write_signal
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/ptr_write
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/ptr_read
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/FIFO/memory
-add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/DATA32_DTU
-add wave -noupdate -divider -height 30 {OUTPUT DATA}
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY_1
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY_10
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/CLK_A
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/CLK_B
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/CLK_C
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA12_g01
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA12_g10
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_0
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_1
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_2
@@ -57,13 +34,15 @@ add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_1
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_2
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_3
-add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY_1
-add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY_10
-add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/CLK_A
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DCLK_1
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DCLK_10
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/GAIN_SEL_MODE
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/RST_A
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/RST_B
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/RST_C
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/SATURATION_value
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/TEST_ENABLE
+add wave -noupdate /tb_LDTU_presynth/Orbit
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/handshake
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/losing_data
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/totalError
@@ -71,21 +50,48 @@ add wave -noupdate -color {Spring Green} -itemcolor {Spring Green} -radix hexade
 add wave -noupdate -color {Spring Green} -itemcolor {Spring Green} -radix hexadecimal /tb_LDTU_presynth/toptoplevel/Serializers/DataIn1
 add wave -noupdate -color {Spring Green} -itemcolor {Spring Green} -radix hexadecimal /tb_LDTU_presynth/toptoplevel/Serializers/DataIn2
 add wave -noupdate -color {Spring Green} -itemcolor {Spring Green} -radix hexadecimal /tb_LDTU_presynth/toptoplevel/Serializers/DataIn3
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/DataOut0
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/DataOut1
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/DataOut2
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/DataOut3
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/handshake
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/rst_bA
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/rst_bB
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/rst_bC
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/CLK_A
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/RST_A
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/CALIBRATION_BUSY_A
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/TEST_ENABLE_A
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/DATA32_DTU
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/DATA32_0
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/DATA32_ATU_0
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/DATA32_ATU_1
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/DATA32_ATU_2
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/DATA32_ATU_3
-add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/DATA32_0
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_1
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_2
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_3
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/reset
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/clock
+add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/Serializers/clock
+add wave -noupdate /tb_LDTU_presynth/word_ser_0
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/data_in
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/data_write
+add wave -noupdate /tb_LDTU_presynth/lat
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/data_errors
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/crc_error
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/nwords_error
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/nsamples_error
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/read_fd_error
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/read_idle_errors
+add wave -noupdate -color Red -itemcolor Red /tb_LDTU_presynth/LDTUv1b_SeuTeste/read_data_errors
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/read_header_errors
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/s_data_valid
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/s_data_errors
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/s_nsamples
+add wave -noupdate /tb_LDTU_presynth/LDTUv1b_SeuTeste/s_nwords
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {274560000 ps} 0} {{Cursor 2} {319056 ps} 1}
+WaveRestoreCursors {{Cursor 1} {369359649 ps} 0} {{Cursor 2} {319056 ps} 1}
 quietly wave cursor active 1
 configure wave -namecolwidth 751
 configure wave -valuecolwidth 100
@@ -101,4 +107,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ps} {752631808 ps}
+WaveRestoreZoom {455312487 ps} {502351975 ps}

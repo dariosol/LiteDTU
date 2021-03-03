@@ -50,7 +50,6 @@ module LDTU_iFIFO(
 	parameter    FifoDepth = 8;
 	parameter    NBitsCnt = 3;
 	parameter    RefSample = 3'b011;
-	//parameter    RefSample2 = 3'b110;
 	parameter    RefSample2 = 3'b101;
 
 
@@ -72,14 +71,14 @@ module LDTU_iFIFO(
 	output SeuError;
 
 	wire tmrError = 1'b0;
-	wire errorVoted = tmrError;
-	assign SeuError = errorVoted;
+//	wire errorVoted = tmrError;
+	assign SeuError = tmrError;
 
 	reg[NBitsCnt-1:0] 	wrH_ptr;	// Write pointer for gain 10
 	reg[NBitsCnt-1:0] 	wrL_ptr;	// Write pointer for gain 1
 
-	wire[NBitsCnt-1:0] wrH_ptrVoted = wrH_ptr;
-	wire[NBitsCnt-1:0] wrL_ptrVoted = wrL_ptr;
+//	wire[NBitsCnt-1:0] wrH_ptrVoted = wrH_ptr;
+//	wire[NBitsCnt-1:0] wrL_ptrVoted = wrL_ptr;
 
 	reg [Nbits_12-1:0] 	SATval;
 
@@ -87,10 +86,10 @@ module LDTU_iFIFO(
 	reg [Nbits_12-1:0] 	FIFO_g10 [FifoDepth-1:0];
 
 	reg[NBitsCnt-1:0]  rd_ptr;
-	wire[NBitsCnt-1:0] rd_ptrVoted 	= rd_ptr;
+//	wire[NBitsCnt-1:0] rd_ptrVoted 	= rd_ptr;
 
 	wire [NBitsCnt-1:0] ref_ptr;
-	wire [NBitsCnt-1:0] ref_ptrVoted = ref_ptr;
+//	wire [NBitsCnt-1:0] ref_ptrVoted = ref_ptr;
 	wire [Nbits_12-1:0] FIFO_g10_ref;
 	wire ref_sat;
 
@@ -101,10 +100,10 @@ module LDTU_iFIFO(
 	wire [Nbits_12-1:0] 	dout_g10;
 
 	wire [Nbits_12:0] 		d2enc;
-	wire [Nbits_12:0] 		d2encVoted = d2enc;
+//	wire [Nbits_12:0] 		d2encVoted = d2enc;
 
 	wire bsflag;
-	wire bsflagVoted;
+//	wire bsflagVoted;
 
 	wire [1:0] GAIN_SEL_MODE;
 
@@ -120,12 +119,12 @@ module LDTU_iFIFO(
 // WRITE POINTERS : @(posedge DCLK)
 	always @(posedge DCLK_10) begin
 		if (rst_b == 1'b0) wrH_ptr <= 3'b000;
-		else wrH_ptr <= wrH_ptrVoted+3'b001;
+		else wrH_ptr <= wrH_ptr+3'b001;
 	end
 
 	always @(posedge DCLK_1) begin
 		if (rst_b == 1'b0) wrL_ptr <= 3'b000;
-		else wrL_ptr <= wrL_ptrVoted+3'b001;
+		else wrL_ptr <= wrL_ptr+3'b001;
 	end
 
 // WRITING in FIFO GAIN 1
@@ -136,7 +135,7 @@ module LDTU_iFIFO(
 				FIFO_g1[iL] <= 12'b0;
 			end
 		end else begin
-			FIFO_g1[wrL_ptrVoted] <= DATA_gain_01;
+			FIFO_g1[wrL_ptr] <= DATA_gain_01;
 		end
 	end
 
@@ -149,7 +148,7 @@ module LDTU_iFIFO(
 				FIFO_g10[iH] <= 12'b0;
 			end
 		end else begin
-			FIFO_g10[wrH_ptrVoted] <= DATA_gain_10 >> shift_gain_10;
+			FIFO_g10[wrH_ptr] <= DATA_gain_10 >> shift_gain_10;
 		end
 	end
 
@@ -164,7 +163,7 @@ module LDTU_iFIFO(
 
 // REF POINTERS : @(posedge CLK)
 	assign ref_ptr = (GAIN_SEL_MODE == 2'b01) ? (rd_ptr + RefSample2) : (rd_ptr + RefSample);
-	assign FIFO_g10_ref = FIFO_g10[ref_ptrVoted];
+	assign FIFO_g10_ref = FIFO_g10[ref_ptr];
 	assign ref_sat = (GAIN_SEL_MODE == 2'b11) ? 1'b1 : (GAIN_SEL_MODE == 2'b10) ? 1'b0 : (FIFO_g10_ref >= SATval) ? 1'b1 : 1'b0;
 
 
@@ -188,8 +187,8 @@ module LDTU_iFIFO(
 		end
 	end
 	
-	assign dout_g1 = FIFO_g1[rd_ptrVoted];
-	assign dout_g10 = FIFO_g10[rd_ptrVoted];
+	assign dout_g1 = FIFO_g1[rd_ptr];
+	assign dout_g10 = FIFO_g10[rd_ptr];
 
 	wire decision1, decision2;
 	assign decision1 = (gain_sel == 8'b0) ? 1'b1 : 1'b0;
@@ -202,17 +201,17 @@ module LDTU_iFIFO(
 			DATA_to_enc = 12'h000;
 			baseline_flag = 1'b1;
 		end else begin
-			DATA_to_enc = d2encVoted;
-			//baseline_flag = bsflagVoted; //NON LO PILOTA NEMMENO TRIPLICATO
-		   baseline_flag = bsflag; //MOD: Per simularlo senza triplicazione, devo togliere il voted, se no non e' pilotato
+			DATA_to_enc = d2enc;
+			//baseline_flag = bsflagVoted;
+		        baseline_flag = bsflag; //MOD: Per simularlo senza triplicazione, devo togliere il voted, se no non e' pilotato
 		end
 	end
-
+   
 	wire bas_flag;
 	wire b_flag;
 
-	assign bas_flag = (d2encVoted[12:6] == 7'b0) ? 1'b1 : 1'b0;
-	assign b_flag 	= (d2encVoted[11:6] == 6'b0) ? 1'b1 : 1'b0;
+	assign bas_flag = (d2enc[12:6] == 7'b0) ? 1'b1 : 1'b0;
+	assign b_flag 	= (d2enc[11:6] == 6'b0) ? 1'b1 : 1'b0;
 	assign bsflag 	= (GAIN_SEL_MODE[1] == 1'b0) ? bas_flag : b_flag;
 
 endmodule

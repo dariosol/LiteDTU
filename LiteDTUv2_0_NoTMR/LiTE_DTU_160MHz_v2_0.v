@@ -74,7 +74,7 @@ module LiTE_DTU_160MHz_v2_0 (
    output 		 totalError;
    
    // Internal variables	
-   wire [Nbits_32-1:0] 	 DATA32_DTU;					
+   wire [Nbits_32-1:0] 	 DATA32_DTU;
    wire [Nbits_12-1:0] 	 DATA_gain_01;			// Baseline Subtraction Module
    wire [Nbits_12-1:0] 	 DATA_gain_10;			// Baseline Subtraction Module
    wire [Nbits_12:0] 	 DATA_to_enc;				// Input FIFOs Module
@@ -93,7 +93,7 @@ module LiTE_DTU_160MHz_v2_0 (
    
 
    assign CALIBRATION_BUSY = CALIBRATION_BUSY_1 | CALIBRATION_BUSY_10;
-
+   
    // LiTe-DTU resets
    wire [2:0] 		 AA;
    assign AA = {RST, CALIBRATION_BUSY, TEST_ENABLE};

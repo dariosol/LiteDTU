@@ -39,7 +39,7 @@ module LDTU_oFIFO(
    output empty_signal;
    output full_signal;
    output reg [Nbits_ham-1:0] data_output;
-   output 		      decode_signal;
+   output reg		      decode_signal;
 
    input 		      CLK;
    input 		      rst_b;
@@ -47,23 +47,28 @@ module LDTU_oFIFO(
    input 		      read_signal;
    input [Nbits_ham-1:0]      data_input;
 
-   reg 			      decode_signal;
+
    reg [bits_ptr-1:0] 	      ptr_write;
    reg [bits_ptr-1:0] 	      ptr_read;
    reg [Nbits_ham-1:0] 	      memory [ FifoDepth_buff-1 : 0 ] ;
-   wire 		      read_signal;
-   wire 		      start_write;
-   wire 		      empty_signal;
-   wire 		      full_signal;
-
+/*
+   reg 			      r_decode_signal;
+   reg[Nbits_ham-1:0]         r_data_output;
+   
+   wire 		      r_empty_signal;
+   wire 		      r_full_signal;
+  */ 
    wire 		      tmrError = 1'b0;
-   wire 		      tmrErrorVoted = tmrError;
-   assign SeuError = tmrErrorVoted;
+   assign SeuError = tmrError;
+   
+//   wire 		      data_inputVoted = data_input;
    
 
    assign empty_signal = (ptr_read == ptr_write);
    assign full_signal = ((ptr_read == ptr_write + 4'b1)||((ptr_read == 4'b0)&&(ptr_write == (4'b1111))));
-
+   //assign empty_signal = r_empty_signal;
+   //assign full_signal = r_full_signal;
+   
    
    always @( posedge CLK ) begin
       if (rst_b==1'b0) ptr_write <= 4'b0;
@@ -109,5 +114,18 @@ module LDTU_oFIFO(
       else data_output = memory[ptr_read] ;
    end
 
+   /*
+   always @(posedge CLK) begin
+      if (rst_b == 1'b0) begin
+	 data_output = 38'b01000000000000000000000000000000;
+	 decode_signal <= 1'b0;
+      end 
+      else begin
+	 data_output = r_data_output;
+	 decode_signal <= r_decode_signal;
+	 
+      end
+   end
+*/
 
 endmodule

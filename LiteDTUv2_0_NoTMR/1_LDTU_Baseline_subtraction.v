@@ -52,21 +52,19 @@ module LDTU_BS(
 
 	wire [Nbits_12-1:0] b_val_g01;
 	wire [Nbits_12-1:0] b_val_g10;
-	wire dg01_TmrError;
-	wire dg10_TmrError;
 
 	reg	[Nbits_12-1:0] d_g01;
 	reg	[Nbits_12-1:0] d_g10;
 
-	wire [Nbits_12-1:0] dg01;
+        wire [Nbits_12-1:0] 	       dg01;
 	wire [Nbits_12-1:0] dg10;
 
-	wire [Nbits_12-1:0] dg01Voted = dg01;
-	wire [Nbits_12-1:0] dg10Voted = dg10;
+	//wire [Nbits_12-1:0] dg01Voted = dg01;
+	//wire [Nbits_12-1:0] dg10Voted = dg10;
 
-	wire tmrError = 1'b0;
-	wire errorVoted = tmrError;
-	assign SeuError = errorVoted;
+        wire    tmrError = 1'b0;
+	//wire errorVoted = tmrError;
+	assign SeuError = tmrError;
 
 
 	assign b_val_g01 =  {4'b0,BSL_VAL_g01};
@@ -93,11 +91,11 @@ module LDTU_BS(
 		// Output synchronization
 
 	always @ (posedge DCLK_1) begin
-		DATA_gain_01 <= dg01Voted;
+		DATA_gain_01 <= dg01;
 	end
 
 	always @ (posedge DCLK_10) begin
-		DATA_gain_10 <= dg10Voted;
+		DATA_gain_10 <= dg10;
 	end
 
 endmodule
