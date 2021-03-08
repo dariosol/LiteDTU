@@ -64,11 +64,7 @@ module LDTU_BS(
 	wire [Nbits_12-1:0] dg01;
 	wire [Nbits_12-1:0] dg10;
 
-//	wire [Nbits_12-1:0] dg01Voted = dg01;
-//	wire [Nbits_12-1:0] dg10Voted = dg10;
-
 	wire tmrError = 1'b0;
-//	wire errorVoted = tmrError;
 	assign SeuError = tmrError;
 
 

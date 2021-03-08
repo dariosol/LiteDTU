@@ -94,11 +94,21 @@ module LDTU_BS(
    assign dg10 = d_g10-b_val_g10;
 
    always @ (posedge DCLK_1) begin
-      dg01_synch <= dg01;
+      if(dg01 > d_g01) begin // before subtraction < than after
+	 dg01_synch <= 12'b0;
+      end
+      else begin
+	 dg01_synch <= dg01;
+      end 
    end
 
    always @ (posedge DCLK_10) begin
-      dg10_synch <= dg10;
+      if(dg10 > d_g10) begin // before subtraction < than after
+	 dg10_synch <= 12'b0;
+      end
+      else begin
+	 dg10_synch <= dg10;
+      end
    end
    
    assign DATA_gain_01 = dg01_synch;

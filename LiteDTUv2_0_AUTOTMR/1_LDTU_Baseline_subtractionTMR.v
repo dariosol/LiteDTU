@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 07/03/2021 17:29:04                                                                    *
+ * date    : 08/03/2021 13:29:53                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 1_LDTU_Baseline_subtraction.v                                                          *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-05 17:43:56.735918                                         *
- *           File Size         : 2771                                                               *
- *           MD5 hash          : faf4b5015a8d9de92297e075e4e0f32f                                   *
+ *           Modification time : 2021-03-08 13:29:44.586132                                         *
+ *           File Size         : 3012                                                               *
+ *           MD5 hash          : a1e403e426c726fba4d0e28fe812fdb4                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -167,32 +167,74 @@ assign dg10C =  d_g10C-b_val_g10C;
 
 always @( posedge DCLK_1A )
   begin
-    dg01_synchA <= dg01A;
+    if (dg01A>d_g01A)
+      begin
+        dg01_synchA <= 12'b0;
+      end
+    else
+      begin
+        dg01_synchA <= dg01A;
+      end
   end
 
 always @( posedge DCLK_1B )
   begin
-    dg01_synchB <= dg01B;
+    if (dg01B>d_g01B)
+      begin
+        dg01_synchB <= 12'b0;
+      end
+    else
+      begin
+        dg01_synchB <= dg01B;
+      end
   end
 
 always @( posedge DCLK_1C )
   begin
-    dg01_synchC <= dg01C;
+    if (dg01C>d_g01C)
+      begin
+        dg01_synchC <= 12'b0;
+      end
+    else
+      begin
+        dg01_synchC <= dg01C;
+      end
   end
 
 always @( posedge DCLK_10A )
   begin
-    dg10_synchA <= dg10A;
+    if (dg10A>d_g10A)
+      begin
+        dg10_synchA <= 12'b0;
+      end
+    else
+      begin
+        dg10_synchA <= dg10A;
+      end
   end
 
 always @( posedge DCLK_10B )
   begin
-    dg10_synchB <= dg10B;
+    if (dg10B>d_g10B)
+      begin
+        dg10_synchB <= 12'b0;
+      end
+    else
+      begin
+        dg10_synchB <= dg10B;
+      end
   end
 
 always @( posedge DCLK_10C )
   begin
-    dg10_synchC <= dg10C;
+    if (dg10C>d_g10C)
+      begin
+        dg10_synchC <= 12'b0;
+      end
+    else
+      begin
+        dg10_synchC <= dg10C;
+      end
   end
 assign DATA_gain_01 =  dg01_synch;
 assign DATA_gain_10 =  dg10_synch;
