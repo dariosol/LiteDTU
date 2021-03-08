@@ -6,18 +6,18 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 06/03/2021 15:05:26                                                                    *
+ * date    : 08/03/2021 14:09:36                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
- *           tmr_Config/Last_DTU_v2.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                           *
+ *           tmr_Config/DTU_v2.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/ -vvv                           *
  * tmrg rev: ececa199b20e3753893c07f87ef839ce926b269f                                               *
  *                                                                                                  *
  * src file: 3_LDTU_Encoder.v                                                                       *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-05 20:58:48.665736                                         *
- *           File Size         : 10982                                                              *
- *           MD5 hash          : 527a9a2999f8364fe454a4cb7f57b585                                   *
+ *           Modification time : 2021-03-08 13:54:06.835110                                         *
+ *           File Size         : 10962                                                              *
+ *           MD5 hash          : 329120bdd4a87c911b3e0cf3ff473ce4                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -146,18 +146,18 @@ wire [1:0] code_sel_basC;
 wire [5:0] code_sel_signA;
 wire [5:0] code_sel_signB;
 wire [5:0] code_sel_signC;
-reg  Load_FB_synchA;
-reg  Load_FB_synchB;
-reg  Load_FB_synchC;
-reg  [Nbits_32-1:0] DATA_32_FB_synchA;
-reg  [Nbits_32-1:0] DATA_32_FB_synchB;
-reg  [Nbits_32-1:0] DATA_32_FB_synchC;
-reg  Load_synchA;
-reg  Load_synchB;
-reg  Load_synchC;
-reg  [Nbits_32-1:0] DATA_32_synchA;
-reg  [Nbits_32-1:0] DATA_32_synchB;
-reg  [Nbits_32-1:0] DATA_32_synchC;
+wire Load_FB_synchA;
+wire Load_FB_synchB;
+wire Load_FB_synchC;
+wire [Nbits_32-1:0] DATA_32_FB_synchA;
+wire [Nbits_32-1:0] DATA_32_FB_synchB;
+wire [Nbits_32-1:0] DATA_32_FB_synchC;
+wire Load_synchA;
+wire Load_synchB;
+wire Load_synchC;
+wire [Nbits_32-1:0] DATA_32_synchA;
+wire [Nbits_32-1:0] DATA_32_synchB;
+wire [Nbits_32-1:0] DATA_32_synchC;
 reg  [Nbits_6-1:0] Ld_bas_1A;
 reg  [Nbits_6-1:0] Ld_bas_1B;
 reg  [Nbits_6-1:0] Ld_bas_1C;
@@ -884,30 +884,18 @@ always @( posedge CLKC )
         endcase
       end
   end
-
-always @( posedge CLKA )
-  begin
-    Load_FB_synchA <= rLoad_FBA;
-    DATA_32_FB_synchA <= rDATA_32_FBA;
-    Load_synchA <= rLoadA;
-    DATA_32_synchA <= rDATA_32A;
-  end
-
-always @( posedge CLKB )
-  begin
-    Load_FB_synchB <= rLoad_FBB;
-    DATA_32_FB_synchB <= rDATA_32_FBB;
-    Load_synchB <= rLoadB;
-    DATA_32_synchB <= rDATA_32B;
-  end
-
-always @( posedge CLKC )
-  begin
-    Load_FB_synchC <= rLoad_FBC;
-    DATA_32_FB_synchC <= rDATA_32_FBC;
-    Load_synchC <= rLoadC;
-    DATA_32_synchC <= rDATA_32C;
-  end
+assign Load_FB_synchA =  rLoad_FBA;
+assign Load_FB_synchB =  rLoad_FBB;
+assign Load_FB_synchC =  rLoad_FBC;
+assign DATA_32_FB_synchA =  rDATA_32_FBA;
+assign DATA_32_FB_synchB =  rDATA_32_FBB;
+assign DATA_32_FB_synchC =  rDATA_32_FBC;
+assign Load_synchA =  rLoadA;
+assign Load_synchB =  rLoadB;
+assign Load_synchC =  rLoadC;
+assign DATA_32_synchA =  rDATA_32A;
+assign DATA_32_synchB =  rDATA_32B;
+assign DATA_32_synchC =  rDATA_32C;
 assign DATA_32 =  DATA_32_synch;
 assign DATA_32_FB =  DATA_32_FB_synch;
 assign Load =  Load_synch;

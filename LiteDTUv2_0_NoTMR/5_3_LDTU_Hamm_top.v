@@ -66,9 +66,6 @@ module LDTU_oFIFO_top (
    wire 		 full_signal_synch;
    
    
-  // reg [Nbits_32-1:0] 	 r_DATA32_DTU;
-   
-//   wire 		 DATA32_DTUTmrError;
    wire 		 decode_signal;
    
    wire 		 tmrError = 1'b0;
@@ -92,7 +89,7 @@ module LDTU_oFIFO_top (
    Hamming_38_32 (.CLK(CLK), .reset(rst_b), .decode_signal(decode_signal), .data_ham_out(data_out_38), 
 		  .data_output(data_out_32), .HammError(HammError));
 
-
+//Output synch
    always @( posedge CLK ) begin
       if ( rst_b == 1'b0) begin 
 	 DATA32_DTU_synch = idle_patternEA;
@@ -106,17 +103,9 @@ module LDTU_oFIFO_top (
 	 end
       end
    end // always @ ( posedge CLK )
+
    assign DATA32_DTU = DATA32_DTU_synch;
    assign full_signal = full_signal_synch;
    
-/*
-      always @(posedge CLK) begin
-      if (rst_b == 1'b0) begin
-	 DATA32_DTU = idle_patternEA;
-end 
-      else begin
-	 DATA32_DTU = r_DATA32_DTU;
-      end
-   end
-*/
+
 endmodule

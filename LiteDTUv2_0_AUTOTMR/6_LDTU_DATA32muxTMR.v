@@ -6,18 +6,18 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 06/03/2021 15:05:26                                                                    *
+ * date    : 08/03/2021 14:09:37                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
- *           tmr_Config/Last_DTU_v2.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                           *
+ *           tmr_Config/DTU_v2.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/ -vvv                           *
  * tmrg rev: ececa199b20e3753893c07f87ef839ce926b269f                                               *
  *                                                                                                  *
  * src file: 6_LDTU_DATA32mux.v                                                                     *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-06 14:56:31.843733                                         *
- *           File Size         : 2417                                                               *
- *           MD5 hash          : dc8a782f2c3a466932b0a8b330e9e9e1                                   *
+ *           Modification time : 2021-03-08 13:54:06.836110                                         *
+ *           File Size         : 2413                                                               *
+ *           MD5 hash          : 460883358a7e3a2da60000cf9bfd6f5b                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -211,42 +211,30 @@ always @( posedge CLKC )
           end
       end
   end
-reg  [Nbits_32-1:0] DATA32_0_synchA;
-reg  [Nbits_32-1:0] DATA32_0_synchB;
-reg  [Nbits_32-1:0] DATA32_0_synchC;
-reg  [Nbits_32-1:0] DATA32_1_synchA;
-reg  [Nbits_32-1:0] DATA32_1_synchB;
-reg  [Nbits_32-1:0] DATA32_1_synchC;
-reg  [Nbits_32-1:0] DATA32_2_synchA;
-reg  [Nbits_32-1:0] DATA32_2_synchB;
-reg  [Nbits_32-1:0] DATA32_2_synchC;
-reg  [Nbits_32-1:0] DATA32_3_synchA;
-reg  [Nbits_32-1:0] DATA32_3_synchB;
-reg  [Nbits_32-1:0] DATA32_3_synchC;
-
-always @( posedge CLKA )
-  begin
-    DATA32_0_synchA <= r_DATA32_0A;
-    DATA32_1_synchA <= r_DATA32_1A;
-    DATA32_2_synchA <= r_DATA32_2A;
-    DATA32_3_synchA <= r_DATA32_3A;
-  end
-
-always @( posedge CLKB )
-  begin
-    DATA32_0_synchB <= r_DATA32_0B;
-    DATA32_1_synchB <= r_DATA32_1B;
-    DATA32_2_synchB <= r_DATA32_2B;
-    DATA32_3_synchB <= r_DATA32_3B;
-  end
-
-always @( posedge CLKC )
-  begin
-    DATA32_0_synchC <= r_DATA32_0C;
-    DATA32_1_synchC <= r_DATA32_1C;
-    DATA32_2_synchC <= r_DATA32_2C;
-    DATA32_3_synchC <= r_DATA32_3C;
-  end
+wire [Nbits_32-1:0] DATA32_0_synchA;
+wire [Nbits_32-1:0] DATA32_0_synchB;
+wire [Nbits_32-1:0] DATA32_0_synchC;
+wire [Nbits_32-1:0] DATA32_1_synchA;
+wire [Nbits_32-1:0] DATA32_1_synchB;
+wire [Nbits_32-1:0] DATA32_1_synchC;
+wire [Nbits_32-1:0] DATA32_2_synchA;
+wire [Nbits_32-1:0] DATA32_2_synchB;
+wire [Nbits_32-1:0] DATA32_2_synchC;
+wire [Nbits_32-1:0] DATA32_3_synchA;
+wire [Nbits_32-1:0] DATA32_3_synchB;
+wire [Nbits_32-1:0] DATA32_3_synchC;
+assign DATA32_0_synchA =  r_DATA32_0A;
+assign DATA32_0_synchB =  r_DATA32_0B;
+assign DATA32_0_synchC =  r_DATA32_0C;
+assign DATA32_1_synchA =  r_DATA32_1A;
+assign DATA32_1_synchB =  r_DATA32_1B;
+assign DATA32_1_synchC =  r_DATA32_1C;
+assign DATA32_2_synchA =  r_DATA32_2A;
+assign DATA32_2_synchB =  r_DATA32_2B;
+assign DATA32_2_synchC =  r_DATA32_2C;
+assign DATA32_3_synchA =  r_DATA32_3A;
+assign DATA32_3_synchB =  r_DATA32_3B;
+assign DATA32_3_synchC =  r_DATA32_3C;
 assign DATA32_0 =  DATA32_0_synch;
 assign DATA32_1 =  DATA32_1_synch;
 assign DATA32_2 =  DATA32_2_synch;

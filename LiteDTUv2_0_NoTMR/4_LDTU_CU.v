@@ -21,7 +21,6 @@ module LDTU_CU(
    parameter Nbits_32=32;
    parameter FifoDepth_buff=64;
    parameter bits_ptr=6;
-   //parameter limit=6'b110010;
    parameter limit=6'b110001;
    parameter crcBits=12;
    parameter Initial=32'b11110000000000000000000000000000;
@@ -57,10 +56,10 @@ module LDTU_CU(
    reg 			     r_write_signal;
    reg [Nbits_32-1:0] 	     r_DATA_from_CU;
 
-   reg 			     read_signal_synch;
-   reg 			     losing_data_synch;
-   reg 			     write_signal_synch;
-   reg [Nbits_32-1:0] 	     DATA_from_CU_synch;
+   wire 		     read_signal_synch;
+   wire 		     losing_data_synch;
+   wire 		     write_signal_synch;
+   wire [Nbits_32-1:0] 	     DATA_from_CU_synch;
    
    wire [crcBits-1:0] 	     out_crc;
 
@@ -88,7 +87,7 @@ module LDTU_CU(
 
 
    wire [7:0] 		     sum_val;
-   //	wire handshake;
+
 
    SumValue SumValue ( .data(DATA_32[31:24]), .sum_val(sum_val));
 
@@ -171,12 +170,12 @@ end
       end
    end
 
-   always @( posedge CLK ) begin
-	   read_signal_synch  <= r_read_signal;
-	   write_signal_synch <= r_write_signal;
-	   losing_data_synch  <= r_losing_data;
-	   DATA_from_CU_synch <= r_DATA_from_CU;	 
-	end
+   assign	   read_signal_synch  = r_read_signal;
+   assign	   write_signal_synch = r_write_signal;
+   assign	   losing_data_synch  = r_losing_data;
+   assign	   DATA_from_CU_synch = r_DATA_from_CU;	 
+
+   
    assign read_signal  = read_signal_synch;
    assign write_signal = write_signal_synch;
    assign losing_data  = losing_data_synch;

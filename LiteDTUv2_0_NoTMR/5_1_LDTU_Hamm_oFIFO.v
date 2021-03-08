@@ -55,17 +55,10 @@ input 		      CLK;
    reg [bits_ptr-1:0] 	      ptr_write;
    reg [bits_ptr-1:0] 	      ptr_read;
    reg [Nbits_ham-1:0] 	      memory [ FifoDepth_buff-1 : 0 ] ;
-/*
-   reg 			      r_decode_signal;
-   reg[Nbits_ham-1:0]         r_data_output;
-   
-   wire 		      r_empty_signal;
-   wire 		      r_full_signal;
-  */ 
    wire 		      tmrError = 1'b0;
    assign SeuError = tmrError;
    
-//   wire 		      data_inputVoted = data_input;
+
    
 
    assign r_empty_signal = (ptr_read == ptr_write);
@@ -117,21 +110,8 @@ input 		      CLK;
       else data_output = memory[ptr_read] ;
    end
 
-      assign empty_signal = r_empty_signal;
+   assign empty_signal = r_empty_signal;
    assign full_signal = r_full_signal;
    assign decode_signal = r_decode_signal;
-   /*
-   always @(posedge CLK) begin
-      if (rst_b == 1'b0) begin
-	 data_output = 38'b01000000000000000000000000000000;
-	 decode_signal <= 1'b0;
-      end 
-      else begin
-	 data_output = r_data_output;
-	 decode_signal <= r_decode_signal;
-	 
-      end
-   end
-*/
 
 endmodule

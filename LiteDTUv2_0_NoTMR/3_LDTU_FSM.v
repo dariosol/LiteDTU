@@ -80,11 +80,6 @@ module LDTU_FSM(
    parameter latency2=3'b100;
    
 /////////////////////////////////////////////////////
-
-//   wire 	       tmrError = 1'b0;
-
-  // assign SeuError = tmrError;
-
    
    
 
@@ -367,18 +362,6 @@ module LDTU_FSM(
 	
       endcase // case (Current_state)
    end // block: FSM_COMB_FB
-
-   /*
-	always @(posedge CLK) begin
-		if (rst_b == 1'b0) begin
-			Current_state = IDLE;
-			Current_state_FB = IDLE_FB;
-		end else begin
-		   Current_state = Current_state;
-		   Current_state_FB = Current_state_FB;
-		end
-	end
-*/
 
 
 endmodule

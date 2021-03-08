@@ -6,18 +6,18 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 06/03/2021 15:05:26                                                                    *
+ * date    : 08/03/2021 14:09:37                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
- *           tmr_Config/Last_DTU_v2.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                           *
+ *           tmr_Config/DTU_v2.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/ -vvv                           *
  * tmrg rev: ececa199b20e3753893c07f87ef839ce926b269f                                               *
  *                                                                                                  *
  * src file: 4_LDTU_CU.v                                                                            *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-03 17:06:07.333634                                         *
- *           File Size         : 7413                                                               *
- *           MD5 hash          : a1099ac4683882b8ed06f9e82b51fa9c                                   *
+ *           Modification time : 2021-03-08 13:54:06.836110                                         *
+ *           File Size         : 7644                                                               *
+ *           MD5 hash          : 001e897f9bd102e774b0898d34b9a2e9                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -50,26 +50,36 @@ parameter    limit=6'b110001;
 parameter    crcBits=12;
 parameter    Initial=32'b11110000000000000000000000000000;
 parameter    bits_counter=2;
-wire Load_dataC;
-wire Load_dataB;
-wire Load_dataA;
-wire fallbackC;
-wire fallbackB;
-wire fallbackA;
 wire fullC;
 wire fullB;
 wire fullA;
+wire [Nbits_32-1:0] DATA_32_FBC;
+wire [Nbits_32-1:0] DATA_32_FBB;
+wire [Nbits_32-1:0] DATA_32_FBA;
+wire Load_data_FBC;
+wire Load_data_FBB;
+wire Load_data_FBA;
+wire fallbackC;
+wire fallbackB;
+wire fallbackA;
+wire Load_dataC;
+wire Load_dataB;
+wire Load_dataA;
 wire [Nbits_32-1:0] DATA_32C;
 wire [Nbits_32-1:0] DATA_32B;
 wire [Nbits_32-1:0] DATA_32A;
-wor wireTrailerTmrError;
-wire [Nbits_32-1:0] wireTrailer;
-wor check_limitTmrError;
-wire check_limit;
-wor rst_bTmrError;
-wire rst_b;
-wor CLKTmrError;
-wire CLK;
+wire handshakeC;
+wire handshakeB;
+wire handshakeA;
+wire tmrError;
+wor write_signal_synchTmrError;
+wor read_signal_synchTmrError;
+wor losing_data_synchTmrError;
+wor DATA_from_CU_synchTmrError;
+wire [Nbits_32-1:0] DATA_from_CU_synch;
+wire losing_data_synch;
+wire read_signal_synch;
+wire write_signal_synch;
 input CLKA;
 input CLKB;
 input CLKC;
@@ -83,11 +93,11 @@ input Load_data_FB;
 input [Nbits_32-1:0] DATA_32_FB;
 input full;
 input handshake;
-output reg    losing_data;
-output reg    write_signal;
-output reg   [Nbits_32-1:0] DATA_from_CU;
-output reg    read_signal;
-output reg    SeuError;
+output losing_data;
+output write_signal;
+output [Nbits_32-1:0] DATA_from_CU;
+output read_signal;
+output SeuError;
 reg  [7:0] NSampleA;
 reg  [7:0] NSampleB;
 reg  [7:0] NSampleC;
@@ -100,6 +110,30 @@ reg  [7:0] NFrameC;
 reg  [crcBits-1:0] crcA;
 reg  [crcBits-1:0] crcB;
 reg  [crcBits-1:0] crcC;
+reg  r_read_signalA;
+reg  r_read_signalB;
+reg  r_read_signalC;
+reg  r_losing_dataA;
+reg  r_losing_dataB;
+reg  r_losing_dataC;
+reg  r_write_signalA;
+reg  r_write_signalB;
+reg  r_write_signalC;
+reg  [Nbits_32-1:0] r_DATA_from_CUA;
+reg  [Nbits_32-1:0] r_DATA_from_CUB;
+reg  [Nbits_32-1:0] r_DATA_from_CUC;
+wire read_signal_synchA;
+wire read_signal_synchB;
+wire read_signal_synchC;
+wire losing_data_synchA;
+wire losing_data_synchB;
+wire losing_data_synchC;
+wire write_signal_synchA;
+wire write_signal_synchB;
+wire write_signal_synchC;
+wire [Nbits_32-1:0] DATA_from_CU_synchA;
+wire [Nbits_32-1:0] DATA_from_CU_synchB;
+wire [Nbits_32-1:0] DATA_from_CU_synchC;
 wire [crcBits-1:0] out_crcA;
 wire [crcBits-1:0] out_crcB;
 wire [crcBits-1:0] out_crcC;
@@ -127,6 +161,7 @@ wire [crcBits-1:0] wcrcC;
 assign wcrcA =  crcA;
 assign wcrcB =  crcB;
 assign wcrcC =  crcC;
+assign SeuError =  tmrError;
 
 CRC_calc calc_crcA (
     .reset(rst_bA),
@@ -275,105 +310,267 @@ always @( posedge CLKC )
       end
   end
 
-always @( posedge CLK )
+always @( posedge CLKA )
   begin
-    if (rst_b==1'b0)
+    if (rst_bA==1'b0)
       begin
-        DATA_from_CU =  Initial;
-        losing_data =  1'b0;
-        write_signal =  1'b0;
+        r_DATA_from_CUA <= Initial;
+        r_losing_dataA <= 1'b0;
+        r_write_signalA <= 1'b0;
       end
     else
       begin
-        if (Load_data==1'b0&&Load_data_FB==1'b0)
+        if (Load_dataA==1'b0&&Load_data_FBA==1'b0)
           begin
-            losing_data =  1'b0;
-            if (check_limit==1'b1&&fallback==1'b0)
+            r_losing_dataA <= 1'b0;
+            if (check_limitA==1'b1&&fallbackA==1'b0)
               begin
-                if (full==1'b0)
+                if (fullA==1'b0)
                   begin
-                    DATA_from_CU =  wireTrailer;
-                    write_signal =  1'b1;
+                    r_DATA_from_CUA <= wireTrailerA;
+                    r_write_signalA <= 1'b1;
                   end
                 else
                   begin
-                    write_signal =  1'b0;
+                    r_write_signalA <= 1'b0;
                   end
               end
             else
               begin
-                write_signal =  1'b0;
+                r_write_signalA <= 1'b0;
               end
           end
         else
           begin
-            if (full==1'b0&&fallback==1'b0)
+            if (fullA==1'b0&&fallbackA==1'b0)
               begin
-                write_signal =  1'b1;
-                losing_data =  1'b0;
-                DATA_from_CU =  DATA_32;
+                r_write_signalA <= 1'b1;
+                r_losing_dataA <= 1'b0;
+                r_DATA_from_CUA <= DATA_32A;
               end
             else
-              if (full==1'b0&&fallback==1'b1)
+              if (fullA==1'b0&&fallbackA==1'b1)
                 begin
-                  write_signal =  1'b1;
-                  losing_data =  1'b0;
-                  DATA_from_CU =  DATA_32_FB;
+                  r_write_signalA <= 1'b1;
+                  r_losing_dataA <= 1'b0;
+                  r_DATA_from_CUA <= DATA_32_FBA;
                 end
               else
                 begin
-                  losing_data =  1'b1;
-                  write_signal =  1'b0;
+                  r_losing_dataA <= 1'b1;
+                  r_write_signalA <= 1'b0;
                 end
           end
       end
   end
 
-always @( posedge CLK )
+always @( posedge CLKB )
   begin
-    if (rst_b==1'b0)
-      read_signal =  1'b0;
+    if (rst_bB==1'b0)
+      begin
+        r_DATA_from_CUB <= Initial;
+        r_losing_dataB <= 1'b0;
+        r_write_signalB <= 1'b0;
+      end
     else
       begin
-        if (handshake==1'b1)
+        if (Load_dataB==1'b0&&Load_data_FBB==1'b0)
           begin
-            read_signal =  1'b1;
+            r_losing_dataB <= 1'b0;
+            if (check_limitB==1'b1&&fallbackB==1'b0)
+              begin
+                if (fullB==1'b0)
+                  begin
+                    r_DATA_from_CUB <= wireTrailerB;
+                    r_write_signalB <= 1'b1;
+                  end
+                else
+                  begin
+                    r_write_signalB <= 1'b0;
+                  end
+              end
+            else
+              begin
+                r_write_signalB <= 1'b0;
+              end
           end
         else
-          read_signal =  1'b0;
+          begin
+            if (fullB==1'b0&&fallbackB==1'b0)
+              begin
+                r_write_signalB <= 1'b1;
+                r_losing_dataB <= 1'b0;
+                r_DATA_from_CUB <= DATA_32B;
+              end
+            else
+              if (fullB==1'b0&&fallbackB==1'b1)
+                begin
+                  r_write_signalB <= 1'b1;
+                  r_losing_dataB <= 1'b0;
+                  r_DATA_from_CUB <= DATA_32_FBB;
+                end
+              else
+                begin
+                  r_losing_dataB <= 1'b1;
+                  r_write_signalB <= 1'b0;
+                end
+          end
       end
   end
 
-majorityVoter CLKVoter (
-    .inA(CLKA),
-    .inB(CLKB),
-    .inC(CLKC),
-    .out(CLK),
-    .tmrErr(CLKTmrError)
+always @( posedge CLKC )
+  begin
+    if (rst_bC==1'b0)
+      begin
+        r_DATA_from_CUC <= Initial;
+        r_losing_dataC <= 1'b0;
+        r_write_signalC <= 1'b0;
+      end
+    else
+      begin
+        if (Load_dataC==1'b0&&Load_data_FBC==1'b0)
+          begin
+            r_losing_dataC <= 1'b0;
+            if (check_limitC==1'b1&&fallbackC==1'b0)
+              begin
+                if (fullC==1'b0)
+                  begin
+                    r_DATA_from_CUC <= wireTrailerC;
+                    r_write_signalC <= 1'b1;
+                  end
+                else
+                  begin
+                    r_write_signalC <= 1'b0;
+                  end
+              end
+            else
+              begin
+                r_write_signalC <= 1'b0;
+              end
+          end
+        else
+          begin
+            if (fullC==1'b0&&fallbackC==1'b0)
+              begin
+                r_write_signalC <= 1'b1;
+                r_losing_dataC <= 1'b0;
+                r_DATA_from_CUC <= DATA_32C;
+              end
+            else
+              if (fullC==1'b0&&fallbackC==1'b1)
+                begin
+                  r_write_signalC <= 1'b1;
+                  r_losing_dataC <= 1'b0;
+                  r_DATA_from_CUC <= DATA_32_FBC;
+                end
+              else
+                begin
+                  r_losing_dataC <= 1'b1;
+                  r_write_signalC <= 1'b0;
+                end
+          end
+      end
+  end
+
+always @( posedge CLKA )
+  begin
+    if (rst_bA==1'b0)
+      r_read_signalA <= 1'b0;
+    else
+      begin
+        if (handshakeA==1'b1)
+          begin
+            r_read_signalA <= 1'b1;
+          end
+        else
+          r_read_signalA <= 1'b0;
+      end
+  end
+
+always @( posedge CLKB )
+  begin
+    if (rst_bB==1'b0)
+      r_read_signalB <= 1'b0;
+    else
+      begin
+        if (handshakeB==1'b1)
+          begin
+            r_read_signalB <= 1'b1;
+          end
+        else
+          r_read_signalB <= 1'b0;
+      end
+  end
+
+always @( posedge CLKC )
+  begin
+    if (rst_bC==1'b0)
+      r_read_signalC <= 1'b0;
+    else
+      begin
+        if (handshakeC==1'b1)
+          begin
+            r_read_signalC <= 1'b1;
+          end
+        else
+          r_read_signalC <= 1'b0;
+      end
+  end
+assign read_signal_synchA =  r_read_signalA;
+assign read_signal_synchB =  r_read_signalB;
+assign read_signal_synchC =  r_read_signalC;
+assign write_signal_synchA =  r_write_signalA;
+assign write_signal_synchB =  r_write_signalB;
+assign write_signal_synchC =  r_write_signalC;
+assign losing_data_synchA =  r_losing_dataA;
+assign losing_data_synchB =  r_losing_dataB;
+assign losing_data_synchC =  r_losing_dataC;
+assign DATA_from_CU_synchA =  r_DATA_from_CUA;
+assign DATA_from_CU_synchB =  r_DATA_from_CUB;
+assign DATA_from_CU_synchC =  r_DATA_from_CUC;
+assign read_signal =  read_signal_synch;
+assign write_signal =  write_signal_synch;
+assign losing_data =  losing_data_synch;
+assign DATA_from_CU =  DATA_from_CU_synch;
+
+majorityVoter write_signal_synchVoter (
+    .inA(write_signal_synchA),
+    .inB(write_signal_synchB),
+    .inC(write_signal_synchC),
+    .out(write_signal_synch),
+    .tmrErr(write_signal_synchTmrError)
     );
 
-majorityVoter rst_bVoter (
-    .inA(rst_bA),
-    .inB(rst_bB),
-    .inC(rst_bC),
-    .out(rst_b),
-    .tmrErr(rst_bTmrError)
+majorityVoter read_signal_synchVoter (
+    .inA(read_signal_synchA),
+    .inB(read_signal_synchB),
+    .inC(read_signal_synchC),
+    .out(read_signal_synch),
+    .tmrErr(read_signal_synchTmrError)
     );
 
-majorityVoter check_limitVoter (
-    .inA(check_limitA),
-    .inB(check_limitB),
-    .inC(check_limitC),
-    .out(check_limit),
-    .tmrErr(check_limitTmrError)
+majorityVoter losing_data_synchVoter (
+    .inA(losing_data_synchA),
+    .inB(losing_data_synchB),
+    .inC(losing_data_synchC),
+    .out(losing_data_synch),
+    .tmrErr(losing_data_synchTmrError)
     );
 
-majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) wireTrailerVoter (
-    .inA(wireTrailerA),
-    .inB(wireTrailerB),
-    .inC(wireTrailerC),
-    .out(wireTrailer),
-    .tmrErr(wireTrailerTmrError)
+majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA_from_CU_synchVoter (
+    .inA(DATA_from_CU_synchA),
+    .inB(DATA_from_CU_synchB),
+    .inC(DATA_from_CU_synchC),
+    .out(DATA_from_CU_synch),
+    .tmrErr(DATA_from_CU_synchTmrError)
+    );
+assign tmrError =  DATA_from_CU_synchTmrError|losing_data_synchTmrError|read_signal_synchTmrError|write_signal_synchTmrError;
+
+fanout handshakeFanout (
+    .in(handshake),
+    .outA(handshakeA),
+    .outB(handshakeB),
+    .outC(handshakeC)
     );
 
 fanout #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA_32Fanout (
@@ -383,11 +580,11 @@ fanout #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1)
     .outC(DATA_32C)
     );
 
-fanout fullFanout (
-    .in(full),
-    .outA(fullA),
-    .outB(fullB),
-    .outC(fullC)
+fanout Load_dataFanout (
+    .in(Load_data),
+    .outA(Load_dataA),
+    .outB(Load_dataB),
+    .outC(Load_dataC)
     );
 
 fanout fallbackFanout (
@@ -397,11 +594,25 @@ fanout fallbackFanout (
     .outC(fallbackC)
     );
 
-fanout Load_dataFanout (
-    .in(Load_data),
-    .outA(Load_dataA),
-    .outB(Load_dataB),
-    .outC(Load_dataC)
+fanout Load_data_FBFanout (
+    .in(Load_data_FB),
+    .outA(Load_data_FBA),
+    .outB(Load_data_FBB),
+    .outC(Load_data_FBC)
+    );
+
+fanout #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA_32_FBFanout (
+    .in(DATA_32_FB),
+    .outA(DATA_32_FBA),
+    .outB(DATA_32_FBB),
+    .outC(DATA_32_FBC)
+    );
+
+fanout fullFanout (
+    .in(full),
+    .outA(fullA),
+    .outB(fullB),
+    .outC(fullC)
     );
 endmodule
 

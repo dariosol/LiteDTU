@@ -6,11 +6,11 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 08/03/2021 13:29:54                                                                    *
+ * date    : 08/03/2021 14:09:37                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
- *           tmr_Config/Last_DTU_v2_NoReg.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                     *
+ *           tmr_Config/DTU_v2.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/ -vvv                           *
  * tmrg rev: ececa199b20e3753893c07f87ef839ce926b269f                                               *
  *                                                                                                  *
  * src file: LiTE_DTU_160MHz_v2_0.v                                                                 *

@@ -64,11 +64,7 @@ module LDTU_BS(
 	wire [Nbits_12-1:0] dg01;
 	wire [Nbits_12-1:0] dg10;
 
-//	wire [Nbits_12-1:0] dg01Voted = dg01;
-//	wire [Nbits_12-1:0] dg10Voted = dg10;
-
 	wire tmrError = 1'b0;
-//	wire errorVoted = tmrError;
 	assign SeuError = tmrError;
 
 
@@ -93,6 +89,10 @@ module LDTU_BS(
    assign dg01 = d_g01-b_val_g01;
    assign dg10 = d_g10-b_val_g10;
 
+   //Check if the baseline subtraction is not too high to create data rollover.
+   //if the data before subtraction was lower than after: rollover happened.
+   //If rollover: set output to 0.
+   
    always @ (posedge DCLK_1) begin
       if(dg01 > d_g01) begin // before subtraction < than after
 	 dg01_synch <= 12'b0;
@@ -114,16 +114,6 @@ module LDTU_BS(
    assign DATA_gain_01 = dg01_synch;
    assign DATA_gain_10 = dg10_synch;
    
-		// Output synchronization
-/*
- //questo crea un flip flop
-	always @ (posedge DCLK_1) begin
-		DATA_gain_01 <= dg01;
-	end
 
-	always @ (posedge DCLK_10) begin
-		DATA_gain_10 <= dg10;
-	end
-*/
 endmodule
 

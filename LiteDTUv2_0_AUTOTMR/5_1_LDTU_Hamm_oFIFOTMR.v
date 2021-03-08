@@ -6,16 +6,16 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 08/03/2021 13:29:53                                                                    *
+ * date    : 08/03/2021 14:09:37                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
- *           tmr_Config/Last_DTU_v2_NoReg.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                     *
+ *           tmr_Config/DTU_v2.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/ -vvv                           *
  * tmrg rev: ececa199b20e3753893c07f87ef839ce926b269f                                               *
  *                                                                                                  *
  * src file: 5_1_LDTU_Hamm_oFIFO.v                                                                  *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-08 12:03:07.570213                                         *
+ *           Modification time : 2021-03-08 13:54:06.836110                                         *
  *           File Size         : 3610                                                               *
  *           MD5 hash          : 1e6ffcb4774114f65bc9834bd8759dcd                                   *
  *                                                                                                  *

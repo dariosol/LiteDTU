@@ -72,7 +72,6 @@ module LDTU_iFIFO(
    
    
 	wire tmrError = 1'b0;
-//	wire errorVoted = tmrError;
 	assign SeuError = tmrError;
 
 	reg[NBitsCnt-1:0] 	wrH_ptr;	// Write pointer for gain 10
@@ -85,10 +84,8 @@ module LDTU_iFIFO(
 	reg [Nbits_12-1:0] 	FIFO_g10 [FifoDepth-1:0];
 
 	reg[NBitsCnt-1:0]  rd_ptr;
-//	wire[NBitsCnt-1:0] rd_ptrVoted 	= rd_ptr;
 
 	wire [NBitsCnt-1:0] ref_ptr;
-//	wire [NBitsCnt-1:0] ref_ptrVoted = ref_ptr;
 	wire [Nbits_12-1:0] FIFO_g10_ref;
 	wire ref_sat;
 
@@ -99,10 +96,10 @@ module LDTU_iFIFO(
 	wire [Nbits_12-1:0] 	dout_g10;
 
 	wire [Nbits_12:0] 		d2enc;
-//	wire [Nbits_12:0] 		d2encVoted = d2enc;
+
 
 	wire bsflag;
-//	wire bsflagVoted;
+
 
 	wire [1:0] GAIN_SEL_MODE;
 
