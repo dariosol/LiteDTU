@@ -62,14 +62,15 @@ module LDTU_iFIFO(
 	input [Nbits_12-1:0] DATA_gain_01;
 	input [Nbits_12-1:0] DATA_gain_10;
 	input [Nbits_12-1:0] SATURATION_value;
-    input [1:0] shift_gain_10;
+        input [1:0] shift_gain_10;
    
 
 // Output ports
-	output reg[Nbits_12:0] DATA_to_enc;
-	output reg baseline_flag;
+	output [Nbits_12:0] DATA_to_enc;
+	output baseline_flag;
 	output SeuError;
-
+   
+   
 	wire tmrError = 1'b0;
 //	wire errorVoted = tmrError;
 	assign SeuError = tmrError;
@@ -77,8 +78,6 @@ module LDTU_iFIFO(
 	reg[NBitsCnt-1:0] 	wrH_ptr;	// Write pointer for gain 10
 	reg[NBitsCnt-1:0] 	wrL_ptr;	// Write pointer for gain 1
 
-//	wire[NBitsCnt-1:0] wrH_ptrVoted = wrH_ptr;
-//	wire[NBitsCnt-1:0] wrL_ptrVoted = wrL_ptr;
 
 	reg [Nbits_12-1:0] 	SATval;
 
@@ -196,16 +195,7 @@ module LDTU_iFIFO(
 
 	assign d2enc = (decision1 && decision2) ? {1'b0,dout_g10} : {1'b1,dout_g1};
 
-	always @(posedge CLK) begin
-		if (rst_b == 1'b0) begin
-			DATA_to_enc = 12'h000;
-			baseline_flag = 1'b1;
-		end else begin
-			DATA_to_enc = d2enc;
-			//baseline_flag = bsflagVoted;
-		        baseline_flag = bsflag; //MOD: Per simularlo senza triplicazione, devo togliere il voted, se no non e' pilotato
-		end
-	end
+   
    
 	wire bas_flag;
 	wire b_flag;
@@ -213,6 +203,8 @@ module LDTU_iFIFO(
 	assign bas_flag = (d2enc[12:6] == 7'b0) ? 1'b1 : 1'b0;
 	assign b_flag 	= (d2enc[11:6] == 6'b0) ? 1'b1 : 1'b0;
 	assign bsflag 	= (GAIN_SEL_MODE[1] == 1'b0) ? bas_flag : b_flag;
-
+        assign DATA_to_enc = d2enc;
+      assign baseline_flag = bsflag;
+   
 endmodule
 

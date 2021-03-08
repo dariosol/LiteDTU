@@ -6,35 +6,35 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 03/03/2021 13:21:38                                                                    *
+ * date    : 07/03/2021 17:29:05                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
- *           tmr_Config/Last_DTU_v2.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                           *
+ *           tmr_Config/Last_DTU_v2_NoReg.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                     *
  * tmrg rev: ececa199b20e3753893c07f87ef839ce926b269f                                               *
  *                                                                                                  *
  * src file: 5_3_LDTU_Hamm_top.v                                                                    *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-02 11:22:57.935295                                         *
- *           File Size         : 3249                                                               *
- *           MD5 hash          : a10c99e07a8b4ca9b63ac97127e2dabe                                   *
+ *           Modification time : 2021-03-07 17:09:55.510268                                         *
+ *           File Size         : 3474                                                               *
+ *           MD5 hash          : 40aba0e3535cee61409555d463c66f43                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
 `timescale   1ps/1ps
 
 module LDTU_oFIFO_topTMR(
-  CLK,
-  rst_b,
+  CLKA,
+  CLKB,
+  CLKC,
+  rst_bA,
+  rst_bB,
+  rst_bC,
   write_signal,
   read_signal,
   data_in_32,
-  DATA32_DTUA,
-  DATA32_DTUB,
-  DATA32_DTUC,
-  full_signalA,
-  full_signalB,
-  full_signalC,
+  DATA32_DTU,
+  full_signal,
   SeuError
 );
 parameter    Nbits_32=32;
@@ -46,39 +46,43 @@ parameter    idle_pattern5A=32'b01011010010110100101101001011010;
 wire [Nbits_32-1:0] data_out_32C;
 wire [Nbits_32-1:0] data_out_32B;
 wire [Nbits_32-1:0] data_out_32A;
-wire read_signalC;
-wire read_signalB;
-wire read_signalA;
-wire CLKC;
-wire CLKB;
-wire CLKA;
-wire rst_bC;
-wire rst_bB;
-wire rst_bA;
-wire start_writeC;
-wire start_writeB;
-wire start_writeA;
 wire [Nbits_ham-1:0] data_in_38C;
 wire [Nbits_ham-1:0] data_in_38B;
 wire [Nbits_ham-1:0] data_in_38A;
+wire start_writeC;
+wire start_writeB;
+wire start_writeA;
+wire read_signalC;
+wire read_signalB;
+wire read_signalA;
+wire empty_signalC;
+wire empty_signalB;
+wire empty_signalA;
 wire tmrError;
-wor decode_signalTmrError;
-wire decode_signalB;
-wire decode_signalC;
-wire decode_signalA;
-input CLK;
-input rst_b;
+wor rst_bTmrError;
+wor DATA32_DTU_synchTmrError;
+wor CLKTmrError;
+wire rst_b;
+wire CLK;
+wire [Nbits_32-1:0] DATA32_DTU_synch;
+input CLKA;
+input CLKB;
+input CLKC;
+input rst_bA;
+input rst_bB;
+input rst_bC;
 input write_signal;
 input read_signal;
 input [Nbits_32-1:0] data_in_32;
-output reg   [Nbits_32-1:0] DATA32_DTUA;
-output reg   [Nbits_32-1:0] DATA32_DTUB;
-output reg   [Nbits_32-1:0] DATA32_DTUC;
-output full_signalA;
-output full_signalB;
-output full_signalC;
+output [Nbits_32-1:0] DATA32_DTU;
+output full_signal;
 output SeuError;
-wire CLK;
+reg  [Nbits_32-1:0] DATA32_DTU_synchA;
+reg  [Nbits_32-1:0] DATA32_DTU_synchB;
+reg  [Nbits_32-1:0] DATA32_DTU_synchC;
+wire CLKA;
+wire CLKB;
+wire CLKC;
 wire reset;
 wire [Nbits_ham-1:0] data_in_38;
 wire [Nbits_ham-1:0] data_out_38;
@@ -87,9 +91,8 @@ wire start_write;
 wire HammError;
 wire tmrError_oFIFO;
 wire read_signal;
-wire empty_signalA;
-wire empty_signalB;
-wire empty_signalC;
+wire empty_signal;
+wire full_signal_synch;
 wire decode_signal;
 assign SeuError =  tmrError|tmrError_oFIFO;
 
@@ -119,16 +122,10 @@ LDTU_oFIFOTMR #(.Nbits_ham(Nbits_ham)) FIFO (
     .data_inputB(data_in_38B),
     .data_inputC(data_in_38C),
     .data_output(data_out_38),
-    .full_signalA(full_signalA),
-    .full_signalB(full_signalB),
-    .full_signalC(full_signalC),
-    .decode_signalA(decode_signalA),
-    .decode_signalB(decode_signalB),
-    .decode_signalC(decode_signalC),
+    .full_signal(full_signal_synch),
+    .decode_signal(decode_signal),
     .SeuError(tmrError_oFIFO),
-    .empty_signalA(empty_signalA),
-    .empty_signalB(empty_signalB),
-    .empty_signalC(empty_signalC)
+    .empty_signal(empty_signal)
     );
 
 Hamm_RX #(.Nbits_32(Nbits_32), .Nbits_ham(Nbits_ham)) Hamming_38_32 (
@@ -144,7 +141,7 @@ always @( posedge CLKA )
   begin
     if (rst_bA==1'b0)
       begin
-        DATA32_DTUA =  idle_patternEA;
+        DATA32_DTU_synchA =  idle_patternEA;
       end
     else
       begin
@@ -152,11 +149,11 @@ always @( posedge CLKA )
           begin
             if (empty_signalA==1'b1)
               begin
-                DATA32_DTUA =  idle_patternEA;
+                DATA32_DTU_synchA =  idle_patternEA;
               end
             else
               begin
-                DATA32_DTUA =  data_out_32A;
+                DATA32_DTU_synchA =  data_out_32A;
               end
           end
       end
@@ -166,7 +163,7 @@ always @( posedge CLKB )
   begin
     if (rst_bB==1'b0)
       begin
-        DATA32_DTUB =  idle_patternEA;
+        DATA32_DTU_synchB =  idle_patternEA;
       end
     else
       begin
@@ -174,11 +171,11 @@ always @( posedge CLKB )
           begin
             if (empty_signalB==1'b1)
               begin
-                DATA32_DTUB =  idle_patternEA;
+                DATA32_DTU_synchB =  idle_patternEA;
               end
             else
               begin
-                DATA32_DTUB =  data_out_32B;
+                DATA32_DTU_synchB =  data_out_32B;
               end
           end
       end
@@ -188,7 +185,7 @@ always @( posedge CLKC )
   begin
     if (rst_bC==1'b0)
       begin
-        DATA32_DTUC =  idle_patternEA;
+        DATA32_DTU_synchC =  idle_patternEA;
       end
     else
       begin
@@ -196,30 +193,55 @@ always @( posedge CLKC )
           begin
             if (empty_signalC==1'b1)
               begin
-                DATA32_DTUC =  idle_patternEA;
+                DATA32_DTU_synchC =  idle_patternEA;
               end
             else
               begin
-                DATA32_DTUC =  data_out_32C;
+                DATA32_DTU_synchC =  data_out_32C;
               end
           end
       end
   end
+assign DATA32_DTU =  DATA32_DTU_synch;
+assign full_signal =  full_signal_synch;
 
-majorityVoter decode_signalVoter (
-    .inA(decode_signalA),
-    .inB(decode_signalB),
-    .inC(decode_signalC),
-    .out(decode_signal),
-    .tmrErr(decode_signalTmrError)
+majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA32_DTU_synchVoter (
+    .inA(DATA32_DTU_synchA),
+    .inB(DATA32_DTU_synchB),
+    .inC(DATA32_DTU_synchC),
+    .out(DATA32_DTU_synch),
+    .tmrErr(DATA32_DTU_synchTmrError)
     );
-assign tmrError =  decode_signalTmrError;
 
-fanout #(.WIDTH(((Nbits_ham-1)>(0)) ? ((Nbits_ham-1)-(0)+1) : ((0)-(Nbits_ham-1)+1))) data_in_38Fanout (
-    .in(data_in_38),
-    .outA(data_in_38A),
-    .outB(data_in_38B),
-    .outC(data_in_38C)
+majorityVoter CLKVoter (
+    .inA(CLKA),
+    .inB(CLKB),
+    .inC(CLKC),
+    .out(CLK),
+    .tmrErr(CLKTmrError)
+    );
+
+majorityVoter rst_bVoter (
+    .inA(rst_bA),
+    .inB(rst_bB),
+    .inC(rst_bC),
+    .out(rst_b),
+    .tmrErr(rst_bTmrError)
+    );
+assign tmrError =  CLKTmrError|DATA32_DTU_synchTmrError|rst_bTmrError;
+
+fanout empty_signalFanout (
+    .in(empty_signal),
+    .outA(empty_signalA),
+    .outB(empty_signalB),
+    .outC(empty_signalC)
+    );
+
+fanout read_signalFanout (
+    .in(read_signal),
+    .outA(read_signalA),
+    .outB(read_signalB),
+    .outC(read_signalC)
     );
 
 fanout start_writeFanout (
@@ -229,25 +251,11 @@ fanout start_writeFanout (
     .outC(start_writeC)
     );
 
-fanout rst_bFanout (
-    .in(rst_b),
-    .outA(rst_bA),
-    .outB(rst_bB),
-    .outC(rst_bC)
-    );
-
-fanout CLKFanout (
-    .in(CLK),
-    .outA(CLKA),
-    .outB(CLKB),
-    .outC(CLKC)
-    );
-
-fanout read_signalFanout (
-    .in(read_signal),
-    .outA(read_signalA),
-    .outB(read_signalB),
-    .outC(read_signalC)
+fanout #(.WIDTH(((Nbits_ham-1)>(0)) ? ((Nbits_ham-1)-(0)+1) : ((0)-(Nbits_ham-1)+1))) data_in_38Fanout (
+    .in(data_in_38),
+    .outA(data_in_38A),
+    .outB(data_in_38B),
+    .outC(data_in_38C)
     );
 
 fanout #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) data_out_32Fanout (

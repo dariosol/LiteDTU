@@ -6,18 +6,18 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 03/03/2021 13:21:37                                                                    *
+ * date    : 07/03/2021 17:29:04                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
- *           tmr_Config/Last_DTU_v2.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                           *
+ *           tmr_Config/Last_DTU_v2_NoReg.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                     *
  * tmrg rev: ececa199b20e3753893c07f87ef839ce926b269f                                               *
  *                                                                                                  *
  * src file: 2_LDTU_iFIFO.v                                                                         *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-02-26 15:21:38.286435                                         *
- *           File Size         : 5981                                                               *
- *           MD5 hash          : 4654d56da9c580cf6b5f31421c15e5cf                                   *
+ *           Modification time : 2021-03-05 17:09:43.642950                                         *
+ *           File Size         : 5655                                                               *
+ *           MD5 hash          : 10d666ca5d62f2b6f5460fc2224c9a8a                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -70,12 +70,8 @@ wire [Nbits_12-1:0] SATURATION_valueC;
 wire [Nbits_12-1:0] SATURATION_valueB;
 wire [Nbits_12-1:0] SATURATION_valueA;
 wire tmrError;
-wor rst_bTmrError;
 wor d2encTmrError;
 wor bsflagTmrError;
-wor CLKTmrError;
-wire CLK;
-wire rst_b;
 wire [Nbits_12:0] d2enc;
 wire bsflag;
 input DCLK_1;
@@ -91,8 +87,8 @@ input [Nbits_12-1:0] DATA_gain_01;
 input [Nbits_12-1:0] DATA_gain_10;
 input [Nbits_12-1:0] SATURATION_value;
 input [1:0] shift_gain_10;
-output reg   [Nbits_12:0] DATA_to_enc;
-output reg    baseline_flag;
+output [Nbits_12:0] DATA_to_enc;
+output baseline_flag;
 output SeuError;
 assign SeuError =  tmrError;
 reg  [NBitsCnt-1:0] wrH_ptrA;
@@ -456,20 +452,6 @@ assign decision2C =  (gain_sel2C==16'b0) ? 1'b1 : 1'b0;
 assign d2encA =  (decision1A&&decision2A) ? {1'b0,dout_g10A} : {1'b1,dout_g1A};
 assign d2encB =  (decision1B&&decision2B) ? {1'b0,dout_g10B} : {1'b1,dout_g1B};
 assign d2encC =  (decision1C&&decision2C) ? {1'b0,dout_g10C} : {1'b1,dout_g1C};
-
-always @( posedge CLK )
-  begin
-    if (rst_b==1'b0)
-      begin
-        DATA_to_enc =  12'h000;
-        baseline_flag =  1'b1;
-      end
-    else
-      begin
-        DATA_to_enc =  d2enc;
-        baseline_flag =  bsflag;
-      end
-  end
 wire bas_flagA;
 wire bas_flagB;
 wire bas_flagC;
@@ -485,6 +467,8 @@ assign b_flagC =  (d2encC[11:6] ==6'b0) ? 1'b1 : 1'b0;
 assign bsflagA =  (GAIN_SEL_MODEA[1] ==1'b0) ? bas_flagA : b_flagA;
 assign bsflagB =  (GAIN_SEL_MODEB[1] ==1'b0) ? bas_flagB : b_flagB;
 assign bsflagC =  (GAIN_SEL_MODEC[1] ==1'b0) ? bas_flagC : b_flagC;
+assign DATA_to_enc =  d2enc;
+assign baseline_flag =  bsflag;
 
 majorityVoter bsflagVoter (
     .inA(bsflagA),
@@ -501,23 +485,7 @@ majorityVoter #(.WIDTH(((Nbits_12)>(0)) ? ((Nbits_12)-(0)+1) : ((0)-(Nbits_12)+1
     .out(d2enc),
     .tmrErr(d2encTmrError)
     );
-
-majorityVoter rst_bVoter (
-    .inA(rst_bA),
-    .inB(rst_bB),
-    .inC(rst_bC),
-    .out(rst_b),
-    .tmrErr(rst_bTmrError)
-    );
-
-majorityVoter CLKVoter (
-    .inA(CLKA),
-    .inB(CLKB),
-    .inC(CLKC),
-    .out(CLK),
-    .tmrErr(CLKTmrError)
-    );
-assign tmrError =  CLKTmrError|bsflagTmrError|d2encTmrError|rst_bTmrError;
+assign tmrError =  bsflagTmrError|d2encTmrError;
 
 fanout #(.WIDTH(((Nbits_12-1)>(0)) ? ((Nbits_12-1)-(0)+1) : ((0)-(Nbits_12-1)+1))) SATURATION_valueFanout (
     .in(SATURATION_value),

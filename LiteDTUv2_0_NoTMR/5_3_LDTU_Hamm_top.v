@@ -45,10 +45,13 @@ module LDTU_oFIFO_top (
 
    // Output ports
 
-   output reg [Nbits_32-1:0] DATA32_DTU;
+   output  [Nbits_32-1:0] DATA32_DTU;
    output 		 full_signal;
    output 		 SeuError;
+   
 
+   reg [Nbits_32-1:0] DATA32_DTU_synch;
+   
    // Internal variables
    wire 		 CLK;
    wire 		 reset;
@@ -60,7 +63,8 @@ module LDTU_oFIFO_top (
    wire 		 tmrError_oFIFO;
    wire 		 read_signal;
    wire 		 empty_signal; 
-
+   wire 		 full_signal_synch;
+   
    
   // reg [Nbits_32-1:0] 	 r_DATA32_DTU;
    
@@ -80,7 +84,7 @@ module LDTU_oFIFO_top (
    LDTU_oFIFO #(.Nbits_ham(Nbits_ham)) 
    FIFO (.CLK(CLK), .rst_b(rst_b), 
 	 .start_write(start_write), .read_signal(read_signal),
-	 .data_input(data_in_38), .data_output(data_out_38), .full_signal(full_signal), 
+	 .data_input(data_in_38), .data_output(data_out_38), .full_signal(full_signal_synch), 
 	 .decode_signal(decode_signal), .SeuError(tmrError_oFIFO), .empty_signal(empty_signal)); 
    
 
@@ -91,17 +95,20 @@ module LDTU_oFIFO_top (
 
    always @( posedge CLK ) begin
       if ( rst_b == 1'b0) begin 
-	 DATA32_DTU = idle_patternEA;
+	 DATA32_DTU_synch = idle_patternEA;
       end else begin
 	 if (read_signal == 1'b1) begin
 	    if (empty_signal == 1'b1) begin
-	       DATA32_DTU = idle_patternEA;
+	       DATA32_DTU_synch = idle_patternEA;
 	    end else begin
-	       DATA32_DTU = data_out_32;
+	       DATA32_DTU_synch = data_out_32;
 	    end
 	 end
       end
-   end
+   end // always @ ( posedge CLK )
+   assign DATA32_DTU = DATA32_DTU_synch;
+   assign full_signal = full_signal_synch;
+   
 /*
       always @(posedge CLK) begin
       if (rst_b == 1'b0) begin

@@ -6,18 +6,18 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 03/03/2021 13:21:37                                                                    *
+ * date    : 07/03/2021 17:29:04                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
- *           tmr_Config/Last_DTU_v2.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                           *
+ *           tmr_Config/Last_DTU_v2_NoReg.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                     *
  * tmrg rev: ececa199b20e3753893c07f87ef839ce926b269f                                               *
  *                                                                                                  *
  * src file: 3_LDTU_FSM.v                                                                           *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-02-26 15:58:08.060401                                         *
- *           File Size         : 8732                                                               *
- *           MD5 hash          : 249372014c2043fcf2fd74ce0e644ff3                                   *
+ *           Modification time : 2021-03-07 16:52:12.074285                                         *
+ *           File Size         : 8649                                                               *
+ *           MD5 hash          : 3e2fd8e2d4112bb6e1db5d211cb12ddb                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -33,8 +33,12 @@ module LDTU_FSMTMR(
   fallback,
   Orbit,
   baseline_flag,
-  Current_state,
-  Current_state_FB,
+  Current_stateA,
+  Current_stateB,
+  Current_stateC,
+  Current_state_FBA,
+  Current_state_FBB,
+  Current_state_FBC,
   SeuError
 );
 parameter    SIZE=4;
@@ -78,15 +82,6 @@ wire fallbackA;
 wire baseline_flagC;
 wire baseline_flagB;
 wire baseline_flagA;
-wire tmrError;
-wor rst_bTmrError;
-wor rCurrent_state_FBTmrError;
-wor rCurrent_stateTmrError;
-wor CLKTmrError;
-wire [SIZE:0] rCurrent_state_FB;
-wire [SIZE:0] rCurrent_state;
-wire CLK;
-wire rst_b;
 input CLKA;
 input CLKB;
 input CLKC;
@@ -96,32 +91,29 @@ input rst_bC;
 input fallback;
 input Orbit;
 input baseline_flag;
-output reg   [SIZE:0] Current_state;
-reg  [SIZE:0] rCurrent_stateA;
-reg  [SIZE:0] rCurrent_stateB;
-reg  [SIZE:0] rCurrent_stateC;
+output reg   [SIZE:0] Current_stateA;
+output reg   [SIZE:0] Current_stateB;
+output reg   [SIZE:0] Current_stateC;
 output SeuError;
 reg  [SIZE:0] nStateA;
 reg  [SIZE:0] nStateB;
 reg  [SIZE:0] nStateC;
-output reg   [SIZE_FB:0] Current_state_FB;
-reg  [SIZE:0] rCurrent_state_FBA;
-reg  [SIZE:0] rCurrent_state_FBB;
-reg  [SIZE:0] rCurrent_state_FBC;
+output reg   [SIZE_FB:0] Current_state_FBA;
+output reg   [SIZE_FB:0] Current_state_FBB;
+output reg   [SIZE_FB:0] Current_state_FBC;
 reg  [SIZE_FB:0] nState_FBA;
 reg  [SIZE_FB:0] nState_FBB;
 reg  [SIZE_FB:0] nState_FBC;
-assign SeuError =  tmrError;
 
 always @( posedge CLKA )
   begin : FSM_SEQA
     if (rst_bA==1'b0||fallbackA==1'b1)
       begin
-        rCurrent_stateA <= IDLE;
+        Current_stateA <= IDLE;
       end
     else
       begin
-        rCurrent_stateA <= nStateA;
+        Current_stateA <= nStateA;
       end
   end
 
@@ -129,11 +121,11 @@ always @( posedge CLKB )
   begin : FSM_SEQB
     if (rst_bB==1'b0||fallbackB==1'b1)
       begin
-        rCurrent_stateB <= IDLE;
+        Current_stateB <= IDLE;
       end
     else
       begin
-        rCurrent_stateB <= nStateB;
+        Current_stateB <= nStateB;
       end
   end
 
@@ -141,18 +133,18 @@ always @( posedge CLKC )
   begin : FSM_SEQC
     if (rst_bC==1'b0||fallbackC==1'b1)
       begin
-        rCurrent_stateC <= IDLE;
+        Current_stateC <= IDLE;
       end
     else
       begin
-        rCurrent_stateC <= nStateC;
+        Current_stateC <= nStateC;
       end
   end
 
-always @( rCurrent_stateA or baseline_flagA or OrbitA )
+always @( Current_stateA or baseline_flagA or OrbitA )
   begin : FSM_COMBA
     nStateA =  IDLE;
-    case (rCurrent_stateA)
+    case (Current_stateA)
       IDLE : 
         begin
           if (baseline_flagA==1'b1&&OrbitA==1'b0)
@@ -374,10 +366,10 @@ always @( rCurrent_stateA or baseline_flagA or OrbitA )
     endcase
   end
 
-always @( rCurrent_stateB or baseline_flagB or OrbitB )
+always @( Current_stateB or baseline_flagB or OrbitB )
   begin : FSM_COMBB
     nStateB =  IDLE;
-    case (rCurrent_stateB)
+    case (Current_stateB)
       IDLE : 
         begin
           if (baseline_flagB==1'b1&&OrbitB==1'b0)
@@ -599,10 +591,10 @@ always @( rCurrent_stateB or baseline_flagB or OrbitB )
     endcase
   end
 
-always @( rCurrent_stateC or baseline_flagC or OrbitC )
+always @( Current_stateC or baseline_flagC or OrbitC )
   begin : FSM_COMBC
     nStateC =  IDLE;
-    case (rCurrent_stateC)
+    case (Current_stateC)
       IDLE : 
         begin
           if (baseline_flagC==1'b1&&OrbitC==1'b0)
@@ -828,11 +820,11 @@ always @( posedge CLKA )
   begin : FSM_SEQ_FBA
     if (rst_bA==1'b0||fallbackA==1'b0)
       begin
-        rCurrent_state_FBA <= IDLE_FB;
+        Current_state_FBA <= IDLE_FB;
       end
     else
       begin
-        rCurrent_state_FBA <= nState_FBA;
+        Current_state_FBA <= nState_FBA;
       end
   end
 
@@ -840,11 +832,11 @@ always @( posedge CLKB )
   begin : FSM_SEQ_FBB
     if (rst_bB==1'b0||fallbackB==1'b0)
       begin
-        rCurrent_state_FBB <= IDLE_FB;
+        Current_state_FBB <= IDLE_FB;
       end
     else
       begin
-        rCurrent_state_FBB <= nState_FBB;
+        Current_state_FBB <= nState_FBB;
       end
   end
 
@@ -852,18 +844,18 @@ always @( posedge CLKC )
   begin : FSM_SEQ_FBC
     if (rst_bC==1'b0||fallbackC==1'b0)
       begin
-        rCurrent_state_FBC <= IDLE_FB;
+        Current_state_FBC <= IDLE_FB;
       end
     else
       begin
-        rCurrent_state_FBC <= nState_FBC;
+        Current_state_FBC <= nState_FBC;
       end
   end
 
-always @( rCurrent_state_FBA or OrbitA )
+always @( Current_state_FBA or OrbitA )
   begin : FSM_COMB_FBA
     nState_FBA =  IDLE_FB;
-    case (rCurrent_state_FBA)
+    case (Current_state_FBA)
       IDLE_FB : 
         begin
           nState_FBA =  data_odd;
@@ -888,10 +880,10 @@ always @( rCurrent_state_FBA or OrbitA )
     endcase
   end
 
-always @( rCurrent_state_FBB or OrbitB )
+always @( Current_state_FBB or OrbitB )
   begin : FSM_COMB_FBB
     nState_FBB =  IDLE_FB;
-    case (rCurrent_state_FBB)
+    case (Current_state_FBB)
       IDLE_FB : 
         begin
           nState_FBB =  data_odd;
@@ -916,10 +908,10 @@ always @( rCurrent_state_FBB or OrbitB )
     endcase
   end
 
-always @( rCurrent_state_FBC or OrbitC )
+always @( Current_state_FBC or OrbitC )
   begin : FSM_COMB_FBC
     nState_FBC =  IDLE_FB;
-    case (rCurrent_state_FBC)
+    case (Current_state_FBC)
       IDLE_FB : 
         begin
           nState_FBC =  data_odd;
@@ -943,53 +935,6 @@ always @( rCurrent_state_FBC or OrbitC )
       default : nState_FBC =  IDLE_FB;
     endcase
   end
-
-always @( posedge CLK )
-  begin
-    if (rst_b==1'b0)
-      begin
-        Current_state =  IDLE;
-        Current_state_FB =  IDLE_FB;
-      end
-    else
-      begin
-        Current_state =  rCurrent_state;
-        Current_state_FB =  rCurrent_state_FB;
-      end
-  end
-
-majorityVoter rst_bVoter (
-    .inA(rst_bA),
-    .inB(rst_bB),
-    .inC(rst_bC),
-    .out(rst_b),
-    .tmrErr(rst_bTmrError)
-    );
-
-majorityVoter CLKVoter (
-    .inA(CLKA),
-    .inB(CLKB),
-    .inC(CLKC),
-    .out(CLK),
-    .tmrErr(CLKTmrError)
-    );
-
-majorityVoter #(.WIDTH(((SIZE)>(0)) ? ((SIZE)-(0)+1) : ((0)-(SIZE)+1))) rCurrent_stateVoter (
-    .inA(rCurrent_stateA),
-    .inB(rCurrent_stateB),
-    .inC(rCurrent_stateC),
-    .out(rCurrent_state),
-    .tmrErr(rCurrent_stateTmrError)
-    );
-
-majorityVoter #(.WIDTH(((SIZE)>(0)) ? ((SIZE)-(0)+1) : ((0)-(SIZE)+1))) rCurrent_state_FBVoter (
-    .inA(rCurrent_state_FBA),
-    .inB(rCurrent_state_FBB),
-    .inC(rCurrent_state_FBC),
-    .out(rCurrent_state_FB),
-    .tmrErr(rCurrent_state_FBTmrError)
-    );
-assign tmrError =  CLKTmrError|rCurrent_stateTmrError|rCurrent_state_FBTmrError|rst_bTmrError;
 
 fanout baseline_flagFanout (
     .in(baseline_flag),

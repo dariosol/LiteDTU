@@ -59,9 +59,7 @@ module LDTU_FSM(
    input fallback;
    input Orbit;
    input baseline_flag;
-   output reg [SIZE:0] Current_state;
-   reg [SIZE:0]        rCurrent_state;
-   
+   output reg[SIZE:0] Current_state;   
    output 	       SeuError;
 
    reg [SIZE:0]        nState;
@@ -71,9 +69,9 @@ module LDTU_FSM(
 //Fallback registers
    parameter SIZE_FB=3;
    output reg [SIZE_FB:0] Current_state_FB;
-   reg [SIZE:0]        rCurrent_state_FB;
    reg [SIZE_FB:0]     nState_FB;
 
+   
    
    parameter IDLE_FB=3'b000;
    parameter data_odd=3'b001;
@@ -83,9 +81,9 @@ module LDTU_FSM(
    
 /////////////////////////////////////////////////////
 
-   wire 	       tmrError = 1'b0;
+//   wire 	       tmrError = 1'b0;
 
-   assign SeuError = tmrError;
+  // assign SeuError = tmrError;
 
    
    
@@ -93,15 +91,15 @@ module LDTU_FSM(
    //Standard FSM
    always @( posedge CLK ) begin : FSM_SEQ
       if (rst_b==1'b0 || fallback==1'b1) begin
-	 rCurrent_state <= IDLE;
+	 Current_state <= IDLE;
       end else begin
-	 rCurrent_state <= nState;
+	 Current_state <= nState;
       end
    end
 
-   always @( rCurrent_state or baseline_flag or Orbit ) begin : FSM_COMB
+   always @( Current_state or baseline_flag or Orbit ) begin : FSM_COMB
       nState = IDLE;
-       case (rCurrent_state)		  
+       case (Current_state)		  
 	IDLE : 
 	  begin
 	     if (baseline_flag==1'b1 && Orbit == 1'b0)
@@ -328,18 +326,18 @@ module LDTU_FSM(
    //FALLBACK FSM
       always @( posedge CLK ) begin : FSM_SEQ_FB
       if (rst_b==1'b0 || fallback==1'b0) begin
-	 rCurrent_state_FB <= IDLE_FB;
+	 Current_state_FB <= IDLE_FB;
       end else begin
-	 rCurrent_state_FB <= nState_FB;
+	 Current_state_FB <= nState_FB;
       end
    end
 
 
 
-   always @( rCurrent_state_FB or Orbit ) begin : FSM_COMB_FB
+   always @( Current_state_FB or Orbit ) begin : FSM_COMB_FB
       nState_FB = IDLE_FB;
       
-      case (rCurrent_state_FB)
+      case (Current_state_FB)
 	IDLE_FB :
 	  begin
 	       nState_FB = data_odd;
@@ -370,17 +368,17 @@ module LDTU_FSM(
       endcase // case (Current_state)
    end // block: FSM_COMB_FB
 
-   
+   /*
 	always @(posedge CLK) begin
 		if (rst_b == 1'b0) begin
 			Current_state = IDLE;
 			Current_state_FB = IDLE_FB;
 		end else begin
-		   Current_state = rCurrent_state;
-		   Current_state_FB = rCurrent_state_FB;
+		   Current_state = Current_state;
+		   Current_state_FB = Current_state_FB;
 		end
 	end
-
+*/
 
 
 endmodule

@@ -119,10 +119,10 @@ module LDTU_Encoder(
    wire [1:0] 		 code_sel_bas;
    wire [5:0] 		 code_sel_sign;
 
-   reg Load_FB_synch;
-   reg [Nbits_32-1:0] DATA_32_FB_synch;
-   reg Load_synch;
-   reg [Nbits_32-1:0] DATA_32_synch;
+   wire Load_FB_synch;
+   wire [Nbits_32-1:0] DATA_32_FB_synch;
+   wire Load_synch;
+   wire [Nbits_32-1:0] DATA_32_synch;
 
 
    reg [Nbits_6-1:0] 	 Ld_bas_1;
@@ -395,16 +395,11 @@ end
 	end // block: FSM_seq_output_FB
 
    
-   
-   
-   always @(posedge CLK) begin
-	 Load_FB_synch <= rLoad_FB;
-	 DATA_32_FB_synch <= rDATA_32_FB;
-	 Load_synch <= rLoad;
-	 DATA_32_synch <= rDATA_32;
-      end
-   
-
+   assign  Load_FB_synch = rLoad_FB;
+   assign  DATA_32_FB_synch = rDATA_32_FB;
+   assign Load_synch = rLoad;
+   assign DATA_32_synch = rDATA_32;
+    
    assign DATA_32 = DATA_32_synch;
    assign DATA_32_FB = DATA_32_FB_synch;
    assign Load = Load_synch;

@@ -70,19 +70,19 @@ module LDTU_DATA32_ATU_DTU(
    end //always
 
   
-   reg [Nbits_32-1:0] DATA32_0_synch; 
-   reg [Nbits_32-1:0] DATA32_1_synch; 
-   reg [Nbits_32-1:0] DATA32_2_synch; 
-   reg [Nbits_32-1:0] DATA32_3_synch;
+   wire [Nbits_32-1:0] DATA32_0_synch; 
+   wire [Nbits_32-1:0] DATA32_1_synch; 
+   wire [Nbits_32-1:0] DATA32_2_synch; 
+   wire [Nbits_32-1:0] DATA32_3_synch;
 
 
 
-   always @(posedge CLK) begin
-   DATA32_0_synch <= r_DATA32_0; 
-   DATA32_1_synch <= r_DATA32_1; 
-   DATA32_2_synch <= r_DATA32_2; 
-   DATA32_3_synch <= r_DATA32_3;
-end
+
+    assign DATA32_0_synch = r_DATA32_0; 
+    assign DATA32_1_synch = r_DATA32_1; 
+    assign DATA32_2_synch = r_DATA32_2; 
+    assign DATA32_3_synch = r_DATA32_3;
+
 
    assign DATA32_0 =  DATA32_0_synch;
    assign DATA32_1 =  DATA32_1_synch;

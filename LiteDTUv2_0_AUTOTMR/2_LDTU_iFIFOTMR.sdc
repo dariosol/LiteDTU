@@ -16,10 +16,6 @@ proc constrainNet netName {
   }
 }
 
-constrainNet /CLK
-constrainNet /CLKA
-constrainNet /CLKB
-constrainNet /CLKC
 constrainNet /DATA_gain_01A[*]
 constrainNet /DATA_gain_01B[*]
 constrainNet /DATA_gain_01C[*]
@@ -52,10 +48,6 @@ constrainNet /d2encA[*]
 constrainNet /d2encB[*]
 constrainNet /d2encC[*]
 constrainNet /d2enc[*]
-constrainNet /rst_b
-constrainNet /rst_bA
-constrainNet /rst_bB
-constrainNet /rst_bC
 constrainNet /shift_gain_10A[*]
 constrainNet /shift_gain_10B[*]
 constrainNet /shift_gain_10C[*]

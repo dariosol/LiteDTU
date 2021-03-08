@@ -12,355 +12,46 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-cd /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_NoTMR
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 15:43:18 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v 
-# -- Compiling module LDTU_DATA32_ATU_DTU
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(58): (vlog-2110) Illegal reference to net "wDATA32_0".
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(59): (vlog-2110) Illegal reference to net "wDATA32_0".
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(60): (vlog-2110) Illegal reference to net "wDATA32_1".
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(61): (vlog-2110) Illegal reference to net "wDATA32_2".
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(62): (vlog-2110) Illegal reference to net "wDATA32_3".
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(65): (vlog-2110) Illegal reference to net "wDATA32_0".
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(66): (vlog-2110) Illegal reference to net "wDATA32_0".
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(67): (vlog-2110) Illegal reference to net "wDATA32_1".
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(68): (vlog-2110) Illegal reference to net "wDATA32_2".
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(69): (vlog-2110) Illegal reference to net "wDATA32_3".
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(71): (vlog-2110) Illegal reference to net "wDATA32_0".
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(72): (vlog-2110) Illegal reference to net "wDATA32_1".
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(73): (vlog-2110) Illegal reference to net "wDATA32_2".
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(74): (vlog-2110) Illegal reference to net "wDATA32_3".
-# End time: 15:43:19 on Mar 02,2021, Elapsed time: 0:00:01
-# Errors: 14, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 15:44:08 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v 
-# -- Compiling module LDTU_DATA32_ATU_DTU
-# 
-# Top level modules:
-# 	LDTU_DATA32_ATU_DTU
-# End time: 15:44:08 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-cd /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/1_LDTU_Baseline_subtractionTMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:09:07 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/1_LDTU_Baseline_subtractionTMR.v 
-# -- Compiling module LDTU_BSTMR
-# 
-# Top level modules:
-# 	LDTU_BSTMR
-# End time: 16:09:07 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
+pwd
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR
+cd ..
+cd vsim_AutoTMR
 vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/2_LDTU_iFIFOTMR.v
 # QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:09:07 on Mar 02,2021
+# Start time: 11:10:28 on Mar 05,2021
 # vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/2_LDTU_iFIFOTMR.v 
 # -- Compiling module LDTU_iFIFOTMR
+# -- Compiling module majorityVoter
+# -- Compiling module fanout
 # 
 # Top level modules:
 # 	LDTU_iFIFOTMR
-# End time: 16:09:07 on Mar 02,2021, Elapsed time: 0:00:00
+# End time: 11:10:28 on Mar 05,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_EncoderTMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:09:07 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_EncoderTMR.v 
-# -- Compiling module Delay_enc
-# -- Compiling module LDTU_EncoderTMR
-# 
-# Top level modules:
-# 	LDTU_EncoderTMR
-# End time: 16:09:08 on Mar 02,2021, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:09:08 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v 
-# -- Compiling module LDTU_FSMTMR
-# 
-# Top level modules:
-# 	LDTU_FSMTMR
-# End time: 16:09:08 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/4_LDTU_CUTMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:09:08 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/4_LDTU_CUTMR.v 
-# -- Compiling module LDTU_CUTMR
-# -- Compiling module CRC_calc
-# -- Compiling module SumValue
-# 
-# Top level modules:
-# 	LDTU_CUTMR
-# End time: 16:09:08 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_0_LDTU_Hamm_TRXTMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:09:12 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_0_LDTU_Hamm_TRXTMR.v 
-# -- Compiling module Hamm_TRX
-# 
-# Top level modules:
-# 	Hamm_TRX
-# End time: 16:09:12 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_1_LDTU_Hamm_oFIFOTMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:09:12 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_1_LDTU_Hamm_oFIFOTMR.v 
-# -- Compiling module LDTU_oFIFOTMR
-# 
-# Top level modules:
-# 	LDTU_oFIFOTMR
-# End time: 16:09:12 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_2_LDTU_Hamm_RXTMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:09:12 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_2_LDTU_Hamm_RXTMR.v 
-# -- Compiling module Hamm_RX
-# 
-# Top level modules:
-# 	Hamm_RX
-# End time: 16:09:12 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:09:14 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v 
-# -- Compiling module LDTU_oFIFO_topTMR
-# 
-# Top level modules:
-# 	LDTU_oFIFO_topTMR
-# End time: 16:09:14 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/6_LDTU_DATA32muxTMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:09:17 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/6_LDTU_DATA32muxTMR.v 
-# -- Compiling module LDTU_DATA32_ATU_DTUTMR
-# 
-# Top level modules:
-# 	LDTU_DATA32_ATU_DTUTMR
-# End time: 16:09:17 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:09:19 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v 
-# -- Compiling module LiTE_DTU_160MHz_v2_0TMR
-# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v(104): (vlog-2388) 'DATA32_DTUB' already declared in this scope (LiTE_DTU_160MHz_v2_0TMR) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v(89).
-# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v(105): (vlog-2388) 'DATA32_DTUC' already declared in this scope (LiTE_DTU_160MHz_v2_0TMR) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v(88).
-# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v(106): (vlog-2388) 'DATA32_DTUA' already declared in this scope (LiTE_DTU_160MHz_v2_0TMR) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v(90).
-# -- Compiling module majorityVoter
-# -- Compiling module fanout
-# End time: 16:09:19 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 3, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:55:07 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v 
-# -- Compiling module LiTE_DTU_160MHz_v2_0TMR
-# -- Compiling module majorityVoter
-# -- Compiling module fanout
-# 
-# Top level modules:
-# 	LiTE_DTU_160MHz_v2_0TMR
-# End time: 16:55:08 on Mar 02,2021, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/8_SER_shift_TMRG.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:55:31 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/8_SER_shift_TMRG.v 
-# -- Compiling module Serializer_shiftTMR
-# -- Compiling module majVoter
-# -- Compiling module fan_out
-# 
-# Top level modules:
-# 	Serializer_shiftTMR
-# 	fan_out
-# End time: 16:55:31 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/8_Serializers_LiTE_DTU_v1_2_TMRG.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:55:32 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/8_Serializers_LiTE_DTU_v1_2_TMRG.v 
-# -- Compiling module Serializers_LiTE_DTU_v1_2_TMR
-# 
-# Top level modules:
-# 	Serializers_LiTE_DTU_v1_2_TMR
-# End time: 16:55:32 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/9_AdcTestUnitTMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:55:32 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/9_AdcTestUnitTMR.v 
-# -- Compiling module AdcTestUnitTMR
-# 
-# Top level modules:
-# 	AdcTestUnitTMR
-# End time: 16:55:32 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:55:32 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v 
-# -- Compiling module top_ofthetop
-# 
-# Top level modules:
-# 	top_ofthetop
-# End time: 16:55:32 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_ser.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:55:38 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_ser.v 
-# -- Compiling module LDTUv1b_ser
-# 
-# Top level modules:
-# 	LDTUv1b_ser
-# End time: 16:55:38 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_serTMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:55:38 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_serTMR.v 
-# -- Compiling module LDTUv1b_serTMR
-# -- Compiling module majorityVoter
-# -- Compiling module fanout
-# 
-# Top level modules:
-# 	LDTUv1b_serTMR
-# End time: 16:55:38 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vcom -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_DataTest.vhd
-# QuestaSim-64 vcom 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:55:39 on Mar 02,2021
-# vcom -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_DataTest.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package NUMERIC_STD
-# -- Compiling entity DataTest
-# -- Compiling architecture Behavioral of DataTest
-# End time: 16:55:39 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vcom -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_SampleTest.vhd
-# QuestaSim-64 vcom 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:55:40 on Mar 02,2021
-# vcom -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_SampleTest.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package std_logic_textio
-# -- Compiling entity LDTUv1b_SampleTeste
-# -- Compiling architecture rtl of LDTUv1b_SampleTeste
-# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_SampleTest.vhd(62): (vcom-1272) Length of expected is 3; length of actual is 2.
-# ** Note: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_SampleTest.vhd(64): VHDL Compiler exiting
-# End time: 16:55:42 on Mar 02,2021, Elapsed time: 0:00:02
-# Errors: 1, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/SyncUnit_v1bTMR.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:56:00 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/SyncUnit_v1bTMR.v 
-# -- Compiling module SyncUnit_v1bTMR
-# -- Compiling module HammingDecoder4TMR
-# -- Compiling module SU_mVoter
-# -- Compiling module SU_fout
-# 
-# Top level modules:
-# 	SyncUnit_v1bTMR
-# End time: 16:56:00 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_new.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:56:01 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_new.v 
-# -- Compiling module tb_LDTU_presynth
-# 
-# Top level modules:
-# 	tb_LDTU_presynth
-# End time: 16:56:01 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_new_SEU.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:56:01 on Mar 02,2021
-# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_new_SEU.v 
-# -- Compiling module tb_LDTU_presynth
-# 
-# Top level modules:
-# 	tb_LDTU_presynth
-# End time: 16:56:01 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vcom -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_SeuTest.vhd
-# QuestaSim-64 vcom 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:56:01 on Mar 02,2021
-# vcom -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_SeuTest.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Loading package std_logic_textio
-# -- Compiling entity LDTUv1b_SeuTeste
-# -- Compiling architecture rtl of LDTUv1b_SeuTeste
-# End time: 16:56:02 on Mar 02,2021, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-vsim -voptargs=+acc work.tb_LDTU_presynth
-# vsim -voptargs="+acc" work.tb_LDTU_presynth 
-# Start time: 16:56:34 on Mar 02,2021
+vsim -debugDB tb_LDT_presynth
+# vsim -debugDB tb_LDT_presynth 
+# Start time: 11:11:07 on Mar 05,2021
+# ** Warning: (vsim-4308) Enabling visibility using +acc is recommended with debug flow.
 # ** Note: (vsim-3812) Design is being optimized...
-# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v(81): Module 'LiTE_DTU_160MHz_v2_0' is not defined.
+# ** Note: (vsim-8611) Generating debug db.
+# ** Warning: (vopt-4308) Enabling visibility using +acc is recommended with debug flow.
+# ** Error: (vopt-13130) Failed to find design unit tb_LDT_presynth.
+#         Searched libraries:
+#             work
 # Optimization failed
 # Error loading design
-# End time: 16:56:37 on Mar 02,2021, Elapsed time: 0:00:03
-# Errors: 1, Warnings: 0
-vlog -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:57:22 on Mar 02,2021
-# vlog -reportprogress 300 -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v 
-# -- Compiling module top_ofthetop
-# 
-# Top level modules:
-# 	top_ofthetop
-# End time: 16:57:23 on Mar 02,2021, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-vsim -voptargs=+acc work.tb_LDTU_presynth
-# vsim -voptargs="+acc" work.tb_LDTU_presynth 
-# Start time: 16:57:32 on Mar 02,2021
+# End time: 11:11:08 on Mar 05,2021, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 2
+vsim -debugDB tb_LDTU_presynth
+# vsim -debugDB tb_LDTU_presynth 
+# Start time: 11:11:20 on Mar 05,2021
+# ** Warning: (vsim-4308) Enabling visibility using +acc is recommended with debug flow.
 # ** Note: (vsim-3812) Design is being optimized...
-# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v(81): (vopt-2912) Port 'CLK_A' not found in module 'LiTE_DTU_160MHz_v2_0TMR' (3rd connection).
-# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v(81): (vopt-2912) Port 'CLK_B' not found in module 'LiTE_DTU_160MHz_v2_0TMR' (4th connection).
-# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v(81): (vopt-2912) Port 'CLK_C' not found in module 'LiTE_DTU_160MHz_v2_0TMR' (5th connection).
-# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v(81): (vopt-2912) Port 'RST_A' not found in module 'LiTE_DTU_160MHz_v2_0TMR' (6th connection).
-# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v(81): (vopt-2912) Port 'RST_B' not found in module 'LiTE_DTU_160MHz_v2_0TMR' (7th connection).
-# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v(81): (vopt-2912) Port 'RST_C' not found in module 'LiTE_DTU_160MHz_v2_0TMR' (8th connection).
-# Optimization failed
-# Error loading design
-# End time: 16:57:32 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 6, Warnings: 0
-vlog -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v
-# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
-# Start time: 16:58:52 on Mar 02,2021
-# vlog -reportprogress 300 -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v 
-# -- Compiling module top_ofthetop
-# 
-# Top level modules:
-# 	top_ofthetop
-# End time: 16:58:52 on Mar 02,2021, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-vsim -voptargs=+acc work.tb_LDTU_presynth
-# vsim -voptargs="+acc" work.tb_LDTU_presynth 
-# Start time: 16:58:56 on Mar 02,2021
-# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vsim-8611) Generating debug db.
+# ** Warning: (vopt-4308) Enabling visibility using +acc is recommended with debug flow.
 # ** Note: (vopt-143) Recognized 3 FSMs in module "LDTU_FSMTMR(fast)".
 # ** Note: (vopt-143) Recognized 3 FSMs in module "AdcTestUnitTMR(fast)".
+# ** Note: (vopt-4301) Memory core inferred for signal 'memory' width=38, depth=16, type=RAM at location /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_1_LDTU_Hamm_oFIFOTMR.v:104
 # Loading work.tb_LDTU_presynth(fast)
 # Loading work.top_ofthetop(fast)
 # Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
@@ -396,290 +87,2196 @@ vsim -voptargs=+acc work.tb_LDTU_presynth
 # Loading work.LDTUv1b_serTMR(fast)
 # Loading work.AdcTestUnitTMR(fast)
 # Loading work.majorityVoter(fast__7)
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading ieee.std_logic_textio(body)
-# Loading work.ldtuv1b_seuteste(rtl)#1
-# Loading ieee.numeric_std(body)
-# Loading work.datatest(behavioral)#1
-pwd
-# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/DATA12_g10 \
-sim:/tb_LDTU_presynth/toptoplevel/DATA12_g01
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/B_subtraction/DATA12_g01
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/B_subtraction/DATA12_g10
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/B_subtraction/DATA_gain_10 \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/B_subtraction/DATA_gain_01
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection/DATA_gain_10
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection/DATA_gain_01
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection/DATA_to_enc
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/Load_FB \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/Load
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/baseline_flag
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/DATA_32
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/DATA_32_FB
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/DATA_from_CUC \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/DATA_from_CUB \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/DATA_from_CUA
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/Load_data_FB
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/Load_data
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/handshakeC \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/handshakeB \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/handshakeA \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/handshake
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/read_signalC \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/read_signalB \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/read_signalA
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/write_signalC \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/write_signalB \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/write_signalA
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/start_writeC \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/start_writeB \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/start_writeA \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/start_write
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/read_signalC \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/read_signalB \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/read_signalA \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/read_signal
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/decode_signalC \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/decode_signalB \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/decode_signalA \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/decode_signal
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/data_out_32
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/DATA32_DTUC \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/DATA32_DTUB \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/DATA32_DTUA
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/DATA32_DTUC \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/DATA32_DTUB \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_mux/DATA32_DTUA
-add wave -position insertpoint  \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_DTUC \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_DTUB \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_DTUA \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_DTU_2C \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_DTU_2B \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_DTU_2A \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_DTU_2 \
-sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_DTU
+# ** Note: (vsim-8900) Creating design debug database vsim.dbg.
+do Mywave_AUTOTMR.do
 run
 # File 1 aperto!
 # File 2 aperto!
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 0 ps  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 0 ps  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 0 ps  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 70980 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 70980 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 70980 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 270660 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 270660 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 270660 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 295620 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 295620 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 295620 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 320580 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 320580 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 320580 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 345540 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 345540 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 345540 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 370500 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 370500 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 370500 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 395460 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 395460 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 395460 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 420420 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 420420 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 420420 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 445380 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 445380 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 445380 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 470340 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 470340 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 470340 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 495300 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 495300 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 495300 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 520260 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 520260 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 520260 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 545220 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 545220 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 545220 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 570180 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 570180 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 570180 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 595140 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 595140 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 595140 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 620100 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 620100 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 620100 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 645060 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 645060 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 645060 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 670020 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 670020 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 670020 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 694980 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 694980 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 694980 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 719940 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 719940 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 719940 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 744900 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 744900 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 744900 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 769860 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 769860 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 769860 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 794820 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 794820 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 794820 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 819780 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 819780 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 819780 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 844740 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 844740 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 844740 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 869700 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 869700 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 869700 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 894660 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 894660 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 894660 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 919620 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 919620 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 919620 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 944580 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 944580 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 944580 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 969540 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 969540 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 969540 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 994500 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 994500 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
-#    Time: 994500 ns  Iteration: 1  Instance: /tb_LDTU_presynth/LDTUv1b_SeuTeste
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR/Mywave_AUTOTMR.do
+env ..
+# sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.majorityVoter(fast__4)
+# Loading work.fanout(fast__4)
+# Loading work.fanout(fast__5)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__7)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__5)
+# Loading work.majorityVoter(fast__6)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__8)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__7)
+# ** Note: (vsim-8716) Reusing existing debug database vsim.dbg.
+run
+# File 1 aperto!
+# File 2 aperto!
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_new.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 11:27:37 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_new.v 
+# -- Compiling module tb_LDTU_presynth
+# 
+# Top level modules:
+# 	tb_LDTU_presynth
+# End time: 11:27:37 on Mar 05,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-4308) Enabling visibility using +acc is recommended with debug flow.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vsim-8611) Generating debug db.
+# ** Warning: (vopt-4308) Enabling visibility using +acc is recommended with debug flow.
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.majorityVoter(fast__4)
+# Loading work.fanout(fast__4)
+# Loading work.fanout(fast__5)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__7)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__5)
+# Loading work.majorityVoter(fast__6)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__8)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__7)
+# ** Note: (vsim-8900) Creating design debug database vsim.dbg.
+run
+# File 1 aperto!
+# File 2 aperto!
+pwd
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR
+quit -sim
+# End time: 14:21:58 on Mar 05,2021, Elapsed time: 3:10:38
+# Errors: 0, Warnings: 2
+cd /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_NoTMR
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 14:22:16 on Mar 05,2021
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+do ../Mywave_NoTMR.do
+run
+# File 1 aperto!
+# File 2 aperto!
+pwd
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_NoTMR
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/Mywave_NoTMR.do
+pwd
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_NoTMR
+add wave -position insertpoint  \
+sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/DATA_to_enc
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+add wave -position insertpoint  \
+sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/fsm/Current_state
+add wave -position insertpoint  \
+sim:/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/fsm/baseline_flag
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+run
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:42:26 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v 
+# -- Compiling module LDTU_BS
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v(94): (vlog-2730) Undefined variable: 'dg01_synch'.
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v(95): (vlog-2401) Extra semicolon found. This is permitted in SystemVerilog, but not permitted in Verilog.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v(98): (vlog-2730) Undefined variable: 'dg10_synch'.
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v(99): (vlog-2401) Extra semicolon found. This is permitted in SystemVerilog, but not permitted in Verilog.
+# End time: 17:42:26 on Mar 05,2021, Elapsed time: 0:00:00
+# Errors: 4, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:43:00 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v 
+# -- Compiling module LDTU_BS
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v(98): (vlog-2401) Extra semicolon found. This is permitted in SystemVerilog, but not permitted in Verilog.
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v(102): (vlog-2401) Extra semicolon found. This is permitted in SystemVerilog, but not permitted in Verilog.
+# End time: 17:43:01 on Mar 05,2021, Elapsed time: 0:00:01
+# Errors: 2, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:43:25 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v 
+# -- Compiling module LDTU_BS
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v(97): (vlog-2110) Illegal reference to net "dg01_synch".
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v(101): (vlog-2110) Illegal reference to net "dg10_synch".
+# End time: 17:43:25 on Mar 05,2021, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:43:59 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v 
+# -- Compiling module LDTU_BS
+# 
+# Top level modules:
+# 	LDTU_BS
+# End time: 17:43:59 on Mar 05,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+
+
+
+
+
+
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/Mywave_NoTMR.do
+run
+run
+pwd
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_NoTMR
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_FSM.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 18:06:35 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_FSM.v 
+# -- Compiling module LDTU_FSM
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_FSM.v(97): (vlog-2110) Illegal reference to net "Current_state".
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_FSM.v(99): (vlog-2110) Illegal reference to net "Current_state".
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_FSM.v(332): (vlog-2110) Illegal reference to net "Current_state_FB".
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_FSM.v(334): (vlog-2110) Illegal reference to net "Current_state_FB".
+# End time: 18:06:35 on Mar 05,2021, Elapsed time: 0:00:00
+# Errors: 4, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_FSM.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 18:07:41 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_FSM.v 
+# -- Compiling module LDTU_FSM
+# 
+# Top level modules:
+# 	LDTU_FSM
+# End time: 18:07:41 on Mar 05,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vopt-143) Recognized 2 FSMs in module "LDTU_FSM(fast)".
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+pwd
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_NoTMR
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 20:57:02 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module Delay_enc
+# -- Compiling module LDTU_Encoder
+# ** Error: (vlog-13069) /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(406): near "end": syntax error, unexpected end.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(409): (vlog-2730) Undefined variable: 'rDATA_32_FB_synch'.
+# End time: 20:57:03 on Mar 05,2021, Elapsed time: 0:00:01
+# Errors: 2, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 20:57:21 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module Delay_enc
+# -- Compiling module LDTU_Encoder
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(397): (vlog-2388) 'DATA_32_FB_synch' already declared in this scope (LDTU_Encoder) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(395).
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(404): (vlog-2730) Undefined variable: 'DATA_32_synch'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(408): (vlog-2730) Undefined variable: 'rDATA_32_synch'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(409): (vlog-2730) Undefined variable: 'rDATA_32_FB_synch'.
+# End time: 20:57:22 on Mar 05,2021, Elapsed time: 0:00:01
+# Errors: 4, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 20:57:41 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module Delay_enc
+# -- Compiling module LDTU_Encoder
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(401): (vlog-2110) Illegal reference to net "Load_FB_synch".
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(402): (vlog-2110) Illegal reference to net "DATA_32_FB_synch".
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(403): (vlog-2110) Illegal reference to net "Load_synch".
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v(404): (vlog-2110) Illegal reference to net "DATA_32_synch".
+# End time: 20:57:41 on Mar 05,2021, Elapsed time: 0:00:00
+# Errors: 4, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 20:58:51 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module Delay_enc
+# -- Compiling module LDTU_Encoder
+# 
+# Top level modules:
+# 	LDTU_Encoder
+# End time: 20:58:51 on Mar 05,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+vlog -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU_New.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 21:06:23 on Mar 05,2021
+# vlog -reportprogress 300 -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU_New.v 
+# -- Compiling module LDTU_CU
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# 
+# Top level modules:
+# 	LDTU_CU
+# End time: 21:06:23 on Mar 05,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 21:19:40 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v 
+# -- Compiling module LDTU_oFIFO
+# 
+# Top level modules:
+# 	LDTU_oFIFO
+# End time: 21:19:40 on Mar 05,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 21:19:44 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v 
+# -- Compiling module LDTU_oFIFO_top
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v(96): (vlog-2730) Undefined variable: 'DATA32_DTU_synch'.
+# End time: 21:19:44 on Mar 05,2021, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 21:20:25 on Mar 05,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v 
+# -- Compiling module LDTU_oFIFO_top
+# 
+# Top level modules:
+# 	LDTU_oFIFO_top
+# End time: 21:20:25 on Mar 05,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+run
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/Mywave_NoTMR.do
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 14:56:01 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v 
+# -- Compiling module LDTU_DATA32_ATU_DTU
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(87): (vlog-2730) Undefined variable: 'r_DATA32_0_synch'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(88): (vlog-2730) Undefined variable: 'r_DATA32_1_synch'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(89): (vlog-2730) Undefined variable: 'r_DATA32_2_synch'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(90): (vlog-2730) Undefined variable: 'r_DATA32_3_synch'.
+# End time: 14:56:01 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 4, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 14:56:57 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v 
+# -- Compiling module LDTU_DATA32_ATU_DTU
+# 
+# Top level modules:
+# 	LDTU_DATA32_ATU_DTU
+# End time: 14:56:57 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 14:57:01 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v 
+# -- Compiling module LiTE_DTU_160MHz_v2_0
+# 
+# Top level modules:
+# 	LiTE_DTU_160MHz_v2_0
+# End time: 14:57:01 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+pwd
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_NoTMR
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:07:11 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v 
+# -- Compiling module LDTU_BS
+# 
+# Top level modules:
+# 	LDTU_BS
+# End time: 15:07:11 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_OLD.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:07:11 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_OLD.v 
+# -- Compiling module LDTU_BS
+# 
+# Top level modules:
+# 	LDTU_BS
+# End time: 15:07:11 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/2_LDTU_iFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:07:12 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/2_LDTU_iFIFO.v 
+# -- Compiling module LDTU_iFIFO
+# 
+# Top level modules:
+# 	LDTU_iFIFO
+# End time: 15:07:12 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:07:12 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module Delay_enc
+# -- Compiling module LDTU_Encoder
+# 
+# Top level modules:
+# 	LDTU_Encoder
+# End time: 15:07:12 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_FSM.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:07:13 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_FSM.v 
+# -- Compiling module LDTU_FSM
+# 
+# Top level modules:
+# 	LDTU_FSM
+# End time: 15:07:13 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:07:13 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU.v 
+# -- Compiling module LDTU_CU
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# 
+# Top level modules:
+# 	LDTU_CU
+# End time: 15:07:13 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU_New.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:07:15 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU_New.v 
+# -- Compiling module LDTU_CU
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# 
+# Top level modules:
+# 	LDTU_CU
+# End time: 15:07:15 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_0_LDTU_Hamm_TRX.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:07:16 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_0_LDTU_Hamm_TRX.v 
+# -- Compiling module Hamm_TRX
+# 
+# Top level modules:
+# 	Hamm_TRX
+# End time: 15:07:16 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:07:16 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v 
+# -- Compiling module LDTU_oFIFO
+# 
+# Top level modules:
+# 	LDTU_oFIFO
+# End time: 15:07:16 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_2_LDTU_Hamm_RX.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:07:16 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_2_LDTU_Hamm_RX.v 
+# -- Compiling module Hamm_RX
+# 
+# Top level modules:
+# 	Hamm_RX
+# End time: 15:07:16 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:07:17 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_3_LDTU_Hamm_top.v 
+# -- Compiling module LDTU_oFIFO_top
+# 
+# Top level modules:
+# 	LDTU_oFIFO_top
+# End time: 15:07:17 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:07:17 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v 
+# -- Compiling module LDTU_DATA32_ATU_DTU
+# 
+# Top level modules:
+# 	LDTU_DATA32_ATU_DTU
+# End time: 15:07:17 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:07:17 on Mar 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/LiTE_DTU_160MHz_v2_0.v 
+# -- Compiling module LiTE_DTU_160MHz_v2_0
+# 
+# Top level modules:
+# 	LiTE_DTU_160MHz_v2_0
+# End time: 15:07:17 on Mar 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+pwd
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_NoTMR
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:50:21 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction.v 
+# -- Compiling module LDTU_BS
+# 
+# Top level modules:
+# 	LDTU_BS
+# End time: 15:50:21 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:50:23 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v 
+# -- Compiling module LDTU_BS
+# 
+# Top level modules:
+# 	LDTU_BS
+# End time: 15:50:23 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v(93): Register is illegal in left-hand side of continuous assignment
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v(94): Register is illegal in left-hand side of continuous assignment
+# Optimization failed
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 15:51:13 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v 
+# -- Compiling module LDTU_BS
+# 
+# Top level modules:
+# 	LDTU_BS
+# End time: 15:51:13 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 14:22:16 on Mar 05,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 3 FSMs in module "AdcTestUnitTMR(fast)".
+# ** Note: (vopt-143) Recognized 2 FSMs in module "LDTU_FSM(fast)".
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:00:43 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v 
+# -- Compiling module LDTU_BS
+# 
+# Top level modules:
+# 	LDTU_BS
+# End time: 16:00:43 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v(93): Register is illegal in left-hand side of continuous assignment
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v(94): Register is illegal in left-hand side of continuous assignment
+# Optimization failed
+restart
+# No Design Loaded!
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:01:40 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v 
+# -- Compiling module LDTU_BS
+# 
+# Top level modules:
+# 	LDTU_BS
+# End time: 16:01:40 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 14:22:16 on Mar 05,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 3 FSMs in module "AdcTestUnitTMR(fast)".
+# ** Note: (vopt-143) Recognized 2 FSMs in module "LDTU_FSM(fast)".
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run 10 ms
+# File 1 aperto!
+# File 2 aperto!
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder_NoReg.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:17:07 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder_NoReg.v 
+# -- Compiling module Delay_enc
+# -- Compiling module LDTU_Encoder
+# 
+# Top level modules:
+# 	LDTU_Encoder
+# End time: 16:17:08 on Mar 07,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+run
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:18:19 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module Delay_enc
+# -- Compiling module LDTU_Encoder
+# 
+# Top level modules:
+# 	LDTU_Encoder
+# End time: 16:18:19 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder_NoReg.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:19:11 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder_NoReg.v 
+# -- Compiling module Delay_enc
+# -- Compiling module LDTU_Encoder
+# 
+# Top level modules:
+# 	LDTU_Encoder
+# End time: 16:19:11 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run 10 ms
+# File 1 aperto!
+# File 2 aperto!
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:23:22 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder.v 
+# -- Compiling module Delay_enc
+# -- Compiling module LDTU_Encoder
+# 
+# Top level modules:
+# 	LDTU_Encoder
+# End time: 16:23:22 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder_NoReg.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:26:04 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/3_LDTU_Encoder_NoReg.v 
+# -- Compiling module Delay_enc
+# -- Compiling module LDTU_Encoder
+# 
+# Top level modules:
+# 	LDTU_Encoder
+# End time: 16:26:04 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run 10 ms
+# File 1 aperto!
+# File 2 aperto!
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:29:23 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/1_LDTU_Baseline_subtraction_NoReg.v 
+# -- Compiling module LDTU_BS
+# 
+# Top level modules:
+# 	LDTU_BS
+# End time: 16:29:23 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run 10 ms
+# File 1 aperto!
+# File 2 aperto!
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU_NoReg.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:37:30 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/4_LDTU_CU_NoReg.v 
+# -- Compiling module LDTU_CU
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# 
+# Top level modules:
+# 	LDTU_CU
+# End time: 16:37:30 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:42:42 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v 
+# -- Compiling module LDTU_DATA32_ATU_DTU
+# 
+# Top level modules:
+# 	LDTU_DATA32_ATU_DTU
+# End time: 16:42:43 on Mar 07,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(81): Register is illegal in left-hand side of continuous assignment
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(82): Register is illegal in left-hand side of continuous assignment
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(83): Register is illegal in left-hand side of continuous assignment
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v(84): Register is illegal in left-hand side of continuous assignment
+# Optimization failed
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:43:49 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux.v 
+# -- Compiling module LDTU_DATA32_ATU_DTU
+# 
+# Top level modules:
+# 	LDTU_DATA32_ATU_DTU
+# End time: 16:43:49 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# No Design Loaded!
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 14:22:16 on Mar 05,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 3 FSMs in module "AdcTestUnitTMR(fast)".
+# ** Note: (vopt-143) Recognized 2 FSMs in module "LDTU_FSM(fast)".
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run 10 ms
+# File 1 aperto!
+# File 2 aperto!
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux_NoReg.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:44:40 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux_NoReg.v 
+# -- Compiling module LDTU_DATA32_ATU_DTU
+# 
+# Top level modules:
+# 	LDTU_DATA32_ATU_DTU
+# End time: 16:44:40 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+run
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux_NoReg.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:45:46 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/6_LDTU_DATA32mux_NoReg.v 
+# -- Compiling module LDTU_DATA32_ATU_DTU
+# 
+# Top level modules:
+# 	LDTU_DATA32_ATU_DTU
+# End time: 16:45:46 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run 10 ms
+# File 1 aperto!
+# File 2 aperto!
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/Mywave_NoTMR.do
+quit -sim
+# End time: 16:50:57 on Mar 07,2021, Elapsed time: 50:28:41
+# Errors: 22, Warnings: 0
+cd /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/1_LDTU_Baseline_subtraction_NoRegTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:51:20 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/1_LDTU_Baseline_subtraction_NoRegTMR.v 
+# -- Compiling module LDTU_BSTMR
+# 
+# Top level modules:
+# 	LDTU_BSTMR
+# End time: 16:51:20 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/2_LDTU_iFIFOTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:51:26 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/2_LDTU_iFIFOTMR.v 
+# -- Compiling module LDTU_iFIFOTMR
+# 
+# Top level modules:
+# 	LDTU_iFIFOTMR
+# End time: 16:51:26 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_Encoder_NoRegTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:51:29 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_Encoder_NoRegTMR.v 
+# -- Compiling module Delay_enc
+# -- Compiling module LDTU_EncoderTMR
+# 
+# Top level modules:
+# 	LDTU_EncoderTMR
+# End time: 16:51:29 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:51:36 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v 
+# -- Compiling module LDTU_FSMTMR
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v(107): (vlog-2730) Undefined variable: 'tmrError'.
+# End time: 16:51:36 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:52:28 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v 
+# -- Compiling module LDTU_FSMTMR
+# 
+# Top level modules:
+# 	LDTU_FSMTMR
+# End time: 16:52:28 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/4_LDTU_CU_NoRegTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:52:32 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/4_LDTU_CU_NoRegTMR.v 
+# -- Compiling module LDTU_CUTMR
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# 
+# Top level modules:
+# 	LDTU_CUTMR
+# End time: 16:52:32 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_0_LDTU_Hamm_TRXTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:52:36 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_0_LDTU_Hamm_TRXTMR.v 
+# -- Compiling module Hamm_TRX
+# 
+# Top level modules:
+# 	Hamm_TRX
+# End time: 16:52:36 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_1_LDTU_Hamm_oFIFOTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:52:38 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_1_LDTU_Hamm_oFIFOTMR.v 
+# -- Compiling module LDTU_oFIFOTMR
+# 
+# Top level modules:
+# 	LDTU_oFIFOTMR
+# End time: 16:52:38 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_2_LDTU_Hamm_RXTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:52:40 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_2_LDTU_Hamm_RXTMR.v 
+# -- Compiling module Hamm_RX
+# 
+# Top level modules:
+# 	Hamm_RX
+# End time: 16:52:40 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:52:42 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v 
+# -- Compiling module LDTU_oFIFO_topTMR
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(71): (vlog-2388) 'empty_signalB' already declared in this scope (LDTU_oFIFO_topTMR) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(59).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(72): (vlog-2388) 'empty_signalC' already declared in this scope (LDTU_oFIFO_topTMR) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(58).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(73): (vlog-2388) 'empty_signalA' already declared in this scope (LDTU_oFIFO_topTMR) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(60).
+# End time: 16:52:42 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:52:58 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v 
+# -- Compiling module LDTU_oFIFO_topTMR
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(71): (vlog-2388) 'empty_signalB' already declared in this scope (LDTU_oFIFO_topTMR) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(59).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(72): (vlog-2388) 'empty_signalC' already declared in this scope (LDTU_oFIFO_topTMR) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(58).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(73): (vlog-2388) 'empty_signalA' already declared in this scope (LDTU_oFIFO_topTMR) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(60).
+# End time: 16:52:58 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+cd /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_NoTMR
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:01:57 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v 
+# -- Compiling module LDTU_oFIFO
+# 
+# Top level modules:
+# 	LDTU_oFIFO
+# End time: 17:01:58 on Mar 07,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 17:02:06 on Mar 07,2021
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(71): Register is illegal in left-hand side of continuous assignment
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v(72): Register is illegal in left-hand side of continuous assignment
+# Optimization failed
+# Error loading design
+# End time: 17:02:07 on Mar 07,2021, Elapsed time: 0:00:01
+# Errors: 2, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:02:47 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR/5_1_LDTU_Hamm_oFIFO.v 
+# -- Compiling module LDTU_oFIFO
+# 
+# Top level modules:
+# 	LDTU_oFIFO
+# End time: 17:02:47 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 17:02:55 on Mar 07,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 3 FSMs in module "AdcTestUnitTMR(fast)".
+# ** Note: (vopt-143) Recognized 2 FSMs in module "LDTU_FSM(fast)".
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+do ../Mywave_NoTMR.do
+run 1 ms
+# File 1 aperto!
+# File 2 aperto!
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BS(fast)
+# Loading work.LDTU_iFIFO(fast)
+# Loading work.LDTU_Encoder(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSM(fast)
+# Loading work.LDTU_CU(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFO(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTU(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__2)
+run
+# File 1 aperto!
+# File 2 aperto!
+quit -sim
+# End time: 17:06:49 on Mar 07,2021, Elapsed time: 0:03:54
+# Errors: 0, Warnings: 0
+cd /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/1_LDTU_Baseline_subtraction_NoRegTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:07:11 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/1_LDTU_Baseline_subtraction_NoRegTMR.v 
+# -- Compiling module LDTU_BSTMR
+# 
+# Top level modules:
+# 	LDTU_BSTMR
+# End time: 17:07:11 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/2_LDTU_iFIFOTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:07:16 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/2_LDTU_iFIFOTMR.v 
+# -- Compiling module LDTU_iFIFOTMR
+# 
+# Top level modules:
+# 	LDTU_iFIFOTMR
+# End time: 17:07:16 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_Encoder_NoRegTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:07:19 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_Encoder_NoRegTMR.v 
+# -- Compiling module Delay_enc
+# -- Compiling module LDTU_EncoderTMR
+# 
+# Top level modules:
+# 	LDTU_EncoderTMR
+# End time: 17:07:19 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:07:23 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v 
+# -- Compiling module LDTU_FSMTMR
+# 
+# Top level modules:
+# 	LDTU_FSMTMR
+# End time: 17:07:23 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/4_LDTU_CU_NoRegTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:07:25 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/4_LDTU_CU_NoRegTMR.v 
+# -- Compiling module LDTU_CUTMR
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# 
+# Top level modules:
+# 	LDTU_CUTMR
+# End time: 17:07:25 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/4_LDTU_CUTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:07:35 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/4_LDTU_CUTMR.v 
+# -- Compiling module LDTU_CUTMR
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# 
+# Top level modules:
+# 	LDTU_CUTMR
+# End time: 17:07:35 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_0_LDTU_Hamm_TRXTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:07:38 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_0_LDTU_Hamm_TRXTMR.v 
+# -- Compiling module Hamm_TRX
+# 
+# Top level modules:
+# 	Hamm_TRX
+# End time: 17:07:38 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_1_LDTU_Hamm_oFIFOTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:07:39 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_1_LDTU_Hamm_oFIFOTMR.v 
+# -- Compiling module LDTU_oFIFOTMR
+# 
+# Top level modules:
+# 	LDTU_oFIFOTMR
+# End time: 17:07:40 on Mar 07,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_2_LDTU_Hamm_RXTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:07:44 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_2_LDTU_Hamm_RXTMR.v 
+# -- Compiling module Hamm_RX
+# 
+# Top level modules:
+# 	Hamm_RX
+# End time: 17:07:44 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:07:46 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v 
+# -- Compiling module LDTU_oFIFO_topTMR
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(69): (vlog-2388) 'full_signal_synch' already declared in this scope (LDTU_oFIFO_topTMR) at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v(52).
+# End time: 17:07:46 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:10:53 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v 
+# -- Compiling module LDTU_oFIFO_topTMR
+# 
+# Top level modules:
+# 	LDTU_oFIFO_topTMR
+# End time: 17:10:54 on Mar 07,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/6_LDTU_DATA32mux_NoRegTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:10:56 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/6_LDTU_DATA32mux_NoRegTMR.v 
+# -- Compiling module LDTU_DATA32_ATU_DTUTMR
+# 
+# Top level modules:
+# 	LDTU_DATA32_ATU_DTUTMR
+# End time: 17:10:56 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:10:58 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v 
+# -- Compiling module LiTE_DTU_160MHz_v2_0TMR
+# -- Compiling module majorityVoter
+# -- Compiling module fanout
+# 
+# Top level modules:
+# 	LiTE_DTU_160MHz_v2_0TMR
+# 	majorityVoter
+# End time: 17:10:58 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/8_SER_shift_TMRG.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:09 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/8_SER_shift_TMRG.v 
+# -- Compiling module Serializer_shiftTMR
+# -- Compiling module majVoter
+# -- Compiling module fan_out
+# 
+# Top level modules:
+# 	Serializer_shiftTMR
+# 	fan_out
+# End time: 17:11:09 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/8_Serializers_LiTE_DTU_v1_2_TMRG.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:11 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/8_Serializers_LiTE_DTU_v1_2_TMRG.v 
+# -- Compiling module Serializers_LiTE_DTU_v1_2_TMR
+# 
+# Top level modules:
+# 	Serializers_LiTE_DTU_v1_2_TMR
+# End time: 17:11:11 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/9_AdcTestUnitTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:14 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/9_AdcTestUnitTMR.v 
+# -- Compiling module AdcTestUnitTMR
+# 
+# Top level modules:
+# 	AdcTestUnitTMR
+# End time: 17:11:14 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/10_TOP_Datapath.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:17 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/10_TOP_Datapath.v 
+# -- Compiling module top_ofthetop
+# 
+# Top level modules:
+# 	top_ofthetop
+# End time: 17:11:17 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/LDTUv1b_DataTest.vhd
+# QuestaSim-64 vcom 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:20 on Mar 07,2021
+# vcom -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/LDTUv1b_DataTest.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity DataTest
+# -- Compiling architecture Behavioral of DataTest
+# End time: 17:11:21 on Mar 07,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/LDTUv1b_SampleTest.vhd
+# QuestaSim-64 vcom 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:24 on Mar 07,2021
+# vcom -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/LDTUv1b_SampleTest.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package std_logic_textio
+# -- Compiling entity LDTUv1b_SampleTeste
+# -- Compiling architecture rtl of LDTUv1b_SampleTeste
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/LDTUv1b_SampleTest.vhd(62): (vcom-1272) Length of expected is 3; length of actual is 2.
+# ** Note: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/LDTUv1b_SampleTest.vhd(64): VHDL Compiler exiting
+# End time: 17:11:24 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/LDTUv1b_serTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:32 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/LDTUv1b_serTMR.v 
+# -- Compiling module LDTUv1b_serTMR
+# -- Compiling module majorityVoter
+# -- Compiling module fanout
+# 
+# Top level modules:
+# 	LDTUv1b_serTMR
+# End time: 17:11:32 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/SyncUnit_v1bTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:35 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/SyncUnit_v1bTMR.v 
+# -- Compiling module SyncUnit_v1bTMR
+# -- Compiling module HammingDecoder4TMR
+# -- Compiling module SU_mVoter
+# -- Compiling module SU_fout
+# 
+# Top level modules:
+# 	SyncUnit_v1bTMR
+# End time: 17:11:35 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/TB_LDTU_new.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:37 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/TB_LDTU_new.v 
+# -- Compiling module tb_LDTU_presynth
+# 
+# Top level modules:
+# 	tb_LDTU_presynth
+# End time: 17:11:37 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 17:11:52 on Mar 07,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/10_TOP_Datapath.v(81): Module 'LiTE_DTU_160MHz_v2_0' is not defined.
+# Optimization failed
+# Error loading design
+# End time: 17:11:52 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_new.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:12:05 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_new.v 
+# -- Compiling module tb_LDTU_presynth
+# 
+# Top level modules:
+# 	tb_LDTU_presynth
+# End time: 17:12:05 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 17:12:14 on Mar 07,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/10_TOP_Datapath.v(81): Module 'LiTE_DTU_160MHz_v2_0' is not defined.
+# Optimization failed
+# Error loading design
+# End time: 17:12:15 on Mar 07,2021, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:12:40 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v 
+# -- Compiling module top_ofthetop
+# 
+# Top level modules:
+# 	top_ofthetop
+# End time: 17:12:41 on Mar 07,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_new.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:12:44 on Mar 07,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_new.v 
+# -- Compiling module tb_LDTU_presynth
+# 
+# Top level modules:
+# 	tb_LDTU_presynth
+# End time: 17:12:44 on Mar 07,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 17:12:48 on Mar 07,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 6 FSMs in module "LDTU_FSMTMR(fast)".
+# ** Note: (vopt-143) Recognized 3 FSMs in module "AdcTestUnitTMR(fast)".
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+
+
+
+
+
+
+
+pwd
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR
+ls
+# Mywave_AUTOTMR.do
+# transcript
+# vsim.dbg
+# vsim.wlf
+# work
+do Mywave_AUTOTMR.do
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/DATA_from_CUC'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 19
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/DATA_from_CUB'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 20
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/DATA_from_CUA'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 21
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/handshakeC'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 24
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/handshakeB'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 25
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/handshakeA'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 26
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/read_signalC'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 28
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/read_signalB'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 29
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/read_signalA'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 30
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/write_signalC'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 31
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/write_signalB'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 32
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Control_Unit/write_signalA'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 33
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/decode_signalC'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 42
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/decode_signalB'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 43
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/decode_signalA'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 44
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/DATA32_DTUC'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 47
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/DATA32_DTUB'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 48
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/StorageFIFO/DATA32_DTUA'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 49
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_DTUC'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 53
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_DTUB'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 54
+# ** Error: (vish-4014) No objects found matching '/tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_DTUA'.
+# Executing ONERROR command at macro ./Mywave_AUTOTMR.do line 55
+run
+# File 1 aperto!
+# File 2 aperto!
+run
+run
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+run
+# File 1 aperto!
+# File 2 aperto!
+pwd
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR
+exit
+# End time: 17:23:01 on Mar 07,2021, Elapsed time: 0:10:13
+# Errors: 42, Warnings: 0

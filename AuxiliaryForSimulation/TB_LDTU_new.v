@@ -42,8 +42,8 @@ module tb_LDTU_presynth;
    reg 	     CALIBRATION_BUSY_10;
    reg [Nbits_12-1:0] DATA12_g01;
    reg [Nbits_12-1:0] DATA12_g10;
-   reg [Nbits_8-1:0]  BSL_VAL_g01 = 8'b0;
-   reg [Nbits_8-1:0]  BSL_VAL_g10 = 8'b0;
+   reg [Nbits_8-1:0]  BSL_VAL_g01 = 8'b00000000;
+   reg [Nbits_8-1:0]  BSL_VAL_g10 = 8'b00000011;
    reg [Nbits_12-1:0] SATURATION_value = 12'b111111111111;
    reg [1:0] shift_gain_10 = 2'b00;
    //reg [Nbits_8-1:0] BSL_VAL_g01 = 8'b1000;
@@ -236,26 +236,26 @@ module tb_LDTU_presynth;
 	 write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_ATU_ing10.dat","w");
       end else begin
 	 if (GAIN_SEL_MODE == 2'b00) begin
-	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutput_GSM00.dat","w");
-	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_output.dat","w");
+	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutputSIMONA_GSM00.dat","w");
+	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_outputSIMONA.dat","w");
 	    write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_ing01.dat","w");
 	    write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_ing10.dat","w");
 	 end
 	 if (GAIN_SEL_MODE == 2'b01) begin
-	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutput_GSM01.dat","w");
-	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_01_output.dat","w");
+	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutputSIMONA_GSM01.dat","w");
+	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_01_outputSIMONA.dat","w");
 	    write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_01_ing01.dat","w");
 	    write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_01_ing10.dat","w");
 	 end
 	 if (GAIN_SEL_MODE == 2'b10) begin
-	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutput_GSM10.dat","w");
-	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_10_output.dat","w");
+	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutputSIMONA_GSM10.dat","w");
+	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_10_outputSIMONA.dat","w");
 	    write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_10_ing01.dat","w");
 	    write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_10_ing10.dat","w");
 	 end
 	 if (GAIN_SEL_MODE == 2'b11) begin
-	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutput_GSM11.dat","w");
-	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_11_output.dat","w");
+	    write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutputSIMONA_GSM11.dat","w");
+	    write_file_output= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_11_outputSIMONA.dat","w");
 	    write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_11_ing01.dat","w");
 	    write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_11_ing10.dat","w");
 	 end
@@ -398,7 +398,7 @@ module tb_LDTU_presynth;
    always @(posedge DCLK_1) begin
       if (CALIBRATION_BUSY == 2'b00) begin
 	 $fwrite(write_file_g01,"%g %h\n", $time, DATA12_g01);
-	 $fwrite(write_file_g10,"%g %h\n", $time, DATA12_g01); 
+	 $fwrite(write_file_g10,"%g %h\n", $time, DATA12_g10); 
       end
    end
 

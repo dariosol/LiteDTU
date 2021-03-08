@@ -6,18 +6,18 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 03/03/2021 13:21:37                                                                    *
+ * date    : 07/03/2021 17:29:05                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
- *           tmr_Config/Last_DTU_v2.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                           *
+ *           tmr_Config/Last_DTU_v2_NoReg.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                     *
  * tmrg rev: ececa199b20e3753893c07f87ef839ce926b269f                                               *
  *                                                                                                  *
  * src file: 5_1_LDTU_Hamm_oFIFO.v                                                                  *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-02 09:01:12.510427                                         *
- *           File Size         : 3473                                                               *
- *           MD5 hash          : e4cb2d79f8e4abc509f8ea684da673b9                                   *
+ *           Modification time : 2021-03-07 17:02:42.288275                                         *
+ *           File Size         : 3610                                                               *
+ *           MD5 hash          : 1e6ffcb4774114f65bc9834bd8759dcd                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -40,15 +40,9 @@ module LDTU_oFIFOTMR(
   data_inputB,
   data_inputC,
   data_output,
-  empty_signalA,
-  empty_signalB,
-  empty_signalC,
-  full_signalA,
-  full_signalB,
-  full_signalC,
-  decode_signalA,
-  decode_signalB,
-  decode_signalC,
+  empty_signal,
+  full_signal,
+  decode_signal,
   SeuError
 );
 parameter    Nbits_ham=38;
@@ -57,29 +51,36 @@ parameter    bits_ptr=4;
 wire tmrError;
 wor start_writeTmrError;
 wor rst_bTmrError;
+wor r_full_signalTmrError;
+wor r_empty_signalTmrError;
+wor r_decode_signalTmrError;
 wor ptr_writeTmrError;
 wor ptr_readTmrError;
-wor full_signalTmrError;
 wor data_inputTmrError;
 wor CLKTmrError;
 wire [Nbits_ham-1:0] data_input;
 wire CLK;
 wire [bits_ptr-1:0] ptr_read;
-wire full_signal;
+wire r_empty_signal;
+wire r_decode_signal;
 wire [bits_ptr-1:0] ptr_write;
 wire start_write;
 wire rst_b;
+wire r_full_signal;
 output SeuError;
-output empty_signalA;
-output empty_signalB;
-output empty_signalC;
-output full_signalA;
-output full_signalB;
-output full_signalC;
+output empty_signal;
+output full_signal;
 output reg   [Nbits_ham-1:0] data_output;
-output reg    decode_signalA;
-output reg    decode_signalB;
-output reg    decode_signalC;
+output decode_signal;
+wire r_empty_signalA;
+wire r_empty_signalB;
+wire r_empty_signalC;
+wire r_full_signalA;
+wire r_full_signalB;
+wire r_full_signalC;
+reg  r_decode_signalA;
+reg  r_decode_signalB;
+reg  r_decode_signalC;
 input CLKA;
 input CLKB;
 input CLKC;
@@ -103,12 +104,12 @@ reg  [bits_ptr-1:0] ptr_readB;
 reg  [bits_ptr-1:0] ptr_readC;
 reg  [Nbits_ham-1:0] memory [ FifoDepth_buff-1 : 0 ] ;
 assign SeuError =  tmrError;
-assign empty_signalA =  (ptr_readA==ptr_writeA);
-assign empty_signalB =  (ptr_readB==ptr_writeB);
-assign empty_signalC =  (ptr_readC==ptr_writeC);
-assign full_signalA =  ((ptr_readA==ptr_writeA+4'b1)||((ptr_readA==4'b0)&&(ptr_writeA==(4'b1111))));
-assign full_signalB =  ((ptr_readB==ptr_writeB+4'b1)||((ptr_readB==4'b0)&&(ptr_writeB==(4'b1111))));
-assign full_signalC =  ((ptr_readC==ptr_writeC+4'b1)||((ptr_readC==4'b0)&&(ptr_writeC==(4'b1111))));
+assign r_empty_signalA =  (ptr_readA==ptr_writeA);
+assign r_empty_signalB =  (ptr_readB==ptr_writeB);
+assign r_empty_signalC =  (ptr_readC==ptr_writeC);
+assign r_full_signalA =  ((ptr_readA==ptr_writeA+4'b1)||((ptr_readA==4'b0)&&(ptr_writeA==(4'b1111))));
+assign r_full_signalB =  ((ptr_readB==ptr_writeB+4'b1)||((ptr_readB==4'b0)&&(ptr_writeB==(4'b1111))));
+assign r_full_signalC =  ((ptr_readC==ptr_writeC+4'b1)||((ptr_readC==4'b0)&&(ptr_writeC==(4'b1111))));
 
 always @( posedge CLKA )
   begin
@@ -118,7 +119,7 @@ always @( posedge CLKA )
       begin
         if (start_writeA==1'b1)
           begin
-            if (full_signalA==1'b0)
+            if (r_full_signalA==1'b0)
               ptr_writeA <= ptr_writeA+4'b1;
             else
               ptr_writeA <= ptr_writeA;
@@ -136,7 +137,7 @@ always @( posedge CLKB )
       begin
         if (start_writeB==1'b1)
           begin
-            if (full_signalB==1'b0)
+            if (r_full_signalB==1'b0)
               ptr_writeB <= ptr_writeB+4'b1;
             else
               ptr_writeB <= ptr_writeB;
@@ -154,7 +155,7 @@ always @( posedge CLKC )
       begin
         if (start_writeC==1'b1)
           begin
-            if (full_signalC==1'b0)
+            if (r_full_signalC==1'b0)
               ptr_writeC <= ptr_writeC+4'b1;
             else
               ptr_writeC <= ptr_writeC;
@@ -169,27 +170,27 @@ always @( posedge CLKA )
     if (rst_bA==1'b0)
       begin
         ptr_readA <= 4'b0;
-        decode_signalA <= 1'b0;
+        r_decode_signalA <= 1'b0;
       end
     else
       begin
         if (read_signalA==1'b1)
           begin
-            if (empty_signalA==1'b0)
+            if (r_empty_signalA==1'b0)
               begin
                 ptr_readA <= ptr_readA+4'b1;
-                decode_signalA <= 1'b1;
+                r_decode_signalA <= 1'b1;
               end
             else
               begin
                 ptr_readA <= ptr_readA;
-                decode_signalA <= 1'b0;
+                r_decode_signalA <= 1'b0;
               end
           end
         else
           begin
             ptr_readA <= ptr_readA;
-            decode_signalA <= 1'b0;
+            r_decode_signalA <= 1'b0;
           end
       end
   end
@@ -199,27 +200,27 @@ always @( posedge CLKB )
     if (rst_bB==1'b0)
       begin
         ptr_readB <= 4'b0;
-        decode_signalB <= 1'b0;
+        r_decode_signalB <= 1'b0;
       end
     else
       begin
         if (read_signalB==1'b1)
           begin
-            if (empty_signalB==1'b0)
+            if (r_empty_signalB==1'b0)
               begin
                 ptr_readB <= ptr_readB+4'b1;
-                decode_signalB <= 1'b1;
+                r_decode_signalB <= 1'b1;
               end
             else
               begin
                 ptr_readB <= ptr_readB;
-                decode_signalB <= 1'b0;
+                r_decode_signalB <= 1'b0;
               end
           end
         else
           begin
             ptr_readB <= ptr_readB;
-            decode_signalB <= 1'b0;
+            r_decode_signalB <= 1'b0;
           end
       end
   end
@@ -229,27 +230,27 @@ always @( posedge CLKC )
     if (rst_bC==1'b0)
       begin
         ptr_readC <= 4'b0;
-        decode_signalC <= 1'b0;
+        r_decode_signalC <= 1'b0;
       end
     else
       begin
         if (read_signalC==1'b1)
           begin
-            if (empty_signalC==1'b0)
+            if (r_empty_signalC==1'b0)
               begin
                 ptr_readC <= ptr_readC+4'b1;
-                decode_signalC <= 1'b1;
+                r_decode_signalC <= 1'b1;
               end
             else
               begin
                 ptr_readC <= ptr_readC;
-                decode_signalC <= 1'b0;
+                r_decode_signalC <= 1'b0;
               end
           end
         else
           begin
             ptr_readC <= ptr_readC;
-            decode_signalC <= 1'b0;
+            r_decode_signalC <= 1'b0;
           end
       end
   end
@@ -262,7 +263,7 @@ always @( posedge CLK )
       begin
         if (start_write==1'b1)
           begin
-            if (full_signal==1'b0)
+            if (r_full_signal==1'b0)
               memory[ptr_write]  <= data_input;
           end
       end
@@ -275,6 +276,17 @@ always @( posedge CLK )
     else
       data_output =  memory[ptr_read] ;
   end
+assign empty_signal =  r_empty_signal;
+assign full_signal =  r_full_signal;
+assign decode_signal =  r_decode_signal;
+
+majorityVoter r_full_signalVoter (
+    .inA(r_full_signalA),
+    .inB(r_full_signalB),
+    .inC(r_full_signalC),
+    .out(r_full_signal),
+    .tmrErr(r_full_signalTmrError)
+    );
 
 majorityVoter rst_bVoter (
     .inA(rst_bA),
@@ -300,12 +312,20 @@ majorityVoter #(.WIDTH(((bits_ptr-1)>(0)) ? ((bits_ptr-1)-(0)+1) : ((0)-(bits_pt
     .tmrErr(ptr_writeTmrError)
     );
 
-majorityVoter full_signalVoter (
-    .inA(full_signalA),
-    .inB(full_signalB),
-    .inC(full_signalC),
-    .out(full_signal),
-    .tmrErr(full_signalTmrError)
+majorityVoter r_decode_signalVoter (
+    .inA(r_decode_signalA),
+    .inB(r_decode_signalB),
+    .inC(r_decode_signalC),
+    .out(r_decode_signal),
+    .tmrErr(r_decode_signalTmrError)
+    );
+
+majorityVoter r_empty_signalVoter (
+    .inA(r_empty_signalA),
+    .inB(r_empty_signalB),
+    .inC(r_empty_signalC),
+    .out(r_empty_signal),
+    .tmrErr(r_empty_signalTmrError)
     );
 
 majorityVoter #(.WIDTH(((bits_ptr-1)>(0)) ? ((bits_ptr-1)-(0)+1) : ((0)-(bits_ptr-1)+1))) ptr_readVoter (
@@ -331,6 +351,6 @@ majorityVoter #(.WIDTH(((Nbits_ham-1)>(0)) ? ((Nbits_ham-1)-(0)+1) : ((0)-(Nbits
     .out(data_input),
     .tmrErr(data_inputTmrError)
     );
-assign tmrError =  CLKTmrError|data_inputTmrError|full_signalTmrError|ptr_readTmrError|ptr_writeTmrError|rst_bTmrError|start_writeTmrError;
+assign tmrError =  CLKTmrError|data_inputTmrError|ptr_readTmrError|ptr_writeTmrError|r_decode_signalTmrError|r_empty_signalTmrError|r_full_signalTmrError|rst_bTmrError|start_writeTmrError;
 endmodule
 

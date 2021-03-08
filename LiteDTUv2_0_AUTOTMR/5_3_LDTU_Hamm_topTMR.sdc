@@ -20,6 +20,10 @@ constrainNet /CLK
 constrainNet /CLKA
 constrainNet /CLKB
 constrainNet /CLKC
+constrainNet /DATA32_DTU_synchA[*]
+constrainNet /DATA32_DTU_synchB[*]
+constrainNet /DATA32_DTU_synchC[*]
+constrainNet /DATA32_DTU_synch[*]
 constrainNet /FIFO/CLK
 constrainNet /FIFO/CLKA
 constrainNet /FIFO/CLKB
@@ -64,6 +68,10 @@ constrainNet /empty_signal
 constrainNet /empty_signalA
 constrainNet /empty_signalB
 constrainNet /empty_signalC
+constrainNet /full_signal_synch
+constrainNet /full_signal_synchA
+constrainNet /full_signal_synchB
+constrainNet /full_signal_synchC
 constrainNet /read_signal
 constrainNet /read_signalA
 constrainNet /read_signalB

@@ -28,26 +28,6 @@ constrainNet /fallback
 constrainNet /fallbackA
 constrainNet /fallbackB
 constrainNet /fallbackC
-constrainNet /nStateA[*]
-constrainNet /nStateB[*]
-constrainNet /nStateC[*]
-constrainNet /nStateVotedA[*]
-constrainNet /nStateVotedB[*]
-constrainNet /nStateVotedC[*]
-constrainNet /nState_FBA[*]
-constrainNet /nState_FBB[*]
-constrainNet /nState_FBC[*]
-constrainNet /nState_FBVotedA[*]
-constrainNet /nState_FBVotedB[*]
-constrainNet /nState_FBVotedC[*]
-constrainNet /rCurrent_stateA[*]
-constrainNet /rCurrent_stateB[*]
-constrainNet /rCurrent_stateC[*]
-constrainNet /rCurrent_state[*]
-constrainNet /rCurrent_state_FBA[*]
-constrainNet /rCurrent_state_FBB[*]
-constrainNet /rCurrent_state_FBC[*]
-constrainNet /rCurrent_state_FB[*]
 
 
     puts "TMRG successful  $tmrgSucces failed $tmrgFailed"

@@ -6,11 +6,11 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 03/03/2021 13:21:38                                                                    *
+ * date    : 07/03/2021 17:29:05                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
- *           tmr_Config/Last_DTU_v2.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                           *
+ *           tmr_Config/Last_DTU_v2_NoReg.cfg --tmr-dir=../LiteDTUv2_0_AUTOTMR/                     *
  * tmrg rev: ececa199b20e3753893c07f87ef839ce926b269f                                               *
  *                                                                                                  *
  * src file: LiTE_DTU_160MHz_v2_0.v                                                                 *
@@ -67,68 +67,9 @@ parameter    bits_ptr=4;
 wire CALIBRATION_BUSYC;
 wire CALIBRATION_BUSYB;
 wire CALIBRATION_BUSYA;
-wire [Nbits_32-1:0] DATA32_ATU_3C;
-wire [Nbits_32-1:0] DATA32_ATU_3B;
-wire [Nbits_32-1:0] DATA32_ATU_3A;
-wire [Nbits_32-1:0] DATA32_ATU_1C;
-wire [Nbits_32-1:0] DATA32_ATU_1B;
-wire [Nbits_32-1:0] DATA32_ATU_1A;
-wire resetC;
-wire resetB;
-wire resetA;
-wire [Nbits_32-1:0] DATA32_ATU_0C;
-wire [Nbits_32-1:0] DATA32_ATU_0B;
-wire [Nbits_32-1:0] DATA32_ATU_0A;
-wire [Nbits_32-1:0] DATA32_ATU_2C;
-wire [Nbits_32-1:0] DATA32_ATU_2B;
-wire [Nbits_32-1:0] DATA32_ATU_2A;
 wire TEST_ENABLEC;
 wire TEST_ENABLEB;
 wire TEST_ENABLEA;
-wire [Nbits_32-1:0] DATA32_DTUC;
-wire [Nbits_32-1:0] DATA32_DTUB;
-wire [Nbits_32-1:0] DATA32_DTUA;
-wor fullTmrError;
-wire fullB;
-wire fullC;
-wire fullA;
-wor losing_dataTmrError;
-wire losing_dataB;
-wire losing_dataC;
-wire losing_dataA;
-wor RSTTmrError;
-wire RST;
-wor CLKTmrError;
-wire CLK;
-wor DATA32_DTUTmrError;
-wor DATA32_0TmrError;
-wire [Nbits_32-1:0] DATA32_0B;
-wire [Nbits_32-1:0] DATA32_0C;
-wire [Nbits_32-1:0] DATA32_0A;
-wor DATA32_3TmrError;
-wire [Nbits_32-1:0] DATA32_3B;
-wire [Nbits_32-1:0] DATA32_3C;
-wire [Nbits_32-1:0] DATA32_3A;
-wor write_signalTmrError;
-wire write_signalB;
-wire write_signalC;
-wire write_signalA;
-wor DATA_from_CUTmrError;
-wire [Nbits_32-1:0] DATA_from_CUB;
-wire [Nbits_32-1:0] DATA_from_CUC;
-wire [Nbits_32-1:0] DATA_from_CUA;
-wor DATA32_1TmrError;
-wire [Nbits_32-1:0] DATA32_1B;
-wire [Nbits_32-1:0] DATA32_1C;
-wire [Nbits_32-1:0] DATA32_1A;
-wor DATA32_2TmrError;
-wire [Nbits_32-1:0] DATA32_2B;
-wire [Nbits_32-1:0] DATA32_2C;
-wire [Nbits_32-1:0] DATA32_2A;
-wor RD_to_SERIALIZERTmrError;
-wire RD_to_SERIALIZERB;
-wire RD_to_SERIALIZERC;
-wire RD_to_SERIALIZERA;
 input DCLK_1;
 input DCLK_10;
 input CLKA;
@@ -172,13 +113,21 @@ wire Load_FB;
 wire write_signal;
 wire [Nbits_32-1:0] DATA_from_CU;
 wire full;
-wire reset;
+wire resetA;
+wire resetB;
+wire resetC;
 wire CALIBRATION_BUSY;
 wire RD_to_SERIALIZER;
 assign CALIBRATION_BUSY =  CALIBRATION_BUSY_1|CALIBRATION_BUSY_10;
-wire [2:0] AA;
-assign AA =  {RST,CALIBRATION_BUSY,TEST_ENABLE};
-assign reset =  (AA==3'b100) ? 1'b1 : 1'b0;
+wire [2:0] AAA;
+wire [2:0] AAB;
+wire [2:0] AAC;
+assign AAA =  {RSTA,CALIBRATION_BUSYA,TEST_ENABLEA};
+assign AAB =  {RSTB,CALIBRATION_BUSYB,TEST_ENABLEB};
+assign AAC =  {RSTC,CALIBRATION_BUSYC,TEST_ENABLEC};
+assign resetA =  (AAA==3'b100) ? 1'b1 : 1'b0;
+assign resetB =  (AAB==3'b100) ? 1'b1 : 1'b0;
+assign resetC =  (AAC==3'b100) ? 1'b1 : 1'b0;
 wire tmrError_BS;
 wire tmrError_iFIFO;
 wire tmrError_enc;
@@ -252,34 +201,26 @@ LDTU_CUTMR #(.Nbits_32(Nbits_32)) Control_Unit (
     .Load_data_FB(Load_FB),
     .DATA_32_FB(DATA_32_FB),
     .full(full),
-    .DATA_from_CUA(DATA_from_CUA),
-    .DATA_from_CUB(DATA_from_CUB),
-    .DATA_from_CUC(DATA_from_CUC),
-    .losing_dataA(losing_dataA),
-    .losing_dataB(losing_dataB),
-    .losing_dataC(losing_dataC),
-    .write_signalA(write_signalA),
-    .write_signalB(write_signalB),
-    .write_signalC(write_signalC),
-    .read_signalA(RD_to_SERIALIZERA),
-    .read_signalB(RD_to_SERIALIZERB),
-    .read_signalC(RD_to_SERIALIZERC),
+    .DATA_from_CU(DATA_from_CU),
+    .losing_data(losing_data),
+    .write_signal(write_signal),
+    .read_signal(RD_to_SERIALIZER),
     .SeuError(tmrError_CU),
     .handshake(handshake)
     );
 
 LDTU_oFIFO_topTMR #(.Nbits_32(Nbits_32), .FifoDepth_buff(FifoDepth_buff), .bits_ptr(bits_ptr)) StorageFIFO (
-    .CLK(CLK),
-    .rst_b(reset),
+    .CLKA(CLKA),
+    .CLKB(CLKB),
+    .CLKC(CLKC),
+    .rst_bA(resetA),
+    .rst_bB(resetB),
+    .rst_bC(resetC),
     .write_signal(write_signal),
     .read_signal(RD_to_SERIALIZER),
     .data_in_32(DATA_from_CU),
-    .full_signalA(fullA),
-    .full_signalB(fullB),
-    .full_signalC(fullC),
-    .DATA32_DTUA(DATA32_DTUA),
-    .DATA32_DTUB(DATA32_DTUB),
-    .DATA32_DTUC(DATA32_DTUC),
+    .full_signal(full),
+    .DATA32_DTU(DATA32_DTU),
     .SeuError(tmrError_oFIFO)
     );
 
@@ -296,130 +237,16 @@ LDTU_DATA32_ATU_DTUTMR #(.Nbits_32(Nbits_32)) DATA32_mux (
     .TEST_ENABLEA(TEST_ENABLEA),
     .TEST_ENABLEB(TEST_ENABLEB),
     .TEST_ENABLEC(TEST_ENABLEC),
-    .DATA32_ATU_0A(DATA32_ATU_0A),
-    .DATA32_ATU_0B(DATA32_ATU_0B),
-    .DATA32_ATU_0C(DATA32_ATU_0C),
-    .DATA32_ATU_1A(DATA32_ATU_1A),
-    .DATA32_ATU_1B(DATA32_ATU_1B),
-    .DATA32_ATU_1C(DATA32_ATU_1C),
-    .DATA32_ATU_2A(DATA32_ATU_2A),
-    .DATA32_ATU_2B(DATA32_ATU_2B),
-    .DATA32_ATU_2C(DATA32_ATU_2C),
-    .DATA32_ATU_3A(DATA32_ATU_3A),
-    .DATA32_ATU_3B(DATA32_ATU_3B),
-    .DATA32_ATU_3C(DATA32_ATU_3C),
-    .DATA32_DTUA(DATA32_DTUA),
-    .DATA32_DTUB(DATA32_DTUB),
-    .DATA32_DTUC(DATA32_DTUC),
-    .DATA32_0A(DATA32_0A),
-    .DATA32_0B(DATA32_0B),
-    .DATA32_0C(DATA32_0C),
-    .DATA32_1A(DATA32_1A),
-    .DATA32_1B(DATA32_1B),
-    .DATA32_1C(DATA32_1C),
-    .DATA32_2A(DATA32_2A),
-    .DATA32_2B(DATA32_2B),
-    .DATA32_2C(DATA32_2C),
-    .DATA32_3A(DATA32_3A),
-    .DATA32_3B(DATA32_3B),
-    .DATA32_3C(DATA32_3C),
+    .DATA32_ATU_0(DATA32_ATU_0),
+    .DATA32_ATU_1(DATA32_ATU_1),
+    .DATA32_ATU_2(DATA32_ATU_2),
+    .DATA32_ATU_3(DATA32_ATU_3),
+    .DATA32_DTU(DATA32_DTU),
+    .DATA32_0(DATA32_0),
+    .DATA32_1(DATA32_1),
+    .DATA32_2(DATA32_2),
+    .DATA32_3(DATA32_3),
     .SeuError(tmrError_mux)
-    );
-
-majorityVoter RD_to_SERIALIZERVoter (
-    .inA(RD_to_SERIALIZERA),
-    .inB(RD_to_SERIALIZERB),
-    .inC(RD_to_SERIALIZERC),
-    .out(RD_to_SERIALIZER),
-    .tmrErr(RD_to_SERIALIZERTmrError)
-    );
-
-majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA32_2Voter (
-    .inA(DATA32_2A),
-    .inB(DATA32_2B),
-    .inC(DATA32_2C),
-    .out(DATA32_2),
-    .tmrErr(DATA32_2TmrError)
-    );
-
-majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA32_1Voter (
-    .inA(DATA32_1A),
-    .inB(DATA32_1B),
-    .inC(DATA32_1C),
-    .out(DATA32_1),
-    .tmrErr(DATA32_1TmrError)
-    );
-
-majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA_from_CUVoter (
-    .inA(DATA_from_CUA),
-    .inB(DATA_from_CUB),
-    .inC(DATA_from_CUC),
-    .out(DATA_from_CU),
-    .tmrErr(DATA_from_CUTmrError)
-    );
-
-majorityVoter write_signalVoter (
-    .inA(write_signalA),
-    .inB(write_signalB),
-    .inC(write_signalC),
-    .out(write_signal),
-    .tmrErr(write_signalTmrError)
-    );
-
-majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA32_3Voter (
-    .inA(DATA32_3A),
-    .inB(DATA32_3B),
-    .inC(DATA32_3C),
-    .out(DATA32_3),
-    .tmrErr(DATA32_3TmrError)
-    );
-
-majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA32_0Voter (
-    .inA(DATA32_0A),
-    .inB(DATA32_0B),
-    .inC(DATA32_0C),
-    .out(DATA32_0),
-    .tmrErr(DATA32_0TmrError)
-    );
-
-majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA32_DTUVoter (
-    .inA(DATA32_DTUA),
-    .inB(DATA32_DTUB),
-    .inC(DATA32_DTUC),
-    .out(DATA32_DTU),
-    .tmrErr(DATA32_DTUTmrError)
-    );
-
-majorityVoter CLKVoter (
-    .inA(CLKA),
-    .inB(CLKB),
-    .inC(CLKC),
-    .out(CLK),
-    .tmrErr(CLKTmrError)
-    );
-
-majorityVoter RSTVoter (
-    .inA(RSTA),
-    .inB(RSTB),
-    .inC(RSTC),
-    .out(RST),
-    .tmrErr(RSTTmrError)
-    );
-
-majorityVoter losing_dataVoter (
-    .inA(losing_dataA),
-    .inB(losing_dataB),
-    .inC(losing_dataC),
-    .out(losing_data),
-    .tmrErr(losing_dataTmrError)
-    );
-
-majorityVoter fullVoter (
-    .inA(fullA),
-    .inB(fullB),
-    .inC(fullC),
-    .out(full),
-    .tmrErr(fullTmrError)
     );
 
 fanout TEST_ENABLEFanout (
@@ -427,41 +254,6 @@ fanout TEST_ENABLEFanout (
     .outA(TEST_ENABLEA),
     .outB(TEST_ENABLEB),
     .outC(TEST_ENABLEC)
-    );
-
-fanout #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA32_ATU_2Fanout (
-    .in(DATA32_ATU_2),
-    .outA(DATA32_ATU_2A),
-    .outB(DATA32_ATU_2B),
-    .outC(DATA32_ATU_2C)
-    );
-
-fanout #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA32_ATU_0Fanout (
-    .in(DATA32_ATU_0),
-    .outA(DATA32_ATU_0A),
-    .outB(DATA32_ATU_0B),
-    .outC(DATA32_ATU_0C)
-    );
-
-fanout resetFanout (
-    .in(reset),
-    .outA(resetA),
-    .outB(resetB),
-    .outC(resetC)
-    );
-
-fanout #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA32_ATU_1Fanout (
-    .in(DATA32_ATU_1),
-    .outA(DATA32_ATU_1A),
-    .outB(DATA32_ATU_1B),
-    .outC(DATA32_ATU_1C)
-    );
-
-fanout #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA32_ATU_3Fanout (
-    .in(DATA32_ATU_3),
-    .outA(DATA32_ATU_3A),
-    .outB(DATA32_ATU_3B),
-    .outC(DATA32_ATU_3C)
     );
 
 fanout CALIBRATION_BUSYFanout (

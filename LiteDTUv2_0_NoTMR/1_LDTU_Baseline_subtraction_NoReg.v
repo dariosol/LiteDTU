@@ -58,8 +58,8 @@ module LDTU_BS(
 	reg	[Nbits_12-1:0] d_g01;
 	reg	[Nbits_12-1:0] d_g10;
 
-   	reg	[Nbits_12-1:0] dg01_synch;
-	reg	[Nbits_12-1:0] dg10_synch;
+   	wire	[Nbits_12-1:0] dg01_synch;
+        wire [Nbits_12-1:0]    dg10_synch;
 
 	wire [Nbits_12-1:0] dg01;
 	wire [Nbits_12-1:0] dg10;
@@ -90,30 +90,11 @@ module LDTU_BS(
 
 		// Baseline subtraction
 
-   assign dg01 = d_g01-b_val_g01;
-   assign dg10 = d_g10-b_val_g10;
+   assign dg01_synch = d_g01-b_val_g01;
+   assign dg10_synch = d_g10-b_val_g10;
 
-   always @ (posedge DCLK_1) begin
-      dg01_synch <= dg01;
-   end
-
-   always @ (posedge DCLK_10) begin
-      dg10_synch <= dg10;
-   end
-   
-   assign DATA_gain_01 = dg01_synch;
    assign DATA_gain_10 = dg10_synch;
+   assign DATA_gain_01 = dg01_synch;
    
-		// Output synchronization
-/*
- //questo crea un flip flop
-	always @ (posedge DCLK_1) begin
-		DATA_gain_01 <= dg01;
-	end
-
-	always @ (posedge DCLK_10) begin
-		DATA_gain_10 <= dg10;
-	end
-*/
 endmodule
 

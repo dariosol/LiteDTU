@@ -39,9 +39,13 @@ module LDTU_oFIFO(
    output empty_signal;
    output full_signal;
    output reg [Nbits_ham-1:0] data_output;
-   output reg		      decode_signal;
+   output 		      decode_signal;
 
-   input 		      CLK;
+   wire r_empty_signal;
+   wire r_full_signal;
+   reg 	r_decode_signal;
+   
+input 		      CLK;
    input 		      rst_b;
    input 		      start_write;
    input 		      read_signal;
@@ -64,17 +68,16 @@ module LDTU_oFIFO(
 //   wire 		      data_inputVoted = data_input;
    
 
-   assign empty_signal = (ptr_read == ptr_write);
-   assign full_signal = ((ptr_read == ptr_write + 4'b1)||((ptr_read == 4'b0)&&(ptr_write == (4'b1111))));
-   //assign empty_signal = r_empty_signal;
-   //assign full_signal = r_full_signal;
+   assign r_empty_signal = (ptr_read == ptr_write);
+   assign r_full_signal = ((ptr_read == ptr_write + 4'b1)||((ptr_read == 4'b0)&&(ptr_write == (4'b1111))));
+
    
    
    always @( posedge CLK ) begin
       if (rst_b==1'b0) ptr_write <= 4'b0;
       else begin
 	 if (start_write ==1'b1) begin
-	    if (full_signal ==1'b0) ptr_write <= ptr_write +4'b1;
+	    if (r_full_signal ==1'b0) ptr_write <= ptr_write +4'b1;
 	    else ptr_write <= ptr_write;
 	 end else ptr_write <= ptr_write;
       end
@@ -83,19 +86,19 @@ module LDTU_oFIFO(
    always @( posedge CLK ) begin
       if (rst_b==1'b0) begin
 	 ptr_read <= 4'b0;
-	 decode_signal <= 1'b0;
+	 r_decode_signal <= 1'b0;
       end else begin
 	 if (read_signal ==1'b1) begin
-	    if (empty_signal ==1'b0) begin
+	    if (r_empty_signal ==1'b0) begin
 	       ptr_read <= ptr_read + 4'b1;
-	       decode_signal <= 1'b1;
+	       r_decode_signal <= 1'b1;
 	    end else begin
 	       ptr_read <= ptr_read;
-	       decode_signal <= 1'b0;
+	       r_decode_signal <= 1'b0;
 	    end
 	 end else begin
 	    ptr_read <= ptr_read;
-	    decode_signal <= 1'b0;
+	    r_decode_signal <= 1'b0;
 	 end
       end
    end
@@ -105,7 +108,7 @@ module LDTU_oFIFO(
 	memory[ptr_write]	<= 38'b0;
       else begin
 	 if (start_write==1'b1) begin
-	    if (full_signal==1'b0) memory[ptr_write] <= data_input;
+	    if (r_full_signal==1'b0) memory[ptr_write] <= data_input;
 	 end
       end
    end
@@ -114,6 +117,9 @@ module LDTU_oFIFO(
       else data_output = memory[ptr_read] ;
    end
 
+      assign empty_signal = r_empty_signal;
+   assign full_signal = r_full_signal;
+   assign decode_signal = r_decode_signal;
    /*
    always @(posedge CLK) begin
       if (rst_b == 1'b0) begin

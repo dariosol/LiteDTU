@@ -1,5 +1,6 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
+add wave -noupdate -divider {NO TMR}
 add wave -noupdate -divider INPUT
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DCLK_1
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DCLK_10
@@ -17,6 +18,9 @@ add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection/DA
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection/DATA_to_enc
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Selection/baseline_flag
 add wave -noupdate -divider -height 30 ENCODER
+add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/fsm/Current_state
+add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/fsm/baseline_flag
+add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/DATA_to_enc
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/Current_state
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/Load
 add wave -noupdate /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/Encoder/DATA_32
@@ -73,12 +77,12 @@ add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_2
 add wave -noupdate -color White /tb_LDTU_presynth/toptoplevel/top_level_LiTE_DTU/DATA32_3
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {272543942 ps} 0} {{Cursor 2} {319056 ps} 1}
+WaveRestoreCursors {{Cursor 1} {305760000 ps} 0} {{Cursor 2} {319056 ps} 1}
 quietly wave cursor active 1
-configure wave -namecolwidth 751
+configure wave -namecolwidth 160
 configure wave -valuecolwidth 100
 configure wave -justifyvalue left
-configure wave -signalnamewidth 0
+configure wave -signalnamewidth 1
 configure wave -snapdistance 10
 configure wave -datasetprefix 0
 configure wave -rowmargin 4
@@ -89,4 +93,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ps} {944780988 ps}
+WaveRestoreZoom {0 ps} {3996601984 ps}

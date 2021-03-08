@@ -16,22 +16,22 @@ proc constrainNet netName {
   }
 }
 
+constrainNet /CLK
+constrainNet /CLKA
+constrainNet /CLKB
+constrainNet /CLKC
 constrainNet /DATA_32A[*]
 constrainNet /DATA_32B[*]
 constrainNet /DATA_32C[*]
 constrainNet /DATA_32[*]
-constrainNet /DATA_32_FBA[*]
-constrainNet /DATA_32_FBB[*]
-constrainNet /DATA_32_FBC[*]
-constrainNet /DATA_32_FB[*]
 constrainNet /Load_data
 constrainNet /Load_dataA
 constrainNet /Load_dataB
 constrainNet /Load_dataC
-constrainNet /Load_data_FB
-constrainNet /Load_data_FBA
-constrainNet /Load_data_FBB
-constrainNet /Load_data_FBC
+constrainNet /check_limit
+constrainNet /check_limitA
+constrainNet /check_limitB
+constrainNet /check_limitC
 constrainNet /fallback
 constrainNet /fallbackA
 constrainNet /fallbackB
@@ -40,10 +40,14 @@ constrainNet /full
 constrainNet /fullA
 constrainNet /fullB
 constrainNet /fullC
-constrainNet /handshake
-constrainNet /handshakeA
-constrainNet /handshakeB
-constrainNet /handshakeC
+constrainNet /rst_b
+constrainNet /rst_bA
+constrainNet /rst_bB
+constrainNet /rst_bC
+constrainNet /wireTrailerA[*]
+constrainNet /wireTrailerB[*]
+constrainNet /wireTrailerC[*]
+constrainNet /wireTrailer[*]
 
 
     puts "TMRG successful  $tmrgSucces failed $tmrgFailed"
