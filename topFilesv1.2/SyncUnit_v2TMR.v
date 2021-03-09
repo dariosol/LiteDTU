@@ -20,6 +20,7 @@
  *           MD5 hash          : b979a6ac1e4ab94e7baf8a5202c707e6                                   *
  *                                                                                                  *
  ****************************************************************************************************/
+`timescale  1ps/1ps
 
 module SyncUnit_v2TMR #(
   parameter NBitsEnc=8,

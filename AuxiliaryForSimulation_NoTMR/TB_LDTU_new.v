@@ -34,7 +34,6 @@ module tb_LDTU_presynth;
    reg RST_A;
    reg RST_B;
    reg RST_C;
-   //	reg GAIN_SEL_MODE;
    reg [1:0] GAIN_SEL_MODE;
    reg 	     fallback;
    
@@ -109,7 +108,6 @@ module tb_LDTU_presynth;
    initial begin
       DCLK_1 = 1'b1;
       #(ck_period/2);
-      //#(0.3*ck_period);
       DCLK_1 = 1'b0;
       forever begin
 	 #(ck_period/2);
@@ -121,7 +119,6 @@ module tb_LDTU_presynth;
    initial begin
       DCLK_10 = 1'b1;
       #(ck_period/2);
-      //#(0.35*ck_period);
       DCLK_10 = 1'b0;
       forever begin
 	 #(ck_period/2);
@@ -132,7 +129,6 @@ module tb_LDTU_presynth;
    // clk generation
    initial begin
       clk = 1'b1;
-      //clk = 1'b0;
       forever begin
 	 #(ck_period/2);
 	 clk = ~clk;
@@ -142,7 +138,6 @@ module tb_LDTU_presynth;
    // clk_srl generation
    initial begin
       clk_srl = 1'b1;
-      //clk = 1'b0;
       forever begin
 	 #(ck_srl_period/2);
 	 clk_srl = ~clk_srl;
@@ -172,53 +167,13 @@ module tb_LDTU_presynth;
    // Main testbench
    initial begin
 
-      // ---- Initial situation ----
-      /*RST_A = 1'b0;
-       RST_B = 1'b0;
-       RST_C = 1'b0;
-       CALIBRATION_BUSY_1 <= 1'b0;
-       CALIBRATION_BUSY_10 <= 1'b0;
-       test_enable <= 1'b0;
-       #(0.7*ck_period);		// {0,0,0}
-       CALIBRATION_BUSY_1 <= 1'b1;
-       CALIBRATION_BUSY_10 <= 1'b1;
-       #(0.7*ck_period);		// {0,1,0}
-       test_enable <= 1'b1;
-       #(0.7*ck_period);		// {0,1,1}
-       CALIBRATION_BUSY_1 <= 1'b0;
-       CALIBRATION_BUSY_10 <= 1'b0;
-       #(0.7*ck_period);		// {0,0,1}
-       test_enable <= 1'b0;
-       #(0.7*ck_period);		// {0,0,0}
-       RST_A   = 1'b1;
-       RST_B   = 1'b1;
-       RST_C   = 1'b1;
-       #(0.7*ck_period);		// {1,0,0}
-       CALIBRATION_BUSY_1 <= 1'b1;
-       CALIBRATION_BUSY_10 <= 1'b1;
-       #(0.7*ck_period);		// {1,1,0}
-       test_enable <= 1'b1;
-       #(0.7*ck_period);		// {1,1,1}
-       CALIBRATION_BUSY_1 <= 1'b0;
-       CALIBRATION_BUSY_10 <= 1'b0;
-       #(0.7*ck_period);		// {1,0,1}
-       test_enable <= 1'b0;
-       #(0.7*ck_period);		// {1,0,0}
-       RST_A   = 1'b0;
-       RST_B   = 1'b0;
-       RST_C   = 1'b0;
-       #(3.7*ck_period);		// {0,0,0}
-       */
-
-
-
-
       RST_A   = 1'b1;
       RST_B   = 1'b1;
       RST_C   = 1'b1;
       CALIBRATION_BUSY_1 <= 1'b0;
       CALIBRATION_BUSY_10 <= 1'b0;
-      //      test_enable <= 1'b1;			// ADC_test_mode
+
+      
       test_enable <= 1'b0;			// DTU_test_mode
       GAIN_SEL_MODE <= 2'b00;		// Auto-gain selection
       fallback=1'b0;
@@ -227,9 +182,11 @@ module tb_LDTU_presynth;
       RST_A = 1'b0;
       RST_B = 1'b0;
       RST_C = 1'b0;
-      // If both following assignation are commented: SATURATION_value = 12'hfff
+      
+// If both following assignation are commented: SATURATION_value = 12'hfff
       //SATURATION_value = 12'b111011011000; //3800 ADC count sat value
       //SATURATION_value = 12'b011111010000;//2000 ADC count sat value
+      
       if (test_enable == 1'b1) begin
 	 write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_ATM.dat","w");
 	 write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_ATU_ing01.dat","w");

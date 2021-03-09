@@ -20,7 +20,7 @@
  *           MD5 hash          : ad553b1d69166aca913b5bf4bca50323                                   *
  *                                                                                                  *
  ****************************************************************************************************/
-
+`timescale  1ps/1ps
 module AdcTestUnitTMR #(
   parameter NBitsADC=12,
   parameter NBitsOut=32

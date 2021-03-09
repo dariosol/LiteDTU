@@ -7,7 +7,7 @@
 //
 // Deglitch circuit
 //
-
+`timescale  1ps/1ps
 module deglitch (
 	input  A,
 	output Z);
