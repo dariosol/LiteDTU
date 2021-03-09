@@ -43,7 +43,7 @@ module tb_LDTU_presynth;
    reg [Nbits_12-1:0] DATA12_g01;
    reg [Nbits_12-1:0] DATA12_g10;
    reg [Nbits_8-1:0]  BSL_VAL_g01 = 8'b00000000;
-   reg [Nbits_8-1:0]  BSL_VAL_g10 = 8'b00000011;
+   reg [Nbits_8-1:0]  BSL_VAL_g10 = 8'b00000000;
    reg [Nbits_12-1:0] SATURATION_value = 12'b111111111111;
    reg [1:0] shift_gain_10 = 2'b00;
    wire 	      losing_data;
@@ -54,13 +54,6 @@ module tb_LDTU_presynth;
    reg [Nbits_32-1:0]  word;
 
    wire 	       totalError;
-   wire 	       empty;	//***
-   wire 	       full;	//***
-   wire 	       baseline_flag;		//***
-   wire [Nbits_12:0]   DATA_to_enc;	//***
-   wire [Nbits_32-1:0] DATA_32;	//***
-   wire 	       Load;			//***
-   wire [bits_ptr:0]   distance;//***
 
    integer 	       data_file_read01, data_file_read10;
    integer 	       write_file_g01, write_file_g10, write_file_SER, write_file_output;
@@ -165,45 +158,6 @@ module tb_LDTU_presynth;
    
    // Main testbench
    initial begin
-
-      // ---- Initial situation ----
-      /*RST_A = 1'b0;
-       RST_B = 1'b0;
-       RST_C = 1'b0;
-       CALIBRATION_BUSY_1 <= 1'b0;
-       CALIBRATION_BUSY_10 <= 1'b0;
-       test_enable <= 1'b0;
-       #(0.7*ck_period);		// {0,0,0}
-       CALIBRATION_BUSY_1 <= 1'b1;
-       CALIBRATION_BUSY_10 <= 1'b1;
-       #(0.7*ck_period);		// {0,1,0}
-       test_enable <= 1'b1;
-       #(0.7*ck_period);		// {0,1,1}
-       CALIBRATION_BUSY_1 <= 1'b0;
-       CALIBRATION_BUSY_10 <= 1'b0;
-       #(0.7*ck_period);		// {0,0,1}
-       test_enable <= 1'b0;
-       #(0.7*ck_period);		// {0,0,0}
-       RST_A   = 1'b1;
-       RST_B   = 1'b1;
-       RST_C   = 1'b1;
-       #(0.7*ck_period);		// {1,0,0}
-       CALIBRATION_BUSY_1 <= 1'b1;
-       CALIBRATION_BUSY_10 <= 1'b1;
-       #(0.7*ck_period);		// {1,1,0}
-       test_enable <= 1'b1;
-       #(0.7*ck_period);		// {1,1,1}
-       CALIBRATION_BUSY_1 <= 1'b0;
-       CALIBRATION_BUSY_10 <= 1'b0;
-       #(0.7*ck_period);		// {1,0,1}
-       test_enable <= 1'b0;
-       #(0.7*ck_period);		// {1,0,0}
-       RST_A   = 1'b0;
-       RST_B   = 1'b0;
-       RST_C   = 1'b0;
-       #(3.7*ck_period);		// {0,0,0}
-       */
-
 
 
 
