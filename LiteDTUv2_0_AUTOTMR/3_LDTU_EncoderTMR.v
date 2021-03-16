@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 16/03/2021 15:37:22                                                                    *
+ * date    : 16/03/2021 15:48:50                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -50,7 +50,9 @@ module LDTU_EncoderTMR(
   rst_bA,
   rst_bB,
   rst_bC,
-  Orbit,
+  OrbitA,
+  OrbitB,
+  OrbitC,
   fallback,
   baseline_flag,
   DATA_to_enc,
@@ -131,7 +133,9 @@ input CLKC;
 input rst_bA;
 input rst_bB;
 input rst_bC;
-input Orbit;
+input OrbitA;
+input OrbitB;
+input OrbitC;
 input fallback;
 input baseline_flag;
 input [Nbits_12:0] DATA_to_enc;
@@ -235,7 +239,9 @@ LDTU_FSMTMR fsm (
     .rst_bB(rst_bB),
     .rst_bC(rst_bC),
     .baseline_flag(baseline_flag),
-    .Orbit(Orbit),
+    .OrbitA(OrbitA),
+    .OrbitB(OrbitB),
+    .OrbitC(OrbitC),
     .fallback(fallback),
     .Current_stateA(Current_stateA),
     .Current_stateB(Current_stateB),

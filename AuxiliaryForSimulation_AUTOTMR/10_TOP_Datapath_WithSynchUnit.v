@@ -197,7 +197,7 @@ module top_ofthetop (
    wire 	 BC0markC;
 
    wire 	 ExtCalEn;
-   wire [4:0] 	 TmrErr;
+   wire [1:0] 	 TmrErr;
 
    // AdcTestUnit internal signals
 
@@ -235,7 +235,7 @@ module top_ofthetop (
 					       .TEST_ENABLE(AdcTestMode), .GAIN_SEL_MODE(2'b0), .fallback(fallback),                   
 					       .DATA12_g01(AdcDoutL), 
 					       .DATA12_g10(AdcDoutH), .SATURATION_value(DtuSatValue), .BSL_VAL_g01(DtuBslineL), 
-					       .BSL_VAL_g10(DtuBslineH), .Orbit(Orbit), .shift_gain_10(shift_gain_10), .losing_data(DtuLoss), .totalError(TmrErr[0]), 
+					       .BSL_VAL_g10(DtuBslineH), .OrbitA(BC0markA), .OrbitB(BC0markB), .OrbitC(BC0markC), .shift_gain_10(shift_gain_10), .losing_data(DtuLoss), .totalError(TmrErr[0]), 
 					       .DATA32_ATU_0(int_TUdoutHo), .DATA32_ATU_1(int_TUdoutHe), 
 					       .DATA32_ATU_2(int_TUdoutLo), .DATA32_ATU_3(int_TUdoutLe), 
 					       .DATA32_0(DTU_TUdoutHo), .DATA32_1(DTU_TUdoutHe), 
@@ -258,8 +258,8 @@ module top_ofthetop (
 			    .DataInH(AdcDoutH),    .DataInL(AdcDoutL),
 			    .DataOutHo(int_TUdoutHo),    .DataOutHe(int_TUdoutHe),
 			    .DataOutLo(int_TUdoutLo),    .DataOutLe(int_TUdoutLe),
-			    .tmrError(TmrErr[1]),    .tmrErrorA(TmrErr[2]),
-			    .tmrErrorB(TmrErr[3]),    .tmrErrorC(TmrErr[4]));
+			    .tmrError(TmrErr[1]),    .tmrErrorA(),
+			    .tmrErrorB(),    .tmrErrorC());
    
 
 

@@ -285,7 +285,7 @@ end // always @ posedge(clk)
       CALIBRATION_BUSY_1 <= 1'b0;
       CALIBRATION_BUSY_10 <= 1'b0;
 
-      test_enable   <= 1'b1;    	// DTU_test_mode
+      test_enable   <= 1'b0;    	// DTU_test_mode
       GAIN_SEL_MODE <= 2'b00;		// Auto-gain selection
       fallback=1'b0;
 

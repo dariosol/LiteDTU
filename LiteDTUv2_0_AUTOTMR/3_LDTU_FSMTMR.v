@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 16/03/2021 15:37:22                                                                    *
+ * date    : 16/03/2021 15:48:50                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -31,7 +31,9 @@ module LDTU_FSMTMR(
   rst_bB,
   rst_bC,
   fallback,
-  Orbit,
+  OrbitA,
+  OrbitB,
+  OrbitC,
   baseline_flag,
   Current_stateA,
   Current_stateB,
@@ -73,9 +75,6 @@ parameter    data_odd=3'b001;
 parameter    latency1=3'b010;
 parameter    data_even=3'b011;
 parameter    latency2=3'b100;
-wire OrbitC;
-wire OrbitB;
-wire OrbitA;
 wire fallbackC;
 wire fallbackB;
 wire fallbackA;
@@ -89,7 +88,9 @@ input rst_bA;
 input rst_bB;
 input rst_bC;
 input fallback;
-input Orbit;
+input OrbitA;
+input OrbitB;
+input OrbitC;
 input baseline_flag;
 output reg   [SIZE:0] Current_stateA;
 output reg   [SIZE:0] Current_stateB;
@@ -948,13 +949,6 @@ fanout fallbackFanout (
     .outA(fallbackA),
     .outB(fallbackB),
     .outC(fallbackC)
-    );
-
-fanout OrbitFanout (
-    .in(Orbit),
-    .outA(OrbitA),
-    .outB(OrbitB),
-    .outC(OrbitC)
     );
 endmodule
 

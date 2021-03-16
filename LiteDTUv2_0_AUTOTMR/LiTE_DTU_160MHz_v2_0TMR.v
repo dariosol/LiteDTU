@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 16/03/2021 15:37:23                                                                    *
+ * date    : 16/03/2021 15:48:51                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -48,7 +48,9 @@ module LiTE_DTU_160MHz_v2_0TMR(
   DATA32_ATU_1,
   DATA32_ATU_2,
   DATA32_ATU_3,
-  Orbit,
+  OrbitA,
+  OrbitB,
+  OrbitC,
   shift_gain_10,
   DATA32_0,
   DATA32_1,
@@ -93,7 +95,9 @@ input [Nbits_32-1:0] DATA32_ATU_0;
 input [Nbits_32-1:0] DATA32_ATU_1;
 input [Nbits_32-1:0] DATA32_ATU_2;
 input [Nbits_32-1:0] DATA32_ATU_3;
-input Orbit;
+input OrbitA;
+input OrbitB;
+input OrbitC;
 input [1:0] shift_gain_10;
 output losing_data;
 output [Nbits_32-1:0] DATA32_0;
@@ -178,7 +182,9 @@ LDTU_EncoderTMR #(.Nbits_12(Nbits_12), .Nbits_32(Nbits_32)) Encoder (
     .rst_bB(resetB),
     .rst_bC(resetC),
     .baseline_flag(baseline_flag),
-    .Orbit(Orbit),
+    .OrbitA(OrbitA),
+    .OrbitB(OrbitB),
+    .OrbitC(OrbitC),
     .fallback(fallback),
     .DATA_to_enc(DATA_to_enc),
     .DATA_32(DATA_32),

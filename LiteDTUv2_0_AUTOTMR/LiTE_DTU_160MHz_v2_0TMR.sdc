@@ -160,10 +160,6 @@ constrainNet /Encoder/fallback
 constrainNet /Encoder/fallbackA
 constrainNet /Encoder/fallbackB
 constrainNet /Encoder/fallbackC
-constrainNet /Encoder/fsm/Orbit
-constrainNet /Encoder/fsm/OrbitA
-constrainNet /Encoder/fsm/OrbitB
-constrainNet /Encoder/fsm/OrbitC
 constrainNet /Encoder/fsm/baseline_flag
 constrainNet /Encoder/fsm/baseline_flagA
 constrainNet /Encoder/fsm/baseline_flagB
