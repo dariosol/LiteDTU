@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 08/03/2021 14:09:37                                                                    *
+ * date    : 16/03/2021 15:37:23                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: LiTE_DTU_160MHz_v2_0.v                                                                 *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-08 12:01:27.602215                                         *
- *           File Size         : 5611                                                               *
- *           MD5 hash          : bec3cb4deebe7375e2fa280357fce5ac                                   *
+ *           Modification time : 2021-03-16 15:36:18.149289                                         *
+ *           File Size         : 5609                                                               *
+ *           MD5 hash          : dc77aa6a4aa43eb96f6f583555b27854                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -228,9 +228,9 @@ LDTU_DATA32_ATU_DTUTMR #(.Nbits_32(Nbits_32)) DATA32_mux (
     .CLKA(CLKA),
     .CLKB(CLKB),
     .CLKC(CLKC),
-    .RSTA(resetA),
-    .RSTB(resetB),
-    .RSTC(resetC),
+    .RSTA(RSTA),
+    .RSTB(RSTB),
+    .RSTC(RSTC),
     .CALIBRATION_BUSYA(CALIBRATION_BUSYA),
     .CALIBRATION_BUSYB(CALIBRATION_BUSYB),
     .CALIBRATION_BUSYC(CALIBRATION_BUSYC),

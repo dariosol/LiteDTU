@@ -17,16 +17,17 @@
 module tb_LDTU_presynth;
 
 
-   parameter Nbits_8 	= 8;
-   parameter Nbits_12	= 12;
-   parameter FifoDepth = 8;
-   parameter NBitsCnt 	= 3;
-   parameter Nbits_32 	= 32;
-   parameter ck_period = 6240;
-   parameter crcBits = 12;
+   parameter Nbits_8 	   = 8;
+   parameter Nbits_12     = 12;
+   parameter FifoDepth     = 8;
+   parameter NBitsCnt 	   = 3;
+   parameter Nbits_32 	   = 32;
+   parameter ck_period     = 6240;
+   parameter crcBits       = 12;
    parameter ck_srl_period = 780;
    parameter    Nbits_5=5;
    parameter bits_ptr=4;
+   
    reg DCLK_1;
    reg DCLK_10;	
    reg clk_srl;
@@ -34,9 +35,8 @@ module tb_LDTU_presynth;
    reg RST_A;
    reg RST_B;
    reg RST_C;
-   //	reg GAIN_SEL_MODE;
+
    reg [1:0] GAIN_SEL_MODE;
-   reg 	     fallback;
    
    reg 	     CALIBRATION_BUSY_1;
    reg 	     CALIBRATION_BUSY_10;
@@ -45,7 +45,7 @@ module tb_LDTU_presynth;
    reg [Nbits_8-1:0]  BSL_VAL_g01 = 8'b00000000;
    reg [Nbits_8-1:0]  BSL_VAL_g10 = 8'b00000000;
    reg [Nbits_12-1:0] SATURATION_value = 12'b111111111111;
-   reg [1:0] shift_gain_10 = 2'b00;
+
    wire 	      losing_data;
    wire [Nbits_32-1:0] DATA32_to_SER_0; 
    wire [Nbits_32-1:0] DATA32_to_SER_1; 
@@ -58,10 +58,10 @@ module tb_LDTU_presynth;
    integer 	       data_file_read01, data_file_read10;
    integer 	       write_file_g01, write_file_g10, write_file_SER, write_file_output;
    integer 	       data_file_read1, data_file_read2, scan_file1, scan_file2, index, index_2;
-   integer 	       conta_CLK;
    reg 		       eof1, eof2, close0, close1, close2, close3, close4, close5;
 
    wire 	       CALIBRATION_BUSY;
+
    assign CALIBRATION_BUSY = CALIBRATION_BUSY_1 | CALIBRATION_BUSY_10;
 
    wire 	       output_ser_0;
@@ -70,25 +70,88 @@ module tb_LDTU_presynth;
    wire 	       output_ser_3;
    reg 		       test_enable;
 
-   wire 	       handshake;
-
 
    //New Orbit Signal for Phase 2
    reg 		       Orbit;
-   
+   reg 		       fallback;
+   reg [1:0] shift_gain_10 = 2'b00;
 
-   top_ofthetop toptoplevel(.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .CLK(clk), .CLK_SRL(clk_srl),
-			    .RST_A(RST_A),  .RST_B(RST_B), .RST_C(RST_C), 
-			    .CALIBRATION_BUSY_1(CALIBRATION_BUSY_1), .CALIBRATION_BUSY_10(CALIBRATION_BUSY_10), 
-			    .TEST_ENABLE(test_enable), .GAIN_SEL_MODE(GAIN_SEL_MODE),.fallback(fallback), 
-			    .DATA12_g01(DATA12_g01), .DATA12_g10(DATA12_g10), 
-			    .SATURATION_value(SATURATION_value), .BSL_VAL_g01(BSL_VAL_g01), .BSL_VAL_g10(BSL_VAL_g10),
-			    .Orbit(Orbit),
+
+//I2C    
+   reg[1:0]            AdcOvf_in;
+   reg [1:0] 	       AdcSEU;
+   wire 	       DtuAdcSel;
+   wire 	       DtuSysCal;
+
+//SynchUnit
+   wire      ReSync;
+   reg [7:0]  input_sr;
+   reg [3:0]  isr_in = 4'h0;
+   wire [7:0] isr_in_enc;
+   reg 	      isr_load = 1'b0;
+
+	      
+   assign DtuAdcSel = GAIN_SEL_MODE[0];
+   assign DtuSysCal = GAIN_SEL_MODE[1];
+   
+       
+
+    
+   top_ofthetop toptoplevel(
+			    //input
+			    .rstA_b(RST_A),.rstB_b(RST_B),.rstC_b(RST_C),
+			    .AdcClkOut({DCLK_1,DCLK_10}),
+			    .ClkInA(clk),.ClkInB(clk),.ClkInC(clk),
+			    .CLK_SRL(clk_srl),
+			    .AdcTestMode(test_enable),
+			    .AdcDoutH(DATA12_g10),.AdcDoutL(DATA12_g01),
+			    .AdcCalBusy_in({CALIBRATION_BUSY_1,CALIBRATION_BUSY_10}),
+			    .AdcOvf_in(AdcOvf_in),
+			    .AdcSEU(AdcSEU),
+			    .fallback(fallback),
 			    .shift_gain_10(shift_gain_10),
-			    .losing_data(losing_data), 
-			    .totalError(totalError), .handshake(handshake), 
-			    .output_ser_0(output_ser_0), .output_ser_1(output_ser_1), 
-			    .output_ser_2(output_ser_2), .output_ser_3(output_ser_3));
+			    //I2C
+			    .DtuAdcSel(DtuAdcSel),
+			    .DtuSysCal(DtuSysCal),
+			    .DtuBslineH(BSL_VAL_g10),
+			    .DtuBslineL(BSL_VAL_g01),
+			    .DtuDivby2(shift_gain_10[0]),
+			    .DtuDivby4(shift_gain_10[1]),
+			    .DtuSatValue(SATURATION_value),
+			    .DtuSMPattern(),
+			    .DtuTPLength(),
+			    
+			    //output
+			    .AdcRstA_b(),.AdcRstB_b(),.AdcRstC_b(),
+			    .AdcCalInA(),.AdcCalInB(),.AdcCalInC(),
+			    .AdcCalBusy(),
+			    .AdcOverflow(),
+			    .PllLockStartA(),.PllLockStartB(),.PllLockStartC(),
+			    .CatiaTPA(),.CatiaTPB(),.CatiaTPC(),
+			    .SerRstA_b(),.SerRstB_b(),.SerRstC_b(),
+			    .TUdoutHo(),
+			    .TUdoutHe(),
+			    .TUdoutLo(),
+			    .TUdoutLe(),
+			    .DtuHshake(),
+			    
+			    //I2C
+			    .DtuLoss(losing_data),
+			    .I2cRstA_b(),
+			    .I2cRstB_b(),
+			    .I2cRstC_b(),
+
+			    // SEU detection signals
+
+			    .SEUA(),      // SEU on the ADC logic
+			    .SEUD(),      // SEU on the digital logic
+			    //Serializers
+			    .output_ser_0(output_ser_0),
+			    .output_ser_1(output_ser_1),
+			    .output_ser_2(output_ser_2),
+			    .output_ser_3(output_ser_3),
+                            .ReSync(ReSync));
+
 
 
 
@@ -96,7 +159,6 @@ module tb_LDTU_presynth;
    initial begin
       DCLK_1 = 1'b1;
       #(ck_period/2);
-      //#(0.3*ck_period);
       DCLK_1 = 1'b0;
       forever begin
 	 #(ck_period/2);
@@ -108,7 +170,6 @@ module tb_LDTU_presynth;
    initial begin
       DCLK_10 = 1'b1;
       #(ck_period/2);
-      //#(0.35*ck_period);
       DCLK_10 = 1'b0;
       forever begin
 	 #(ck_period/2);
@@ -119,7 +180,6 @@ module tb_LDTU_presynth;
    // clk generation
    initial begin
       clk = 1'b1;
-      //clk = 1'b0;
       forever begin
 	 #(ck_period/2);
 	 clk = ~clk;
@@ -129,7 +189,6 @@ module tb_LDTU_presynth;
    // clk_srl generation
    initial begin
       clk_srl = 1'b1;
-      //clk = 1'b0;
       forever begin
 	 #(ck_srl_period/2);
 	 clk_srl = ~clk_srl;
@@ -138,46 +197,106 @@ module tb_LDTU_presynth;
 
    
    //Orbit signal generation
-   initial begin
-      Orbit = 1'b0;
-      #((34+54)*ck_period); //212 ns
-      Orbit = 1'b1;
-      #(1*ck_period); 
-      Orbit = 1'b0;
-      
-      forever begin
-	 #(14240*ck_period); //89us
-	 Orbit = 1'b1;
-	 #(1*ck_period);
+      initial begin
 	 Orbit = 1'b0;
+	 #((34+154)*ck_period); 
+	 Orbit = 1'b1;
+	 #(1*ck_period); 
+	 Orbit = 1'b0;
+      
+	 forever begin
+	    #(14240*ck_period); //89us
+	    Orbit = 1'b1;
+	    #(1*ck_period);
+	    Orbit = 1'b0;
+	 end
       end
-   end
-
-
-
    
+   ////Fast Commands
+   always @(posedge clk) begin
+   if(Orbit==1'b1) begin
+      $display("Orbit seen");
+      isr_in = 1;
+      // Start
+      isr_load = 1'b1;
+      #ck_period;
+      isr_load = 1'b0;
+      #(7*ck_period);
+      isr_in = 1;
+      // Start
+      isr_load = 1'b1;
+      #ck_period;
+      isr_load = 1'b0;
+      #(7*ck_period);
+      isr_in = 14;
+      // BC0 marker
+      isr_load = 1'b1;
+      #ck_period;
+      isr_load = 1'b0;
+      #(7*ck_period);
+      isr_in = 0;
+      // Stop
+      isr_load = 1'b1;
+      #ck_period;
+      isr_load = 1'b0;
+      
+      
+   end // if (Orbit==1'b1)
+end // always @ posedge(clk)
+
+   // Hamming encoding
+
+   assign isr_in_enc[0] = isr_in[0] ^ isr_in[1] ^ isr_in[3];
+
+   assign isr_in_enc[1] = isr_in[0] ^ isr_in[2] ^ isr_in[3];
+
+   assign isr_in_enc[2] = isr_in[0];
+
+   assign isr_in_enc[3] = isr_in[1] ^ isr_in[2] ^ isr_in[3] ;
+
+   assign isr_in_enc[6:4] = isr_in[3:1];
+
+   assign isr_in_enc[7] = 1'b0;
+
+   // Input shift register for Synch Unit
+
+   always @(posedge clk) begin
+      if (RST_A == 0)
+	input_sr = 1'b0;
+
+      else if (isr_load == 1)
+	input_sr = isr_in_enc;
+
+      else
+	input_sr = {input_sr[6:0],1'b0};
+
+   end // always @ (posedge clock)
+
+   assign ReSync = input_sr[7];
+   
+
+
    // Main testbench
    initial begin
-
-
-
+      
       RST_A   = 1'b1;
       RST_B   = 1'b1;
       RST_C   = 1'b1;
       CALIBRATION_BUSY_1 <= 1'b0;
       CALIBRATION_BUSY_10 <= 1'b0;
-      //      test_enable <= 1'b1;			// ADC_test_mode
-      test_enable <= 1'b0;			// DTU_test_mode
+
+      test_enable   <= 1'b1;    	// DTU_test_mode
       GAIN_SEL_MODE <= 2'b00;		// Auto-gain selection
       fallback=1'b0;
+
+    //  isr_in = 4'h0;
+    //  isr_load = 1'b0;
       
-      #(0.7*ck_period);	// --------------- system reset
+      #(1*ck_period);	// --------------- system reset 
       RST_A = 1'b0;
       RST_B = 1'b0;
       RST_C = 1'b0;
-      // If both following assignation are commented: SATURATION_value = 12'hfff
-      //SATURATION_value = 12'b111011011000; //3800 ADC count sat value
-      //SATURATION_value = 12'b011111010000;//2000 ADC count sat value
+   
       if (test_enable == 1'b1) begin
 	 write_file_SER = $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_ATM.dat","w");
 	 write_file_g01= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_ATU_ing01.dat","w");
@@ -208,11 +327,54 @@ module tb_LDTU_presynth;
 	    write_file_g10= $fopen("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_11_ing10.dat","w");
 	 end
       end 
-      #(2.4*ck_period);
+      //#(2.4*ck_period);
+      #(2*ck_period);
       RST_A   = 1'b1;		// --------------- system active
       RST_B   = 1'b1;
       RST_C   = 1'b1;
 
+      // DTU reset
+
+      isr_in = 1;
+      // Start
+      isr_load = 1'b1;
+
+      #ck_period;
+
+      isr_load = 1'b0;
+
+      #(7*ck_period);
+
+      isr_in = 2;
+      // DTU reset
+      isr_load = 1'b1;
+
+      #ck_period;
+
+      isr_load = 1'b0;
+
+      #(7*ck_period);
+
+      isr_in = 6;
+      // Normal mode
+      isr_load = 1'b1;
+
+      #ck_period;
+
+      isr_load = 1'b0;
+
+      #(7*ck_period);
+
+      isr_in = 0;
+      // Stop
+      isr_load = 1'b1;
+
+      #ck_period;
+
+      isr_load = 1'b0;
+
+     
+/*      
       #(5.3*ck_period);			
       CALIBRATION_BUSY_1 <= 1'b1;	// --------------- calibration starts here ADC_L
       #(1.3*ck_period);	
@@ -221,21 +383,10 @@ module tb_LDTU_presynth;
       CALIBRATION_BUSY_1 <= 1'b0;	// --------------- end of calibration ADC_L
       #(0.3*ck_period);
       CALIBRATION_BUSY_10 <= 1'b0;	// --------------- end of calibration ADC_H
-
-      #(500*ck_period);	// --------------- system reset
-      RST_A = 1'b1;
-      RST_B = 1'b1;
-      RST_C = 1'b1;
-      #(1*ck_period);	// --------------- system reset
-      RST_A = 1'b1;
-      RST_B = 1'b1;
-      RST_C = 1'b1;
-     
-
-   end
-
-
-
+*/
+      
+   end // initial begin
+   
    initial begin
 
       //$timeformat(-9, 2, " ns", 10); 
@@ -259,9 +410,8 @@ module tb_LDTU_presynth;
       end
    end
 
-
-
-
+////////////////////////////////////////////////
+   //GAIN 1 FILE
    always @(negedge DCLK_1) begin
       eof1= $feof(data_file_read01);
       if (RST_A == 1'b0) DATA12_g01 = 12'bx;
@@ -290,7 +440,8 @@ module tb_LDTU_presynth;
       end // end RST == 1'b1
    end
 
-
+////////////////////////////////////////////////
+   //GAIN 10 FILE
    always @(negedge DCLK_10) begin
       eof2= $feof(data_file_read10);
       if (RST_A == 1'b0) DATA12_g10 = 12'bx;
@@ -319,7 +470,8 @@ module tb_LDTU_presynth;
       end // end RST == 1'b1
    end
 
-
+////////////////////////////////////////////////
+   //////////DUMP DATA IN FILES////////////////
    // For the output serializers debug
 
    parameter pattern_idleDTU_0 = 8'b11101010;
@@ -346,7 +498,7 @@ module tb_LDTU_presynth;
    always @(posedge DCLK_1) begin
       if (CALIBRATION_BUSY == 2'b00) begin
 	 $fwrite(write_file_g01,"%g %h\n", $time, DATA12_g01);
-	 $fwrite(write_file_g10,"%g %h\n", $time, DATA12_g01); 
+	 $fwrite(write_file_g10,"%g %h\n", $time, DATA12_g10); 
       end
    end
 

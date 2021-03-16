@@ -21,7 +21,7 @@
  *                                                                                                  *
  ****************************************************************************************************/
 
-`timescale  1ns/1ps
+`timescale  1ps/1ps
 module Serializer_shiftTMR(
   CLK_SRL,
   RST_A,

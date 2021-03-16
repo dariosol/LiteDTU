@@ -21,7 +21,7 @@
  *                                                                                                  *
  ****************************************************************************************************/
 
-`timescale 1ns/1ps
+`timescale 1ps/1ps
 module AdcTestUnitTMR #(
   parameter NBitsADC=12,
   parameter NBitsOut=32

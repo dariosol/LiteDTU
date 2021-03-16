@@ -11,9 +11,10 @@ vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_
 vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v
 vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/8_SER_shift_TMRG.v
 vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/9_AdcTestUnitTMR.v
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath.v
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/SyncUnit_v2TMR.v
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v
 vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_serTMR.v
-vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_new.v
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit.v
 
 
 

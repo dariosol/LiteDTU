@@ -1,5 +1,5 @@
 
-`timescale  1ns/1ps
+`timescale  1ps/1ps
 
 module top_ofthetop (
 	DCLK_1, 
