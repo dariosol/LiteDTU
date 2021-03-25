@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 16/03/2021 15:48:50                                                                    *
+ * date    : 25/03/2021 10:12:39                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 3_LDTU_Encoder.v                                                                       *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-08 13:54:06.835110                                         *
- *           File Size         : 10962                                                              *
- *           MD5 hash          : 329120bdd4a87c911b3e0cf3ff473ce4                                   *
+ *           Modification time : 2021-03-25 10:12:32.221484                                         *
+ *           File Size         : 10888                                                              *
+ *           MD5 hash          : 53aba599bf2bf0614cc727178eca3e47                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -207,8 +207,7 @@ reg  rLoad_FBC;
 wire [SIZE_FB:0] Current_state_FBA;
 wire [SIZE_FB:0] Current_state_FBB;
 wire [SIZE_FB:0] Current_state_FBC;
-wire fsm_SeuError;
-assign SeuError =  tmrError|fsm_SeuError;
+assign SeuError =  tmrError;
 
 Delay_enc delayA (
     .clk(CLKA),
@@ -248,8 +247,7 @@ LDTU_FSMTMR fsm (
     .Current_stateC(Current_stateC),
     .Current_state_FBA(Current_state_FBA),
     .Current_state_FBB(Current_state_FBB),
-    .Current_state_FBC(Current_state_FBC),
-    .SeuError(fsm_SeuError)
+    .Current_state_FBC(Current_state_FBC)
     );
 assign code_sel_basA =  (baseline_flagA==1'b1) ? code_sel_bas1 : code_sel_bas2;
 assign code_sel_basB =  (baseline_flagB==1'b1) ? code_sel_bas1 : code_sel_bas2;

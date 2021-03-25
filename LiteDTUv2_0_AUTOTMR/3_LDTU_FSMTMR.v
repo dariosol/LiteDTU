@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 16/03/2021 15:48:50                                                                    *
+ * date    : 25/03/2021 10:12:39                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 3_LDTU_FSM.v                                                                           *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-08 14:42:12.842065                                         *
- *           File Size         : 8349                                                               *
- *           MD5 hash          : b082f0faf4b659fa92f6fab346d56808                                   *
+ *           Modification time : 2021-03-25 10:07:16.377481                                         *
+ *           File Size         : 8438                                                               *
+ *           MD5 hash          : 24657aecae132349ec6e4647b3ba1aa8                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -40,8 +40,7 @@ module LDTU_FSMTMR(
   Current_stateC,
   Current_state_FBA,
   Current_state_FBB,
-  Current_state_FBC,
-  SeuError
+  Current_state_FBC
 );
 parameter    SIZE=4;
 parameter    IDLE=4'b0000;
@@ -95,7 +94,6 @@ input baseline_flag;
 output reg   [SIZE:0] Current_stateA;
 output reg   [SIZE:0] Current_stateB;
 output reg   [SIZE:0] Current_stateC;
-output SeuError;
 reg  [SIZE:0] nStateA;
 reg  [SIZE:0] nStateB;
 reg  [SIZE:0] nStateC;

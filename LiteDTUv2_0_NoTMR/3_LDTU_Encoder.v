@@ -142,10 +142,8 @@ module LDTU_Encoder(
    reg 			 rLoad_FB;
    wire [SIZE_FB:0] 	 Current_state_FB;
 
-   wire 		 fsm_SeuError;
-   
    wire 		 tmrError = 1'b0;
-   assign                SeuError = tmrError | fsm_SeuError;
+   assign                SeuError = tmrError;
    
    Delay_enc delay(
 		   .clk(CLK), 
@@ -156,8 +154,7 @@ module LDTU_Encoder(
 
    LDTU_FSM fsm(.CLK(CLK), .rst_b(rst_b), .baseline_flag(baseline_flag),.Orbit(Orbit),.fallback(fallback),
 		.Current_state(Current_state), 
-		.Current_state_FB(Current_state_FB),
-		.SeuError(fsm_SeuError));
+		.Current_state_FB(Current_state_FB));
 
    assign code_sel_bas = (baseline_flag==1'b1) ? code_sel_bas1 : code_sel_bas2;
    assign code_sel_sign = (baseline_flag==1'b0) ? code_sel_sign1 : code_sel_sign2;

@@ -22,8 +22,8 @@ module LDTU_FSM(
 		   Orbit,
 		   baseline_flag,
 		   Current_state,
-		   Current_state_FB,
-		   SeuError
+		   Current_state_FB
+//		   SeuError
 		   );
 
    parameter SIZE=4;
@@ -60,7 +60,7 @@ module LDTU_FSM(
    input Orbit;
    input baseline_flag;
    output reg[SIZE:0] Current_state;   
-   output 	       SeuError;
+//   output 	       SeuError;
 
    reg [SIZE:0]        nState;
 
@@ -80,7 +80,9 @@ module LDTU_FSM(
    parameter latency2=3'b100;
    
 /////////////////////////////////////////////////////
-   
+//   wire 	       tmrError = 1'b0;
+//   assign                SeuError = tmrError;
+      
    
 
    //Standard FSM
