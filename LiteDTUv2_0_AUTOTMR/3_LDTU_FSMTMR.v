@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 25/03/2021 10:12:39                                                                    *
+ * date    : 25/03/2021 13:25:37                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 3_LDTU_FSM.v                                                                           *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-25 10:07:16.377481                                         *
- *           File Size         : 8438                                                               *
- *           MD5 hash          : 24657aecae132349ec6e4647b3ba1aa8                                   *
+ *           Modification time : 2021-03-25 10:52:48.222507                                         *
+ *           File Size         : 8728                                                               *
+ *           MD5 hash          : 919eeeb485a2bc315868462cafdb66e1                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -34,6 +34,9 @@ module LDTU_FSMTMR(
   OrbitA,
   OrbitB,
   OrbitC,
+  Orbit_FBA,
+  Orbit_FBB,
+  Orbit_FBC,
   baseline_flag,
   Current_stateA,
   Current_stateB,
@@ -74,6 +77,8 @@ parameter    data_odd=3'b001;
 parameter    latency1=3'b010;
 parameter    data_even=3'b011;
 parameter    latency2=3'b100;
+parameter    data_odd_bc0=3'b101;
+parameter    data_even_bc0=3'b110;
 wire fallbackC;
 wire fallbackB;
 wire fallbackA;
@@ -90,6 +95,9 @@ input fallback;
 input OrbitA;
 input OrbitB;
 input OrbitC;
+input Orbit_FBA;
+input Orbit_FBB;
+input Orbit_FBC;
 input baseline_flag;
 output reg   [SIZE:0] Current_stateA;
 output reg   [SIZE:0] Current_stateB;
@@ -851,7 +859,7 @@ always @( posedge CLKC )
       end
   end
 
-always @( Current_state_FBA or OrbitA )
+always @( Current_state_FBA or Orbit_FBA )
   begin : FSM_COMB_FBA
     nState_FBA =  IDLE_FB;
     case (Current_state_FBA)
@@ -865,7 +873,14 @@ always @( Current_state_FBA or OrbitA )
         end
       latency1 : 
         begin
-          nState_FBA =  data_even;
+          if (Orbit_FBA==1'b0)
+            begin
+              nState_FBA =  data_even;
+            end
+          else
+            begin
+              nState_FBA =  data_even_bc0;
+            end
         end
       data_even : 
         begin
@@ -873,13 +888,20 @@ always @( Current_state_FBA or OrbitA )
         end
       latency2 : 
         begin
-          nState_FBA =  data_odd;
+          if (Orbit_FBA==1'b0)
+            begin
+              nState_FBA =  data_odd;
+            end
+          else
+            begin
+              nState_FBA =  data_odd_bc0;
+            end
         end
       default : nState_FBA =  IDLE_FB;
     endcase
   end
 
-always @( Current_state_FBB or OrbitB )
+always @( Current_state_FBB or Orbit_FBB )
   begin : FSM_COMB_FBB
     nState_FBB =  IDLE_FB;
     case (Current_state_FBB)
@@ -893,7 +915,14 @@ always @( Current_state_FBB or OrbitB )
         end
       latency1 : 
         begin
-          nState_FBB =  data_even;
+          if (Orbit_FBB==1'b0)
+            begin
+              nState_FBB =  data_even;
+            end
+          else
+            begin
+              nState_FBB =  data_even_bc0;
+            end
         end
       data_even : 
         begin
@@ -901,13 +930,20 @@ always @( Current_state_FBB or OrbitB )
         end
       latency2 : 
         begin
-          nState_FBB =  data_odd;
+          if (Orbit_FBB==1'b0)
+            begin
+              nState_FBB =  data_odd;
+            end
+          else
+            begin
+              nState_FBB =  data_odd_bc0;
+            end
         end
       default : nState_FBB =  IDLE_FB;
     endcase
   end
 
-always @( Current_state_FBC or OrbitC )
+always @( Current_state_FBC or Orbit_FBC )
   begin : FSM_COMB_FBC
     nState_FBC =  IDLE_FB;
     case (Current_state_FBC)
@@ -921,7 +957,14 @@ always @( Current_state_FBC or OrbitC )
         end
       latency1 : 
         begin
-          nState_FBC =  data_even;
+          if (Orbit_FBC==1'b0)
+            begin
+              nState_FBC =  data_even;
+            end
+          else
+            begin
+              nState_FBC =  data_even_bc0;
+            end
         end
       data_even : 
         begin
@@ -929,7 +972,14 @@ always @( Current_state_FBC or OrbitC )
         end
       latency2 : 
         begin
-          nState_FBC =  data_odd;
+          if (Orbit_FBC==1'b0)
+            begin
+              nState_FBC =  data_odd;
+            end
+          else
+            begin
+              nState_FBC =  data_odd_bc0;
+            end
         end
       default : nState_FBC =  IDLE_FB;
     endcase

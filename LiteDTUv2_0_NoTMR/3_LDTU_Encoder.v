@@ -100,6 +100,8 @@ module LDTU_Encoder(
    parameter latency1=3'b010;
    parameter data_even=3'b011;
    parameter latency2=3'b100;
+   parameter data_odd_bc0=3'b101;
+   parameter data_even_bc0=3'b110;
    
    //////////////////////////////////////////////
    //PORTS
@@ -140,6 +142,9 @@ module LDTU_Encoder(
    reg [Nbits_12:0] 	 Ld_sign_FB;
    reg [Nbits_32-1:0] 	 rDATA_32_FB;
    reg 			 rLoad_FB;
+   wire                   Orbit_FB;
+   reg 			  Orbit_delay;
+   
    wire [SIZE_FB:0] 	 Current_state_FB;
 
    wire 		 tmrError = 1'b0;
@@ -150,16 +155,32 @@ module LDTU_Encoder(
 		   .reset(rst_b), 
 		   .D(DATA_to_enc), 
 		   .Dd(dDATA_to_enc));
-   
 
-   LDTU_FSM fsm(.CLK(CLK), .rst_b(rst_b), .baseline_flag(baseline_flag),.Orbit(Orbit),.fallback(fallback),
+//Make the orbit signal 2 clock long: to be catched by the fallback process. 
+   // ambiguity of the orbit signal?
+   // Is it possible to guarantee a 160 MHz singal? or being long 25 ns, it creates always
+   //a 4 clock ambiguity?
+   //       
+   assign OrbitFB = Orbit | Orbit_delay;
+
+   
+   always @( posedge CLK) begin
+      if (rst_b == 1'b0) begin 
+	Orbit_delay=1'b0;
+      end
+      else begin
+	Orbit_delay = Orbit;
+      end
+   end
+   
+LDTU_FSM fsm(.CLK(CLK), .rst_b(rst_b), .baseline_flag(baseline_flag),.Orbit(Orbit), .Orbit_FB(OrbitFB), .fallback(fallback),
 		.Current_state(Current_state), 
 		.Current_state_FB(Current_state_FB));
 
    assign code_sel_bas = (baseline_flag==1'b1) ? code_sel_bas1 : code_sel_bas2;
    assign code_sel_sign = (baseline_flag==1'b0) ? code_sel_sign1 : code_sel_sign2;
 
-
+   
 
    always @( posedge CLK)
      begin : FSM_seq_output
@@ -374,6 +395,18 @@ end
 		 begin
 		    rLoad_FB<=1'b1;
 	            rDATA_32_FB <= {2'b11,2'b11, ~^dDATA_to_enc, ~^Ld_sign_FB, dDATA_to_enc, Ld_sign_FB};
+		 end
+
+	       data_odd_bc0 :
+		 begin
+		    rLoad_FB<=1'b1;
+	            rDATA_32_FB <= {2'b11,2'b00, ~^dDATA_to_enc, ~^Ld_sign_FB, dDATA_to_enc, Ld_sign_FB};
+		 end
+
+	       data_even_bc0 :
+		 begin
+		    rLoad_FB<=1'b1;
+	            rDATA_32_FB <= {2'b11,2'b01, ~^dDATA_to_enc, ~^Ld_sign_FB, dDATA_to_enc, Ld_sign_FB};
 		 end
 
 	       latency2 :

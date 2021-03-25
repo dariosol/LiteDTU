@@ -20,6 +20,7 @@ module LDTU_FSM(
 		   rst_b,
 		   fallback,
 		   Orbit,
+		   Orbit_FB,
 		   baseline_flag,
 		   Current_state,
 		   Current_state_FB
@@ -58,6 +59,7 @@ module LDTU_FSM(
    input rst_b;
    input fallback;
    input Orbit;
+   input Orbit_FB;
    input baseline_flag;
    output reg[SIZE:0] Current_state;   
 //   output 	       SeuError;
@@ -78,6 +80,8 @@ module LDTU_FSM(
    parameter latency1=3'b010;
    parameter data_even=3'b011;
    parameter latency2=3'b100;
+   parameter data_odd_bc0=3'b101;
+   parameter data_even_bc0=3'b110;
    
 /////////////////////////////////////////////////////
 //   wire 	       tmrError = 1'b0;
@@ -331,13 +335,13 @@ module LDTU_FSM(
 
 
 
-   always @( Current_state_FB or Orbit ) begin : FSM_COMB_FB
+   always @( Current_state_FB or Orbit_FB ) begin : FSM_COMB_FB
       nState_FB = IDLE_FB;
       
       case (Current_state_FB)
 	IDLE_FB :
 	  begin
-	       nState_FB = data_odd;
+		nState_FB = data_odd;
 	  end 
 
 	data_odd:
@@ -347,7 +351,12 @@ module LDTU_FSM(
 	
         latency1:
 	  begin
-	     nState_FB = data_even;
+	     if(Orbit_FB == 1'b0) begin
+		nState_FB = data_even;
+		end
+	      else begin
+		nState_FB = data_even_bc0;
+	      end
 	  end
 
 	data_even:
@@ -357,7 +366,12 @@ module LDTU_FSM(
 
 	latency2:
 	  begin
-	     nState_FB = data_odd;
+	     if(Orbit_FB == 1'b0) begin
+		nState_FB = data_odd;
+		end
+	      else begin
+		nState_FB = data_odd_bc0;
+	      end
 	  end
        
 	default : nState_FB = IDLE_FB;

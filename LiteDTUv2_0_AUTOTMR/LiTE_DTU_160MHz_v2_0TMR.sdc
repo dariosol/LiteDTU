@@ -152,6 +152,14 @@ constrainNet /Encoder/Load_synch
 constrainNet /Encoder/Load_synchA
 constrainNet /Encoder/Load_synchB
 constrainNet /Encoder/Load_synchC
+constrainNet /Encoder/Orbit
+constrainNet /Encoder/OrbitA
+constrainNet /Encoder/OrbitB
+constrainNet /Encoder/OrbitC
+constrainNet /Encoder/Orbit_delay
+constrainNet /Encoder/Orbit_delayA
+constrainNet /Encoder/Orbit_delayB
+constrainNet /Encoder/Orbit_delayC
 constrainNet /Encoder/baseline_flag
 constrainNet /Encoder/baseline_flagA
 constrainNet /Encoder/baseline_flagB
