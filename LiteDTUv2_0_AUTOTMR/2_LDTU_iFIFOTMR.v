@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 25/03/2021 13:25:37                                                                    *
+ * date    : 29/03/2021 14:21:15                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 2_LDTU_iFIFO.v                                                                         *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-08 14:41:37.129065                                         *
- *           File Size         : 5468                                                               *
- *           MD5 hash          : ca157d50034201c6490f346b5d7cce21                                   *
+ *           Modification time : 2021-03-29 14:11:43.029853                                         *
+ *           File Size         : 5453                                                               *
+ *           MD5 hash          : 8407da6ad9d1ba6d18bcb25bef42c29c                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -272,7 +272,7 @@ always @( posedge DCLK_10A )
       end
     else
       begin
-        FIFO_g10A[wrH_ptrA]  <= DATA_gain_10A>>shift_gain_10A;
+        FIFO_g10A[wrH_ptrA]  <= DATA_gain_10A;
       end
   end
 
@@ -287,7 +287,7 @@ always @( posedge DCLK_10B )
       end
     else
       begin
-        FIFO_g10B[wrH_ptrB]  <= DATA_gain_10B>>shift_gain_10B;
+        FIFO_g10B[wrH_ptrB]  <= DATA_gain_10B;
       end
   end
 
@@ -302,7 +302,7 @@ always @( posedge DCLK_10C )
       end
     else
       begin
-        FIFO_g10C[wrH_ptrC]  <= DATA_gain_10C>>shift_gain_10C;
+        FIFO_g10C[wrH_ptrC]  <= DATA_gain_10C;
       end
   end
 

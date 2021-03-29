@@ -142,7 +142,7 @@ module LDTU_Encoder(
    reg [Nbits_12:0] 	 Ld_sign_FB;
    reg [Nbits_32-1:0] 	 rDATA_32_FB;
    reg 			 rLoad_FB;
-   wire                   Orbit_FB;
+   wire                   OrbitFB;
    reg 			  Orbit_delay;
    
    wire [SIZE_FB:0] 	 Current_state_FB;

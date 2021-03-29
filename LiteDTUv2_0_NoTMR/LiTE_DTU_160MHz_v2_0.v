@@ -111,7 +111,7 @@ module LiTE_DTU_160MHz_v2_0 (
 
    // ****  Baseline Subtraction Module **** //
    LDTU_BS #(.Nbits_12(Nbits_12), .Nbits_8(Nbits_8))
-   B_subtraction (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .rst_b(reset), .DATA12_g01(DATA12_g01), .DATA12_g10(DATA12_g10), .BSL_VAL_g01(BSL_VAL_g01), .BSL_VAL_g10(BSL_VAL_g10), .DATA_gain_01(DATA_gain_01), .DATA_gain_10(DATA_gain_10), .SeuError(tmrError_BS));
+   B_subtraction (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .rst_b(reset), .DATA12_g01(DATA12_g01), .DATA12_g10(DATA12_g10), .BSL_VAL_g01(BSL_VAL_g01), .BSL_VAL_g10(BSL_VAL_g10), .DATA_gain_01(DATA_gain_01), .DATA_gain_10(DATA_gain_10), .shift_gain_10(shift_gain_10), .SeuError(tmrError_BS));
 
 
    // **** Input FIFOs Module **** //

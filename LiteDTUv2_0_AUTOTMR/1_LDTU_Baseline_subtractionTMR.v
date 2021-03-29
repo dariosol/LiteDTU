@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 25/03/2021 13:25:37                                                                    *
+ * date    : 29/03/2021 14:21:15                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 1_LDTU_Baseline_subtraction.v                                                          *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-08 14:40:41.551066                                         *
- *           File Size         : 2907                                                               *
- *           MD5 hash          : 188da291949435baf4261529e034be7e                                   *
+ *           Modification time : 2021-03-29 14:11:22.367853                                         *
+ *           File Size         : 2980                                                               *
+ *           MD5 hash          : 8c78926e67b377645338b61b7893e8b8                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -30,6 +30,9 @@ module LDTU_BSTMR(
   rst_bC,
   DATA12_g01,
   DATA12_g10,
+  shift_gain_10A,
+  shift_gain_10B,
+  shift_gain_10C,
   BSL_VAL_g01,
   BSL_VAL_g10,
   DATA_gain_01,
@@ -70,6 +73,9 @@ input [Nbits_12-1:0] DATA12_g01;
 input [Nbits_12-1:0] DATA12_g10;
 input [Nbits_8-1:0] BSL_VAL_g01;
 input [Nbits_8-1:0] BSL_VAL_g10;
+input [1:0] shift_gain_10A;
+input [1:0] shift_gain_10B;
+input [1:0] shift_gain_10C;
 output [Nbits_12-1:0] DATA_gain_01;
 output [Nbits_12-1:0] DATA_gain_10;
 output SeuError;
@@ -140,7 +146,7 @@ always @( posedge DCLK_10A )
     if (rst_bA==1'b0)
       d_g10A <= 12'b0;
     else
-      d_g10A <= DATA12_g10A;
+      d_g10A <= DATA12_g10A>>shift_gain_10A;
   end
 
 always @( posedge DCLK_10B )
@@ -148,7 +154,7 @@ always @( posedge DCLK_10B )
     if (rst_bB==1'b0)
       d_g10B <= 12'b0;
     else
-      d_g10B <= DATA12_g10B;
+      d_g10B <= DATA12_g10B>>shift_gain_10B;
   end
 
 always @( posedge DCLK_10C )
@@ -156,7 +162,7 @@ always @( posedge DCLK_10C )
     if (rst_bC==1'b0)
       d_g10C <= 12'b0;
     else
-      d_g10C <= DATA12_g10C;
+      d_g10C <= DATA12_g10C>>shift_gain_10C;
   end
 assign dg01A =  d_g01A-b_val_g01A;
 assign dg01B =  d_g01B-b_val_g01B;

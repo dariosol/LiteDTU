@@ -43,7 +43,7 @@ module tb_LDTU_presynth;
    reg [Nbits_12-1:0] DATA12_g01;
    reg [Nbits_12-1:0] DATA12_g10;
    reg [Nbits_8-1:0]  BSL_VAL_g01 = 8'b00000000;
-   reg [Nbits_8-1:0]  BSL_VAL_g10 = 8'b00000011;
+   reg [Nbits_8-1:0]  BSL_VAL_g10 = 8'b00000000;
    reg [Nbits_12-1:0] SATURATION_value = 12'b111111111111;
    reg [1:0] shift_gain_10 = 2'b00;
    //reg [Nbits_8-1:0] BSL_VAL_g01 = 8'b1000;
@@ -275,10 +275,10 @@ module tb_LDTU_presynth;
       CALIBRATION_BUSY_10 <= 1'b0;	// --------------- end of calibration ADC_H
 
       #(500*ck_period);	// --------------- system reset
-      RST_A = 1'b1;
-      RST_B = 1'b1;
-      RST_C = 1'b1;
-      #(1*ck_period);	// --------------- system reset
+      RST_A = 1'b0;
+      RST_B = 1'b0;
+      RST_C = 1'b0;
+      #(10*ck_period);	// --------------- system reset
       RST_A = 1'b1;
       RST_B = 1'b1;
       RST_C = 1'b1;

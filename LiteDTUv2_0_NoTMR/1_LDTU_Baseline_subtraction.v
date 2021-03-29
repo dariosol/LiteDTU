@@ -29,6 +29,7 @@ module LDTU_BS(
 	rst_b,
 	DATA12_g01,
 	DATA12_g10,
+	shift_gain_10,
 	BSL_VAL_g01,
 	BSL_VAL_g10,
 	DATA_gain_01,
@@ -46,6 +47,8 @@ module LDTU_BS(
 	input [Nbits_12-1:0] DATA12_g10;
 	input [Nbits_8-1:0] BSL_VAL_g01;
 	input [Nbits_8-1:0] BSL_VAL_g10;
+        input [1:0] shift_gain_10;
+   
 	output  [Nbits_12-1:0] DATA_gain_01;
 	output  [Nbits_12-1:0] DATA_gain_10;
 	output SeuError;
@@ -81,7 +84,7 @@ module LDTU_BS(
 
 	always @ (posedge DCLK_10) begin
 		if (rst_b == 1'b0) d_g10 <= 12'b0;
-		else d_g10 <= DATA12_g10;
+		else d_g10 <= DATA12_g10  >> shift_gain_10;
 	end
 
 		// Baseline subtraction

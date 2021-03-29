@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 25/03/2021 13:25:38                                                                    *
+ * date    : 29/03/2021 14:21:17                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: LiTE_DTU_160MHz_v2_0.v                                                                 *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-16 15:36:18.149289                                         *
- *           File Size         : 5609                                                               *
- *           MD5 hash          : dc77aa6a4aa43eb96f6f583555b27854                                   *
+ *           Modification time : 2021-03-29 14:14:37.744855                                         *
+ *           File Size         : 5640                                                               *
+ *           MD5 hash          : 19386df6783d7f9ff4be4792788c20f1                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -72,6 +72,9 @@ wire CALIBRATION_BUSYA;
 wire TEST_ENABLEC;
 wire TEST_ENABLEB;
 wire TEST_ENABLEA;
+wire [1:0] shift_gain_10C;
+wire [1:0] shift_gain_10B;
+wire [1:0] shift_gain_10A;
 input DCLK_1;
 input DCLK_10;
 input CLKA;
@@ -152,6 +155,9 @@ LDTU_BSTMR #(.Nbits_12(Nbits_12), .Nbits_8(Nbits_8)) B_subtraction (
     .BSL_VAL_g10(BSL_VAL_g10),
     .DATA_gain_01(DATA_gain_01),
     .DATA_gain_10(DATA_gain_10),
+    .shift_gain_10A(shift_gain_10A),
+    .shift_gain_10B(shift_gain_10B),
+    .shift_gain_10C(shift_gain_10C),
     .SeuError(tmrError_BS)
     );
 
@@ -253,6 +259,13 @@ LDTU_DATA32_ATU_DTUTMR #(.Nbits_32(Nbits_32)) DATA32_mux (
     .DATA32_2(DATA32_2),
     .DATA32_3(DATA32_3),
     .SeuError(tmrError_mux)
+    );
+
+fanout #(.WIDTH(2)) shift_gain_10Fanout (
+    .in(shift_gain_10),
+    .outA(shift_gain_10A),
+    .outB(shift_gain_10B),
+    .outC(shift_gain_10C)
     );
 
 fanout TEST_ENABLEFanout (

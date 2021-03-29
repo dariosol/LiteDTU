@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 25/03/2021 13:25:37                                                                    *
+ * date    : 29/03/2021 14:21:16                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 3_LDTU_Encoder.v                                                                       *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-25 13:25:27.780593                                         *
- *           File Size         : 11841                                                              *
- *           MD5 hash          : a7daa17526045e03369bcf0731ed4d39                                   *
+ *           Modification time : 2021-03-29 14:21:08.259858                                         *
+ *           File Size         : 11840                                                              *
+ *           MD5 hash          : ea4c6b6d4b9a4145b2d329001b749d4e                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -121,17 +121,13 @@ wire baseline_flagC;
 wire baseline_flagB;
 wire baseline_flagA;
 wire tmrError;
-wor Orbit_delayTmrError;
-wor OrbitTmrError;
 wor Load_synchTmrError;
 wor Load_FB_synchTmrError;
 wor DATA_32_synchTmrError;
 wor DATA_32_FB_synchTmrError;
-wire Load_synch;
 wire Load_FB_synch;
-wire Orbit_delay;
 wire [Nbits_32-1:0] DATA_32_FB_synch;
-wire Orbit;
+wire Load_synch;
 wire [Nbits_32-1:0] DATA_32_synch;
 input CLKA;
 input CLKB;
@@ -210,9 +206,9 @@ reg  [Nbits_32-1:0] rDATA_32_FBC;
 reg  rLoad_FBA;
 reg  rLoad_FBB;
 reg  rLoad_FBC;
-wire Orbit_FBA;
-wire Orbit_FBB;
-wire Orbit_FBC;
+wire OrbitFBA;
+wire OrbitFBB;
+wire OrbitFBC;
 reg  Orbit_delayA;
 reg  Orbit_delayB;
 reg  Orbit_delayC;
@@ -241,7 +237,9 @@ Delay_enc delayC (
     .D(DATA_to_encC),
     .Dd(dDATA_to_encC)
     );
-assign OrbitFB =  Orbit|Orbit_delay;
+assign OrbitFBA =  OrbitA|Orbit_delayA;
+assign OrbitFBB =  OrbitB|Orbit_delayB;
+assign OrbitFBC =  OrbitC|Orbit_delayC;
 
 always @( posedge CLKA )
   begin
@@ -290,9 +288,9 @@ LDTU_FSMTMR fsm (
     .OrbitA(OrbitA),
     .OrbitB(OrbitB),
     .OrbitC(OrbitC),
-    .Orbit_FBA(OrbitFB),
-    .Orbit_FBB(OrbitFB),
-    .Orbit_FBC(OrbitFB),
+    .Orbit_FBA(OrbitFBA),
+    .Orbit_FBB(OrbitFBB),
+    .Orbit_FBC(OrbitFBC),
     .fallback(fallback),
     .Current_stateA(Current_stateA),
     .Current_stateB(Current_stateB),
@@ -995,12 +993,12 @@ majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_3
     .tmrErr(DATA_32_synchTmrError)
     );
 
-majorityVoter OrbitVoter (
-    .inA(OrbitA),
-    .inB(OrbitB),
-    .inC(OrbitC),
-    .out(Orbit),
-    .tmrErr(OrbitTmrError)
+majorityVoter Load_synchVoter (
+    .inA(Load_synchA),
+    .inB(Load_synchB),
+    .inC(Load_synchC),
+    .out(Load_synch),
+    .tmrErr(Load_synchTmrError)
     );
 
 majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) DATA_32_FB_synchVoter (
@@ -1011,14 +1009,6 @@ majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_3
     .tmrErr(DATA_32_FB_synchTmrError)
     );
 
-majorityVoter Orbit_delayVoter (
-    .inA(Orbit_delayA),
-    .inB(Orbit_delayB),
-    .inC(Orbit_delayC),
-    .out(Orbit_delay),
-    .tmrErr(Orbit_delayTmrError)
-    );
-
 majorityVoter Load_FB_synchVoter (
     .inA(Load_FB_synchA),
     .inB(Load_FB_synchB),
@@ -1026,15 +1016,7 @@ majorityVoter Load_FB_synchVoter (
     .out(Load_FB_synch),
     .tmrErr(Load_FB_synchTmrError)
     );
-
-majorityVoter Load_synchVoter (
-    .inA(Load_synchA),
-    .inB(Load_synchB),
-    .inC(Load_synchC),
-    .out(Load_synch),
-    .tmrErr(Load_synchTmrError)
-    );
-assign tmrError =  DATA_32_FB_synchTmrError|DATA_32_synchTmrError|Load_FB_synchTmrError|Load_synchTmrError|OrbitTmrError|Orbit_delayTmrError;
+assign tmrError =  DATA_32_FB_synchTmrError|DATA_32_synchTmrError|Load_FB_synchTmrError|Load_synchTmrError;
 
 fanout baseline_flagFanout (
     .in(baseline_flag),

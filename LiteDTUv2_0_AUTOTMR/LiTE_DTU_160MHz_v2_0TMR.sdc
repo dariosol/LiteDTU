@@ -152,14 +152,6 @@ constrainNet /Encoder/Load_synch
 constrainNet /Encoder/Load_synchA
 constrainNet /Encoder/Load_synchB
 constrainNet /Encoder/Load_synchC
-constrainNet /Encoder/Orbit
-constrainNet /Encoder/OrbitA
-constrainNet /Encoder/OrbitB
-constrainNet /Encoder/OrbitC
-constrainNet /Encoder/Orbit_delay
-constrainNet /Encoder/Orbit_delayA
-constrainNet /Encoder/Orbit_delayB
-constrainNet /Encoder/Orbit_delayC
 constrainNet /Encoder/baseline_flag
 constrainNet /Encoder/baseline_flagA
 constrainNet /Encoder/baseline_flagB
@@ -284,6 +276,10 @@ constrainNet /TEST_ENABLE
 constrainNet /TEST_ENABLEA
 constrainNet /TEST_ENABLEB
 constrainNet /TEST_ENABLEC
+constrainNet /shift_gain_10A[*]
+constrainNet /shift_gain_10B[*]
+constrainNet /shift_gain_10C[*]
+constrainNet /shift_gain_10[*]
 
 
     puts "TMRG successful  $tmrgSucces failed $tmrgFailed"

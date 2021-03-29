@@ -144,7 +144,7 @@ module LDTU_iFIFO(
 				FIFO_g10[iH] <= 12'b0;
 			end
 		end else begin
-			FIFO_g10[wrH_ptr] <= DATA_gain_10 >> shift_gain_10;
+		   FIFO_g10[wrH_ptr] <= DATA_gain_10;
 		end
 	end
 
