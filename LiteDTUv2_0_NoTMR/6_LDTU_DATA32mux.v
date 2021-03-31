@@ -20,6 +20,8 @@ module LDTU_DATA32_ATU_DTU(
    parameter Nbits_32=32;
    parameter idle_patternEA = 32'b11101010101010101010101010101010;   
    parameter idle_pattern5A = 32'b01011010010110100101101001011010;
+   parameter idle_patternRST =32'b00110101010101010101010101010101;
+   
 
 
    input CLK;
@@ -48,7 +50,8 @@ module LDTU_DATA32_ATU_DTU(
 
    always @(posedge CLK) begin
       if (RST == 1'b0) begin
- 	 if (TEST_ENABLE == 1'b0) r_DATA32_0 = idle_patternEA;
+ 	 //if (TEST_ENABLE == 1'b0) r_DATA32_0 = idle_patternEA;
+	 if (TEST_ENABLE == 1'b0) r_DATA32_0 = idle_patternRST;
 	 else r_DATA32_0 = idle_pattern5A;
 	 r_DATA32_1 = idle_pattern5A;
 	 r_DATA32_2 = idle_pattern5A;
@@ -56,7 +59,8 @@ module LDTU_DATA32_ATU_DTU(
       end else begin
 	 if (TEST_ENABLE == 1'b0) begin
 	    if (CALIBRATION_BUSY == 1'b0) r_DATA32_0 = DATA32_DTU;
-	    else r_DATA32_0 = idle_patternEA;
+//	    else r_DATA32_0 = idle_patternEA;
+	    else r_DATA32_0 = idle_patternRST;
 	    r_DATA32_1 = idle_pattern5A;
 	    r_DATA32_2 = idle_pattern5A;
 	    r_DATA32_3 = idle_pattern5A;
