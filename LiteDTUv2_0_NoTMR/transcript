@@ -862,3 +862,1642 @@ run 20 us
 # /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_ing01_2.dat
 # /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_ing10_2.dat
 # Orbit seen
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:40:06 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v 
+# -- Compiling module fulltest
+# 
+# Top level modules:
+# 	fulltest
+# End time: 16:40:06 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+quit -sim
+# End time: 16:40:15 on Apr 01,2021, Elapsed time: 2:08:12
+# Errors: 0, Warnings: 2
+vsim -voptargs=+acc work.fulltest
+# vsim -voptargs="+acc" work.fulltest 
+# Start time: 16:40:27 on Apr 01,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 6 FSMs in module "LDTU_FSMTMR(fast)".
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v(486): (vopt-2123) Missing argument for format specification '%g'.
+# ** Error: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v(518): (vopt-2123) Missing argument for format specification '%g'.
+# ** Note: (vopt-143) Recognized 3 FSMs in module "AdcTestUnitTMR(fast)".
+# ** Error: (vopt-2064) Compiler back-end code generation process terminated with code 2.
+# Error loading design
+# End time: 16:40:28 on Apr 01,2021, Elapsed time: 0:00:01
+# Errors: 3, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:41:09 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v 
+# -- Compiling module fulltest
+# 
+# Top level modules:
+# 	fulltest
+# End time: 16:41:09 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.fulltest
+# vsim -voptargs="+acc" work.fulltest 
+# Start time: 16:41:11 on Apr 01,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 6 FSMs in module "LDTU_FSMTMR(fast)".
+# ** Note: (vopt-143) Recognized 3 FSMs in module "AdcTestUnitTMR(fast)".
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+run 100 ns
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat
+# ***********************STARTING SIMULATION -0
+# ***********************POWER ON RESET - 62400
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:50:06 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v 
+# -- Compiling module fulltest
+# 
+# Top level modules:
+# 	fulltest
+# End time: 16:50:06 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+add wave -position insertpoint  \
+sim:/fulltest/DCLK_10 \
+sim:/fulltest/DCLK_1
+add wave -position insertpoint  \
+sim:/fulltest/clk
+add wave -position insertpoint  \
+sim:/fulltest/clk_srl
+add wave -position insertpoint  \
+sim:/fulltest/RST_A
+add wave -position insertpoint  \
+sim:/fulltest/RST_A_2
+add wave -position insertpoint  \
+sim:/fulltest/test_enable_2 \
+sim:/fulltest/test_enable
+add wave -position insertpoint  \
+sim:/fulltest/GAIN_SEL_MODE_2 \
+sim:/fulltest/GAIN_SEL_MODE
+add wave -position insertpoint  \
+sim:/fulltest/flush_2 \
+sim:/fulltest/flush
+add wave -position insertpoint  \
+sim:/fulltest/synch_2 \
+sim:/fulltest/synch
+add wave -position insertpoint  \
+sim:/fulltest/Orbit
+add wave -position insertpoint  \
+sim:/fulltest/DATA12_g10_2 \
+sim:/fulltest/DATA12_g10 \
+sim:/fulltest/DATA12_g01_2 \
+sim:/fulltest/DATA12_g01
+add wave -position insertpoint  \
+sim:/fulltest/fallback_2 \
+sim:/fulltest/fallback
+add wave -position insertpoint  \
+sim:/fulltest/CALIBRATION_BUSY_10_2 \
+sim:/fulltest/CALIBRATION_BUSY_10 \
+sim:/fulltest/CALIBRATION_BUSY_2 \
+sim:/fulltest/CALIBRATION_BUSY_1_2 \
+sim:/fulltest/CALIBRATION_BUSY_1 \
+sim:/fulltest/CALIBRATION_BUSY
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR/fulltest.do
+add wave -position insertpoint  \
+sim:/fulltest/BSL_VAL_g10_2 \
+sim:/fulltest/BSL_VAL_g10 \
+sim:/fulltest/BSL_VAL_g01_2 \
+sim:/fulltest/BSL_VAL_g01
+add wave -position insertpoint  \
+sim:/fulltest/Decoder1/data_aligned
+add wave -position insertpoint  \
+sim:/fulltest/Decoder2/data_aligned
+add wave -position insertpoint  \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_3 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_2 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_1
+add wave -position insertpoint  \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_0
+add wave -position insertpoint  \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_3 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_2 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_1 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_0
+view -new wave
+# .main_pane.wave1.interior.cs.body.pw.wf
+add wave -position insertpoint  \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSYC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSYB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSYA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/TEST_ENABLEC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/TEST_ENABLEB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/TEST_ENABLEA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/flushresetC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/flushresetB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/flushresetA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/shift_gain_10C \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/shift_gain_10B \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/shift_gain_10A \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/resetTmrError \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/reset \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DCLK_1 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DCLK_10 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CLKA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CLKB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CLKC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/RSTA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/RSTB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/RSTC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/fallback \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY_1 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY_10 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/TEST_ENABLE \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/GAIN_SEL_MODE \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA12_g01 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA12_g10 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/SATURATION_value \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/BSL_VAL_g01 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/BSL_VAL_g10 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/handshake \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_0 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_1 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_2 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_3 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/OrbitA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/OrbitB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/OrbitC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/shift_gain_10 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/flush \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/synch \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/synch_pattern \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/losing_data \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_0 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_1 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_2 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_3 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/totalError \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_DTU \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_gain_01 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_gain_10 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_to_enc \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/baseline_flag \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_32 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_32_FB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/Load \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/Load_FB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/write_signal \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_from_CU \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/full \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/resetA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/resetB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/resetC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/RD_to_SERIALIZER \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/AAA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/AAB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/AAC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_BS \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_iFIFO \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_enc \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_oFIFO \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_CU \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_mux \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/flushreset
+add wave -position insertpoint  \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSYC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSYB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSYA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/TEST_ENABLEC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/TEST_ENABLEB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/TEST_ENABLEA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/flushresetC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/flushresetB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/flushresetA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/shift_gain_10C \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/shift_gain_10B \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/shift_gain_10A \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/resetTmrError \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/reset \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DCLK_1 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DCLK_10 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CLKA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CLKB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CLKC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/RSTA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/RSTB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/RSTC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/fallback \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY_1 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY_10 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/TEST_ENABLE \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/GAIN_SEL_MODE \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA12_g01 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA12_g10 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/SATURATION_value \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/BSL_VAL_g01 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/BSL_VAL_g10 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/handshake \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_0 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_1 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_2 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_3 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/OrbitA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/OrbitB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/OrbitC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/shift_gain_10 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/flush \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/synch \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/synch_pattern \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/losing_data \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_0 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_1 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_2 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_3 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/totalError \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_DTU \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_gain_01 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_gain_10 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_to_enc \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/baseline_flag \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_32 \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_32_FB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/Load \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/Load_FB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/write_signal \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_from_CU \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/full \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/resetA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/resetB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/resetC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/RD_to_SERIALIZER \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/AAA \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/AAB \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/AAC \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_BS \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_iFIFO \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_enc \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_oFIFO \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_CU \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_mux \
+sim:/fulltest/toptoplevel/top_level_LiTE_DTU/flushreset
+add wave -position insertpoint  \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/CALIBRATION_BUSYC \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/CALIBRATION_BUSYB \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/CALIBRATION_BUSYA \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/TEST_ENABLEC \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/TEST_ENABLEB \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/TEST_ENABLEA \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/flushresetC \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/flushresetB \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/flushresetA \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/shift_gain_10C \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/shift_gain_10B \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/shift_gain_10A \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/resetTmrError \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/reset \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DCLK_1 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DCLK_10 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/CLKA \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/CLKB \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/CLKC \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/RSTA \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/RSTB \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/RSTC \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/fallback \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/CALIBRATION_BUSY_1 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/CALIBRATION_BUSY_10 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/TEST_ENABLE \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/GAIN_SEL_MODE \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA12_g01 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA12_g10 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/SATURATION_value \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/BSL_VAL_g01 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/BSL_VAL_g10 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/handshake \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_ATU_0 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_ATU_1 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_ATU_2 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_ATU_3 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/OrbitA \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/OrbitB \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/OrbitC \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/shift_gain_10 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/flush \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/synch \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/synch_pattern \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/losing_data \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_0 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_1 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_2 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_3 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/totalError \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_DTU \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA_gain_01 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA_gain_10 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA_to_enc \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/baseline_flag \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA_32 \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA_32_FB \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/Load \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/Load_FB \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/write_signal \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA_from_CU \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/full \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/resetA \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/resetB \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/resetC \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/CALIBRATION_BUSY \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/RD_to_SERIALIZER \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/AAA \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/AAB \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/AAC \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/tmrError_BS \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/tmrError_iFIFO \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/tmrError_enc \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/tmrError_oFIFO \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/tmrError_CU \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/tmrError_mux \
+sim:/fulltest/toptoplevel_2/top_level_LiTE_DTU/flushreset
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR/fulltest.do
+run
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat
+# ***********************STARTING SIMULATION -0
+# ***********************POWER ON RESET - 62400
+# ***********************POWER OFF RESET - 74880
+# ***********************DTU RESET FROM SynchU - 87360
+run
+run
+# ***********************CALIBRATION ON - 243360
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# ***********************CALIBRATION OFF - 443040
+# ***********************TEST MODE - 449280
+run
+run
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:03:27 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v 
+# -- Compiling module fulltest
+# 
+# Top level modules:
+# 	fulltest
+# End time: 17:03:27 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+run
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat
+# ***********************STARTING SIMULATION -0
+# ***********************POWER ON RESET - 62400
+# ***********************POWER OFF RESET - 74880
+# ***********************DTU RESET FROM SynchU - 87360
+run
+run
+# ***********************CALIBRATION ON - 243360
+run
+run
+# ***********************CALIBRATION OFF - 443040
+# ***********************TEST MODE - 449280
+run
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:05:13 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v 
+# -- Compiling module fulltest
+# 
+# Top level modules:
+# 	fulltest
+# End time: 17:05:13 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+run
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat
+# ***********************STARTING SIMULATION -0
+# ***********************POWER ON RESET - 62400
+# ***********************POWER OFF RESET - 74880
+# ***********************DTU RESET FROM SynchU - 87360
+run
+run
+# ***********************CALIBRATION ON - 243360
+run
+run
+# ***********************CALIBRATION OFF - 443040
+# ***********************TEST MODE - 443040
+run
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR/fulltest.do
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR/fulltest.do
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/SerDecoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:19 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/SerDecoder.v 
+# -- Compiling module SerDecoder
+# 
+# Top level modules:
+# 	SerDecoder
+# End time: 17:11:19 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/1_LDTU_Baseline_subtractionTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:38 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/1_LDTU_Baseline_subtractionTMR.v 
+# -- Compiling module LDTU_BSTMR
+# 
+# Top level modules:
+# 	LDTU_BSTMR
+# End time: 17:11:38 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/2_LDTU_iFIFOTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:38 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/2_LDTU_iFIFOTMR.v 
+# -- Compiling module LDTU_iFIFOTMR
+# 
+# Top level modules:
+# 	LDTU_iFIFOTMR
+# End time: 17:11:38 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_EncoderTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:38 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_EncoderTMR.v 
+# -- Compiling module Delay_enc
+# -- Compiling module LDTU_EncoderTMR
+# 
+# Top level modules:
+# 	LDTU_EncoderTMR
+# End time: 17:11:39 on Apr 01,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:39 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v 
+# -- Compiling module LDTU_FSMTMR
+# 
+# Top level modules:
+# 	LDTU_FSMTMR
+# End time: 17:11:39 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/4_LDTU_CUTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:39 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/4_LDTU_CUTMR.v 
+# -- Compiling module LDTU_CUTMR
+# -- Compiling module CRC_calc
+# -- Compiling module SumValue
+# 
+# Top level modules:
+# 	LDTU_CUTMR
+# End time: 17:11:39 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_0_LDTU_Hamm_TRXTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:39 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_0_LDTU_Hamm_TRXTMR.v 
+# -- Compiling module Hamm_TRX
+# 
+# Top level modules:
+# 	Hamm_TRX
+# End time: 17:11:39 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_1_LDTU_Hamm_oFIFOTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:39 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_1_LDTU_Hamm_oFIFOTMR.v 
+# -- Compiling module LDTU_oFIFOTMR
+# 
+# Top level modules:
+# 	LDTU_oFIFOTMR
+# End time: 17:11:39 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_2_LDTU_Hamm_RXTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:39 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_2_LDTU_Hamm_RXTMR.v 
+# -- Compiling module Hamm_RX
+# 
+# Top level modules:
+# 	Hamm_RX
+# End time: 17:11:39 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:40 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v 
+# -- Compiling module LDTU_oFIFO_topTMR
+# 
+# Top level modules:
+# 	LDTU_oFIFO_topTMR
+# End time: 17:11:40 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/6_LDTU_DATA32muxTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:40 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/6_LDTU_DATA32muxTMR.v 
+# -- Compiling module LDTU_DATA32_ATU_DTUTMR
+# 
+# Top level modules:
+# 	LDTU_DATA32_ATU_DTUTMR
+# End time: 17:11:41 on Apr 01,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:11:41 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v 
+# -- Compiling module LiTE_DTU_160MHz_v2_0TMR
+# -- Compiling module majorityVoter
+# -- Compiling module fanout
+# 
+# Top level modules:
+# 	LiTE_DTU_160MHz_v2_0TMR
+# End time: 17:11:41 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+run
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat
+# ***********************STARTING SIMULATION -0
+# ***********************POWER ON RESET - 62400
+# ***********************POWER OFF RESET - 74880
+# ***********************DTU RESET FROM SynchU - 87360
+run
+run
+# ***********************CALIBRATION ON - 243360
+run
+run
+# ***********************CALIBRATION OFF - 443040
+# ***********************TEST MODE - 443040
+run
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR/fulltest.do
+quit -sim
+# End time: 17:12:44 on Apr 01,2021, Elapsed time: 0:31:33
+# Errors: 0, Warnings: 2
+cd /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 17:12:54 on Apr 01,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'rstA_b' not found in module 'top_ofthetop' (1st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'rstB_b' not found in module 'top_ofthetop' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'rstC_b' not found in module 'top_ofthetop' (3rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcClkOut' not found in module 'top_ofthetop' (4th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'ClkInA' not found in module 'top_ofthetop' (5th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'ClkInB' not found in module 'top_ofthetop' (6th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'ClkInC' not found in module 'top_ofthetop' (7th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcTestMode' not found in module 'top_ofthetop' (9th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcDoutH' not found in module 'top_ofthetop' (10th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcDoutL' not found in module 'top_ofthetop' (11th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcCalBusy_in' not found in module 'top_ofthetop' (12th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcOvf_in' not found in module 'top_ofthetop' (13th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcSEU' not found in module 'top_ofthetop' (14th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'DtuAdcSel' not found in module 'top_ofthetop' (17th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'DtuSysCal' not found in module 'top_ofthetop' (18th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'DtuBslineH' not found in module 'top_ofthetop' (19th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'DtuBslineL' not found in module 'top_ofthetop' (20th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'DtuDivby2' not found in module 'top_ofthetop' (21st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'DtuDivby4' not found in module 'top_ofthetop' (22nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'DtuSatValue' not found in module 'top_ofthetop' (23rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'DtuSMPattern' not found in module 'top_ofthetop' (24th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'DtuTPLength' not found in module 'top_ofthetop' (25th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcRstA_b' not found in module 'top_ofthetop' (26th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcRstB_b' not found in module 'top_ofthetop' (27th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcRstC_b' not found in module 'top_ofthetop' (28th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcCalInA' not found in module 'top_ofthetop' (29th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcCalInB' not found in module 'top_ofthetop' (30th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcCalInC' not found in module 'top_ofthetop' (31st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcCalBusy' not found in module 'top_ofthetop' (32nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'AdcOverflow' not found in module 'top_ofthetop' (33rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'PllLockStartA' not found in module 'top_ofthetop' (34th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'PllLockStartB' not found in module 'top_ofthetop' (35th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'PllLockStartC' not found in module 'top_ofthetop' (36th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'CatiaTPA' not found in module 'top_ofthetop' (37th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'CatiaTPB' not found in module 'top_ofthetop' (38th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'CatiaTPC' not found in module 'top_ofthetop' (39th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'SerRstA_b' not found in module 'top_ofthetop' (40th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'SerRstB_b' not found in module 'top_ofthetop' (41st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'SerRstC_b' not found in module 'top_ofthetop' (42nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'TUdoutHo' not found in module 'top_ofthetop' (43rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'TUdoutHe' not found in module 'top_ofthetop' (44th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'TUdoutLo' not found in module 'top_ofthetop' (45th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'TUdoutLe' not found in module 'top_ofthetop' (46th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'DtuHshake' not found in module 'top_ofthetop' (47th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'DtuLoss' not found in module 'top_ofthetop' (48th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'I2cRstA_b' not found in module 'top_ofthetop' (49th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'I2cRstB_b' not found in module 'top_ofthetop' (50th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'I2cRstC_b' not found in module 'top_ofthetop' (51st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'SEUA' not found in module 'top_ofthetop' (52nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'SEUD' not found in module 'top_ofthetop' (53rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(130): (vopt-2912) Port 'ReSync' not found in module 'top_ofthetop' (58th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'rstA_b' not found in module 'top_ofthetop' (1st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'rstB_b' not found in module 'top_ofthetop' (2nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'rstC_b' not found in module 'top_ofthetop' (3rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcClkOut' not found in module 'top_ofthetop' (4th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'ClkInA' not found in module 'top_ofthetop' (5th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'ClkInB' not found in module 'top_ofthetop' (6th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'ClkInC' not found in module 'top_ofthetop' (7th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcTestMode' not found in module 'top_ofthetop' (9th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcDoutH' not found in module 'top_ofthetop' (10th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcDoutL' not found in module 'top_ofthetop' (11th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcCalBusy_in' not found in module 'top_ofthetop' (12th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcOvf_in' not found in module 'top_ofthetop' (13th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcSEU' not found in module 'top_ofthetop' (14th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'DtuAdcSel' not found in module 'top_ofthetop' (17th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'DtuSysCal' not found in module 'top_ofthetop' (18th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'DtuBslineH' not found in module 'top_ofthetop' (19th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'DtuBslineL' not found in module 'top_ofthetop' (20th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'DtuDivby2' not found in module 'top_ofthetop' (21st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'DtuDivby4' not found in module 'top_ofthetop' (22nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'DtuSatValue' not found in module 'top_ofthetop' (23rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'DtuSMPattern' not found in module 'top_ofthetop' (24th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'DtuTPLength' not found in module 'top_ofthetop' (25th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcRstA_b' not found in module 'top_ofthetop' (26th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcRstB_b' not found in module 'top_ofthetop' (27th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcRstC_b' not found in module 'top_ofthetop' (28th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcCalInA' not found in module 'top_ofthetop' (29th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcCalInB' not found in module 'top_ofthetop' (30th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcCalInC' not found in module 'top_ofthetop' (31st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcCalBusy' not found in module 'top_ofthetop' (32nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'AdcOverflow' not found in module 'top_ofthetop' (33rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'PllLockStartA' not found in module 'top_ofthetop' (34th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'PllLockStartB' not found in module 'top_ofthetop' (35th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'PllLockStartC' not found in module 'top_ofthetop' (36th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'CatiaTPA' not found in module 'top_ofthetop' (37th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'CatiaTPB' not found in module 'top_ofthetop' (38th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'CatiaTPC' not found in module 'top_ofthetop' (39th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'SerRstA_b' not found in module 'top_ofthetop' (40th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'SerRstB_b' not found in module 'top_ofthetop' (41st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'SerRstC_b' not found in module 'top_ofthetop' (42nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'TUdoutHo' not found in module 'top_ofthetop' (43rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'TUdoutHe' not found in module 'top_ofthetop' (44th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'TUdoutLo' not found in module 'top_ofthetop' (45th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'TUdoutLe' not found in module 'top_ofthetop' (46th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'DtuHshake' not found in module 'top_ofthetop' (47th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'DtuLoss' not found in module 'top_ofthetop' (48th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'I2cRstA_b' not found in module 'top_ofthetop' (49th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'I2cRstB_b' not found in module 'top_ofthetop' (50th connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'I2cRstC_b' not found in module 'top_ofthetop' (51st connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'SEUA' not found in module 'top_ofthetop' (52nd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'SEUD' not found in module 'top_ofthetop' (53rd connection).
+# ** Error (suppressible): /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v(180): (vopt-2912) Port 'ReSync' not found in module 'top_ofthetop' (58th connection).
+# Optimization failed
+# Error loading design
+# End time: 17:12:55 on Apr 01,2021, Elapsed time: 0:00:01
+# Errors: 102, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/TB_LDTU_new.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:13:09 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation/TB_LDTU_new.v 
+# -- Compiling module tb_LDTU_presynth
+# 
+# Top level modules:
+# 	tb_LDTU_presynth
+# End time: 17:13:09 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 17:13:15 on Apr 01,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 3 FSMs in module "AdcTestUnitTMR(fast)".
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_oFIFO_top(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.Hamm_RX(fast)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.fanout(fast__3)
+do Mywave.do
+force -freeze sim:/tb_LDTU_presynth/test_enable 1'h1 0
+run
+# File 1 aperto!
+# File 2 aperto!
+quit -sim
+# End time: 17:15:08 on Apr 01,2021, Elapsed time: 0:01:53
+# Errors: 1, Warnings: 0
+cd /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR
+vsim -voptargs=+acc work.tb_LDTU_presynth
+# vsim -voptargs="+acc" work.tb_LDTU_presynth 
+# Start time: 17:15:20 on Apr 01,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 6 FSMs in module "LDTU_FSMTMR(fast)".
+# ** Note: (vopt-143) Recognized 3 FSMs in module "AdcTestUnitTMR(fast)".
+# Loading work.tb_LDTU_presynth(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_LDTU_presynth/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v Line: 285
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_LDTU_presynth/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/TB_LDTU_WithSynchUnit_2Modules.v Line: 285
+do fulltest.do
+# ** Error: (vish-4014) No objects found matching '/fulltest/DCLK_10'.
+# Executing ONERROR command at macro ./fulltest.do line 4
+# ** Error: (vish-4014) No objects found matching '/fulltest/DCLK_1'.
+# Executing ONERROR command at macro ./fulltest.do line 5
+# ** Error: (vish-4014) No objects found matching '/fulltest/clk'.
+# Executing ONERROR command at macro ./fulltest.do line 6
+# ** Error: (vish-4014) No objects found matching '/fulltest/clk_srl'.
+# Executing ONERROR command at macro ./fulltest.do line 7
+# ** Error: (vish-4014) No objects found matching '/fulltest/RST_A'.
+# Executing ONERROR command at macro ./fulltest.do line 9
+# ** Error: (vish-4014) No objects found matching '/fulltest/RST_A_2'.
+# Executing ONERROR command at macro ./fulltest.do line 10
+# ** Error: (vish-4014) No objects found matching '/fulltest/test_enable_2'.
+# Executing ONERROR command at macro ./fulltest.do line 11
+# ** Error: (vish-4014) No objects found matching '/fulltest/test_enable'.
+# Executing ONERROR command at macro ./fulltest.do line 12
+# ** Error: (vish-4014) No objects found matching '/fulltest/GAIN_SEL_MODE_2'.
+# Executing ONERROR command at macro ./fulltest.do line 13
+# ** Error: (vish-4014) No objects found matching '/fulltest/GAIN_SEL_MODE'.
+# Executing ONERROR command at macro ./fulltest.do line 14
+# ** Error: (vish-4014) No objects found matching '/fulltest/flush_2'.
+# Executing ONERROR command at macro ./fulltest.do line 15
+# ** Error: (vish-4014) No objects found matching '/fulltest/flush'.
+# Executing ONERROR command at macro ./fulltest.do line 16
+# ** Error: (vish-4014) No objects found matching '/fulltest/synch_2'.
+# Executing ONERROR command at macro ./fulltest.do line 17
+# ** Error: (vish-4014) No objects found matching '/fulltest/synch'.
+# Executing ONERROR command at macro ./fulltest.do line 18
+# ** Error: (vish-4014) No objects found matching '/fulltest/fallback_2'.
+# Executing ONERROR command at macro ./fulltest.do line 19
+# ** Error: (vish-4014) No objects found matching '/fulltest/fallback'.
+# Executing ONERROR command at macro ./fulltest.do line 20
+# ** Error: (vish-4014) No objects found matching '/fulltest/BSL_VAL_g10_2'.
+# Executing ONERROR command at macro ./fulltest.do line 21
+# ** Error: (vish-4014) No objects found matching '/fulltest/BSL_VAL_g10'.
+# Executing ONERROR command at macro ./fulltest.do line 22
+# ** Error: (vish-4014) No objects found matching '/fulltest/BSL_VAL_g01_2'.
+# Executing ONERROR command at macro ./fulltest.do line 23
+# ** Error: (vish-4014) No objects found matching '/fulltest/BSL_VAL_g01'.
+# Executing ONERROR command at macro ./fulltest.do line 24
+# ** Error: (vish-4014) No objects found matching '/fulltest/Orbit'.
+# Executing ONERROR command at macro ./fulltest.do line 25
+# ** Error: (vish-4014) No objects found matching '/fulltest/CALIBRATION_BUSY_10_2'.
+# Executing ONERROR command at macro ./fulltest.do line 27
+# ** Error: (vish-4014) No objects found matching '/fulltest/CALIBRATION_BUSY_10'.
+# Executing ONERROR command at macro ./fulltest.do line 28
+# ** Error: (vish-4014) No objects found matching '/fulltest/CALIBRATION_BUSY_2'.
+# Executing ONERROR command at macro ./fulltest.do line 29
+# ** Error: (vish-4014) No objects found matching '/fulltest/CALIBRATION_BUSY_1_2'.
+# Executing ONERROR command at macro ./fulltest.do line 30
+# ** Error: (vish-4014) No objects found matching '/fulltest/CALIBRATION_BUSY_1'.
+# Executing ONERROR command at macro ./fulltest.do line 31
+# ** Error: (vish-4014) No objects found matching '/fulltest/CALIBRATION_BUSY'.
+# Executing ONERROR command at macro ./fulltest.do line 32
+# ** Error: (vish-4014) No objects found matching '/fulltest/DATA12_g10'.
+# Executing ONERROR command at macro ./fulltest.do line 34
+# ** Error: (vish-4014) No objects found matching '/fulltest/DATA12_g01'.
+# Executing ONERROR command at macro ./fulltest.do line 35
+# ** Error: (vish-4014) No objects found matching '/fulltest/DATA12_g10_2'.
+# Executing ONERROR command at macro ./fulltest.do line 36
+# ** Error: (vish-4014) No objects found matching '/fulltest/DATA12_g01_2'.
+# Executing ONERROR command at macro ./fulltest.do line 37
+# ** Error: (vish-4014) No objects found matching '/fulltest/Decoder1/data_aligned'.
+# Executing ONERROR command at macro ./fulltest.do line 38
+# ** Error: (vish-4014) No objects found matching '/fulltest/Decoder2/data_aligned'.
+# Executing ONERROR command at macro ./fulltest.do line 39
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSYC'.
+# Executing ONERROR command at macro ./fulltest.do line 41
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSYB'.
+# Executing ONERROR command at macro ./fulltest.do line 42
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSYA'.
+# Executing ONERROR command at macro ./fulltest.do line 43
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/TEST_ENABLEC'.
+# Executing ONERROR command at macro ./fulltest.do line 44
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/TEST_ENABLEB'.
+# Executing ONERROR command at macro ./fulltest.do line 45
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/TEST_ENABLEA'.
+# Executing ONERROR command at macro ./fulltest.do line 46
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/flushresetC'.
+# Executing ONERROR command at macro ./fulltest.do line 47
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/flushresetB'.
+# Executing ONERROR command at macro ./fulltest.do line 48
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/flushresetA'.
+# Executing ONERROR command at macro ./fulltest.do line 49
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/resetTmrError'.
+# Executing ONERROR command at macro ./fulltest.do line 50
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/reset'.
+# Executing ONERROR command at macro ./fulltest.do line 51
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DCLK_1'.
+# Executing ONERROR command at macro ./fulltest.do line 52
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DCLK_10'.
+# Executing ONERROR command at macro ./fulltest.do line 53
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/CLKA'.
+# Executing ONERROR command at macro ./fulltest.do line 54
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/CLKB'.
+# Executing ONERROR command at macro ./fulltest.do line 55
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/CLKC'.
+# Executing ONERROR command at macro ./fulltest.do line 56
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/RSTA'.
+# Executing ONERROR command at macro ./fulltest.do line 57
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/RSTB'.
+# Executing ONERROR command at macro ./fulltest.do line 58
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/RSTC'.
+# Executing ONERROR command at macro ./fulltest.do line 59
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/fallback'.
+# Executing ONERROR command at macro ./fulltest.do line 60
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY_1'.
+# Executing ONERROR command at macro ./fulltest.do line 61
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY_10'.
+# Executing ONERROR command at macro ./fulltest.do line 62
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/TEST_ENABLE'.
+# Executing ONERROR command at macro ./fulltest.do line 63
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/GAIN_SEL_MODE'.
+# Executing ONERROR command at macro ./fulltest.do line 64
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA12_g01'.
+# Executing ONERROR command at macro ./fulltest.do line 65
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA12_g10'.
+# Executing ONERROR command at macro ./fulltest.do line 66
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/SATURATION_value'.
+# Executing ONERROR command at macro ./fulltest.do line 67
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/BSL_VAL_g01'.
+# Executing ONERROR command at macro ./fulltest.do line 68
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/BSL_VAL_g10'.
+# Executing ONERROR command at macro ./fulltest.do line 69
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/handshake'.
+# Executing ONERROR command at macro ./fulltest.do line 70
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_0'.
+# Executing ONERROR command at macro ./fulltest.do line 71
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_1'.
+# Executing ONERROR command at macro ./fulltest.do line 72
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_2'.
+# Executing ONERROR command at macro ./fulltest.do line 73
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_ATU_3'.
+# Executing ONERROR command at macro ./fulltest.do line 74
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/OrbitA'.
+# Executing ONERROR command at macro ./fulltest.do line 75
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/OrbitB'.
+# Executing ONERROR command at macro ./fulltest.do line 76
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/OrbitC'.
+# Executing ONERROR command at macro ./fulltest.do line 77
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/shift_gain_10'.
+# Executing ONERROR command at macro ./fulltest.do line 78
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/flush'.
+# Executing ONERROR command at macro ./fulltest.do line 79
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/synch'.
+# Executing ONERROR command at macro ./fulltest.do line 80
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/losing_data'.
+# Executing ONERROR command at macro ./fulltest.do line 81
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_0'.
+# Executing ONERROR command at macro ./fulltest.do line 82
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_1'.
+# Executing ONERROR command at macro ./fulltest.do line 83
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_2'.
+# Executing ONERROR command at macro ./fulltest.do line 84
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_3'.
+# Executing ONERROR command at macro ./fulltest.do line 85
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/totalError'.
+# Executing ONERROR command at macro ./fulltest.do line 86
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA32_DTU'.
+# Executing ONERROR command at macro ./fulltest.do line 87
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_gain_01'.
+# Executing ONERROR command at macro ./fulltest.do line 88
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_gain_10'.
+# Executing ONERROR command at macro ./fulltest.do line 89
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_to_enc'.
+# Executing ONERROR command at macro ./fulltest.do line 90
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/baseline_flag'.
+# Executing ONERROR command at macro ./fulltest.do line 91
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_32'.
+# Executing ONERROR command at macro ./fulltest.do line 92
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_32_FB'.
+# Executing ONERROR command at macro ./fulltest.do line 93
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/Load'.
+# Executing ONERROR command at macro ./fulltest.do line 94
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/Load_FB'.
+# Executing ONERROR command at macro ./fulltest.do line 95
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/write_signal'.
+# Executing ONERROR command at macro ./fulltest.do line 96
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/DATA_from_CU'.
+# Executing ONERROR command at macro ./fulltest.do line 97
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/full'.
+# Executing ONERROR command at macro ./fulltest.do line 98
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/resetA'.
+# Executing ONERROR command at macro ./fulltest.do line 99
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/resetB'.
+# Executing ONERROR command at macro ./fulltest.do line 100
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/resetC'.
+# Executing ONERROR command at macro ./fulltest.do line 101
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/CALIBRATION_BUSY'.
+# Executing ONERROR command at macro ./fulltest.do line 102
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/RD_to_SERIALIZER'.
+# Executing ONERROR command at macro ./fulltest.do line 103
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/AAA'.
+# Executing ONERROR command at macro ./fulltest.do line 104
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/AAB'.
+# Executing ONERROR command at macro ./fulltest.do line 105
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/AAC'.
+# Executing ONERROR command at macro ./fulltest.do line 106
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_BS'.
+# Executing ONERROR command at macro ./fulltest.do line 107
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_iFIFO'.
+# Executing ONERROR command at macro ./fulltest.do line 108
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_enc'.
+# Executing ONERROR command at macro ./fulltest.do line 109
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_oFIFO'.
+# Executing ONERROR command at macro ./fulltest.do line 110
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_CU'.
+# Executing ONERROR command at macro ./fulltest.do line 111
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/tmrError_mux'.
+# Executing ONERROR command at macro ./fulltest.do line 112
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel/top_level_LiTE_DTU/flushreset'.
+# Executing ONERROR command at macro ./fulltest.do line 114
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/CALIBRATION_BUSYC'.
+# Executing ONERROR command at macro ./fulltest.do line 115
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/CALIBRATION_BUSYB'.
+# Executing ONERROR command at macro ./fulltest.do line 116
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/CALIBRATION_BUSYA'.
+# Executing ONERROR command at macro ./fulltest.do line 117
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/TEST_ENABLEC'.
+# Executing ONERROR command at macro ./fulltest.do line 118
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/TEST_ENABLEB'.
+# Executing ONERROR command at macro ./fulltest.do line 119
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/TEST_ENABLEA'.
+# Executing ONERROR command at macro ./fulltest.do line 120
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/flushresetC'.
+# Executing ONERROR command at macro ./fulltest.do line 121
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/flushresetB'.
+# Executing ONERROR command at macro ./fulltest.do line 122
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/flushresetA'.
+# Executing ONERROR command at macro ./fulltest.do line 123
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/resetTmrError'.
+# Executing ONERROR command at macro ./fulltest.do line 124
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/reset'.
+# Executing ONERROR command at macro ./fulltest.do line 125
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DCLK_1'.
+# Executing ONERROR command at macro ./fulltest.do line 126
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DCLK_10'.
+# Executing ONERROR command at macro ./fulltest.do line 127
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/CLKA'.
+# Executing ONERROR command at macro ./fulltest.do line 128
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/CLKB'.
+# Executing ONERROR command at macro ./fulltest.do line 129
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/CLKC'.
+# Executing ONERROR command at macro ./fulltest.do line 130
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/RSTA'.
+# Executing ONERROR command at macro ./fulltest.do line 131
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/RSTB'.
+# Executing ONERROR command at macro ./fulltest.do line 132
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/RSTC'.
+# Executing ONERROR command at macro ./fulltest.do line 133
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/fallback'.
+# Executing ONERROR command at macro ./fulltest.do line 134
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/CALIBRATION_BUSY_1'.
+# Executing ONERROR command at macro ./fulltest.do line 135
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/CALIBRATION_BUSY_10'.
+# Executing ONERROR command at macro ./fulltest.do line 136
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/TEST_ENABLE'.
+# Executing ONERROR command at macro ./fulltest.do line 137
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/GAIN_SEL_MODE'.
+# Executing ONERROR command at macro ./fulltest.do line 138
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA12_g01'.
+# Executing ONERROR command at macro ./fulltest.do line 139
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA12_g10'.
+# Executing ONERROR command at macro ./fulltest.do line 140
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/SATURATION_value'.
+# Executing ONERROR command at macro ./fulltest.do line 141
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/BSL_VAL_g01'.
+# Executing ONERROR command at macro ./fulltest.do line 142
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/BSL_VAL_g10'.
+# Executing ONERROR command at macro ./fulltest.do line 143
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/handshake'.
+# Executing ONERROR command at macro ./fulltest.do line 144
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_ATU_0'.
+# Executing ONERROR command at macro ./fulltest.do line 145
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_ATU_1'.
+# Executing ONERROR command at macro ./fulltest.do line 146
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_ATU_2'.
+# Executing ONERROR command at macro ./fulltest.do line 147
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_ATU_3'.
+# Executing ONERROR command at macro ./fulltest.do line 148
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/OrbitA'.
+# Executing ONERROR command at macro ./fulltest.do line 149
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/OrbitB'.
+# Executing ONERROR command at macro ./fulltest.do line 150
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/OrbitC'.
+# Executing ONERROR command at macro ./fulltest.do line 151
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/shift_gain_10'.
+# Executing ONERROR command at macro ./fulltest.do line 152
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/flush'.
+# Executing ONERROR command at macro ./fulltest.do line 153
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/synch'.
+# Executing ONERROR command at macro ./fulltest.do line 154
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/synch_pattern'.
+# Executing ONERROR command at macro ./fulltest.do line 155
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/losing_data'.
+# Executing ONERROR command at macro ./fulltest.do line 156
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_0'.
+# Executing ONERROR command at macro ./fulltest.do line 157
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_1'.
+# Executing ONERROR command at macro ./fulltest.do line 158
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_2'.
+# Executing ONERROR command at macro ./fulltest.do line 159
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_3'.
+# Executing ONERROR command at macro ./fulltest.do line 160
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/totalError'.
+# Executing ONERROR command at macro ./fulltest.do line 161
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA32_DTU'.
+# Executing ONERROR command at macro ./fulltest.do line 162
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA_gain_01'.
+# Executing ONERROR command at macro ./fulltest.do line 163
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA_gain_10'.
+# Executing ONERROR command at macro ./fulltest.do line 164
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA_to_enc'.
+# Executing ONERROR command at macro ./fulltest.do line 165
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/baseline_flag'.
+# Executing ONERROR command at macro ./fulltest.do line 166
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA_32'.
+# Executing ONERROR command at macro ./fulltest.do line 167
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA_32_FB'.
+# Executing ONERROR command at macro ./fulltest.do line 168
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/Load'.
+# Executing ONERROR command at macro ./fulltest.do line 169
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/Load_FB'.
+# Executing ONERROR command at macro ./fulltest.do line 170
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/write_signal'.
+# Executing ONERROR command at macro ./fulltest.do line 171
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/DATA_from_CU'.
+# Executing ONERROR command at macro ./fulltest.do line 172
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/full'.
+# Executing ONERROR command at macro ./fulltest.do line 173
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/resetA'.
+# Executing ONERROR command at macro ./fulltest.do line 174
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/resetB'.
+# Executing ONERROR command at macro ./fulltest.do line 175
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/resetC'.
+# Executing ONERROR command at macro ./fulltest.do line 176
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/CALIBRATION_BUSY'.
+# Executing ONERROR command at macro ./fulltest.do line 177
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/RD_to_SERIALIZER'.
+# Executing ONERROR command at macro ./fulltest.do line 178
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/AAA'.
+# Executing ONERROR command at macro ./fulltest.do line 179
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/AAB'.
+# Executing ONERROR command at macro ./fulltest.do line 180
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/AAC'.
+# Executing ONERROR command at macro ./fulltest.do line 181
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/tmrError_BS'.
+# Executing ONERROR command at macro ./fulltest.do line 182
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/tmrError_iFIFO'.
+# Executing ONERROR command at macro ./fulltest.do line 183
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/tmrError_enc'.
+# Executing ONERROR command at macro ./fulltest.do line 184
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/tmrError_oFIFO'.
+# Executing ONERROR command at macro ./fulltest.do line 185
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/tmrError_CU'.
+# Executing ONERROR command at macro ./fulltest.do line 186
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/tmrError_mux'.
+# Executing ONERROR command at macro ./fulltest.do line 187
+# ** Error: (vish-4014) No objects found matching '/fulltest/toptoplevel_2/top_level_LiTE_DTU/flushreset'.
+# Executing ONERROR command at macro ./fulltest.do line 188
+quit -sim
+# End time: 17:15:54 on Apr 01,2021, Elapsed time: 0:00:34
+# Errors: 360, Warnings: 2
+vsim -voptargs=+acc work.fulltest
+# vsim -voptargs="+acc" work.fulltest 
+# Start time: 17:16:08 on Apr 01,2021
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 6 FSMs in module "LDTU_FSMTMR(fast)".
+# ** Note: (vopt-143) Recognized 3 FSMs in module "AdcTestUnitTMR(fast)".
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+do fulltest.do
+run
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat
+# ***********************STARTING SIMULATION -0
+# ***********************POWER ON RESET - 62400
+# ***********************POWER OFF RESET - 74880
+# ***********************DTU RESET FROM SynchU - 87360
+run
+run
+# ***********************CALIBRATION ON - 243360
+run
+run
+# ***********************CALIBRATION OFF - 443040
+# ***********************TEST MODE - 443040
+run
+run
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 17:23:47 on Apr 01,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v 
+# -- Compiling module fulltest
+# 
+# Top level modules:
+# 	fulltest
+# End time: 17:23:47 on Apr 01,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+run
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat
+# ***********************STARTING SIMULATION -0
+# ***********************POWER ON RESET - 62400
+# ***********************POWER OFF RESET - 74880
+# ***********************DTU RESET FROM SynchU - 87360
+# ***********************CALIBRATION ON - 243360
+# ***********************CALIBRATION OFF - 443040
+# ***********************TEST MODE - 443040
+# Orbit seen
+run
+# ***********************TEST MODE OFF (DTU MODE ON) - 1.9163e+07
+run
+run
+run
+run
+run
+run
+run
+# ***********************FLUSH DTU0 - 8.1563e+07
+run
+# Orbit seen

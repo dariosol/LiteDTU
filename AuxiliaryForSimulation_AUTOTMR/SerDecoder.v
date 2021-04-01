@@ -76,8 +76,8 @@ module SerDecoder(
    //////////DUMP DATA IN FILES////////////////
    // For the output serializers debug
 
-   //parameter pattern_idleDTU_0 = 8'b11101010;
-   parameter pattern_idleDTU_0 = 8'b00110101;
+   parameter pattern_idleDTU_0 = 8'b11101010;
+//   parameter pattern_idleDTU_0 = 8'b00110101;
    parameter pattern_idleATM = 8'b01011010;
    reg data_aligned=1'b0;
    reg [7:0] pattern;
