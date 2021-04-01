@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 31/03/2021 08:54:49                                                                    *
+ * date    : 01/04/2021 14:31:15                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: LiTE_DTU_160MHz_v2_0.v                                                                 *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-29 14:14:37.744855                                         *
- *           File Size         : 5640                                                               *
- *           MD5 hash          : 19386df6783d7f9ff4be4792788c20f1                                   *
+ *           Modification time : 2021-04-01 14:17:31.158307                                         *
+ *           File Size         : 5942                                                               *
+ *           MD5 hash          : bbf06bf074987e1af6c302bae2c079c1                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -52,6 +52,9 @@ module LiTE_DTU_160MHz_v2_0TMR(
   OrbitB,
   OrbitC,
   shift_gain_10,
+  flush,
+  synch,
+  synch_pattern,
   DATA32_0,
   DATA32_1,
   DATA32_2,
@@ -72,9 +75,14 @@ wire CALIBRATION_BUSYA;
 wire TEST_ENABLEC;
 wire TEST_ENABLEB;
 wire TEST_ENABLEA;
+wire flushresetC;
+wire flushresetB;
+wire flushresetA;
 wire [1:0] shift_gain_10C;
 wire [1:0] shift_gain_10B;
 wire [1:0] shift_gain_10A;
+wor resetTmrError;
+wire reset;
 input DCLK_1;
 input DCLK_10;
 input CLKA;
@@ -102,6 +110,9 @@ input OrbitA;
 input OrbitB;
 input OrbitC;
 input [1:0] shift_gain_10;
+input flush;
+input synch;
+input [Nbits_32-1:0] synch_pattern;
 output losing_data;
 output [Nbits_32-1:0] DATA32_0;
 output [Nbits_32-1:0] DATA32_1;
@@ -142,6 +153,8 @@ wire tmrError_oFIFO;
 wire tmrError_CU;
 wire tmrError_mux;
 assign totalError =  tmrError_BS|tmrError_iFIFO|tmrError_enc|tmrError_CU|tmrError_oFIFO|tmrError_mux;
+wire flushreset;
+assign flushreset =  reset&flush;
 
 LDTU_BSTMR #(.Nbits_12(Nbits_12), .Nbits_8(Nbits_8)) B_subtraction (
     .DCLK_1(DCLK_1),
@@ -184,9 +197,9 @@ LDTU_EncoderTMR #(.Nbits_12(Nbits_12), .Nbits_32(Nbits_32)) Encoder (
     .CLKA(CLKA),
     .CLKB(CLKB),
     .CLKC(CLKC),
-    .rst_bA(resetA),
-    .rst_bB(resetB),
-    .rst_bC(resetC),
+    .rst_bA(flushresetA),
+    .rst_bB(flushresetB),
+    .rst_bC(flushresetC),
     .baseline_flag(baseline_flag),
     .OrbitA(OrbitA),
     .OrbitB(OrbitB),
@@ -204,9 +217,9 @@ LDTU_CUTMR #(.Nbits_32(Nbits_32)) Control_Unit (
     .CLKA(CLKA),
     .CLKB(CLKB),
     .CLKC(CLKC),
-    .rst_bA(resetA),
-    .rst_bB(resetB),
-    .rst_bC(resetC),
+    .rst_bA(flushresetA),
+    .rst_bB(flushresetB),
+    .rst_bC(flushresetC),
     .fallback(fallback),
     .Load_data(Load),
     .DATA_32(DATA_32),
@@ -228,6 +241,9 @@ LDTU_oFIFO_topTMR #(.Nbits_32(Nbits_32), .FifoDepth_buff(FifoDepth_buff), .bits_
     .rst_bA(resetA),
     .rst_bB(resetB),
     .rst_bC(resetC),
+    .flush(flush),
+    .synch(synch),
+    .synch_pattern(synch_pattern),
     .write_signal(write_signal),
     .read_signal(RD_to_SERIALIZER),
     .data_in_32(DATA_from_CU),
@@ -261,11 +277,26 @@ LDTU_DATA32_ATU_DTUTMR #(.Nbits_32(Nbits_32)) DATA32_mux (
     .SeuError(tmrError_mux)
     );
 
+majorityVoter resetVoter (
+    .inA(resetA),
+    .inB(resetB),
+    .inC(resetC),
+    .out(reset),
+    .tmrErr(resetTmrError)
+    );
+
 fanout #(.WIDTH(2)) shift_gain_10Fanout (
     .in(shift_gain_10),
     .outA(shift_gain_10A),
     .outB(shift_gain_10B),
     .outC(shift_gain_10C)
+    );
+
+fanout flushresetFanout (
+    .in(flushreset),
+    .outA(flushresetA),
+    .outB(flushresetB),
+    .outC(flushresetC)
     );
 
 fanout TEST_ENABLEFanout (

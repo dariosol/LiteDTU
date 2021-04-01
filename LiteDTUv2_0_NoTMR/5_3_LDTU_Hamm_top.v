@@ -23,6 +23,9 @@ module LDTU_oFIFO_top (
 		       write_signal,
 		       read_signal,
 		       data_in_32,
+		       flush,
+		       synch,
+		       synch_pattern,
 		       DATA32_DTU,
 		       full_signal,
 		       SeuError
@@ -42,7 +45,10 @@ module LDTU_oFIFO_top (
    input write_signal;
    input read_signal;
    input [Nbits_32-1:0] data_in_32;
-
+   input 		flush;
+   input 		synch;
+   input [Nbits_32-1:0] synch_pattern;
+   	 
    // Output ports
 
    output  [Nbits_32-1:0] DATA32_DTU;
@@ -69,41 +75,56 @@ module LDTU_oFIFO_top (
    wire 		 decode_signal;
    
    wire 		 tmrError = 1'b0;
+  
    assign SeuError = tmrError | tmrError_oFIFO;
-   
 
+   wire 		 fiforeset;
+   
+   assign fiforeset = (rst_b & flush & ~synch);//WARNING: do we want synch resetting in the same way of flush?
+   
    Hamm_TRX #(.Nbits_32(Nbits_32), .Nbits_ham(Nbits_ham))
-   Hamming_32_38 (.CLK(CLK), .reset(rst_b), 
+   Hamming_32_38 (.CLK(CLK), .reset(fiforeset), 
 		  .data_input(data_in_32), .data_ham_in(data_in_38), 
 		  .write_signal(write_signal), .start_write(start_write));
 
 
    LDTU_oFIFO #(.Nbits_ham(Nbits_ham)) 
-   FIFO (.CLK(CLK), .rst_b(rst_b), 
+   FIFO (.CLK(CLK), .rst_b(fiforeset), 
 	 .start_write(start_write), .read_signal(read_signal),
 	 .data_input(data_in_38), .data_output(data_out_38), .full_signal(full_signal_synch), 
 	 .decode_signal(decode_signal), .SeuError(tmrError_oFIFO), .empty_signal(empty_signal)); 
    
 
    Hamm_RX #(.Nbits_32(Nbits_32), .Nbits_ham(Nbits_ham))
-   Hamming_38_32 (.CLK(CLK), .reset(rst_b), .decode_signal(decode_signal), .data_ham_out(data_out_38), 
+   Hamming_38_32 (.CLK(CLK), .reset(fiforeset), .decode_signal(decode_signal), .data_ham_out(data_out_38), 
 		  .data_output(data_out_32), .HammError(HammError));
 
-//Output synch
+   //Output synch
    always @( posedge CLK ) begin
       if ( rst_b == 1'b0) begin 
 	 DATA32_DTU_synch = idle_patternEA;
       end else begin
-	 if (read_signal == 1'b1) begin
-	    if (empty_signal == 1'b1) begin
-	       DATA32_DTU_synch = idle_patternEA;
-	    end else begin
-	       DATA32_DTU_synch = data_out_32;
-	    end
+	 if(flush==1'b0) begin
+	    DATA32_DTU_synch =  32'hFEEDC0DE;
 	 end
-      end
+	 else begin
+	    if(synch==1'b1) begin
+	       DATA32_DTU_synch =  synch_pattern;
+	    end
+	 else begin
+	   if (read_signal == 1'b1) begin
+	      if (empty_signal == 1'b1) begin
+		 DATA32_DTU_synch = idle_patternEA;
+	      end else begin
+		 DATA32_DTU_synch = data_out_32;
+	      end
+	   end
+	 end // else: !if(synch==1'b1)
+	 end // else: !if(flush==1'b0)
+      end // else: !if( rst_b == 1'b0)
    end // always @ ( posedge CLK )
-
+   
+      
    assign DATA32_DTU = DATA32_DTU_synch;
    assign full_signal = full_signal_synch;
    

@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 31/03/2021 08:54:49                                                                    *
+ * date    : 01/04/2021 14:31:15                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 5_3_LDTU_Hamm_top.v                                                                    *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-08 14:43:19.222064                                         *
- *           File Size         : 3231                                                               *
- *           MD5 hash          : 8b4ba2806495f008851852e7615231c7                                   *
+ *           Modification time : 2021-04-01 14:23:51.921311                                         *
+ *           File Size         : 3820                                                               *
+ *           MD5 hash          : f60658735f536dd3958f4b2f3141211d                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -33,6 +33,9 @@ module LDTU_oFIFO_topTMR(
   write_signal,
   read_signal,
   data_in_32,
+  flush,
+  synch,
+  synch_pattern,
   DATA32_DTU,
   full_signal,
   SeuError
@@ -46,18 +49,30 @@ parameter    idle_pattern5A=32'b01011010010110100101101001011010;
 wire [Nbits_32-1:0] data_out_32C;
 wire [Nbits_32-1:0] data_out_32B;
 wire [Nbits_32-1:0] data_out_32A;
-wire [Nbits_ham-1:0] data_in_38C;
-wire [Nbits_ham-1:0] data_in_38B;
-wire [Nbits_ham-1:0] data_in_38A;
-wire start_writeC;
-wire start_writeB;
-wire start_writeA;
+wire [Nbits_32-1:0] synch_patternC;
+wire [Nbits_32-1:0] synch_patternB;
+wire [Nbits_32-1:0] synch_patternA;
+wire synchC;
+wire synchB;
+wire synchA;
 wire read_signalC;
 wire read_signalB;
 wire read_signalA;
+wire start_writeC;
+wire start_writeB;
+wire start_writeA;
+wire [Nbits_ham-1:0] data_in_38C;
+wire [Nbits_ham-1:0] data_in_38B;
+wire [Nbits_ham-1:0] data_in_38A;
+wire flushC;
+wire flushB;
+wire flushA;
 wire empty_signalC;
 wire empty_signalB;
 wire empty_signalA;
+wire fiforesetC;
+wire fiforesetB;
+wire fiforesetA;
 wire tmrError;
 wor rst_bTmrError;
 wor DATA32_DTU_synchTmrError;
@@ -74,6 +89,9 @@ input rst_bC;
 input write_signal;
 input read_signal;
 input [Nbits_32-1:0] data_in_32;
+input flush;
+input synch;
+input [Nbits_32-1:0] synch_pattern;
 output [Nbits_32-1:0] DATA32_DTU;
 output full_signal;
 output SeuError;
@@ -95,10 +113,12 @@ wire empty_signal;
 wire full_signal_synch;
 wire decode_signal;
 assign SeuError =  tmrError|tmrError_oFIFO;
+wire fiforeset;
+assign fiforeset =  (rst_b&flush&~synch);
 
 Hamm_TRX #(.Nbits_32(Nbits_32), .Nbits_ham(Nbits_ham)) Hamming_32_38 (
     .CLK(CLK),
-    .reset(rst_b),
+    .reset(fiforeset),
     .data_input(data_in_32),
     .data_ham_in(data_in_38),
     .write_signal(write_signal),
@@ -109,9 +129,9 @@ LDTU_oFIFOTMR #(.Nbits_ham(Nbits_ham)) FIFO (
     .CLKA(CLKA),
     .CLKB(CLKB),
     .CLKC(CLKC),
-    .rst_bA(rst_bA),
-    .rst_bB(rst_bB),
-    .rst_bC(rst_bC),
+    .rst_bA(fiforesetA),
+    .rst_bB(fiforesetB),
+    .rst_bC(fiforesetC),
     .start_writeA(start_writeA),
     .start_writeB(start_writeB),
     .start_writeC(start_writeC),
@@ -130,7 +150,7 @@ LDTU_oFIFOTMR #(.Nbits_ham(Nbits_ham)) FIFO (
 
 Hamm_RX #(.Nbits_32(Nbits_32), .Nbits_ham(Nbits_ham)) Hamming_38_32 (
     .CLK(CLK),
-    .reset(rst_b),
+    .reset(fiforeset),
     .decode_signal(decode_signal),
     .data_ham_out(data_out_38),
     .data_output(data_out_32),
@@ -145,15 +165,29 @@ always @( posedge CLKA )
       end
     else
       begin
-        if (read_signalA==1'b1)
+        if (flushA==1'b0)
           begin
-            if (empty_signalA==1'b1)
+            DATA32_DTU_synchA =  32'hFEEDC0DE;
+          end
+        else
+          begin
+            if (synchA==1'b1)
               begin
-                DATA32_DTU_synchA =  idle_patternEA;
+                DATA32_DTU_synchA =  synch_patternA;
               end
             else
               begin
-                DATA32_DTU_synchA =  data_out_32A;
+                if (read_signalA==1'b1)
+                  begin
+                    if (empty_signalA==1'b1)
+                      begin
+                        DATA32_DTU_synchA =  idle_patternEA;
+                      end
+                    else
+                      begin
+                        DATA32_DTU_synchA =  data_out_32A;
+                      end
+                  end
               end
           end
       end
@@ -167,15 +201,29 @@ always @( posedge CLKB )
       end
     else
       begin
-        if (read_signalB==1'b1)
+        if (flushB==1'b0)
           begin
-            if (empty_signalB==1'b1)
+            DATA32_DTU_synchB =  32'hFEEDC0DE;
+          end
+        else
+          begin
+            if (synchB==1'b1)
               begin
-                DATA32_DTU_synchB =  idle_patternEA;
+                DATA32_DTU_synchB =  synch_patternB;
               end
             else
               begin
-                DATA32_DTU_synchB =  data_out_32B;
+                if (read_signalB==1'b1)
+                  begin
+                    if (empty_signalB==1'b1)
+                      begin
+                        DATA32_DTU_synchB =  idle_patternEA;
+                      end
+                    else
+                      begin
+                        DATA32_DTU_synchB =  data_out_32B;
+                      end
+                  end
               end
           end
       end
@@ -189,15 +237,29 @@ always @( posedge CLKC )
       end
     else
       begin
-        if (read_signalC==1'b1)
+        if (flushC==1'b0)
           begin
-            if (empty_signalC==1'b1)
+            DATA32_DTU_synchC =  32'hFEEDC0DE;
+          end
+        else
+          begin
+            if (synchC==1'b1)
               begin
-                DATA32_DTU_synchC =  idle_patternEA;
+                DATA32_DTU_synchC =  synch_patternC;
               end
             else
               begin
-                DATA32_DTU_synchC =  data_out_32C;
+                if (read_signalC==1'b1)
+                  begin
+                    if (empty_signalC==1'b1)
+                      begin
+                        DATA32_DTU_synchC =  idle_patternEA;
+                      end
+                    else
+                      begin
+                        DATA32_DTU_synchC =  data_out_32C;
+                      end
+                  end
               end
           end
       end
@@ -230,6 +292,13 @@ majorityVoter rst_bVoter (
     );
 assign tmrError =  CLKTmrError|DATA32_DTU_synchTmrError|rst_bTmrError;
 
+fanout fiforesetFanout (
+    .in(fiforeset),
+    .outA(fiforesetA),
+    .outB(fiforesetB),
+    .outC(fiforesetC)
+    );
+
 fanout empty_signalFanout (
     .in(empty_signal),
     .outA(empty_signalA),
@@ -237,11 +306,18 @@ fanout empty_signalFanout (
     .outC(empty_signalC)
     );
 
-fanout read_signalFanout (
-    .in(read_signal),
-    .outA(read_signalA),
-    .outB(read_signalB),
-    .outC(read_signalC)
+fanout flushFanout (
+    .in(flush),
+    .outA(flushA),
+    .outB(flushB),
+    .outC(flushC)
+    );
+
+fanout #(.WIDTH(((Nbits_ham-1)>(0)) ? ((Nbits_ham-1)-(0)+1) : ((0)-(Nbits_ham-1)+1))) data_in_38Fanout (
+    .in(data_in_38),
+    .outA(data_in_38A),
+    .outB(data_in_38B),
+    .outC(data_in_38C)
     );
 
 fanout start_writeFanout (
@@ -251,11 +327,25 @@ fanout start_writeFanout (
     .outC(start_writeC)
     );
 
-fanout #(.WIDTH(((Nbits_ham-1)>(0)) ? ((Nbits_ham-1)-(0)+1) : ((0)-(Nbits_ham-1)+1))) data_in_38Fanout (
-    .in(data_in_38),
-    .outA(data_in_38A),
-    .outB(data_in_38B),
-    .outC(data_in_38C)
+fanout read_signalFanout (
+    .in(read_signal),
+    .outA(read_signalA),
+    .outB(read_signalB),
+    .outC(read_signalC)
+    );
+
+fanout synchFanout (
+    .in(synch),
+    .outA(synchA),
+    .outB(synchB),
+    .outC(synchC)
+    );
+
+fanout #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) synch_patternFanout (
+    .in(synch_pattern),
+    .outA(synch_patternA),
+    .outB(synch_patternB),
+    .outC(synch_patternC)
     );
 
 fanout #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) data_out_32Fanout (

@@ -111,11 +111,15 @@ module tb_LDTU_presynth;
    //New Orbit Signal for Phase 2
    reg 		       Orbit;
    reg 		       fallback;
+   reg                 flush;
+   reg 		       synch;
+   reg [31:0] 	       synch_pattern = 32'hBADCACCA;
+   
    reg [1:0] 	       shift_gain_10 = 2'b00;
 
    reg 		       fallback_2;
    reg [1:0] 	       shift_gain_10_2 = 2'b00;
-
+   reg                 flush_2;
 
    //I2C    
    reg [1:0] 	       AdcOvf_in;
@@ -237,6 +241,9 @@ module tb_LDTU_presynth;
 			    .AdcOvf_in(AdcOvf_in),
 			    .AdcSEU(AdcSEU),
 			    .fallback(fallback),
+			    .flush(flush),
+			    .synch(synch),
+			    .synch_pattern(synch_pattern),
 			    .shift_gain_10(shift_gain_10),
 			    //I2C
 			    .DtuAdcSel(DtuAdcSel),
@@ -287,6 +294,9 @@ module tb_LDTU_presynth;
 				.AdcOvf_in(AdcOvf_in_2),
 				.AdcSEU(AdcSEU_2),
 				.fallback(fallback_2),
+				.flush(flush_2),
+				.synch(synch_2),
+				.synch_pattern(synch_pattern),
 				.shift_gain_10(shift_gain_10_2),
 				//I2C
 				.DtuAdcSel(DtuAdcSel_2),
@@ -485,7 +495,9 @@ module tb_LDTU_presynth;
       test_enable   <= 1'b0;    	// DTU_test_mode
       GAIN_SEL_MODE <= 2'b00;		// Auto-gain selection
       fallback=1'b0;
-
+      flush =1'b1;
+      synch =1'b0;
+      
 
 
       RST_A_2   = 1'b1;
@@ -497,7 +509,8 @@ module tb_LDTU_presynth;
       test_enable_2   <= 1'b0;    	// DTU_test_mode
       GAIN_SEL_MODE_2 <= 2'b00;		// Auto-gain selection
       fallback_2=1'b0;
-
+      flush_2 =1'b1;
+      
       //  isr_in = 4'h0;
       //  isr_load = 1'b0;
       
@@ -584,9 +597,13 @@ module tb_LDTU_presynth;
        CALIBRATION_BUSY_10 <= 1'b0;	// --------------- end of calibration ADC_H
        */
 
-
-
-
+      #(150*ck_period);
+      flush = 1'b0;
+      #(24*ck_period);
+      flush = 1'b1;
+      #(35*ck_period);
+      synch=1'b1;
+      
       //////////////////////////////////////////
       /////////////////////////////////////////
       //#(2.4*ck_period);
