@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 01/04/2021 17:11:03                                                                    *
+ * date    : 08/04/2021 08:33:41                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -33,8 +33,12 @@ module LDTU_oFIFO_topTMR(
   write_signal,
   read_signal,
   data_in_32,
-  flush,
-  synch,
+  flushA,
+  flushB,
+  flushC,
+  synchA,
+  synchB,
+  synchC,
   synch_pattern,
   DATA32_DTU,
   full_signal,
@@ -52,9 +56,6 @@ wire [Nbits_32-1:0] data_out_32A;
 wire [Nbits_32-1:0] synch_patternC;
 wire [Nbits_32-1:0] synch_patternB;
 wire [Nbits_32-1:0] synch_patternA;
-wire synchC;
-wire synchB;
-wire synchA;
 wire read_signalC;
 wire read_signalB;
 wire read_signalA;
@@ -64,9 +65,6 @@ wire start_writeA;
 wire [Nbits_ham-1:0] data_in_38C;
 wire [Nbits_ham-1:0] data_in_38B;
 wire [Nbits_ham-1:0] data_in_38A;
-wire flushC;
-wire flushB;
-wire flushA;
 wire empty_signalC;
 wire empty_signalB;
 wire empty_signalA;
@@ -74,11 +72,15 @@ wire fiforesetC;
 wire fiforesetB;
 wire fiforesetA;
 wire tmrError;
+wor synchTmrError;
 wor rst_bTmrError;
+wor flushTmrError;
 wor DATA32_DTU_synchTmrError;
 wor CLKTmrError;
-wire rst_b;
 wire CLK;
+wire rst_b;
+wire flush;
+wire synch;
 wire [Nbits_32-1:0] DATA32_DTU_synch;
 input CLKA;
 input CLKB;
@@ -89,8 +91,12 @@ input rst_bC;
 input write_signal;
 input read_signal;
 input [Nbits_32-1:0] data_in_32;
-input flush;
-input synch;
+input flushA;
+input flushB;
+input flushC;
+input synchA;
+input synchB;
+input synchC;
 input [Nbits_32-1:0] synch_pattern;
 output [Nbits_32-1:0] DATA32_DTU;
 output full_signal;
@@ -275,12 +281,20 @@ majorityVoter #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_3
     .tmrErr(DATA32_DTU_synchTmrError)
     );
 
-majorityVoter CLKVoter (
-    .inA(CLKA),
-    .inB(CLKB),
-    .inC(CLKC),
-    .out(CLK),
-    .tmrErr(CLKTmrError)
+majorityVoter synchVoter (
+    .inA(synchA),
+    .inB(synchB),
+    .inC(synchC),
+    .out(synch),
+    .tmrErr(synchTmrError)
+    );
+
+majorityVoter flushVoter (
+    .inA(flushA),
+    .inB(flushB),
+    .inC(flushC),
+    .out(flush),
+    .tmrErr(flushTmrError)
     );
 
 majorityVoter rst_bVoter (
@@ -290,7 +304,15 @@ majorityVoter rst_bVoter (
     .out(rst_b),
     .tmrErr(rst_bTmrError)
     );
-assign tmrError =  CLKTmrError|DATA32_DTU_synchTmrError|rst_bTmrError;
+
+majorityVoter CLKVoter (
+    .inA(CLKA),
+    .inB(CLKB),
+    .inC(CLKC),
+    .out(CLK),
+    .tmrErr(CLKTmrError)
+    );
+assign tmrError =  CLKTmrError|DATA32_DTU_synchTmrError|flushTmrError|rst_bTmrError|synchTmrError;
 
 fanout fiforesetFanout (
     .in(fiforeset),
@@ -304,13 +326,6 @@ fanout empty_signalFanout (
     .outA(empty_signalA),
     .outB(empty_signalB),
     .outC(empty_signalC)
-    );
-
-fanout flushFanout (
-    .in(flush),
-    .outA(flushA),
-    .outB(flushB),
-    .outC(flushC)
     );
 
 fanout #(.WIDTH(((Nbits_ham-1)>(0)) ? ((Nbits_ham-1)-(0)+1) : ((0)-(Nbits_ham-1)+1))) data_in_38Fanout (
@@ -332,13 +347,6 @@ fanout read_signalFanout (
     .outA(read_signalA),
     .outB(read_signalB),
     .outC(read_signalC)
-    );
-
-fanout synchFanout (
-    .in(synch),
-    .outA(synchA),
-    .outB(synchB),
-    .outC(synchC)
     );
 
 fanout #(.WIDTH(((Nbits_32-1)>(0)) ? ((Nbits_32-1)-(0)+1) : ((0)-(Nbits_32-1)+1))) synch_patternFanout (

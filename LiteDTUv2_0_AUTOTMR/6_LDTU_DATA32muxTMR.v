@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 01/04/2021 17:11:03                                                                    *
+ * date    : 08/04/2021 08:33:41                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 6_LDTU_DATA32mux.v                                                                     *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-04-01 17:09:27.079405                                         *
+ *           Modification time : 2021-04-06 14:05:37.038385                                         *
  *           File Size         : 2590                                                               *
- *           MD5 hash          : c88f3c3478ef829278b2e662719e458d                                   *
+ *           MD5 hash          : b3266c92078524c1ab2a8f2f33ea5ac8                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -116,7 +116,7 @@ always @( posedge CLKA )
     if (RSTA==1'b0)
       begin
         if (TEST_ENABLEA==1'b0)
-          r_DATA32_0A =  idle_patternEA;
+          r_DATA32_0A =  idle_patternRST;
         else
           r_DATA32_0A =  idle_pattern5A;
         r_DATA32_1A =  idle_pattern5A;
@@ -130,7 +130,7 @@ always @( posedge CLKA )
             if (CALIBRATION_BUSYA==1'b0)
               r_DATA32_0A =  DATA32_DTUA;
             else
-              r_DATA32_0A =  idle_patternEA;
+              r_DATA32_0A =  idle_patternRST;
             r_DATA32_1A =  idle_pattern5A;
             r_DATA32_2A =  idle_pattern5A;
             r_DATA32_3A =  idle_pattern5A;
@@ -150,7 +150,7 @@ always @( posedge CLKB )
     if (RSTB==1'b0)
       begin
         if (TEST_ENABLEB==1'b0)
-          r_DATA32_0B =  idle_patternEA;
+          r_DATA32_0B =  idle_patternRST;
         else
           r_DATA32_0B =  idle_pattern5A;
         r_DATA32_1B =  idle_pattern5A;
@@ -164,7 +164,7 @@ always @( posedge CLKB )
             if (CALIBRATION_BUSYB==1'b0)
               r_DATA32_0B =  DATA32_DTUB;
             else
-              r_DATA32_0B =  idle_patternEA;
+              r_DATA32_0B =  idle_patternRST;
             r_DATA32_1B =  idle_pattern5A;
             r_DATA32_2B =  idle_pattern5A;
             r_DATA32_3B =  idle_pattern5A;
@@ -184,7 +184,7 @@ always @( posedge CLKC )
     if (RSTC==1'b0)
       begin
         if (TEST_ENABLEC==1'b0)
-          r_DATA32_0C =  idle_patternEA;
+          r_DATA32_0C =  idle_patternRST;
         else
           r_DATA32_0C =  idle_pattern5A;
         r_DATA32_1C =  idle_pattern5A;
@@ -198,7 +198,7 @@ always @( posedge CLKC )
             if (CALIBRATION_BUSYC==1'b0)
               r_DATA32_0C =  DATA32_DTUC;
             else
-              r_DATA32_0C =  idle_patternEA;
+              r_DATA32_0C =  idle_patternRST;
             r_DATA32_1C =  idle_pattern5A;
             r_DATA32_2C =  idle_pattern5A;
             r_DATA32_3C =  idle_pattern5A;

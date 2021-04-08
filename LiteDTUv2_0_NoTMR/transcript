@@ -2501,3 +2501,786 @@ run
 # ***********************FLUSH DTU0 - 8.1563e+07
 run
 # Orbit seen
+run
+# ***********************SYNCH - 1.44113e+08
+# End of reading process
+# End of reading process
+# End of reading process
+# End of reading process
+# Orbit seen
+# ** Note: $finish    : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v(84)
+#    Time: 179465520 ps  Iteration: 0  Instance: /fulltest/FR10_2
+# 1
+# Break in Module FileReader at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v line 84
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+run
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat
+# ***********************STARTING SIMULATION -0
+# ***********************POWER ON RESET - 62400
+# ***********************POWER OFF RESET - 74880
+# ***********************DTU RESET FROM SynchU - 87360
+# ***********************CALIBRATION ON - 243360
+# ***********************CALIBRATION OFF - 443040
+# ***********************TEST MODE - 443040
+# Orbit seen
+# ***********************TEST MODE OFF (DTU MODE ON) - 1.9163e+07
+# ***********************FLUSH DTU0 - 8.1563e+07
+# Orbit seen
+force -freeze sim:/fulltest/toptoplevel/top_level_LiTE_DTU/RSTB 1'h0 0
+run
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+run
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat
+# ***********************STARTING SIMULATION -0
+# ***********************POWER ON RESET - 62400
+# ***********************POWER OFF RESET - 74880
+# ***********************DTU RESET FROM SynchU - 87360
+# ***********************CALIBRATION ON - 243360
+# ***********************CALIBRATION OFF - 443040
+# ***********************TEST MODE - 443040
+# Orbit seen
+# ***********************TEST MODE OFF (DTU MODE ON) - 1.9163e+07
+# ***********************FLUSH DTU0 - 8.1563e+07
+# Orbit seen
+run
+run
+run
+run
+# ***********************SYNCH - 1.44113e+08
+# End of reading process
+# End of reading process
+# End of reading process
+# End of reading process
+# Orbit seen
+# ** Note: $finish    : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v(84)
+#    Time: 179465520 ps  Iteration: 0  Instance: /fulltest/FR10_2
+# 1
+# Break in Module FileReader at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v line 84
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 10:37:52 on Apr 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v 
+# -- Compiling module fulltest
+# 
+# Top level modules:
+# 	fulltest
+# End time: 10:37:52 on Apr 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+run
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat
+# ***********************STARTING SIMULATION -0
+# ***********************POWER ON RESET - 62400
+# ***********************POWER OFF RESET - 74880
+# ***********************DTU RESET FROM SynchU - 87360
+# ***********************CALIBRATION ON - 243360
+# ***********************CALIBRATION OFF - 443040
+# ***********************TEST MODE - 443040
+# Orbit seen
+# ***********************TEST MODE OFF (DTU MODE ON) - 1.9163e+07
+# ***********************FLUSH DTU0 - 8.1563e+07
+# Orbit seen
+# ***********************SYNCH - 1.44113e+08
+run
+# End of reading process
+# End of reading process
+# End of reading process
+# End of reading process
+# Orbit seen
+# ** Note: $finish    : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v(84)
+#    Time: 179465520 ps  Iteration: 0  Instance: /fulltest/FR10_2
+# 1
+# Break in Module FileReader at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v line 84
+find drivers -source -time {157569296 ps} -cause DTU1
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/SerDecoder.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 14:07:59 on Apr 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/SerDecoder.v 
+# -- Compiling module SerDecoder
+# 
+# Top level modules:
+# 	SerDecoder
+# End time: 14:07:59 on Apr 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/6_LDTU_DATA32muxTMR.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 14:08:07 on Apr 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_AUTOTMR/6_LDTU_DATA32muxTMR.v 
+# -- Compiling module LDTU_DATA32_ATU_DTUTMR
+# 
+# Top level modules:
+# 	LDTU_DATA32_ATU_DTUTMR
+# End time: 14:08:07 on Apr 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+run
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat
+# ***********************STARTING SIMULATION -0
+# ***********************POWER ON RESET - 62400
+# ***********************POWER OFF RESET - 74880
+# ***********************DTU RESET FROM SynchU - 87360
+# ***********************CALIBRATION ON - 243360
+# ***********************CALIBRATION OFF - 443040
+# ***********************TEST MODE - 443040
+# Orbit seen
+# ***********************TEST MODE OFF (DTU MODE ON) - 1.9163e+07
+# ***********************FLUSH DTU0 - 8.1563e+07
+# Orbit seen
+# ***********************SYNCH - 1.44113e+08
+run
+# End of reading process
+# End of reading process
+# End of reading process
+# End of reading process
+# Orbit seen
+# ** Note: $finish    : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v(84)
+#    Time: 179465520 ps  Iteration: 0  Instance: /fulltest/FR10_2
+# 1
+# Break in Module FileReader at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v line 84
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:41:51 on Apr 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v 
+# -- Compiling module fulltest
+# 
+# Top level modules:
+# 	fulltest
+# End time: 16:41:51 on Apr 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:44:14 on Apr 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v 
+# -- Compiling module fulltest
+# 
+# Top level modules:
+# 	fulltest
+# End time: 16:44:14 on Apr 06,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcOvf_in'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(16).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (1) for port 'AdcSEU'. The port definition is at: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v(17).
+#    Time: 0 ps  Iteration: 0  Instance: /fulltest/toptoplevel_2 File: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v Line: 286
+vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v
+# QuestaSim-64 vlog 2019.4 Compiler 2019.10 Oct 15 2019
+# Start time: 16:45:44 on Apr 06,2021
+# vlog -reportprogress 300 -work work /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FullTests.v 
+# -- Compiling module fulltest
+# 
+# Top level modules:
+# 	fulltest
+# End time: 16:45:45 on Apr 06,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/vsim_AutoTMR/fulltest.do
+quit -sim
+# End time: 16:46:15 on Apr 06,2021, Elapsed time: 119:30:07
+# Errors: 181, Warnings: 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+vsim -voptargs=+acc work.fulltest
+# vsim -voptargs="+acc" work.fulltest 
+# Start time: 16:46:22 on Apr 06,2021
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+do fulltest.do
+run
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat
+# ***********************STARTING SIMULATION -0
+# ***********************POWER ON RESET - 62500
+# ***********************POWER OFF RESET - 75000
+# ***********************DTU RESET FROM SynchU - 87500
+# ***********************CALIBRATION ON - 243750
+# ***********************CALIBRATION OFF - 443750
+# ***********************TEST MODE - 443750
+# Orbit seen
+run
+# ***********************TEST MODE OFF (DTU MODE ON) - 1.91938e+07
+run
+run
+run
+run
+run
+run
+run
+# ***********************FLUSH DTU0 - 8.16938e+07
+run
+# Orbit seen
+run
+run
+run
+run
+run
+# ***********************SYNCH - 1.44344e+08
+run
+run
+run
+# End of reading process
+# End of reading process
+# End of reading process
+# End of reading process
+# Orbit seen
+# ** Note: $finish    : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v(84)
+#    Time: 179753125 ps  Iteration: 0  Instance: /fulltest/FR10_2
+# 1
+# Break in Module FileReader at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v line 84
+run
+# ** Note: $finish    : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v(84)
+#    Time: 179753125 ps  Iteration: 0  Instance: /fulltest/FR10
+# 1
+# Break in Module FileReader at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v line 84
+run
+# ** Note: $finish    : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v(84)
+#    Time: 179753125 ps  Iteration: 0  Instance: /fulltest/FR01_2
+# 1
+# Break in Module FileReader at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v line 84
+run
+# ** Note: $finish    : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v(84)
+#    Time: 179753125 ps  Iteration: 0  Instance: /fulltest/FR01
+# 1
+# Break in Module FileReader at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v line 84
+run
+# End of reading process
+# End of reading process
+# End of reading process
+# End of reading process
+# ** Note: $finish    : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v(84)
+#    Time: 181290625 ps  Iteration: 0  Instance: /fulltest/FR10_2
+# 1
+# Break in Module FileReader at /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/AuxiliaryForSimulation_AUTOTMR/FileReader.v line 84
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading work.fulltest(fast)
+# Loading work.FileReader(fast)
+# Loading work.FileReader(fast__1)
+# Loading work.SerDecoder(fast)
+# Loading work.SerDecoder(fast__1)
+# Loading work.top_ofthetop(fast)
+# Loading work.LiTE_DTU_160MHz_v2_0TMR(fast)
+# Loading work.LDTU_BSTMR(fast)
+# Loading work.majorityVoter(fast)
+# Loading work.fanout(fast)
+# Loading work.fanout(fast__1)
+# Loading work.fanout(fast__2)
+# Loading work.LDTU_iFIFOTMR(fast)
+# Loading work.majorityVoter(fast__1)
+# Loading work.majorityVoter(fast__2)
+# Loading work.fanout(fast__3)
+# Loading work.LDTU_EncoderTMR(fast)
+# Loading work.Delay_enc(fast)
+# Loading work.LDTU_FSMTMR(fast)
+# Loading work.majorityVoter(fast__3)
+# Loading work.fanout(fast__4)
+# Loading work.LDTU_CUTMR(fast)
+# Loading work.CRC_calc(fast)
+# Loading work.SumValue(fast)
+# Loading work.fanout(fast__5)
+# Loading work.LDTU_oFIFO_topTMR(fast)
+# Loading work.Hamm_TRX(fast)
+# Loading work.LDTU_oFIFOTMR(fast)
+# Loading work.majorityVoter(fast__4)
+# Loading work.majorityVoter(fast__5)
+# Loading work.Hamm_RX(fast)
+# Loading work.fanout(fast__6)
+# Loading work.LDTU_DATA32_ATU_DTUTMR(fast)
+# Loading work.LDTUv1b_serTMR(fast)
+# Loading work.AdcTestUnitTMR(fast)
+# Loading work.majorityVoter(fast__6)
+# Loading work.SyncUnit_v2TMR(fast)
+# Loading work.deglitch(fast)
+# Loading work.HammingDecoder4TMR(fast)
+# Loading work.SU_mVoter(fast)
+# Loading work.SU_mVoter(fast__1)
+# Loading work.SU_mVoter(fast__2)
+# Loading work.SU_fout(fast)
+# Loading work.SU_fout(fast__1)
+run
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat
+# FileReader: File found: /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat
+# /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat
+# ***********************STARTING SIMULATION -0
+# ***********************POWER ON RESET - 62500
+# ***********************POWER OFF RESET - 75000
+# ***********************DTU RESET FROM SynchU - 87500
+# ***********************CALIBRATION ON - 243750
+# ***********************CALIBRATION OFF - 443750
+# ***********************TEST MODE - 443750
+# Orbit seen
+# ***********************TEST MODE OFF (DTU MODE ON) - 1.91938e+07
+# ***********************FLUSH DTU0 - 8.16938e+07
+# Orbit seen

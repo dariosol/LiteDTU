@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 01/04/2021 17:11:03                                                                    *
+ * date    : 08/04/2021 08:33:41                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -52,8 +52,12 @@ module LiTE_DTU_160MHz_v2_0TMR(
   OrbitB,
   OrbitC,
   shift_gain_10,
-  flush,
-  synch,
+  flushA,
+  flushB,
+  flushC,
+  synchA,
+  synchB,
+  synchC,
   synch_pattern,
   DATA32_0,
   DATA32_1,
@@ -83,6 +87,8 @@ wire [1:0] shift_gain_10B;
 wire [1:0] shift_gain_10A;
 wor resetTmrError;
 wire reset;
+wor flushTmrError;
+wire flush;
 input DCLK_1;
 input DCLK_10;
 input CLKA;
@@ -110,8 +116,12 @@ input OrbitA;
 input OrbitB;
 input OrbitC;
 input [1:0] shift_gain_10;
-input flush;
-input synch;
+input flushA;
+input flushB;
+input flushC;
+input synchA;
+input synchB;
+input synchC;
 input [Nbits_32-1:0] synch_pattern;
 output losing_data;
 output [Nbits_32-1:0] DATA32_0;
@@ -241,8 +251,12 @@ LDTU_oFIFO_topTMR #(.Nbits_32(Nbits_32), .FifoDepth_buff(FifoDepth_buff), .bits_
     .rst_bA(resetA),
     .rst_bB(resetB),
     .rst_bC(resetC),
-    .flush(flush),
-    .synch(synch),
+    .flushA(flushA),
+    .flushB(flushB),
+    .flushC(flushC),
+    .synchA(synchA),
+    .synchB(synchB),
+    .synchC(synchC),
     .synch_pattern(synch_pattern),
     .write_signal(write_signal),
     .read_signal(RD_to_SERIALIZER),
@@ -275,6 +289,14 @@ LDTU_DATA32_ATU_DTUTMR #(.Nbits_32(Nbits_32)) DATA32_mux (
     .DATA32_2(DATA32_2),
     .DATA32_3(DATA32_3),
     .SeuError(tmrError_mux)
+    );
+
+majorityVoter flushVoter (
+    .inA(flushA),
+    .inB(flushB),
+    .inC(flushC),
+    .out(flush),
+    .tmrErr(flushTmrError)
     );
 
 majorityVoter resetVoter (

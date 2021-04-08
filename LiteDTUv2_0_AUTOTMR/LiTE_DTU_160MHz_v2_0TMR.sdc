@@ -292,6 +292,10 @@ constrainNet /TEST_ENABLE
 constrainNet /TEST_ENABLEA
 constrainNet /TEST_ENABLEB
 constrainNet /TEST_ENABLEC
+constrainNet /flush
+constrainNet /flushA
+constrainNet /flushB
+constrainNet /flushC
 constrainNet /flushreset
 constrainNet /flushresetA
 constrainNet /flushresetB
