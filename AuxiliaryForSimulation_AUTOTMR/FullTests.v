@@ -623,11 +623,11 @@ module fulltest;
       
       $display("***********************CALIBRATION ON - %g",$time);      
       #(5*ck_period);			
-      CALIBRATION_BUSY_1 <= 1'b0;	// --------------- calibration starts here ADC_L
-      CALIBRATION_BUSY_1_2 = 1'b0;
+      CALIBRATION_BUSY_1 <= 1'b1;	// --------------- calibration starts here ADC_L
+      CALIBRATION_BUSY_1_2 = 1'b1;
       #(1*ck_period);	
-      CALIBRATION_BUSY_10 <= 1'b0;	// --------------- calibration starts here ADC_H
-      CALIBRATION_BUSY_10_2= 1'b0; 
+      CALIBRATION_BUSY_10 <= 1'b1;	// --------------- calibration starts here ADC_H
+      CALIBRATION_BUSY_10_2= 1'b1; 
       #(26*ck_period);
       $display("***********************CALIBRATION OFF - %g",$time);      
       CALIBRATION_BUSY_1 <= 1'b0;	// --------------- end of calibration ADC_L
@@ -636,9 +636,9 @@ module fulltest;
       CALIBRATION_BUSY_1_2 <= 1'b0;	// --------------- end of calibration ADC_L
       CALIBRATION_BUSY_10_2 <= 1'b0;	// --------------- end of calibration ADC_H
 
-      $display("***********************TEST MODE - %g",$time);      
-      test_enable = 1'b0;
-      test_enable_2 = 1'b0;
+      $display("***********************TEST MODE ON- %g",$time);      
+      test_enable = 1'b1;
+      test_enable_2 = 1'b1;
 
       #(3000*ck_period);
       $display("***********************TEST MODE OFF (DTU MODE ON) - %g",$time); 
@@ -646,13 +646,13 @@ module fulltest;
       test_enable_2 = 1'b0;
       #(10000*ck_period);
       $display("***********************FLUSH DTU0 - %g",$time); 
-      flush = 1'b0;
+      flush = 1'b1;
       #(24*ck_period);
       flush = 1'b0;
 
       #(10000*ck_period);
       $display("***********************SYNCH - %g",$time); 
-      synch=1'b0;
+      synch=1'b1;
       
       //////////////////////////////////////////
       /////////////////////////////////////////
