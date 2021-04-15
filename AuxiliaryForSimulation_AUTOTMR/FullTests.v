@@ -159,7 +159,7 @@ module fulltest;
 
    
    /////////////1st module///////////////////////
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene1000GeV_DT_120bx_g10_less.dat"),
 		.ck_period(ck_period)
 		) FR10  (
 			 .clk(DCLK_10),
@@ -169,7 +169,7 @@ module fulltest;
 			 .REJECTED(REJECTED_g10)
 			 );
 
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene1000GeV_DT_120bx_g01_less.dat"),
 		.ck_period(ck_period)
 		) FR01  (
 			 .clk(DCLK_1),
@@ -181,7 +181,7 @@ module fulltest;
    
 
    /////////////2nd module///////////////////////
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene1000GeV_DT_120bx_g10_less.dat"),
 		.ck_period(ck_period)
 		) FR10_2  (
 			   .clk(DCLK_10_2),
@@ -191,7 +191,7 @@ module fulltest;
 			   .REJECTED(REJECTED_g10_2)
 			   );
 
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene1000GeV_DT_120bx_g01_less.dat"),
 		.ck_period(ck_period)
 		) FR01_2  (
 			   .clk(DCLK_1_2),

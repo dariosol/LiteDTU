@@ -47,7 +47,7 @@ parameter    FifoDepth2=16;
 parameter    FifoDepth=8;
 parameter    NBitsCnt=4;
 parameter    RefSample=4'b0011;
-parameter    RefSample2=4'b0011;
+parameter    RefSample2=4'b0101;
 parameter    LookAheadDepth=16;
 wire [Nbits_12-1:0] DATA_gain_01C;
 wire [Nbits_12-1:0] DATA_gain_01B;
