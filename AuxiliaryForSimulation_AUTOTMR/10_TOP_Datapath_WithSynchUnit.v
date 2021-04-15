@@ -238,7 +238,7 @@ module top_ofthetop (
    LiTE_DTU_160MHz_v2_0TMR top_level_LiTE_DTU (.DCLK_1(AdcClkOut[0]), .DCLK_10(AdcClkOut[1]), 
 					       .CLKA(ClkInA), .CLKB(ClkInB), .CLKC(ClkInC), .RSTA(DtuRstA_b),  .RSTB(DtuRstB_b), .RSTC(DtuRstC_b), 
 					       .CALIBRATION_BUSY_1(AdcCalBusy_in[0]), .CALIBRATION_BUSY_10(AdcCalBusy_in[1]), 
-					       .TEST_ENABLE(AdcTestMode), .GAIN_SEL_MODE(2'b0), .fallback(fallback), 
+					       .TEST_ENABLE(AdcTestMode), .GAIN_SEL_MODE({DtuSysCal,DtuAdcSel}), .fallback(fallback), 
 					       .flushA(flush), .flushB(flush), .flushC(flush), 
 					       .synchA(synch), .synchB(synch),.synchC(synch), .synch_pattern(synch_pattern),
 					       .DATA12_g01(AdcDoutL), 
