@@ -22,9 +22,9 @@ module fulltest;
    parameter FifoDepth     = 8;
    parameter NBitsCnt 	   = 3;
    parameter Nbits_32 	   = 32;
-   parameter ck_period     = 6250;
+   parameter ck_period     = 6240;
    parameter crcBits       = 12;
-   parameter ck_srl_period = 781.25;
+   parameter ck_srl_period = 780;
    parameter    Nbits_5=5;
    parameter bits_ptr=4;
    ///////////NAMES ARE NOW FIX... BUT TB MUCH MORE READABLE
@@ -49,6 +49,8 @@ module fulltest;
    reg RST_B;
    reg RST_C;
 
+   reg DCLK_1_2;
+   reg DCLK_10_2;	
    reg RST_A_2;
    reg RST_B_2;
    reg RST_C_2;
@@ -150,8 +152,14 @@ module fulltest;
    assign DtuAdcSel = GAIN_SEL_MODE[0];
    assign DtuSysCal = GAIN_SEL_MODE[1];
 
+   assign DtuAdcSel_2 = GAIN_SEL_MODE_2[0];
+   assign DtuSysCal_2 = GAIN_SEL_MODE_2[1];
+  
+
+
+   
    /////////////1st module///////////////////////
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
 		.ck_period(ck_period)
 		) FR10  (
 			 .clk(DCLK_10),
@@ -161,7 +169,7 @@ module fulltest;
 			 .REJECTED(REJECTED_g10)
 			 );
 
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
 		.ck_period(ck_period)
 		) FR01  (
 			 .clk(DCLK_1),
@@ -173,20 +181,20 @@ module fulltest;
    
 
    /////////////2nd module///////////////////////
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
 		.ck_period(ck_period)
 		) FR10_2  (
-			   .clk(DCLK_10),
+			   .clk(DCLK_10_2),
 			   .rst(RST_A_2),
 			   .CALIBRATION_BUSY({CALIBRATION_BUSY_1_2,CALIBRATION_BUSY_10_2}),
 			   .DATA12(DATA12_g10_2),
 			   .REJECTED(REJECTED_g10_2)
 			   );
 
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
 		.ck_period(ck_period)
 		) FR01_2  (
-			   .clk(DCLK_1),
+			   .clk(DCLK_1_2),
 			   .rst(RST_A_2),
 			   .CALIBRATION_BUSY({CALIBRATION_BUSY_1_2,CALIBRATION_BUSY_10_2}),
 			   .DATA12(DATA12_g01_2),
@@ -219,7 +227,7 @@ module fulltest;
 			     .outfile_datain_10(file_datain_10_name_2),
 			     .outfile_datain_01(file_datain_01_name_2)
 			     )  Decoder2 (
-					  .clk_160(DCLK_1),
+					  .clk_160(DCLK_10_2),
 					  .clk_srl(clk_srl),
 					  .rst(RST_A_2),
 					  .CALIBRATION_BUSY(CALIBRATION_BUSY_2),
@@ -290,7 +298,7 @@ module fulltest;
      top_ofthetop toptoplevel_2(
 				//input
 				.rstA_b(RST_A_2),.rstB_b(RST_B_2),.rstC_b(RST_C_2),
-				.AdcClkOut({DCLK_1,DCLK_10}),
+				.AdcClkOut({DCLK_1_2,DCLK_10_2}),
 				.ClkInA(clk),.ClkInB(clk),.ClkInC(clk),
 				.CLK_SRL(clk_srl),
 				.AdcTestMode(test_enable_2),
@@ -339,9 +347,10 @@ module fulltest;
 
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
-   // clk generation
+   // clk generation for ADCs
    initial begin
       DCLK_1 = 1'b1;
+//      #(0.00155*ck_period)
       forever begin
 	 #(ck_period/2);
 	 DCLK_1 = ~DCLK_1;
@@ -351,9 +360,31 @@ module fulltest;
    // clk generation
    initial begin
       DCLK_10 = 1'b1;
+  //    #(0.00155*ck_period)
       forever begin
 	 #(ck_period/2);
 	 DCLK_10 = ~DCLK_10;
+      end
+   end
+
+   
+   // clk generation for ADC 2
+   initial begin
+      DCLK_1_2 = 1'b1;
+     // #(0.00155*ck_period)
+      forever begin
+	 #(ck_period/2);
+	 DCLK_1_2 = ~DCLK_1_2;
+      end
+   end
+
+   // clk generation
+   initial begin
+      DCLK_10_2 = 1'b1;
+      //#(0.00155*ck_period)
+      forever begin
+	 #(ck_period/2);
+	 DCLK_10_2 = ~DCLK_10_2;
       end
    end
 
@@ -380,15 +411,15 @@ module fulltest;
    //Orbit signal generation
    initial begin
       Orbit = 1'b0;
-      #((34+154)*ck_period); 
+      #(196*ck_period); 
       Orbit = 1'b1;
-      #(1*ck_period); 
+      #(4*ck_period); 
       Orbit = 1'b0;
       
       forever begin
 	 #(14240*ck_period); //89us
 	 Orbit = 1'b1;
-	 #(1*ck_period);
+	 #(4*ck_period);
 	 Orbit = 1'b0;
       end
    end // initial begin
@@ -512,13 +543,13 @@ module fulltest;
       CALIBRATION_BUSY_1_2 = 1'b0;
       CALIBRATION_BUSY_10_2= 1'b0;
       test_enable_2   = 1'b0;    	// DTU_test_mode
-      GAIN_SEL_MODE_2 = 2'b00;		// Auto-gain selection
+      GAIN_SEL_MODE_2 = 2'b01;		// Auto-gain selection
 
 
       //  isr_in = 4'h0;
       //  isr_load = 1'b0;
       
-      #(10*ck_period);	// --------------- system reset
+      #(1*ck_period);	// --------------- system reset
       $display("***********************POWER ON RESET - %g",$time);
       RST_A = 1'b0;
       RST_B = 1'b0;
@@ -591,22 +622,23 @@ module fulltest;
 
       
       $display("***********************CALIBRATION ON - %g",$time);      
-       #(5*ck_period);			
-       CALIBRATION_BUSY_1 <= 1'b1;	// --------------- calibration starts here ADC_L
-      CALIBRATION_BUSY_1_2 = 1'b1;
+      #(5*ck_period);			
+      CALIBRATION_BUSY_1 <= 1'b0;	// --------------- calibration starts here ADC_L
+      CALIBRATION_BUSY_1_2 = 1'b0;
       #(1*ck_period);	
-       CALIBRATION_BUSY_10 <= 1'b1;	// --------------- calibration starts here ADC_H
-      CALIBRATION_BUSY_10_2= 1'b1; 
+      CALIBRATION_BUSY_10 <= 1'b0;	// --------------- calibration starts here ADC_H
+      CALIBRATION_BUSY_10_2= 1'b0; 
       #(26*ck_period);
       $display("***********************CALIBRATION OFF - %g",$time);      
       CALIBRATION_BUSY_1 <= 1'b0;	// --------------- end of calibration ADC_L
+      CALIBRATION_BUSY_10 <= 1'b0;	// --------------- end of calibration ADC_H     
+      #(0.014*ck_period);
       CALIBRATION_BUSY_1_2 <= 1'b0;	// --------------- end of calibration ADC_L
-      CALIBRATION_BUSY_10 <= 1'b0;	// --------------- end of calibration ADC_H
       CALIBRATION_BUSY_10_2 <= 1'b0;	// --------------- end of calibration ADC_H
 
       $display("***********************TEST MODE - %g",$time);      
-      test_enable = 1'b1;
-      test_enable_2 = 1'b1;
+      test_enable = 1'b0;
+      test_enable_2 = 1'b0;
 
       #(3000*ck_period);
       $display("***********************TEST MODE OFF (DTU MODE ON) - %g",$time); 
@@ -616,19 +648,19 @@ module fulltest;
       $display("***********************FLUSH DTU0 - %g",$time); 
       flush = 1'b0;
       #(24*ck_period);
-      flush = 1'b1;
+      flush = 1'b0;
 
       #(10000*ck_period);
       $display("***********************SYNCH - %g",$time); 
-      synch=1'b1;
+      synch=1'b0;
       
       //////////////////////////////////////////
       /////////////////////////////////////////
       //#(2.4*ck_period);
       #(2000*ck_period);
-      RST_A_2   = 1'b0;		// --------------- system active
-      RST_B_2   = 1'b0;
-      RST_C_2   = 1'b0;
+      RST_A_2   = 1'b1;		// --------------- system active
+      RST_B_2   = 1'b1;
+      RST_C_2   = 1'b1;
       
       #(100*ck_period);
       

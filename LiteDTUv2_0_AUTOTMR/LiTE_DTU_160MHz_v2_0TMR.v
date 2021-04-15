@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 08/04/2021 08:33:41                                                                    *
+ * date    : 14/04/2021 14:52:36                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: LiTE_DTU_160MHz_v2_0.v                                                                 *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-04-01 14:17:31.158307                                         *
+ *           Modification time : 2021-04-14 14:49:32.442945                                         *
  *           File Size         : 5942                                                               *
- *           MD5 hash          : bbf06bf074987e1af6c302bae2c079c1                                   *
+ *           MD5 hash          : 7ad2399719c2aa16503d7a0649991e95                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -69,7 +69,7 @@ parameter    Nbits_8=8;
 parameter    Nbits_12=12;
 parameter    Nbits_32=32;
 parameter    FifoDepth=8;
-parameter    NBitsCnt=3;
+parameter    NBitsCnt=4;
 parameter    crcBits=12;
 parameter    FifoDepth_buff=16;
 parameter    bits_ptr=4;

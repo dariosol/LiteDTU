@@ -55,8 +55,6 @@ module LDTU_BS(
 
 	wire [Nbits_12-1:0] b_val_g01;
 	wire [Nbits_12-1:0] b_val_g10;
-	wire dg01_TmrError;
-	wire dg10_TmrError;
 
 	reg	[Nbits_12-1:0] d_g01;
 	reg	[Nbits_12-1:0] d_g10;

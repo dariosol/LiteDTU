@@ -94,7 +94,7 @@ module top_ofthetop (
    parameter Nbits_12    = 12;
    parameter Nbits_32    = 32;
    parameter FifoDepth = 8;
-   parameter NBitsCnt    = 3;
+   parameter NBitsCnt    = 4;
    parameter crcBits = 12;
    parameter FifoDepth_buff = 16;
    parameter bits_ptr = 4;
@@ -233,12 +233,12 @@ module top_ofthetop (
    assign TUdoutLe = DTU_TUdoutLe;
    
    wire 	 Orbit=1'b0;
-
    
    LiTE_DTU_160MHz_v2_0TMR top_level_LiTE_DTU (.DCLK_1(AdcClkOut[0]), .DCLK_10(AdcClkOut[1]), 
-					       .CLKA(ClkInA), .CLKB(ClkInB), .CLKC(ClkInC), .RSTA(DtuRstA_b),  .RSTB(DtuRstB_b), .RSTC(DtuRstC_b), 
+					       .CLKA(ClkInA), .CLKB(ClkInB), .CLKC(ClkInC), 
+					       .RSTA(DtuRstA_b),  .RSTB(DtuRstB_b), .RSTC(DtuRstC_b), 
 					       .CALIBRATION_BUSY_1(AdcCalBusy_in[0]), .CALIBRATION_BUSY_10(AdcCalBusy_in[1]), 
-					       .TEST_ENABLE(AdcTestMode), .GAIN_SEL_MODE(2'b0), .fallback(fallback), 
+					       .TEST_ENABLE(AdcTestMode), .GAIN_SEL_MODE({DtuSysCal,DtuAdcSel}), .fallback(fallback), 
 					       .flushA(flush), .flushB(flush), .flushC(flush), 
 					       .synchA(synch), .synchB(synch),.synchC(synch), .synch_pattern(synch_pattern),
 					       .DATA12_g01(AdcDoutL), 
@@ -259,7 +259,7 @@ module top_ofthetop (
 
 
 
-   AdcTestUnitTMR TestUnit (
+   AdcTestUnitTMR TestUnit (//WARNING: reset should be TUrstA_b
 			    .rst_bA(rstA_b), .rst_bB(rstB_b), .rst_bC(rstC_b),
 			    .clockA(ClkInA),.clockB(ClkInB),.clockC(ClkInC),
 			    .test_enable(AdcTestMode),

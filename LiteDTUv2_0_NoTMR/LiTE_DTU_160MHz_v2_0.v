@@ -39,7 +39,7 @@ module LiTE_DTU_160MHz_v2_0 (
    parameter Nbits_12 	= 12;
    parameter Nbits_32 	= 32;
    parameter FifoDepth = 8;
-   parameter NBitsCnt 	= 3;
+   parameter NBitsCnt 	= 4;
    parameter crcBits = 12;
    parameter FifoDepth_buff = 16;
    parameter bits_ptr = 4;

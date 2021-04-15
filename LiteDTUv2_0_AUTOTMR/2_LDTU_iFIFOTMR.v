@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 08/04/2021 08:33:40                                                                    *
+ * date    : 14/04/2021 14:52:34                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 2_LDTU_iFIFO.v                                                                         *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-29 14:11:43.029853                                         *
- *           File Size         : 5453                                                               *
- *           MD5 hash          : 8407da6ad9d1ba6d18bcb25bef42c29c                                   *
+ *           Modification time : 2021-04-14 14:52:07.492946                                         *
+ *           File Size         : 5921                                                               *
+ *           MD5 hash          : 9f9c375f96aa0bc91a506b284b7db90d                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -45,9 +45,10 @@ parameter    Nbits_7=7;
 parameter    Nbits_12=12;
 parameter    FifoDepth2=16;
 parameter    FifoDepth=8;
-parameter    NBitsCnt=3;
-parameter    RefSample=3'b011;
-parameter    RefSample2=3'b101;
+parameter    NBitsCnt=4;
+parameter    RefSample=4'b0011;
+parameter    RefSample2=4'b0011;
+parameter    LookAheadDepth=16;
 wire [Nbits_12-1:0] DATA_gain_01C;
 wire [Nbits_12-1:0] DATA_gain_01B;
 wire [Nbits_12-1:0] DATA_gain_01A;
@@ -100,12 +101,12 @@ reg  [NBitsCnt-1:0] wrL_ptrC;
 reg  [Nbits_12-1:0] SATvalA;
 reg  [Nbits_12-1:0] SATvalB;
 reg  [Nbits_12-1:0] SATvalC;
-reg  [Nbits_12-1:0] FIFO_g1A [ FifoDepth-1 : 0 ] ;
-reg  [Nbits_12-1:0] FIFO_g1B [ FifoDepth-1 : 0 ] ;
-reg  [Nbits_12-1:0] FIFO_g1C [ FifoDepth-1 : 0 ] ;
-reg  [Nbits_12-1:0] FIFO_g10A [ FifoDepth-1 : 0 ] ;
-reg  [Nbits_12-1:0] FIFO_g10B [ FifoDepth-1 : 0 ] ;
-reg  [Nbits_12-1:0] FIFO_g10C [ FifoDepth-1 : 0 ] ;
+reg  [Nbits_12-1:0] FIFO_g1A [ LookAheadDepth-1 : 0 ] ;
+reg  [Nbits_12-1:0] FIFO_g1B [ LookAheadDepth-1 : 0 ] ;
+reg  [Nbits_12-1:0] FIFO_g1C [ LookAheadDepth-1 : 0 ] ;
+reg  [Nbits_12-1:0] FIFO_g10A [ LookAheadDepth-1 : 0 ] ;
+reg  [Nbits_12-1:0] FIFO_g10B [ LookAheadDepth-1 : 0 ] ;
+reg  [Nbits_12-1:0] FIFO_g10C [ LookAheadDepth-1 : 0 ] ;
 reg  [NBitsCnt-1:0] rd_ptrA;
 reg  [NBitsCnt-1:0] rd_ptrB;
 reg  [NBitsCnt-1:0] rd_ptrC;
@@ -171,56 +172,56 @@ always @( posedge CLKC )
 always @( posedge DCLK_10A )
   begin
     if (rst_bA==1'b0)
-      wrH_ptrA <= 3'b000;
+      wrH_ptrA <= 4'b0000;
     else
-      wrH_ptrA <= wrH_ptrA+3'b001;
+      wrH_ptrA <= wrH_ptrA+4'b0001;
   end
 
 always @( posedge DCLK_10B )
   begin
     if (rst_bB==1'b0)
-      wrH_ptrB <= 3'b000;
+      wrH_ptrB <= 4'b0000;
     else
-      wrH_ptrB <= wrH_ptrB+3'b001;
+      wrH_ptrB <= wrH_ptrB+4'b0001;
   end
 
 always @( posedge DCLK_10C )
   begin
     if (rst_bC==1'b0)
-      wrH_ptrC <= 3'b000;
+      wrH_ptrC <= 4'b0000;
     else
-      wrH_ptrC <= wrH_ptrC+3'b001;
+      wrH_ptrC <= wrH_ptrC+4'b0001;
   end
 
 always @( posedge DCLK_1A )
   begin
     if (rst_bA==1'b0)
-      wrL_ptrA <= 3'b000;
+      wrL_ptrA <= 4'b0000;
     else
-      wrL_ptrA <= wrL_ptrA+3'b001;
+      wrL_ptrA <= wrL_ptrA+4'b0001;
   end
 
 always @( posedge DCLK_1B )
   begin
     if (rst_bB==1'b0)
-      wrL_ptrB <= 3'b000;
+      wrL_ptrB <= 4'b0000;
     else
-      wrL_ptrB <= wrL_ptrB+3'b001;
+      wrL_ptrB <= wrL_ptrB+4'b0001;
   end
 
 always @( posedge DCLK_1C )
   begin
     if (rst_bC==1'b0)
-      wrL_ptrC <= 3'b000;
+      wrL_ptrC <= 4'b0000;
     else
-      wrL_ptrC <= wrL_ptrC+3'b001;
+      wrL_ptrC <= wrL_ptrC+4'b0001;
   end
 
 always @( posedge DCLK_1A )
   begin
     if (rst_bA==1'b0)
       begin
-        for(iLA =  0;iLA<FifoDepth;iLA =  iLA+1)
+        for(iLA =  0;iLA<LookAheadDepth;iLA =  iLA+1)
           begin
             FIFO_g1A[iLA]  <= 12'b0;
           end
@@ -235,7 +236,7 @@ always @( posedge DCLK_1B )
   begin
     if (rst_bB==1'b0)
       begin
-        for(iLB =  0;iLB<FifoDepth;iLB =  iLB+1)
+        for(iLB =  0;iLB<LookAheadDepth;iLB =  iLB+1)
           begin
             FIFO_g1B[iLB]  <= 12'b0;
           end
@@ -250,7 +251,7 @@ always @( posedge DCLK_1C )
   begin
     if (rst_bC==1'b0)
       begin
-        for(iLC =  0;iLC<FifoDepth;iLC =  iLC+1)
+        for(iLC =  0;iLC<LookAheadDepth;iLC =  iLC+1)
           begin
             FIFO_g1C[iLC]  <= 12'b0;
           end
@@ -265,7 +266,7 @@ always @( posedge DCLK_10A )
   begin
     if (rst_bA==1'b0)
       begin
-        for(iHA =  0;iHA<FifoDepth;iHA =  iHA+1)
+        for(iHA =  0;iHA<LookAheadDepth;iHA =  iHA+1)
           begin
             FIFO_g10A[iHA]  <= 12'b0;
           end
@@ -280,7 +281,7 @@ always @( posedge DCLK_10B )
   begin
     if (rst_bB==1'b0)
       begin
-        for(iHB =  0;iHB<FifoDepth;iHB =  iHB+1)
+        for(iHB =  0;iHB<LookAheadDepth;iHB =  iHB+1)
           begin
             FIFO_g10B[iHB]  <= 12'b0;
           end
@@ -295,7 +296,7 @@ always @( posedge DCLK_10C )
   begin
     if (rst_bC==1'b0)
       begin
-        for(iHC =  0;iHC<FifoDepth;iHC =  iHC+1)
+        for(iHC =  0;iHC<LookAheadDepth;iHC =  iHC+1)
           begin
             FIFO_g10C[iHC]  <= 12'b0;
           end
@@ -309,25 +310,25 @@ always @( posedge DCLK_10C )
 always @( posedge CLKA )
   begin
     if (rst_bA==1'b0)
-      rd_ptrA <= 3'b010;
+      rd_ptrA <= 4'b0111;
     else
-      rd_ptrA <= rd_ptrA+3'b001;
+      rd_ptrA <= rd_ptrA+4'b0001;
   end
 
 always @( posedge CLKB )
   begin
     if (rst_bB==1'b0)
-      rd_ptrB <= 3'b010;
+      rd_ptrB <= 4'b0111;
     else
-      rd_ptrB <= rd_ptrB+3'b001;
+      rd_ptrB <= rd_ptrB+4'b0001;
   end
 
 always @( posedge CLKC )
   begin
     if (rst_bC==1'b0)
-      rd_ptrC <= 3'b010;
+      rd_ptrC <= 4'b0111;
     else
-      rd_ptrC <= rd_ptrC+3'b001;
+      rd_ptrC <= rd_ptrC+4'b0001;
   end
 assign ref_ptrA =  (GAIN_SEL_MODEA==2'b01) ? (rd_ptrA+RefSample2) : (rd_ptrA+RefSample);
 assign ref_ptrB =  (GAIN_SEL_MODEB==2'b01) ? (rd_ptrB+RefSample2) : (rd_ptrB+RefSample);

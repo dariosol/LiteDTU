@@ -67,7 +67,7 @@ module SerDecoder(
       write_file_SER = $fopen(outfile_SER,"w");
       write_file_output= $fopen(outfile_sample,"w");
       write_file_g10= $fopen(outfile_datain_10,"w");
-      write_file_g10= $fopen(outfile_datain_01,"w");
+      write_file_g01= $fopen(outfile_datain_01,"w");
       
    end
    
@@ -240,23 +240,12 @@ module SerDecoder(
 				 if (word_ser_0[31:28]== 4'b1110) begin	//IDLE
 				    word_0_state=3'b110;
 				    $fwrite(write_file_SER,"%g %h %h %h %h - IDLE\n", $time, word_ser_0, word_ser_1, word_ser_2, word_ser_3);
-				    if(wreset==1'b1) begin
-				       $fwrite(write_file_output,"%g * 0%h\n", $time, 0);
-				       $fwrite(write_file_output,"%g * 0%h\n", $time, 0);
-				       $fwrite(write_file_output,"%g * 0%h\n", $time, 0);
-				       $fwrite(write_file_output,"%g * 0%h\n", $time, 0);
-				       $fwrite(write_file_output,"%g * 0%h\n", $time, 0);
-				    end
+				    
 		 		 end
 				 else begin
 				    if (word_ser_0[31:26]== 6'b001101) begin	//RESET
 				       word_0_state=3'b110;
 				       $fwrite(write_file_SER,"%g %h %h %h %h - RESET\n", $time, word_ser_0, word_ser_1, word_ser_2, word_ser_3);
-				       $fwrite(write_file_output,"%g * 0%h\n", $time, 0);
-				       $fwrite(write_file_output,"%g * 0%h\n", $time, 0);
-				       $fwrite(write_file_output,"%g * 0%h\n", $time, 0);
-				       $fwrite(write_file_output,"%g * 0%h\n", $time, 0);
-				       $fwrite(write_file_output,"%g * 0%h\n", $time, 0);
 				       wreset=1'b1;
 		 		    end
 				    
