@@ -23,7 +23,7 @@ module LDTU_oFIFO_top (
 		       write_signal,
 		       read_signal,
 		       data_in_32,
-		       flush,
+		       flush_b,
 		       synch,
 		       synch_pattern,
 		       DATA32_DTU,
@@ -45,7 +45,7 @@ module LDTU_oFIFO_top (
    input write_signal;
    input read_signal;
    input [Nbits_32-1:0] data_in_32;
-   input 		flush;
+   input 		flush_b;
    input 		synch;
    input [Nbits_32-1:0] synch_pattern;
    	 
@@ -80,7 +80,7 @@ module LDTU_oFIFO_top (
 
    wire 		 fiforeset;
    
-   assign fiforeset = (rst_b & flush & ~synch);//WARNING: do we want synch resetting in the same way of flush?
+   assign fiforeset = (rst_b & flush_b & ~synch);//WARNING: do we want synch resetting in the same way of flush?
    
    Hamm_TRX #(.Nbits_32(Nbits_32), .Nbits_ham(Nbits_ham))
    Hamming_32_38 (.CLK(CLK), .reset(fiforeset), 
@@ -104,7 +104,7 @@ module LDTU_oFIFO_top (
       if ( rst_b == 1'b0) begin 
 	 DATA32_DTU_synch = idle_patternEA;
       end else begin
-	 if(flush==1'b0) begin
+	 if(flush_b==1'b0) begin
 	    DATA32_DTU_synch =  32'hFEEDC0DE;
 	 end
 	 else begin

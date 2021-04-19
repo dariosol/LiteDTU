@@ -16,6 +16,10 @@ proc constrainNet netName {
   }
 }
 
+constrainNet /AAA[*]
+constrainNet /AAB[*]
+constrainNet /AAC[*]
+constrainNet /AA[*]
 constrainNet /B_subtraction/BSL_VAL_g01A[*]
 constrainNet /B_subtraction/BSL_VAL_g01B[*]
 constrainNet /B_subtraction/BSL_VAL_g01C[*]
@@ -264,10 +268,10 @@ constrainNet /StorageFIFO/fiforeset
 constrainNet /StorageFIFO/fiforesetA
 constrainNet /StorageFIFO/fiforesetB
 constrainNet /StorageFIFO/fiforesetC
-constrainNet /StorageFIFO/flush
-constrainNet /StorageFIFO/flushA
-constrainNet /StorageFIFO/flushB
-constrainNet /StorageFIFO/flushC
+constrainNet /StorageFIFO/flush_b
+constrainNet /StorageFIFO/flush_bA
+constrainNet /StorageFIFO/flush_bB
+constrainNet /StorageFIFO/flush_bC
 constrainNet /StorageFIFO/read_signal
 constrainNet /StorageFIFO/read_signalA
 constrainNet /StorageFIFO/read_signalB
@@ -292,18 +296,14 @@ constrainNet /TEST_ENABLE
 constrainNet /TEST_ENABLEA
 constrainNet /TEST_ENABLEB
 constrainNet /TEST_ENABLEC
-constrainNet /flush
-constrainNet /flushA
-constrainNet /flushB
-constrainNet /flushC
-constrainNet /flushreset
-constrainNet /flushresetA
-constrainNet /flushresetB
-constrainNet /flushresetC
-constrainNet /reset
-constrainNet /resetA
-constrainNet /resetB
-constrainNet /resetC
+constrainNet /flush_b
+constrainNet /flush_bA
+constrainNet /flush_bB
+constrainNet /flush_bC
+constrainNet /flushreset_b
+constrainNet /flushreset_bA
+constrainNet /flushreset_bB
+constrainNet /flushreset_bC
 constrainNet /shift_gain_10A[*]
 constrainNet /shift_gain_10B[*]
 constrainNet /shift_gain_10C[*]

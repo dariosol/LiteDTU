@@ -45,15 +45,15 @@ module fulltest;
    reg DCLK_10;	
    reg clk_srl;
    reg clk;
-   reg RST_A;
-   reg RST_B;
-   reg RST_C;
+   reg RST_A_b;
+   reg RST_B_b;
+   reg RST_C_b;
 
    reg DCLK_1_2;
    reg DCLK_10_2;	
-   reg RST_A_2;
-   reg RST_B_2;
-   reg RST_C_2;
+   reg RST_A_2_b;
+   reg RST_B_2_b;
+   reg RST_C_2_b;
 
    reg [1:0] GAIN_SEL_MODE;
    reg 	     CALIBRATION_BUSY_1;
@@ -113,7 +113,7 @@ module fulltest;
    //New Orbit Signal for Phase 2
    reg 		       Orbit;
    reg 		       fallback;
-   reg                 flush;
+   reg                 flush_b;
    reg 		       synch;
    reg 		       synch_2;
    reg [31:0] 	       synch_pattern = 32'hcafecafe;
@@ -122,7 +122,7 @@ module fulltest;
 
    reg 		       fallback_2;
    reg [1:0] 	       shift_gain_10_2 = 2'b00;
-   reg                 flush_2;
+   reg                 flush_2_b;
 
    //I2C    
    reg [1:0] 	       AdcOvf_in=2'b0;
@@ -163,7 +163,7 @@ module fulltest;
 		.ck_period(ck_period)
 		) FR10  (
 			 .clk(DCLK_10),
-			 .rst(RST_A),
+			 .rst(RST_A_b),
 			 .CALIBRATION_BUSY({CALIBRATION_BUSY_1,CALIBRATION_BUSY_10}),
 			 .DATA12(DATA12_g10),
 			 .REJECTED(REJECTED_g10)
@@ -173,7 +173,7 @@ module fulltest;
 		.ck_period(ck_period)
 		) FR01  (
 			 .clk(DCLK_1),
-			 .rst(RST_A),
+			 .rst(RST_A_b),
 			 .CALIBRATION_BUSY({CALIBRATION_BUSY_1,CALIBRATION_BUSY_10}),
 			 .DATA12(DATA12_g01),
 			 .REJECTED(REJECTED_g01)
@@ -185,7 +185,7 @@ module fulltest;
 		.ck_period(ck_period)
 		) FR10_2  (
 			   .clk(DCLK_10_2),
-			   .rst(RST_A_2),
+			   .rst(RST_A_2_b),
 			   .CALIBRATION_BUSY({CALIBRATION_BUSY_1_2,CALIBRATION_BUSY_10_2}),
 			   .DATA12(DATA12_g10_2),
 			   .REJECTED(REJECTED_g10_2)
@@ -195,7 +195,7 @@ module fulltest;
 		.ck_period(ck_period)
 		) FR01_2  (
 			   .clk(DCLK_1_2),
-			   .rst(RST_A_2),
+			   .rst(RST_A_2_b),
 			   .CALIBRATION_BUSY({CALIBRATION_BUSY_1_2,CALIBRATION_BUSY_10_2}),
 			   .DATA12(DATA12_g01_2),
 			   .REJECTED(REJECTED_g01_2)
@@ -209,7 +209,7 @@ module fulltest;
 			     )  Decoder1 (
 					  .clk_160(DCLK_1),
 					  .clk_srl(clk_srl),
-					  .rst(RST_A),
+					  .rst(RST_A_b),
 					  .CALIBRATION_BUSY(CALIBRATION_BUSY),
 					  .DATA12_g10(DATA12_g10),
 					  .DATA12_g01(DATA12_g01),
@@ -229,7 +229,7 @@ module fulltest;
 			     )  Decoder2 (
 					  .clk_160(DCLK_10_2),
 					  .clk_srl(clk_srl),
-					  .rst(RST_A_2),
+					  .rst(RST_A_2_b),
 					  .CALIBRATION_BUSY(CALIBRATION_BUSY_2),
 					  .DATA12_g10(DATA12_g10_2),
 					  .DATA12_g01(DATA12_g01_2),
@@ -244,7 +244,7 @@ module fulltest;
    /////////////FIRST DTU////////////////////////////////////////////////////////////////
    top_ofthetop toptoplevel(
 			    //input
-			    .rstA_b(RST_A),.rstB_b(RST_B),.rstC_b(RST_C),
+			    .rstA_b(RST_A_b),.rstB_b(RST_B_b),.rstC_b(RST_C_b),
 			    .AdcClkOut({DCLK_1,DCLK_10}),
 			    .ClkInA(clk),.ClkInB(clk),.ClkInC(clk),
 			    .CLK_SRL(clk_srl),
@@ -254,7 +254,7 @@ module fulltest;
 			    .AdcOvf_in(AdcOvf_in),
 			    .AdcSEU(AdcSEU),
 			    .fallback(fallback),
-			    .flush(flush),
+			    .flush_b(flush_b),
 			    .synch(synch),
 			    .synch_pattern(synch_pattern),
 			    .shift_gain_10(shift_gain_10),
@@ -297,7 +297,7 @@ module fulltest;
    /////////////SECOND DTU////////////////////////////////////////////////////////////////
      top_ofthetop toptoplevel_2(
 				//input
-				.rstA_b(RST_A_2),.rstB_b(RST_B_2),.rstC_b(RST_C_2),
+				.rstA_b(RST_A_2_b),.rstB_b(RST_B_2_b),.rstC_b(RST_C_2_b),
 				.AdcClkOut({DCLK_1_2,DCLK_10_2}),
 				.ClkInA(clk),.ClkInB(clk),.ClkInC(clk),
 				.CLK_SRL(clk_srl),
@@ -307,7 +307,7 @@ module fulltest;
 				.AdcOvf_in(AdcOvf_in_2),
 				.AdcSEU(AdcSEU_2),
 				.fallback(fallback_2),
-				.flush(flush_2),
+				.flush_b(flush_2_b),
 				.synch(synch_2),
 				.synch_pattern(synch_pattern),
 				.shift_gain_10(shift_gain_10_2),
@@ -486,7 +486,7 @@ module fulltest;
    // Input shift register for Synch Unit
 
    always @(posedge clk) begin
-      if (RST_A == 0)
+      if (RST_A_b == 0)
 	input_sr = 1'b0;
 
       else if (isr_load == 1)
@@ -500,7 +500,7 @@ module fulltest;
    assign ReSync = input_sr[7];
 
    always @(posedge clk) begin
-      if (RST_A_2 == 0)
+      if (RST_A_2_b == 0)
 	input_sr_2 = 1'b0;
 
       else if (isr_load_2 == 1)
@@ -520,10 +520,10 @@ module fulltest;
 
       $display("***********************STARTING SIMULATION -%g",$time);
       
-      RST_A   = 1'b1;
-      RST_B   = 1'b1;
-      RST_C   = 1'b1;
-      flush =1'b1;
+      RST_A_b   = 1'b1;
+      RST_B_b   = 1'b1;
+      RST_C_b   = 1'b1;
+      flush_b =1'b1;
       synch =1'b0;
       fallback=1'b0;
       
@@ -533,12 +533,12 @@ module fulltest;
       test_enable   = 1'b0;    	// DTU_test_mode
       GAIN_SEL_MODE = 2'b00;		// Auto-gain selection
 
-      RST_A_2   = 1'b1;
-      RST_B_2   = 1'b1;
-      RST_C_2   = 1'b1;
-      flush_2 =1'b1;
+      RST_A_2_b   = 1'b1;
+      RST_B_2_b   = 1'b1;
+      RST_C_2_b   = 1'b1;
+      flush_2_b =1'b1;
       synch_2 =1'b0;
-      fallback_2=1'b0;
+      fallback_2=1'b1;
       
       CALIBRATION_BUSY_1_2 = 1'b0;
       CALIBRATION_BUSY_10_2= 1'b0;
@@ -551,22 +551,22 @@ module fulltest;
       
       #(1*ck_period);	// --------------- system reset
       $display("***********************POWER ON RESET - %g",$time);
-      RST_A = 1'b0;
-      RST_B = 1'b0;
-      RST_C = 1'b0;
+      RST_A_b = 1'b0;
+      RST_B_b = 1'b0;
+      RST_C_b = 1'b0;
       
-      RST_A_2 = 1'b0;
-      RST_B_2 = 1'b0;
-      RST_C_2 = 1'b0;
+      RST_A_2_b = 1'b0;
+      RST_B_2_b = 1'b0;
+      RST_C_2_b = 1'b0;
 
       #(2*ck_period);
       $display("***********************POWER OFF RESET - %g",$time);
-      RST_A   = 1'b1;		// --------------- system active
-      RST_B   = 1'b1;
-      RST_C   = 1'b1;
-      RST_A_2   = 1'b1;		
-      RST_B_2   = 1'b1;
-      RST_C_2   = 1'b1;
+      RST_A_b   = 1'b1;		// --------------- system active
+      RST_B_b   = 1'b1;
+      RST_C_b   = 1'b1;
+      RST_A_2_b   = 1'b1;		
+      RST_B_2_b   = 1'b1;
+      RST_C_2_b   = 1'b1;
 
       // DTU reset
       #(2*ck_period);
@@ -646,27 +646,27 @@ module fulltest;
       test_enable_2 = 1'b0;
       #(10000*ck_period);
       $display("***********************FLUSH DTU0 - %g",$time); 
-      flush = 1'b1;
+      flush_b = 1'b1;
       #(24*ck_period);
-      flush = 1'b0;
+      flush_b = 1'b1;
 
       #(10000*ck_period);
       $display("***********************SYNCH - %g",$time); 
-      synch=1'b1;
+      synch=1'b0;
       
       //////////////////////////////////////////
       /////////////////////////////////////////
       //#(2.4*ck_period);
       #(2000*ck_period);
-      RST_A_2   = 1'b1;		// --------------- system active
-      RST_B_2   = 1'b1;
-      RST_C_2   = 1'b1;
+      RST_A_2_b   = 1'b1;		// --------------- system active
+      RST_B_2_b   = 1'b1;
+      RST_C_2_b   = 1'b1;
       
       #(100*ck_period);
       
-      RST_A_2   = 1'b1;
-      RST_B_2   = 1'b1;
-      RST_C_2   = 1'b1;
+      RST_A_2_b   = 1'b1;
+      RST_B_2_b   = 1'b1;
+      RST_C_2_b   = 1'b1;
       
       // DTU reset
       

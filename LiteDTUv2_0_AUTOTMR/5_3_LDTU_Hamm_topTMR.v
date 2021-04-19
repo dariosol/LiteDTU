@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 08/04/2021 08:33:41                                                                    *
+ * date    : 19/04/2021 14:40:33                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 5_3_LDTU_Hamm_top.v                                                                    *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-04-01 14:23:51.921311                                         *
- *           File Size         : 3820                                                               *
- *           MD5 hash          : f60658735f536dd3958f4b2f3141211d                                   *
+ *           Modification time : 2021-04-19 14:24:33.450544                                         *
+ *           File Size         : 3828                                                               *
+ *           MD5 hash          : 43d25e1437d8979b44a3b12ca6e4246e                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -33,9 +33,9 @@ module LDTU_oFIFO_topTMR(
   write_signal,
   read_signal,
   data_in_32,
-  flushA,
-  flushB,
-  flushC,
+  flush_bA,
+  flush_bB,
+  flush_bC,
   synchA,
   synchB,
   synchC,
@@ -74,12 +74,12 @@ wire fiforesetA;
 wire tmrError;
 wor synchTmrError;
 wor rst_bTmrError;
-wor flushTmrError;
+wor flush_bTmrError;
 wor DATA32_DTU_synchTmrError;
 wor CLKTmrError;
-wire CLK;
+wire flush_b;
 wire rst_b;
-wire flush;
+wire CLK;
 wire synch;
 wire [Nbits_32-1:0] DATA32_DTU_synch;
 input CLKA;
@@ -91,9 +91,9 @@ input rst_bC;
 input write_signal;
 input read_signal;
 input [Nbits_32-1:0] data_in_32;
-input flushA;
-input flushB;
-input flushC;
+input flush_bA;
+input flush_bB;
+input flush_bC;
 input synchA;
 input synchB;
 input synchC;
@@ -120,7 +120,7 @@ wire full_signal_synch;
 wire decode_signal;
 assign SeuError =  tmrError|tmrError_oFIFO;
 wire fiforeset;
-assign fiforeset =  (rst_b&flush&~synch);
+assign fiforeset =  (rst_b&flush_b&~synch);
 
 Hamm_TRX #(.Nbits_32(Nbits_32), .Nbits_ham(Nbits_ham)) Hamming_32_38 (
     .CLK(CLK),
@@ -171,7 +171,7 @@ always @( posedge CLKA )
       end
     else
       begin
-        if (flushA==1'b0)
+        if (flush_bA==1'b0)
           begin
             DATA32_DTU_synchA =  32'hFEEDC0DE;
           end
@@ -207,7 +207,7 @@ always @( posedge CLKB )
       end
     else
       begin
-        if (flushB==1'b0)
+        if (flush_bB==1'b0)
           begin
             DATA32_DTU_synchB =  32'hFEEDC0DE;
           end
@@ -243,7 +243,7 @@ always @( posedge CLKC )
       end
     else
       begin
-        if (flushC==1'b0)
+        if (flush_bC==1'b0)
           begin
             DATA32_DTU_synchC =  32'hFEEDC0DE;
           end
@@ -289,12 +289,12 @@ majorityVoter synchVoter (
     .tmrErr(synchTmrError)
     );
 
-majorityVoter flushVoter (
-    .inA(flushA),
-    .inB(flushB),
-    .inC(flushC),
-    .out(flush),
-    .tmrErr(flushTmrError)
+majorityVoter CLKVoter (
+    .inA(CLKA),
+    .inB(CLKB),
+    .inC(CLKC),
+    .out(CLK),
+    .tmrErr(CLKTmrError)
     );
 
 majorityVoter rst_bVoter (
@@ -305,14 +305,14 @@ majorityVoter rst_bVoter (
     .tmrErr(rst_bTmrError)
     );
 
-majorityVoter CLKVoter (
-    .inA(CLKA),
-    .inB(CLKB),
-    .inC(CLKC),
-    .out(CLK),
-    .tmrErr(CLKTmrError)
+majorityVoter flush_bVoter (
+    .inA(flush_bA),
+    .inB(flush_bB),
+    .inC(flush_bC),
+    .out(flush_b),
+    .tmrErr(flush_bTmrError)
     );
-assign tmrError =  CLKTmrError|DATA32_DTU_synchTmrError|flushTmrError|rst_bTmrError|synchTmrError;
+assign tmrError =  CLKTmrError|DATA32_DTU_synchTmrError|flush_bTmrError|rst_bTmrError|synchTmrError;
 
 fanout fiforesetFanout (
     .in(fiforeset),

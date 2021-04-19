@@ -5,7 +5,7 @@ module LiTE_DTU_160MHz_v2_0 (
 			     DCLK_1, 
 			     DCLK_10, 
 			     CLK, 
-			     RST, 
+			     RST_b, 
 			     CALIBRATION_BUSY_1, 
 			     CALIBRATION_BUSY_10, 
 			     TEST_ENABLE, 
@@ -24,7 +24,7 @@ module LiTE_DTU_160MHz_v2_0 (
 			     DATA32_ATU_3, 
 			     Orbit, 
 			     shift_gain_10,
-			     flush,
+			     flush_b,
 			     synch,
 			     synch_pattern,
 			     DATA32_0, 
@@ -49,7 +49,7 @@ module LiTE_DTU_160MHz_v2_0 (
    input DCLK_1;
    input DCLK_10;
    input CLK;
-   input RST;
+   input RST_b;
    input fallback;
    input CALIBRATION_BUSY_1;
    input CALIBRATION_BUSY_10;
@@ -67,7 +67,7 @@ module LiTE_DTU_160MHz_v2_0 (
    input [Nbits_32-1:0] DATA32_ATU_3;
    input 		Orbit;
    input [1:0] 		shift_gain_10;
-   input                flush;
+   input                flush_b;
    input 		synch;
    input [Nbits_32-1:0] synch_pattern;
    
@@ -103,9 +103,9 @@ module LiTE_DTU_160MHz_v2_0 (
    
    // LiTe-DTU resets
    wire [2:0] 		 AA;
-   assign AA = {RST, CALIBRATION_BUSY, TEST_ENABLE};
+   assign AA = {RST_b, CALIBRATION_BUSY, TEST_ENABLE};
 
-   assign reset = (AA == 3'b100) ? 1'b1 : 1'b0;
+   assign reset_b = (AA == 3'b100) ? 1'b1 : 1'b0;
 
    wire 		 tmrError_BS;
    wire 		 tmrError_iFIFO;
@@ -116,28 +116,28 @@ module LiTE_DTU_160MHz_v2_0 (
 
    assign totalError = tmrError_BS | tmrError_iFIFO | tmrError_enc | tmrError_CU | tmrError_oFIFO | tmrError_mux;
   
-   wire 		 flushreset;
-   assign flushreset = reset & flush;
+   wire 		 flushreset_b;
+   assign flushreset_b = reset_b & flush_b;
    
    // ****  Baseline Subtraction Module **** //
    LDTU_BS #(.Nbits_12(Nbits_12), .Nbits_8(Nbits_8))
-   B_subtraction (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .rst_b(reset), .DATA12_g01(DATA12_g01), .DATA12_g10(DATA12_g10), .BSL_VAL_g01(BSL_VAL_g01), .BSL_VAL_g10(BSL_VAL_g10), .DATA_gain_01(DATA_gain_01), .DATA_gain_10(DATA_gain_10), .shift_gain_10(shift_gain_10), .SeuError(tmrError_BS));
+   B_subtraction (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .rst_b(reset_b), .DATA12_g01(DATA12_g01), .DATA12_g10(DATA12_g10), .BSL_VAL_g01(BSL_VAL_g01), .BSL_VAL_g10(BSL_VAL_g10), .DATA_gain_01(DATA_gain_01), .DATA_gain_10(DATA_gain_10), .shift_gain_10(shift_gain_10), .SeuError(tmrError_BS));
 
 
    // **** Input FIFOs Module **** //
    LDTU_iFIFO #(.Nbits_12(Nbits_12), .FifoDepth(FifoDepth), .NBitsCnt(NBitsCnt))
-   Selection (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .CLK(CLK), .rst_b(reset), .GAIN_SEL_MODE(GAIN_SEL_MODE), .DATA_gain_01(DATA_gain_01), .DATA_gain_10(DATA_gain_10), .SATURATION_value(SATURATION_value), .shift_gain_10(shift_gain_10), .DATA_to_enc(DATA_to_enc), .baseline_flag(baseline_flag), .SeuError(tmrError_iFIFO));
+   Selection (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .CLK(CLK), .rst_b(reset_b), .GAIN_SEL_MODE(GAIN_SEL_MODE), .DATA_gain_01(DATA_gain_01), .DATA_gain_10(DATA_gain_10), .SATURATION_value(SATURATION_value), .shift_gain_10(shift_gain_10), .DATA_to_enc(DATA_to_enc), .baseline_flag(baseline_flag), .SeuError(tmrError_iFIFO));
 
 
    //  **** Encoder Module ****  //
    LDTU_Encoder #(.Nbits_12(Nbits_12), .Nbits_32(Nbits_32))
-   Encoder (.CLK(CLK), .rst_b(flushreset), .baseline_flag(baseline_flag), .Orbit(Orbit), .fallback(fallback),.DATA_to_enc(DATA_to_enc), .DATA_32(DATA_32), .DATA_32_FB(DATA_32_FB), .Load(Load),.Load_FB(Load_FB), .SeuError(tmrError_enc));
+   Encoder (.CLK(CLK), .rst_b(flushreset_b), .baseline_flag(baseline_flag), .Orbit(Orbit), .fallback(fallback),.DATA_to_enc(DATA_to_enc), .DATA_32(DATA_32), .DATA_32_FB(DATA_32_FB), .Load(Load),.Load_FB(Load_FB), .SeuError(tmrError_enc));
 
 
    //  **** Control Unit ****  //
    LDTU_CU #(.Nbits_32(Nbits_32))
    Control_Unit (.CLK(CLK), 
-		 .rst_b(flushreset), 
+		 .rst_b(flushreset_b), 
 		 .fallback(fallback),
 		 .Load_data(Load), .DATA_32(DATA_32), 
 		 .Load_data_FB(Load_FB), .DATA_32_FB(DATA_32_FB), 
@@ -147,8 +147,8 @@ module LiTE_DTU_160MHz_v2_0 (
    //  **** outputFIFO ****  //
    LDTU_oFIFO_top  #(.Nbits_32(Nbits_32), .FifoDepth_buff(FifoDepth_buff), .bits_ptr(bits_ptr))
    StorageFIFO (.CLK(CLK),
-		.rst_b(reset),
-		.flush(flush),
+		.rst_b(reset_b),
+		.flush_b(flush_b),
 		.synch(synch),
 		.synch_pattern(synch_pattern),
 		.write_signal(write_signal), .read_signal(RD_to_SERIALIZER), 
