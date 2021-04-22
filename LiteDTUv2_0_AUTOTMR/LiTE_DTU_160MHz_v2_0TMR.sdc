@@ -16,10 +16,6 @@ proc constrainNet netName {
   }
 }
 
-constrainNet /AAA[*]
-constrainNet /AAB[*]
-constrainNet /AAC[*]
-constrainNet /AA[*]
 constrainNet /B_subtraction/BSL_VAL_g01A[*]
 constrainNet /B_subtraction/BSL_VAL_g01B[*]
 constrainNet /B_subtraction/BSL_VAL_g01C[*]
@@ -296,14 +292,6 @@ constrainNet /TEST_ENABLE
 constrainNet /TEST_ENABLEA
 constrainNet /TEST_ENABLEB
 constrainNet /TEST_ENABLEC
-constrainNet /flush_b
-constrainNet /flush_bA
-constrainNet /flush_bB
-constrainNet /flush_bC
-constrainNet /flushreset_b
-constrainNet /flushreset_bA
-constrainNet /flushreset_bB
-constrainNet /flushreset_bC
 constrainNet /shift_gain_10A[*]
 constrainNet /shift_gain_10B[*]
 constrainNet /shift_gain_10C[*]

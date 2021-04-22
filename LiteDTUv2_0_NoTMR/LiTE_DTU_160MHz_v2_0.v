@@ -93,7 +93,7 @@ module LiTE_DTU_160MHz_v2_0 (
    wire 		 write_signal;					// Control Unit Module
    wire [Nbits_32-1:0] 	 DATA_from_CU;			// Control Unit Module
    wire 		 full;						// Output FIFO Module
-   wire 		 reset;
+   wire 		 reset_b;
    wire 		 CALIBRATION_BUSY;
    wire 		 RD_to_SERIALIZER;						// Control Unit Module
 
