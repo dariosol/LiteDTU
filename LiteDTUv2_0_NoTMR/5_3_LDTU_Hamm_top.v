@@ -105,7 +105,7 @@ module LDTU_oFIFO_top (
 	 DATA32_DTU_synch = idle_patternEA;
       end else begin
 	 if(flush_b==1'b0) begin
-	    DATA32_DTU_synch =  32'hFEEDC0DE;
+	    DATA32_DTU_synch =  32'h2CF0F0F0;
 	 end
 	 else begin
 	    if(synch==1'b1) begin

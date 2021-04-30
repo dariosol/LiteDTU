@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 22/04/2021 11:25:42                                                                    *
+ * date    : 30/04/2021 13:53:32                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 1_LDTU_Baseline_subtraction.v                                                          *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-04-15 14:29:02.985750                                         *
- *           File Size         : 2980                                                               *
- *           MD5 hash          : 8c78926e67b377645338b61b7893e8b8                                   *
+ *           Modification time : 2021-04-23 13:48:59.699214                                         *
+ *           File Size         : 2938                                                               *
+ *           MD5 hash          : 31175ff4d61787f2e942d8dd9b73d8b3                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -85,12 +85,6 @@ wire [Nbits_12-1:0] b_val_g01C;
 wire [Nbits_12-1:0] b_val_g10A;
 wire [Nbits_12-1:0] b_val_g10B;
 wire [Nbits_12-1:0] b_val_g10C;
-wire dg01_TmrErrorA;
-wire dg01_TmrErrorB;
-wire dg01_TmrErrorC;
-wire dg10_TmrErrorA;
-wire dg10_TmrErrorB;
-wire dg10_TmrErrorC;
 reg  [Nbits_12-1:0] d_g01A;
 reg  [Nbits_12-1:0] d_g01B;
 reg  [Nbits_12-1:0] d_g01C;

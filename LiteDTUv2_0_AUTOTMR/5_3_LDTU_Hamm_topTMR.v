@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 22/04/2021 11:25:43                                                                    *
+ * date    : 30/04/2021 13:53:33                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 5_3_LDTU_Hamm_top.v                                                                    *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-04-19 14:24:33.450544                                         *
+ *           Modification time : 2021-04-30 13:53:05.549826                                         *
  *           File Size         : 3828                                                               *
- *           MD5 hash          : 43d25e1437d8979b44a3b12ca6e4246e                                   *
+ *           MD5 hash          : 1ae4812ba5e47762fc46e3d3ba04c1b6                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -173,7 +173,7 @@ always @( posedge CLKA )
       begin
         if (flush_bA==1'b0)
           begin
-            DATA32_DTU_synchA =  32'hFEEDC0DE;
+            DATA32_DTU_synchA =  32'h2CF0F0F0;
           end
         else
           begin
@@ -209,7 +209,7 @@ always @( posedge CLKB )
       begin
         if (flush_bB==1'b0)
           begin
-            DATA32_DTU_synchB =  32'hFEEDC0DE;
+            DATA32_DTU_synchB =  32'h2CF0F0F0;
           end
         else
           begin
@@ -245,7 +245,7 @@ always @( posedge CLKC )
       begin
         if (flush_bC==1'b0)
           begin
-            DATA32_DTU_synchC =  32'hFEEDC0DE;
+            DATA32_DTU_synchC =  32'h2CF0F0F0;
           end
         else
           begin
