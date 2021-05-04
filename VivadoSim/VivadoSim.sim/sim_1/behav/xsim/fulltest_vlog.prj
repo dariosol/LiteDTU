@@ -1,0 +1,27 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../../AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v" \
+"../../../../../LiteDTUv2_0_AUTOTMR/1_LDTU_Baseline_subtractionTMR.v" \
+"../../../../../LiteDTUv2_0_AUTOTMR/2_LDTU_iFIFOTMR.v" \
+"../../../../../LiteDTUv2_0_AUTOTMR/3_LDTU_EncoderTMR.v" \
+"../../../../../LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v" \
+"../../../../../LiteDTUv2_0_AUTOTMR/4_LDTU_CUTMR.v" \
+"../../../../../LiteDTUv2_0_AUTOTMR/5_0_LDTU_Hamm_TRXTMR.v" \
+"../../../../../LiteDTUv2_0_AUTOTMR/5_1_LDTU_Hamm_oFIFOTMR.v" \
+"../../../../../LiteDTUv2_0_AUTOTMR/5_2_LDTU_Hamm_RXTMR.v" \
+"../../../../../LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v" \
+"../../../../../LiteDTUv2_0_AUTOTMR/6_LDTU_DATA32muxTMR.v" \
+"../../../../../AuxiliaryForSimulation_AUTOTMR/9_AdcTestUnitTMR.v" \
+"../../../../../AuxiliaryForSimulation_AUTOTMR/FileReader.v" \
+"../../../../../AuxiliaryForSimulation_AUTOTMR/LDTUv1b_serTMR.v" \
+"../../../../../LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v" \
+"../../../../../AuxiliaryForSimulation_AUTOTMR/SerDecoder.v" \
+"../../../../../AuxiliaryForSimulation_AUTOTMR/SyncUnit_v2TMR.v" \
+"../../../../../AuxiliaryForSimulation_AUTOTMR/deglitch_beh.v" \
+"../../../../../AuxiliaryForSimulation_AUTOTMR/FullTests.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

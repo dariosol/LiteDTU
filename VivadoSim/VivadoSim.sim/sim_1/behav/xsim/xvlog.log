@@ -1,0 +1,51 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top_ofthetop
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/1_LDTU_Baseline_subtractionTMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module LDTU_BSTMR
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/2_LDTU_iFIFOTMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module LDTU_iFIFOTMR
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/3_LDTU_EncoderTMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Delay_enc
+INFO: [VRFC 10-311] analyzing module LDTU_EncoderTMR
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module LDTU_FSMTMR
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/4_LDTU_CUTMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module LDTU_CUTMR
+INFO: [VRFC 10-311] analyzing module CRC_calc
+INFO: [VRFC 10-311] analyzing module SumValue
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/5_0_LDTU_Hamm_TRXTMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Hamm_TRX
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/5_1_LDTU_Hamm_oFIFOTMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module LDTU_oFIFOTMR
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/5_2_LDTU_Hamm_RXTMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Hamm_RX
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module LDTU_oFIFO_topTMR
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/6_LDTU_DATA32muxTMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module LDTU_DATA32_ATU_DTUTMR
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/9_AdcTestUnitTMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AdcTestUnitTMR
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/FileReader.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FileReader
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_serTMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module LDTUv1b_serTMR
+INFO: [VRFC 10-311] analyzing module majorityVoter
+INFO: [VRFC 10-311] analyzing module fanout
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module LiTE_DTU_160MHz_v2_0TMR
+INFO: [VRFC 10-311] analyzing module majorityVoter
+WARNING: [VRFC 10-3609] overwriting previous definition of module 'majorityVoter' [/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v:316]
+INFO: [VRFC 10-311] analyzing module fanout
+WARNING: [VRFC 10-3609] overwriting previous definition of module 'fanout' [/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v:336]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/SerDecoder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SerDecoder
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/SyncUnit_v2TMR.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SyncUnit_v2TMR
+INFO: [VRFC 10-311] analyzing module HammingDecoder4TMR
+INFO: [VRFC 10-311] analyzing module SU_mVoter
+INFO: [VRFC 10-311] analyzing module SU_fout
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/deglitch_beh.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module deglitch
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/FullTests.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fulltest
+INFO: [VRFC 10-2458] undeclared symbol CALIBRATION_BUSY_2, assumed default net type wire [/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/FullTests.v:91]
