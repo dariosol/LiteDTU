@@ -70,7 +70,7 @@ def parseTestMode(filename,maxlines):
                 Dout0_1.append(adc)
             else:
                 print "error column 2"
-                    
+                
             #############################################################################
             if (   (  column3 & ( mask << (12) )  ) == pattern1 << (12)   ): 
                 adc = (  column3 & ( maskAdc<<(12) )  )
@@ -94,7 +94,7 @@ def parseTestMode(filename,maxlines):
                 Dout2_1.append(adc)
             else:
                 print "error column 4"
-                            
+                
                     
                 #############################################################################
             if (   (  column5 & ( mask << (12) )  ) == pattern3 << (12)   ): 
@@ -107,7 +107,7 @@ def parseTestMode(filename,maxlines):
                 Dout3_1.append(adc)
             else:
                 print "error column 5"
-                    
+                
                 
                                             
         print ("len 0_0: ", len(Dout0_0) )
@@ -130,7 +130,7 @@ def parseTestMode(filename,maxlines):
             ADCL.append(Dout2_0[sample])
             ADCL.append(Dout3_1[sample])
             ADCL.append(Dout2_1[sample])
-                                        
+            
     return ADCH, ADCL
 
 
@@ -162,7 +162,7 @@ def parseSimulation(filename,tobin=1):
         else:
             if my_data.endswith("\n"):  data_32bit.append(my_data[:-1])
             else: data_32bit.append(my_data)
-           
+            
         
 
     return timeData, data_32bit
@@ -282,7 +282,7 @@ def parse(filename,tobin=1,channel=0):
         for i in range(0,countlines):
             line.append(fp.readline())            
         fp.close()
-        
+            
     data_32bit = []
     timeData = []
 
@@ -298,14 +298,14 @@ def parse(filename,tobin=1,channel=0):
             if my_data.endswith("\n"):  data_32bit.append(my_data[:-1])
             elif my_data.endswith("\r\n"):  data_32bit.append(my_data[:-2])
             else: data_32bit.append(my_data)
-        
+            
     return data_32bit
 
 
 
 
 def decodeDTU(time,data_32bit,startentry,endentry,fallback):
-# Patterns for decoding
+    # Patterns for decoding
     sign_pattern_1  = "001010"
     sign_pattern_2  = "001011"
     bas_pattern_1   = "01"
@@ -341,31 +341,36 @@ def decodeDTU(time,data_32bit,startentry,endentry,fallback):
     BC0time = []
     Flushtime = []
     Reset = []
-    overall_samples=0
+    overall_samples=2 # shift of 2 samples because of 1 clock anticipation in FB
     parity=[]
     end=-1
+    crc = '000000000000'
+    
     if(endentry ==-1):
         end =  len(data_32bit)
     else:
         end = endentry
 
     for j in range(startentry,end):
+        ###########################################
+        ###############FALLBACK####################
         if (fallback==1):
             if (data_32bit[j][0:4] == idle_pattern):
-                n_idle += 1            
-            elif (data_32bit[j][0:4] == trailer_pattern):
-                n_trailers += 1
+               n_idle += 1            
             else:
                 if(data_32bit[j][2:4]=="00"):
-                    BC0.append(overall_samples+1)
+                    BC0.append((overall_samples+1)*2)
                     BC0time.append(time[j])
                 elif (data_32bit[j][2:4]=="01"):
-                    BC0.append(overall_samples)
-                    BC0time.append(time[j])
-            overall_samples = overall_samples + 2
-            parity.append(data_32bit[j][4:6])
-            samples.append(data_32bit[j][19:])
-            samples.append(data_32bit[j][6:19])
+                    BC0.append(overall_samples*2)
+                    BC0time.append(time[j]+25000)#fallback is 25 ns before: add 25 ns
+                overall_samples = overall_samples + 2
+                parity.append(data_32bit[j][4:6])
+                samples.append(data_32bit[j][19:])
+                samples.append(data_32bit[j][6:19])
+
+        ###########################################
+        ###############STANDARD####################
         else:
             if (data_32bit[j][0:2] == bas_pattern_1):
                 n_baseline_1 += 1
@@ -377,7 +382,10 @@ def decodeDTU(time,data_32bit,startentry,endentry,fallback):
                 samples.append(data_32bit[j][14:20])
                 samples.append(data_32bit[j][8:14])
                 samples.append(data_32bit[j][2:8])
+                crc=CRC_function(data_32bit[j],crc)
+                
             elif (data_32bit[j][0:2] == bas_pattern_2):
+                crc=CRC_function(data_32bit[j],crc)
                 val = int(data_32bit[j][2:8],2)
                 n_baseline_2 += 1 
                 overall_samples+=val
@@ -400,6 +408,7 @@ def decodeDTU(time,data_32bit,startentry,endentry,fallback):
                 else:
                     print("\terrore su Val!")
             elif (data_32bit[j][0:6] == sign_pattern_1):
+                crc=CRC_function(data_32bit[j],crc)
                 n_signal_1 += 1
                 n_sign += 2 
                 conta_samples_trailer += 2
@@ -420,6 +429,7 @@ def decodeDTU(time,data_32bit,startentry,endentry,fallback):
                 Reset.append(overall_samples)
 
             elif (data_32bit[j][0:6] == sign_pattern_2):
+                crc=CRC_function(data_32bit[j],crc)
                 if(data_32bit[j][0:7]=="0010110"):
                     n_signal_2 += 1
                     n_sign += 1
@@ -441,6 +451,10 @@ def decodeDTU(time,data_32bit,startentry,endentry,fallback):
                 trailers.append(data_32bit[j])
                 Nsamples.append(conta_samples_trailer)
                 T_CRC12.append(data_32bit[j][12:24])
+
+                print ("CRC: ", data_32bit[j][12:24], " calculated: ",crc)
+                crc = '000000000000'
+                
                 if(int(data_32bit[j][4:12],2)!=conta_samples_trailer):#[24:],2)!=conta_samples_trailer):
                     print("SAMPLING ERROR FOUND IN TRAILER:")
                     print("word: ",data_32bit[j])
@@ -486,22 +500,23 @@ def decodeDTU(time,data_32bit,startentry,endentry,fallback):
 
 
 def FindMaxima(numbers,baseline):
-  maxima = []
-  length = len(numbers)
-  if length >= 2:
-    if numbers[0] > numbers[1]:
-        if  numbers[0] > baseline * 5:
-          maxima.append(0)
-       
-    if length > 3:
-      for i in range(1, length-1):     
-        if numbers[i] > numbers[i-1] and numbers[i] > numbers[i+1]:
-            if  numbers[i] > baseline * 5:
-              maxima.append(i)
+    maxima = []
+    length = len(numbers)
+    if length >= 2:
+        if numbers[0] > numbers[1]:
+            if  numbers[0] > baseline * 5:
+                maxima.append(0)
+            
+        if length > 3:
+            for i in range(1, length-1):     
+                if numbers[i] > numbers[i-1] and numbers[i] > numbers[i+1]:
+                    if  numbers[i] > baseline * 5:
+                        maxima.append(i)
 
-    if numbers[length-1] > numbers[length-2]:    
-        if  numbers[length-1] > baseline * 5:
-          maxima.append(length-1)        
+        if numbers[length-1] > numbers[length-2]:    
+            if  numbers[length-1] > baseline * 5:
+                maxima.append(length-1)        
+
     return maxima
 
 
@@ -529,9 +544,9 @@ def SortSamples(samples):
     print ("len samples: ",len(samples))
     for i in range (0,len(samples)):
         time_stamp.append(i*6.25)
-        time_stamp_FB.append(i*6.25*2)
+        time_stamp_FB.append(i*6.25*2+6.25)
         stamp.append(i)
-        stamp_FB.append(i*2)        
+        stamp_FB.append(i*2+1)        
         if (len(samples[i])==6):
             int_samples.append(int(samples[i],2))
             int_samples_bas.append(int(samples[i],2))
@@ -554,7 +569,93 @@ def SortSamples(samples):
                 if (change==False):
                     change=True
             int_samples.append(int(samples[i][1:],2))
-                                   
+                    
     print ("gain1 signal1 numbers: ", windowsize)
 
-    return stamp, int_samples, stamp_bas, int_samples_bas,stamp_g10, int_samples_sign_g10,stamp_g1, int_samples_sign_g1
+    return stamp, stamp_FB, int_samples, stamp_bas, int_samples_bas,stamp_g10, int_samples_sign_g10,stamp_g1, int_samples_sign_g1
+
+
+
+
+
+def CRC_function(i, crc):
+    newcrc = ""
+    c_0 = i[1] + i[2] + i[5] + i[6] + i[7] + i[8] + i[9] + i[14] + i[15] + i[16] + i[17] + i[18] + i[19] + i[20] + i[23] + i[24] + i[25] + i[26] + i[27] + i[28] + i[29] + i[30] + i[31] + crc[9] + crc[8] + crc[7] + crc[6] + crc[5] + crc[2] + crc[1];
+    step_0 = c_0.count("1")
+    c_1 = i[0] + i[2] + i[4] + i[9] + i[13] + i[20] + i[22] + i[31] + crc[9] + crc[4] + crc[2] + crc[0];
+    step_1 = c_1.count("1")
+    c_2 = i[2] + i[3] + i[5] + i[6] + i[7] + i[9] + i[12] + i[14] + i[15] + i[16] + i[17] + i[18] + i[20] + i[21] + i[23] + i[24] + i[25] + i[26] + i[27] + i[28] + i[29] + i[31] + crc[9] + crc[7] + crc[6] + crc[5] + crc[3] + crc[2];
+    step_2 = c_2.count("1")
+    c_3 = i[4] + i[7] + i[9] + i[11] + i[13] + i[18] + i[22] + i[29] + i[31] + crc[11] + crc[9] + crc[7] + crc[4];
+    step_3 = c_3.count("1")
+    c_4 = i[3] + i[6] + i[8] + i[10] + i[12] + i[17] + i[21] + i[28] + i[30] + crc[10] + crc[8] + crc[6] + crc[3];
+    step_4 = c_4.count("1")
+    c_5 = i[2] + i[5] + i[7] + i[9] + i[11] + i[16] + i[20] + i[27] + i[29] + crc[11] + crc[9] + crc[7] + crc[5] + crc[2];
+    step_5 = c_5.count("1")
+    c_6 = i[1] + i[4] + i[6] + i[8] + i[10] + i[15] + i[19] + i[26] + i[28] + crc[10] + crc[8] + crc[6] + crc[4] + crc[1];
+    step_6 = c_6.count("1")
+    c_7 = i[0] + i[3] + i[5] + i[7] + i[9] + i[14] + i[18] + i[25] + i[27] + crc[9] + crc[7] + crc[5] + crc[3] + crc[0];
+    step_7 = c_7.count("1")
+    c_8 = i[2] + i[4] + i[6] + i[8] + i[13] + i[17] + i[24] + i[26] + crc[8] + crc[6] + crc[4] + crc[2];
+    step_8 = c_8.count("1")
+    c_9 = i[1] + i[3] + i[5] + i[7] + i[12] + i[16] + i[23] + i[25] + crc[7] + crc[5] + crc[3] + crc[1];
+    step_9 = c_9.count("1")
+    c_10 = i[0] + i[2] + i[4] + i[6] + i[11] + i[15] + i[22] + i[24] + crc[11] + crc[6] + crc[4] + crc[2] + crc[0];
+    step_10 = c_10.count("1")
+    c_11 = i[2] + i[3] + i[6] + i[7] + i[8] + i[9] + i[10] + i[15] + i[16] + i[17] + i[18] + i[19] + i[20] + i[21] + i[24] + i[25] + i[26] + i[27] + i[28] + i[29] + i[30] + i[31] + crc[10] + crc[9] + crc[8] + crc[7] + crc[6] + crc[3] + crc[2];
+    step_11 = c_11.count("1")
+    if (step_0 %2 == 0):
+        newcrc = "0"
+    else:
+        newcrc = "1"
+    if (step_1 %2 == 0):
+        newcrc = "0" + newcrc
+    else:
+        newcrc = "1" + newcrc
+    if (step_2 % 2 == 0):
+        newcrc = "0" + newcrc
+    else:
+        newcrc = "1" + newcrc
+    
+    if (step_3 % 2 == 0):
+        newcrc = "0" + newcrc
+    else:
+        newcrc = "1" + newcrc
+    if (step_4 % 2 == 0):
+        newcrc = "0" + newcrc
+    else:
+        newcrc = "1" + newcrc
+    if (step_5 % 2 == 0):
+        newcrc = "0" + newcrc
+    else:
+        newcrc = "1" + newcrc
+    
+    if (step_6 % 2 == 0):
+        newcrc = "0" + newcrc
+    else:
+        newcrc = "1" + newcrc
+    if (step_7 % 2 == 0):
+        newcrc = "0" + newcrc
+    else:
+        newcrc = "1" + newcrc
+    if (step_8 % 2 == 0):
+        newcrc = "0" + newcrc
+    else:
+        newcrc = "1" + newcrc
+    
+    if (step_9 % 2 == 0):
+        newcrc = "0" + newcrc
+    else:
+        newcrc = "1" + newcrc
+    if (step_10 % 2 == 0):
+        newcrc = "0" + newcrc
+    else:
+        newcrc = "1" + newcrc
+    if (step_11 % 2 == 0):
+        newcrc = "0" + newcrc
+    else:
+        newcrc = "1" + newcrc
+    
+        #print" --- %s" %newcrc
+    return newcrc
+                                    
