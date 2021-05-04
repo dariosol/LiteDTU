@@ -1,0 +1,24 @@
+0.7
+2020.1
+May 27 2020
+19:59:15
+/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/10_TOP_Datapath_WithSynchUnit.v,1620127071,verilog,,/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/1_LDTU_Baseline_subtractionTMR.v,,top_ofthetop,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/9_AdcTestUnitTMR.v,1618816893,verilog,,/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/FileReader.v,,AdcTestUnitTMR,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/FileReader.v,1618820451,verilog,,/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_serTMR.v,,FileReader,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/FullTests.v,1618821048,verilog,,,,fulltest,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/LDTUv1b_serTMR.v,1618816893,verilog,,/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v,,LDTUv1b_serTMR,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/SerDecoder.v,1618818506,verilog,,/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/SyncUnit_v2TMR.v,,SerDecoder,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/SyncUnit_v2TMR.v,1618816893,verilog,,/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/deglitch_beh.v,,HammingDecoder4TMR;SU_fout;SU_mVoter;SyncUnit_v2TMR,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/deglitch_beh.v,1618816893,verilog,,/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/FullTests.v,,deglitch,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/1_LDTU_Baseline_subtractionTMR.v,1620127071,verilog,,/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/2_LDTU_iFIFOTMR.v,,LDTU_BSTMR,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/2_LDTU_iFIFOTMR.v,1620127071,verilog,,/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/3_LDTU_EncoderTMR.v,,LDTU_iFIFOTMR,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/3_LDTU_EncoderTMR.v,1620127071,verilog,,/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v,,Delay_enc;LDTU_EncoderTMR,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/3_LDTU_FSMTMR.v,1618816893,verilog,,/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/4_LDTU_CUTMR.v,,LDTU_FSMTMR,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/4_LDTU_CUTMR.v,1618816893,verilog,,/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/5_0_LDTU_Hamm_TRXTMR.v,,CRC_calc;LDTU_CUTMR;SumValue,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/5_0_LDTU_Hamm_TRXTMR.v,1618816893,verilog,,/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/5_1_LDTU_Hamm_oFIFOTMR.v,,Hamm_TRX,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/5_1_LDTU_Hamm_oFIFOTMR.v,1618816893,verilog,,/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/5_2_LDTU_Hamm_RXTMR.v,,LDTU_oFIFOTMR,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/5_2_LDTU_Hamm_RXTMR.v,1618816893,verilog,,/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v,,Hamm_RX,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/5_3_LDTU_Hamm_topTMR.v,1618816893,verilog,,/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/6_LDTU_DATA32muxTMR.v,,LDTU_oFIFO_topTMR,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/6_LDTU_DATA32muxTMR.v,1618816893,verilog,,/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/9_AdcTestUnitTMR.v,,LDTU_DATA32_ATU_DTUTMR,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/LiteDTUv2_0_AUTOTMR/LiTE_DTU_160MHz_v2_0TMR.v,1618816893,verilog,,/home/na62torino/Data/CMS/LiteDTU/AuxiliaryForSimulation_AUTOTMR/SerDecoder.v,,LiTE_DTU_160MHz_v2_0TMR;fanout;majorityVoter,,,,,,,,
+/home/na62torino/Data/CMS/LiteDTU/VivadoSim/VivadoSim.sim/sim_1/behav/xsim/glbl.v,1590624368,verilog,,,,glbl,,,,,,,,

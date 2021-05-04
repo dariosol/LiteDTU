@@ -16,7 +16,7 @@
 `timescale  1ps/1ps
 module fulltest;
 
-
+   
    parameter Nbits_8 	   = 8;
    parameter Nbits_12     = 12;
    parameter FifoDepth     = 8;
@@ -28,16 +28,16 @@ module fulltest;
    parameter    Nbits_5=5;
    parameter bits_ptr=4;
    ///////////NAMES ARE NOW FIX... BUT TB MUCH MORE READABLE
-   parameter file_SER_name       ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat"; 
-   parameter file_sample_name    ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat";
-   parameter file_datain_10_name ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat";
-   parameter file_datain_01_name ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat";
+   parameter file_SER_name       ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_SER.dat"; 
+   parameter file_sample_name    ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_sample.dat";
+   parameter file_datain_10_name ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_in10.dat";
+   parameter file_datain_01_name ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_in01.dat";
 
    ///////////NAMES ARE NOW FIX... BUT TB MUCH MORE READABLE
-   parameter file_SER_name_2       ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat"; 
-   parameter file_sample_name_2    ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat";
-   parameter file_datain_10_name_2 ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat";
-   parameter file_datain_01_name_2 ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat";
+   parameter file_SER_name_2       ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_SER_2.dat"; 
+   parameter file_sample_name_2    ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_sample_2.dat";
+   parameter file_datain_10_name_2 ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_in10_2.dat";
+   parameter file_datain_01_name_2 ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_in01_2.dat";
 
    
    
@@ -82,16 +82,9 @@ module fulltest;
    reg [Nbits_12-1:0]  SATURATION_value_2 = 12'b111111111111;
    
    wire 	       losing_data;
-   reg [Nbits_32-1:0]  word;
-
-   wire 	       totalError;
 
    wire 	       losing_data_2;
-
-   reg [Nbits_32-1:0]  word_2;
-
-   wire 	       totalError_2;
-
+   
    wire 	       CALIBRATION_BUSY;
 
    assign CALIBRATION_BUSY = CALIBRATION_BUSY_1 | CALIBRATION_BUSY_10;
@@ -159,7 +152,7 @@ module fulltest;
 
    
    /////////////1st module///////////////////////
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
+   FileReader #(.infile("/home/na62torino/Data/CMS/LiteDTU/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
 		.ck_period(ck_period)
 		) FR10  (
 			 .clk(DCLK_10),
@@ -169,7 +162,7 @@ module fulltest;
 			 .REJECTED(REJECTED_g10)
 			 );
 
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
+   FileReader #(.infile("/home/na62torino/Data/CMS/LiteDTU/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
 		.ck_period(ck_period)
 		) FR01  (
 			 .clk(DCLK_1),
@@ -181,7 +174,7 @@ module fulltest;
    
 
    /////////////2nd module///////////////////////
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
+   FileReader #(.infile("/home/na62torino/Data/CMS/LiteDTU/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
 		.ck_period(ck_period)
 		) FR10_2  (
 			   .clk(DCLK_10_2),
@@ -191,7 +184,7 @@ module fulltest;
 			   .REJECTED(REJECTED_g10_2)
 			   );
 
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
+   FileReader #(.infile("/home/na62torino/Data/CMS/LiteDTU/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
 		.ck_period(ck_period)
 		) FR01_2  (
 			   .clk(DCLK_1_2),

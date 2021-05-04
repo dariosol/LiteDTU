@@ -1,0 +1,56 @@
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: /home/na62torino/Xilinx/2020/Vivado/2020.1/bin/unwrapped/lnx64.o/xelab -wto b658e09560824de799d9bed33b131b6f --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot fulltest_behav xil_defaultlib.fulltest xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.FileReader(infile="/home/na62tor...
+Compiling module xil_defaultlib.FileReader(infile="/home/na62tor...
+Compiling module xil_defaultlib.SerDecoder(outfile_SER="/home/na...
+Compiling module xil_defaultlib.SerDecoder(outfile_SER="/home/na...
+Compiling module xil_defaultlib.majorityVoter(WIDTH=12)
+Compiling module xil_defaultlib.fanout(WIDTH=8)
+Compiling module xil_defaultlib.fanout
+Compiling module xil_defaultlib.fanout(WIDTH=12)
+Compiling module xil_defaultlib.LDTU_BSTMR
+Compiling module xil_defaultlib.majorityVoter
+Compiling module xil_defaultlib.majorityVoter(WIDTH=13)
+Compiling module xil_defaultlib.fanout(WIDTH=2)
+Compiling module xil_defaultlib.LDTU_iFIFOTMR
+Compiling module xil_defaultlib.Delay_enc
+Compiling module xil_defaultlib.LDTU_FSMTMR
+Compiling module xil_defaultlib.majorityVoter(WIDTH=32)
+Compiling module xil_defaultlib.fanout(WIDTH=13)
+Compiling module xil_defaultlib.LDTU_EncoderTMR
+Compiling module xil_defaultlib.CRC_calc
+Compiling module xil_defaultlib.SumValue
+Compiling module xil_defaultlib.fanout(WIDTH=32)
+Compiling module xil_defaultlib.LDTU_CUTMR
+Compiling module xil_defaultlib.Hamm_TRX
+Compiling module xil_defaultlib.majorityVoter(WIDTH=4)
+Compiling module xil_defaultlib.majorityVoter(WIDTH=38)
+Compiling module xil_defaultlib.LDTU_oFIFOTMR
+Compiling module xil_defaultlib.Hamm_RX
+Compiling module xil_defaultlib.fanout(WIDTH=38)
+Compiling module xil_defaultlib.LDTU_oFIFO_topTMR
+Compiling module xil_defaultlib.LDTU_DATA32_ATU_DTUTMR
+Compiling module xil_defaultlib.LiTE_DTU_160MHz_v2_0TMR
+Compiling module xil_defaultlib.LDTUv1b_serTMR
+Compiling module xil_defaultlib.majorityVoter(WIDTH=3)
+Compiling module xil_defaultlib.AdcTestUnitTMR
+Compiling module xil_defaultlib.deglitch
+Compiling module xil_defaultlib.HammingDecoder4TMR
+Compiling module xil_defaultlib.SU_mVoter
+Compiling module xil_defaultlib.SU_mVoter(WIDTH=2)
+Compiling module xil_defaultlib.SU_mVoter(WIDTH=5)
+Compiling module xil_defaultlib.SU_fout(WIDTH=2)
+Compiling module xil_defaultlib.SU_fout(WIDTH=8)
+Compiling module xil_defaultlib.SyncUnit_v2TMR
+Compiling module xil_defaultlib.top_ofthetop
+Compiling module xil_defaultlib.fulltest
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot fulltest_behav

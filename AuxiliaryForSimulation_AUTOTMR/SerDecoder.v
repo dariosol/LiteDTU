@@ -29,10 +29,10 @@ module SerDecoder(
 		  );
    
 
-   parameter outfile_SER;
-   parameter outfile_sample;
-   parameter outfile_datain_10;
-   parameter outfile_datain_01;
+   parameter outfile_SER ="";
+   parameter outfile_sample = "";
+   parameter outfile_datain_10 = "";
+   parameter outfile_datain_01 = "";
    
    
    parameter ck_period     = 6240;
