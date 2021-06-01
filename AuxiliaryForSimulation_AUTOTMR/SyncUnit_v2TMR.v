@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : gianni                                                                                 *
  * host    : elt153xl.to.infn.it                                                                    *
- * date    : 16/03/2021 13:18:31                                                                    *
+ * date    : 19/04/2021 14:32:23                                                                    *
  *                                                                                                  *
  * workdir : /export/elt153xl/disk0/users/gianni/projects/LiTE-DTU/v2/netlist_in                    *
  * cmd     : /export/elt153xl/disk0/users/gianni/projects/LiTE-DTU/tmrg/bin/tmrg --sdc-generate --sdc- *
@@ -15,12 +15,12 @@
  *                                                                                                  *
  * src file: SyncUnit_v2.v                                                                          *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-16 13:18:10.773962                                         *
- *           File Size         : 11611                                                              *
- *           MD5 hash          : e07641d9cb602b49888edf9baaf39586                                   *
+ *           Modification time : 2021-04-19 14:31:57.335640                                         *
+ *           File Size         : 12455                                                              *
+ *           MD5 hash          : 1ce5660747101bff3a08a6a15b97085f                                   *
  *                                                                                                  *
  ****************************************************************************************************/
-`timescale  1ps/1ps
+
 module SyncUnit_v2TMR #(
   parameter NBitsEnc=8,
   parameter NBits=4
@@ -46,21 +46,16 @@ module SyncUnit_v2TMR #(
   output reg  DtuSyncModeA,
   output reg  DtuSyncModeB,
   output reg  DtuSyncModeC,
-  output reg  DtuFlushA,
-  output reg  DtuFlushB,
-  output reg  DtuFlushC,
+  output reg  DtuFlush_bA,
+  output reg  DtuFlush_bB,
+  output reg  DtuFlush_bC,
   output reg [1:0] AdcRst_bA,
   output reg [1:0] AdcRst_bB,
   output reg [1:0] AdcRst_bC,
   output [1:0] AdcCalA,
   output [1:0] AdcCalB,
   output [1:0] AdcCalC,
-  output reg  PllLockStartA,
-  output reg  PllLockStartB,
-  output reg  PllLockStartC,
-  output reg  CatiaTPA,
-  output reg  CatiaTPB,
-  output reg  CatiaTPC,
+  output  CatiaTP,
   output reg  BC0markA,
   output reg  BC0markB,
   output reg  BC0markC,
@@ -70,7 +65,6 @@ module SyncUnit_v2TMR #(
   input [1:0] AdcSeuIn,
   output  AdcCalBusyOut,
   output  AdcOvfOut,
-  output  AdcSeuOut,
   input [1:0] TmrErrIn,
   output reg  TmrErrOut
 );
@@ -87,7 +81,6 @@ localparam    dec_aHc=5'b00110;
 localparam    dec_aLc=5'b00111;
 localparam    dec_DTUs=5'b01000;
 localparam    dec_DTUn=5'b01001;
-localparam    dec_Plock=5'b01010;
 localparam    dec_marker=5'b01011;
 localparam    dec_mwait=5'b11011;
 localparam    dec_Ctp_1=5'b01100;
@@ -106,9 +99,11 @@ localparam    adcH_rst=4'b1000;
 localparam    adcH_cal=4'b1001;
 localparam    adcL_rst=4'b1010;
 localparam    adcL_cal=4'b1011;
-localparam    pll_lock=4'b1100;
 localparam    catia_tp=4'b1101;
 localparam    bc0_mark=4'b1110;
+wire [1:0] AdcSeuInC;
+wire [1:0] AdcSeuInB;
+wire [1:0] AdcSeuInA;
 wire [7:0] TP_lenC;
 wire [7:0] TP_lenB;
 wire [7:0] TP_lenA;
@@ -116,12 +111,8 @@ wire [1:0] TmrErrInC;
 wire [1:0] TmrErrInB;
 wire [1:0] TmrErrInA;
 wire tmrErrorC;
-wor iCatiaTPTmrErrorC;
-wire iCatiaTPVotedC;
 wor Flush_dlyTmrErrorC;
 wire [1:0] Flush_dlyVotedC;
-wor iFlushTmrErrorC;
-wire iFlushVotedC;
 wor nState1TmrErrorC;
 wire [4:0] nState1VotedC;
 wor nextSyncModeTmrErrorC;
@@ -136,29 +127,25 @@ wor nState0TmrErrorC;
 wire [1:0] nState0VotedC;
 wor iAdcRst_bTmrErrorC;
 wire [1:0] iAdcRst_bVotedC;
-wor iPllLockStartTmrErrorC;
-wire iPllLockStartVotedC;
+wor iFlushTmrErrorC;
+wire iFlushVotedC;
 wire tmrErrorB;
-wor iCatiaTPTmrErrorB;
-wire iCatiaTPVotedB;
 wor iDtuRst_bTmrErrorB;
 wire iDtuRst_bVotedB;
-wor nState1TmrErrorB;
-wire [4:0] nState1VotedB;
 wor Flush_dlyTmrErrorB;
 wire [1:0] Flush_dlyVotedB;
+wor nState1TmrErrorB;
+wire [4:0] nState1VotedB;
 wor iBC0markTmrErrorB;
 wire iBC0markVotedB;
-wor iFlushTmrErrorB;
-wire iFlushVotedB;
 wor iAtuRst_bTmrErrorB;
 wire iAtuRst_bVotedB;
 wor nextSyncModeTmrErrorB;
 wire nextSyncModeVotedB;
 wor nState0TmrErrorB;
 wire [1:0] nState0VotedB;
-wor iPllLockStartTmrErrorB;
-wire iPllLockStartVotedB;
+wor iFlushTmrErrorB;
+wire iFlushVotedB;
 wor iAdcRst_bTmrErrorB;
 wire [1:0] iAdcRst_bVotedB;
 wire tmrErrorA;
@@ -166,31 +153,29 @@ wor iAtuRst_bTmrErrorA;
 wire iAtuRst_bVotedA;
 wor Flush_dlyTmrErrorA;
 wire [1:0] Flush_dlyVotedA;
-wor iCatiaTPTmrErrorA;
-wire iCatiaTPVotedA;
 wor nState1TmrErrorA;
 wire [4:0] nState1VotedA;
 wor iBC0markTmrErrorA;
 wire iBC0markVotedA;
-wor iFlushTmrErrorA;
-wire iFlushVotedA;
 wor iDtuRst_bTmrErrorA;
 wire iDtuRst_bVotedA;
 wor nextSyncModeTmrErrorA;
 wire nextSyncModeVotedA;
 wor iAdcRst_bTmrErrorA;
 wire [1:0] iAdcRst_bVotedA;
-wor iPllLockStartTmrErrorA;
-wire iPllLockStartVotedA;
+wor iFlushTmrErrorA;
+wire iFlushVotedA;
 wor nState0TmrErrorA;
 wire [1:0] nState0VotedA;
 wire tmrError;
-wor int_TmrErrOutTmrError;
-wire int_TmrErrOut;
 wor clockTmrError;
 wire clock;
+wor iCatiaTPTmrError;
+wire iCatiaTP;
 wor rst_bTmrError;
 wire rst_b;
+wor int_TmrErrOutTmrError;
+wire int_TmrErrOut;
 reg  [NBitsEnc:0] ShiftRegisterA;
 reg  [NBitsEnc:0] ShiftRegisterB;
 reg  [NBitsEnc:0] ShiftRegisterC;
@@ -233,15 +218,12 @@ reg  iAtuRst_bC;
 reg  [1:0] iAdcRst_bA;
 reg  [1:0] iAdcRst_bB;
 reg  [1:0] iAdcRst_bC;
-reg  iPllLockStartA;
-reg  iPllLockStartB;
-reg  iPllLockStartC;
-reg  iCatiaTPA;
-reg  iCatiaTPB;
-reg  iCatiaTPC;
 reg  iBC0markA;
 reg  iBC0markB;
 reg  iBC0markC;
+reg  iCatiaTPA;
+reg  iCatiaTPB;
+reg  iCatiaTPC;
 reg  [1:0] cState0A;
 reg  [1:0] cState0B;
 reg  [1:0] cState0C;
@@ -275,6 +257,9 @@ reg  [1:0] Flush_dlyC;
 wire asynch_i2cRst_bA;
 wire asynch_i2cRst_bB;
 wire asynch_i2cRst_bC;
+wire AdcSeuOutA;
+wire AdcSeuOutB;
+wire AdcSeuOutC;
 wire encoding_errorA;
 wire encoding_errorB;
 wire encoding_errorC;
@@ -287,10 +272,8 @@ always @( posedge clockA )
     DtuRst_bA =  iDtuRst_bVotedA;
     atuRst_bA =  iAtuRst_bVotedA;
     AdcRst_bA =  iAdcRst_bVotedA;
-    PllLockStartA =  iPllLockStartVotedA;
-    CatiaTPA =  iCatiaTPVotedA;
     BC0markA =  iBC0markVotedA;
-    DtuFlushA =  iFlushVotedA|Flush_dlyVotedA[1] ;
+    DtuFlush_bA =  ~(iFlushVotedA|Flush_dlyVotedA[1] );
   end
 
 always @( posedge clockB )
@@ -298,10 +281,8 @@ always @( posedge clockB )
     DtuRst_bB =  iDtuRst_bVotedB;
     atuRst_bB =  iAtuRst_bVotedB;
     AdcRst_bB =  iAdcRst_bVotedB;
-    PllLockStartB =  iPllLockStartVotedB;
-    CatiaTPB =  iCatiaTPVotedB;
     BC0markB =  iBC0markVotedB;
-    DtuFlushB =  iFlushVotedB|Flush_dlyVotedB[1] ;
+    DtuFlush_bB =  ~(iFlushVotedB|Flush_dlyVotedB[1] );
   end
 
 always @( posedge clockC )
@@ -309,25 +290,26 @@ always @( posedge clockC )
     DtuRst_bC =  iDtuRst_bVotedC;
     atuRst_bC =  iAtuRst_bVotedC;
     AdcRst_bC =  iAdcRst_bVotedC;
-    PllLockStartC =  iPllLockStartVotedC;
-    CatiaTPC =  iCatiaTPVotedC;
     BC0markC =  iBC0markVotedC;
-    DtuFlushC =  iFlushVotedC|Flush_dlyVotedC[1] ;
+    DtuFlush_bC =  ~(iFlushVotedC|Flush_dlyVotedC[1] );
   end
 
-	deglitch rstA_deglitch (.A(rst_bA), .Z(asynch_i2cRst_bA));
-	deglitch rstB_deglitch (.A(rst_bB), .Z(asynch_i2cRst_bB));
-	deglitch rstC_deglitch (.A(rst_bC), .Z(asynch_i2cRst_bC));
+        deglitch rst_deglitchA (.A(rst_bA), .Z(asynch_i2cRst_bA));
+        deglitch rst_deglitchB (.A(rst_bB), .Z(asynch_i2cRst_bB));
+        deglitch rst_deglitchC (.A(rst_bC), .Z(asynch_i2cRst_bC));
 
+assign CatiaTP =  iCatiaTP;
 assign i2cRst_bA =  int_i2cRst_bA&asynch_i2cRst_bA;
 assign i2cRst_bB =  int_i2cRst_bB&asynch_i2cRst_bB;
 assign i2cRst_bC =  int_i2cRst_bC&asynch_i2cRst_bC;
 assign AdcCalBusyOut =  AdcCalBusyIn[1] |AdcCalBusyIn[0] ;
 assign AdcOvfOut =  AdcOvfIn[1] |AdcOvfIn[0] ;
-assign AdcSeuOut =  AdcSeuIn[1] |AdcSeuIn[0] ;
-assign int_TmrErrOutA =  TmrErrInA[1] |TmrErrInA[0] |errorVotedA;
-assign int_TmrErrOutB =  TmrErrInB[1] |TmrErrInB[0] |errorVotedB;
-assign int_TmrErrOutC =  TmrErrInC[1] |TmrErrInC[0] |errorVotedC;
+assign AdcSeuOutA =  AdcSeuInA[1] |AdcSeuInA[0] ;
+assign AdcSeuOutB =  AdcSeuInB[1] |AdcSeuInB[0] ;
+assign AdcSeuOutC =  AdcSeuInC[1] |AdcSeuInC[0] ;
+assign int_TmrErrOutA =  AdcSeuOutA|TmrErrInA[1] |TmrErrInA[0] |errorVotedA;
+assign int_TmrErrOutB =  AdcSeuOutB|TmrErrInB[1] |TmrErrInB[0] |errorVotedB;
+assign int_TmrErrOutC =  AdcSeuOutC|TmrErrInC[1] |TmrErrInC[0] |errorVotedC;
 
 always @( posedge clock )
   begin
@@ -340,7 +322,7 @@ always @( posedge clock )
 always @( posedge clockA )
   begin
     if (rst_bA==0)
-      ShiftRegisterA <= 'h0;
+      ShiftRegisterA <= 9'h000;
     else
       ShiftRegisterA <= {ShiftRegisterA[NBitsEnc-1:0] ,serial_inA};
   end
@@ -348,7 +330,7 @@ always @( posedge clockA )
 always @( posedge clockB )
   begin
     if (rst_bB==0)
-      ShiftRegisterB <= 'h0;
+      ShiftRegisterB <= 9'h000;
     else
       ShiftRegisterB <= {ShiftRegisterB[NBitsEnc-1:0] ,serial_inB};
   end
@@ -356,7 +338,7 @@ always @( posedge clockB )
 always @( posedge clockC )
   begin
     if (rst_bC==0)
-      ShiftRegisterC <= 'h0;
+      ShiftRegisterC <= 9'h000;
     else
       ShiftRegisterC <= {ShiftRegisterC[NBitsEnc-1:0] ,serial_inC};
   end
@@ -487,7 +469,6 @@ always @( cState0A or cState1A or InstrRegA or cnt_eocA or TPcnt_eocA or DtuSync
     iAtuRst_bA =  1'b1;
     nextSyncModeA =  DtuSyncModeA;
     #1 iFlushA =  1'b0;
-    iPllLockStartA =  1'b0;
     iCatiaTPA =  1'b0;
     iBC0markA =  1'b0;
     TPcnt_rstA =  1'b1;
@@ -506,7 +487,6 @@ always @( cState0A or cState1A or InstrRegA or cnt_eocA or TPcnt_eocA or DtuSync
             adcL_rst : nState1A =  dec_aLr;
             adcH_cal : nState1A =  dec_aHc;
             adcL_cal : nState1A =  dec_aLc;
-            pll_lock : nState1A =  dec_Plock;
             catia_tp : nState1A =  dec_Ctp_1;
             bc0_mark : nState1A =  dec_marker;
             default : nState1A =  dec_idle;
@@ -592,14 +572,6 @@ always @( cState0A or cState1A or InstrRegA or cnt_eocA or TPcnt_eocA or DtuSync
           else
             nState1A =  dec_aLc;
         end
-      dec_Plock : 
-        begin
-          iPllLockStartA =  1'b1;
-          if ((cnt_eocA==1)|(cState0A==rd_idle))
-            nState1A =  dec_wait;
-          else
-            nState1A =  dec_Plock;
-        end
       dec_marker : 
         begin
           iBC0markA =  1'b1;
@@ -646,7 +618,6 @@ always @( cState0B or cState1B or InstrRegB or cnt_eocB or TPcnt_eocB or DtuSync
     iAtuRst_bB =  1'b1;
     nextSyncModeB =  DtuSyncModeB;
     #1 iFlushB =  1'b0;
-    iPllLockStartB =  1'b0;
     iCatiaTPB =  1'b0;
     iBC0markB =  1'b0;
     TPcnt_rstB =  1'b1;
@@ -665,7 +636,6 @@ always @( cState0B or cState1B or InstrRegB or cnt_eocB or TPcnt_eocB or DtuSync
             adcL_rst : nState1B =  dec_aLr;
             adcH_cal : nState1B =  dec_aHc;
             adcL_cal : nState1B =  dec_aLc;
-            pll_lock : nState1B =  dec_Plock;
             catia_tp : nState1B =  dec_Ctp_1;
             bc0_mark : nState1B =  dec_marker;
             default : nState1B =  dec_idle;
@@ -751,14 +721,6 @@ always @( cState0B or cState1B or InstrRegB or cnt_eocB or TPcnt_eocB or DtuSync
           else
             nState1B =  dec_aLc;
         end
-      dec_Plock : 
-        begin
-          iPllLockStartB =  1'b1;
-          if ((cnt_eocB==1)|(cState0B==rd_idle))
-            nState1B =  dec_wait;
-          else
-            nState1B =  dec_Plock;
-        end
       dec_marker : 
         begin
           iBC0markB =  1'b1;
@@ -805,7 +767,6 @@ always @( cState0C or cState1C or InstrRegC or cnt_eocC or TPcnt_eocC or DtuSync
     iAtuRst_bC =  1'b1;
     nextSyncModeC =  DtuSyncModeC;
     #1 iFlushC =  1'b0;
-    iPllLockStartC =  1'b0;
     iCatiaTPC =  1'b0;
     iBC0markC =  1'b0;
     TPcnt_rstC =  1'b1;
@@ -824,7 +785,6 @@ always @( cState0C or cState1C or InstrRegC or cnt_eocC or TPcnt_eocC or DtuSync
             adcL_rst : nState1C =  dec_aLr;
             adcH_cal : nState1C =  dec_aHc;
             adcL_cal : nState1C =  dec_aLc;
-            pll_lock : nState1C =  dec_Plock;
             catia_tp : nState1C =  dec_Ctp_1;
             bc0_mark : nState1C =  dec_marker;
             default : nState1C =  dec_idle;
@@ -909,14 +869,6 @@ always @( cState0C or cState1C or InstrRegC or cnt_eocC or TPcnt_eocC or DtuSync
             nState1C =  dec_wait;
           else
             nState1C =  dec_aLc;
-        end
-      dec_Plock : 
-        begin
-          iPllLockStartC =  1'b1;
-          if ((cnt_eocC==1)|(cState0C==rd_idle))
-            nState1C =  dec_wait;
-          else
-            nState1C =  dec_Plock;
         end
       dec_marker : 
         begin
@@ -1059,7 +1011,7 @@ always @( posedge clockA )
     if (cnt_rstA==1)
       counterA =  3'b000;
     else
-      counterA =  counterA+1;
+      counterA =  counterA+3'b001;
   end
 
 always @( posedge clockB )
@@ -1067,7 +1019,7 @@ always @( posedge clockB )
     if (cnt_rstB==1)
       counterB =  3'b000;
     else
-      counterB =  counterB+1;
+      counterB =  counterB+3'b001;
   end
 
 always @( posedge clockC )
@@ -1075,7 +1027,7 @@ always @( posedge clockC )
     if (cnt_rstC==1)
       counterC =  3'b000;
     else
-      counterC =  counterC+1;
+      counterC =  counterC+3'b001;
   end
 assign cnt_eocA =  (counterA==3'b111) ? 1'b1 : 1'b0;
 assign cnt_eocB =  (counterB==3'b111) ? 1'b1 : 1'b0;
@@ -1087,7 +1039,7 @@ always @( posedge clockA )
       TP_counterA =  10'h000;
     else
       if (TPcnt_cenA==1'b1)
-        TP_counterA =  TP_counterA+1;
+        TP_counterA =  TP_counterA+10'h001;
   end
 
 always @( posedge clockB )
@@ -1096,7 +1048,7 @@ always @( posedge clockB )
       TP_counterB =  10'h000;
     else
       if (TPcnt_cenB==1'b1)
-        TP_counterB =  TP_counterB+1;
+        TP_counterB =  TP_counterB+10'h001;
   end
 
 always @( posedge clockC )
@@ -1105,11 +1057,19 @@ always @( posedge clockC )
       TP_counterC =  10'h000;
     else
       if (TPcnt_cenC==1'b1)
-        TP_counterC =  TP_counterC+1;
+        TP_counterC =  TP_counterC+10'h001;
   end
 assign TPcnt_eocA =  (TP_counterA=={TP_lenA,2'b11}) ? 1'b1 : 1'b0;
 assign TPcnt_eocB =  (TP_counterB=={TP_lenB,2'b11}) ? 1'b1 : 1'b0;
 assign TPcnt_eocC =  (TP_counterC=={TP_lenC,2'b11}) ? 1'b1 : 1'b0;
+
+SU_mVoter int_TmrErrOutVoter (
+    .inA(int_TmrErrOutA),
+    .inB(int_TmrErrOutB),
+    .inC(int_TmrErrOutC),
+    .out(int_TmrErrOut),
+    .tmrErr(int_TmrErrOutTmrError)
+    );
 
 SU_mVoter rst_bVoter (
     .inA(rst_bA),
@@ -1119,6 +1079,14 @@ SU_mVoter rst_bVoter (
     .tmrErr(rst_bTmrError)
     );
 
+SU_mVoter iCatiaTPVoter (
+    .inA(iCatiaTPA),
+    .inB(iCatiaTPB),
+    .inC(iCatiaTPC),
+    .out(iCatiaTP),
+    .tmrErr(iCatiaTPTmrError)
+    );
+
 SU_mVoter clockVoter (
     .inA(clockA),
     .inB(clockB),
@@ -1126,15 +1094,7 @@ SU_mVoter clockVoter (
     .out(clock),
     .tmrErr(clockTmrError)
     );
-
-SU_mVoter int_TmrErrOutVoter (
-    .inA(int_TmrErrOutA),
-    .inB(int_TmrErrOutB),
-    .inC(int_TmrErrOutC),
-    .out(int_TmrErrOut),
-    .tmrErr(int_TmrErrOutTmrError)
-    );
-assign tmrError =  clockTmrError|int_TmrErrOutTmrError|rst_bTmrError;
+assign tmrError =  clockTmrError|iCatiaTPTmrError|int_TmrErrOutTmrError|rst_bTmrError;
 
 SU_mVoter #(.WIDTH(2)) nState0VoterA (
     .inA(nState0A),
@@ -1144,12 +1104,12 @@ SU_mVoter #(.WIDTH(2)) nState0VoterA (
     .tmrErr(nState0TmrErrorA)
     );
 
-SU_mVoter iPllLockStartVoterA (
-    .inA(iPllLockStartA),
-    .inB(iPllLockStartB),
-    .inC(iPllLockStartC),
-    .out(iPllLockStartVotedA),
-    .tmrErr(iPllLockStartTmrErrorA)
+SU_mVoter iFlushVoterA (
+    .inA(iFlushA),
+    .inB(iFlushB),
+    .inC(iFlushC),
+    .out(iFlushVotedA),
+    .tmrErr(iFlushTmrErrorA)
     );
 
 SU_mVoter #(.WIDTH(2)) iAdcRst_bVoterA (
@@ -1176,14 +1136,6 @@ SU_mVoter iDtuRst_bVoterA (
     .tmrErr(iDtuRst_bTmrErrorA)
     );
 
-SU_mVoter iFlushVoterA (
-    .inA(iFlushA),
-    .inB(iFlushB),
-    .inC(iFlushC),
-    .out(iFlushVotedA),
-    .tmrErr(iFlushTmrErrorA)
-    );
-
 SU_mVoter iBC0markVoterA (
     .inA(iBC0markA),
     .inB(iBC0markB),
@@ -1198,14 +1150,6 @@ SU_mVoter #(.WIDTH(5)) nState1VoterA (
     .inC(nState1C),
     .out(nState1VotedA),
     .tmrErr(nState1TmrErrorA)
-    );
-
-SU_mVoter iCatiaTPVoterA (
-    .inA(iCatiaTPA),
-    .inB(iCatiaTPB),
-    .inC(iCatiaTPC),
-    .out(iCatiaTPVotedA),
-    .tmrErr(iCatiaTPTmrErrorA)
     );
 
 SU_mVoter #(.WIDTH(2)) Flush_dlyVoterA (
@@ -1223,7 +1167,7 @@ SU_mVoter iAtuRst_bVoterA (
     .out(iAtuRst_bVotedA),
     .tmrErr(iAtuRst_bTmrErrorA)
     );
-assign tmrErrorA =  Flush_dlyTmrErrorA|iAdcRst_bTmrErrorA|iAtuRst_bTmrErrorA|iBC0markTmrErrorA|iCatiaTPTmrErrorA|iDtuRst_bTmrErrorA|iFlushTmrErrorA|iPllLockStartTmrErrorA|nState0TmrErrorA|nState1TmrErrorA|nextSyncModeTmrErrorA;
+assign tmrErrorA =  Flush_dlyTmrErrorA|iAdcRst_bTmrErrorA|iAtuRst_bTmrErrorA|iBC0markTmrErrorA|iDtuRst_bTmrErrorA|iFlushTmrErrorA|nState0TmrErrorA|nState1TmrErrorA|nextSyncModeTmrErrorA;
 
 SU_mVoter #(.WIDTH(2)) iAdcRst_bVoterB (
     .inA(iAdcRst_bA),
@@ -1233,12 +1177,12 @@ SU_mVoter #(.WIDTH(2)) iAdcRst_bVoterB (
     .tmrErr(iAdcRst_bTmrErrorB)
     );
 
-SU_mVoter iPllLockStartVoterB (
-    .inA(iPllLockStartA),
-    .inB(iPllLockStartB),
-    .inC(iPllLockStartC),
-    .out(iPllLockStartVotedB),
-    .tmrErr(iPllLockStartTmrErrorB)
+SU_mVoter iFlushVoterB (
+    .inA(iFlushA),
+    .inB(iFlushB),
+    .inC(iFlushC),
+    .out(iFlushVotedB),
+    .tmrErr(iFlushTmrErrorB)
     );
 
 SU_mVoter #(.WIDTH(2)) nState0VoterB (
@@ -1265,28 +1209,12 @@ SU_mVoter iAtuRst_bVoterB (
     .tmrErr(iAtuRst_bTmrErrorB)
     );
 
-SU_mVoter iFlushVoterB (
-    .inA(iFlushA),
-    .inB(iFlushB),
-    .inC(iFlushC),
-    .out(iFlushVotedB),
-    .tmrErr(iFlushTmrErrorB)
-    );
-
 SU_mVoter iBC0markVoterB (
     .inA(iBC0markA),
     .inB(iBC0markB),
     .inC(iBC0markC),
     .out(iBC0markVotedB),
     .tmrErr(iBC0markTmrErrorB)
-    );
-
-SU_mVoter #(.WIDTH(2)) Flush_dlyVoterB (
-    .inA(Flush_dlyA),
-    .inB(Flush_dlyB),
-    .inC(Flush_dlyC),
-    .out(Flush_dlyVotedB),
-    .tmrErr(Flush_dlyTmrErrorB)
     );
 
 SU_mVoter #(.WIDTH(5)) nState1VoterB (
@@ -1297,6 +1225,14 @@ SU_mVoter #(.WIDTH(5)) nState1VoterB (
     .tmrErr(nState1TmrErrorB)
     );
 
+SU_mVoter #(.WIDTH(2)) Flush_dlyVoterB (
+    .inA(Flush_dlyA),
+    .inB(Flush_dlyB),
+    .inC(Flush_dlyC),
+    .out(Flush_dlyVotedB),
+    .tmrErr(Flush_dlyTmrErrorB)
+    );
+
 SU_mVoter iDtuRst_bVoterB (
     .inA(iDtuRst_bA),
     .inB(iDtuRst_bB),
@@ -1304,22 +1240,14 @@ SU_mVoter iDtuRst_bVoterB (
     .out(iDtuRst_bVotedB),
     .tmrErr(iDtuRst_bTmrErrorB)
     );
+assign tmrErrorB =  Flush_dlyTmrErrorB|iAdcRst_bTmrErrorB|iAtuRst_bTmrErrorB|iBC0markTmrErrorB|iDtuRst_bTmrErrorB|iFlushTmrErrorB|nState0TmrErrorB|nState1TmrErrorB|nextSyncModeTmrErrorB;
 
-SU_mVoter iCatiaTPVoterB (
-    .inA(iCatiaTPA),
-    .inB(iCatiaTPB),
-    .inC(iCatiaTPC),
-    .out(iCatiaTPVotedB),
-    .tmrErr(iCatiaTPTmrErrorB)
-    );
-assign tmrErrorB =  Flush_dlyTmrErrorB|iAdcRst_bTmrErrorB|iAtuRst_bTmrErrorB|iBC0markTmrErrorB|iCatiaTPTmrErrorB|iDtuRst_bTmrErrorB|iFlushTmrErrorB|iPllLockStartTmrErrorB|nState0TmrErrorB|nState1TmrErrorB|nextSyncModeTmrErrorB;
-
-SU_mVoter iPllLockStartVoterC (
-    .inA(iPllLockStartA),
-    .inB(iPllLockStartB),
-    .inC(iPllLockStartC),
-    .out(iPllLockStartVotedC),
-    .tmrErr(iPllLockStartTmrErrorC)
+SU_mVoter iFlushVoterC (
+    .inA(iFlushA),
+    .inB(iFlushB),
+    .inC(iFlushC),
+    .out(iFlushVotedC),
+    .tmrErr(iFlushTmrErrorC)
     );
 
 SU_mVoter #(.WIDTH(2)) iAdcRst_bVoterC (
@@ -1378,14 +1306,6 @@ SU_mVoter #(.WIDTH(5)) nState1VoterC (
     .tmrErr(nState1TmrErrorC)
     );
 
-SU_mVoter iFlushVoterC (
-    .inA(iFlushA),
-    .inB(iFlushB),
-    .inC(iFlushC),
-    .out(iFlushVotedC),
-    .tmrErr(iFlushTmrErrorC)
-    );
-
 SU_mVoter #(.WIDTH(2)) Flush_dlyVoterC (
     .inA(Flush_dlyA),
     .inB(Flush_dlyB),
@@ -1393,15 +1313,7 @@ SU_mVoter #(.WIDTH(2)) Flush_dlyVoterC (
     .out(Flush_dlyVotedC),
     .tmrErr(Flush_dlyTmrErrorC)
     );
-
-SU_mVoter iCatiaTPVoterC (
-    .inA(iCatiaTPA),
-    .inB(iCatiaTPB),
-    .inC(iCatiaTPC),
-    .out(iCatiaTPVotedC),
-    .tmrErr(iCatiaTPTmrErrorC)
-    );
-assign tmrErrorC =  Flush_dlyTmrErrorC|iAdcRst_bTmrErrorC|iAtuRst_bTmrErrorC|iBC0markTmrErrorC|iCatiaTPTmrErrorC|iDtuRst_bTmrErrorC|iFlushTmrErrorC|iPllLockStartTmrErrorC|nState0TmrErrorC|nState1TmrErrorC|nextSyncModeTmrErrorC;
+assign tmrErrorC =  Flush_dlyTmrErrorC|iAdcRst_bTmrErrorC|iAtuRst_bTmrErrorC|iBC0markTmrErrorC|iDtuRst_bTmrErrorC|iFlushTmrErrorC|nState0TmrErrorC|nState1TmrErrorC|nextSyncModeTmrErrorC;
 
 SU_fout #(.WIDTH(2)) TmrErrInFanout (
     .in(TmrErrIn),
@@ -1415,6 +1327,13 @@ SU_fout #(.WIDTH(8)) TP_lenFanout (
     .outA(TP_lenA),
     .outB(TP_lenB),
     .outC(TP_lenC)
+    );
+
+SU_fout #(.WIDTH(2)) AdcSeuInFanout (
+    .in(AdcSeuIn),
+    .outA(AdcSeuInA),
+    .outB(AdcSeuInB),
+    .outC(AdcSeuInC)
     );
 endmodule
 
