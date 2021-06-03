@@ -34,9 +34,7 @@ module top_ofthetop (
 
 		     // CATIA interface
 
-		     CatiaTPA,          // Test pulse
-		     CatiaTPB,
-		     CatiaTPC,
+		     CatiaTP,          // Test pulse
 
 		     // Serializers interface
 
@@ -143,9 +141,7 @@ module top_ofthetop (
 
    // CATIA interface
 
-   output 	CatiaTPA;          // Test pulse
-   output 	CatiaTPB;
-   output 	CatiaTPC;
+   output 	CatiaTP;          // Test pulse
 
    // Serializers interface
 
@@ -281,13 +277,12 @@ module top_ofthetop (
 			    .i2cRst_bA(I2cRstA_b),            .i2cRst_bB(I2cRstB_b),         .i2cRst_bC(I2cRstC_b),
 			    .atuRst_bA(TUrstA_b),             .atuRst_bB(TUrstB_b),          .atuRst_bC(TUrstC_b),
 			    .DtuSyncModeA(DtuSyncModeA),      .DtuSyncModeB(DtuSyncModeB),   .DtuSyncModeC(DtuSyncModeC),
-			    .DtuFlushA(DtuFlushA),            .DtuFlushB(DtuFlushB),         .DtuFlushC(DtuFlushC),
-			    .PllLockStartA(PllLockStartA),    .PllLockStartB(PllLockStartB), .PllLockStartC(PllLockStartC),
-			    .CatiaTPA(CatiaTPA),              .CatiaTPB(CatiaTPB),           .CatiaTPC(CatiaTPC),
+			    .DtuFlush_bA(DtuFlushA),          .DtuFlush_bB(DtuFlushB),       .DtuFlush_bC(DtuFlushC),
+			    .CatiaTP(CatiaTP),              
 			    .BC0markA(BC0markA),              .BC0markB(BC0markB),           .BC0markC(BC0markC),
 			    .TP_len(DtuTPLength),
 			    .AdcCalBusyIn(AdcCalBusy_in),      .AdcOvfIn(AdcOvf_in),          .AdcSeuIn(AdcSEU),
-			    .AdcCalBusyOut(AdcCalBusy),        .AdcOvfOut(AdcOverflow),       .AdcSeuOut(SEUA),
+			    .AdcCalBusyOut(AdcCalBusy),        .AdcOvfOut(AdcOverflow),
 			    .TmrErrIn(TmrErr),                 .TmrErrOut(SEUD));
 
 endmodule

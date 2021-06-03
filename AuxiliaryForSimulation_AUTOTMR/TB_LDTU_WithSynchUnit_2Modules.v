@@ -28,16 +28,16 @@ module tb_LDTU_presynth;
    parameter    Nbits_5=5;
    parameter bits_ptr=4;
    ///////////NAMES ARE NOW FIX... BUT TB MUCH MORE READABLE
-   parameter file_SER_name="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutputAUTOTMR_GSM00.dat"; 
-   parameter file_sample_name="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_outputAUTOTMR.dat";
-   parameter file_datain_10_name="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_ing01.dat";
-   parameter file_datain_01_name="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_ing10.dat";
+   parameter file_SER_name="/home/na62torino/Data/CMS/BCP/cms-eb-sync/submodules/litedtu/sim_results/presynth_DTUoutputAUTOTMR_GSM00.dat"; 
+   parameter file_sample_name="/home/na62torino/Data/CMS/BCP/cms-eb-sync/submodules/litedtu//sim_results/presynth_DTU_GSM_00_outputAUTOTMR.dat";
+   parameter file_datain_10_name="/home/na62torino/Data/CMS/BCP/cms-eb-sync/submodules/litedtu/sim_results/presynth_DTU_GSM_00_ing01.dat";
+   parameter file_datain_01_name="/home/na62torino/Data/CMS/BCP/cms-eb-sync/submodules/litedtu/sim_results/presynth_DTU_GSM_00_ing10.dat";
 
    ///////////NAMES ARE NOW FIX... BUT TB MUCH MORE READABLE
-   parameter file_SER_name_2="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTUoutputAUTOTMR_GSM00_2.dat"; 
-   parameter file_sample_name_2="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_outputAUTOTMR_2.dat";
-   parameter file_datain_10_name_2="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_ing01_2.dat";
-   parameter file_datain_01_name_2="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/presynth_DTU_GSM_00_ing10_2.dat";
+   parameter file_SER_name_2="/home/na62torino/Data/CMS/BCP/cms-eb-sync/submodules/litedtu/sim_results/presynth_DTUoutputAUTOTMR_GSM00_2.dat"; 
+   parameter file_sample_name_2="/home/na62torino/Data/CMS/BCP/cms-eb-sync/submodules/litedtu/sim_results/presynth_DTU_GSM_00_outputAUTOTMR_2.dat";
+   parameter file_datain_10_name_2="/home/na62torino/Data/CMS/BCP/cms-eb-sync/submodules/litedtu/sim_results/presynth_DTU_GSM_00_ing01_2.dat";
+   parameter file_datain_01_name_2="/home/na62torino/Data/CMS/BCP/cms-eb-sync/submodules/litedtu/sim_results/presynth_DTU_GSM_00_ing10_2.dat";
 
    
    
@@ -146,7 +146,7 @@ module tb_LDTU_presynth;
    assign DtuSysCal = GAIN_SEL_MODE[1];
 
    /////////////1st module///////////////////////
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat"),
+   FileReader #(.infile("/home/na62torino/Data/CMS/BCP/cms-eb-sync/submodules/litedtu/data_input/Ene2000GeV_DT_120bx_g10.dat"),
 		.ck_period(ck_period)
 		) FR10  (
 			 .clk(DCLK_10),
@@ -156,7 +156,7 @@ module tb_LDTU_presynth;
 			 .REJECTED(REJECTED_g10)
 			 );
 
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat"),
+   FileReader #(.infile("/home/na62torino/Data/CMS/BCP/cms-eb-sync/submodules/litedtu/data_input/Ene2000GeV_DT_120bx_g01.dat"),
 		.ck_period(ck_period)
 		) FR01  (
 			 .clk(DCLK_1),
@@ -168,7 +168,7 @@ module tb_LDTU_presynth;
    
 
    /////////////2nd module///////////////////////
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10.dat"),
+   FileReader #(.infile("/home/na62torino/Data/CMS/BCP/cms-eb-sync/submodules/litedtu/data_input/Ene2000GeV_DT_120bx_g10.dat"),
 		.ck_period(ck_period)
 		) FR10_2  (
 			   .clk(DCLK_10),
@@ -178,7 +178,7 @@ module tb_LDTU_presynth;
 			   .REJECTED(REJECTED_g10_2)
 			   );
 
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01.dat"),
+   FileReader #(.infile("/home/na62torino/Data/CMS/BCP/cms-eb-sync/submodules/litedtu/data_input/Ene2000GeV_DT_120bx_g01.dat"),
 		.ck_period(ck_period)
 		) FR01_2  (
 			   .clk(DCLK_1),
