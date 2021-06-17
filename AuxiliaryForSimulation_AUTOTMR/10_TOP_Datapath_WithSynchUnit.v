@@ -257,7 +257,7 @@ module top_ofthetop (
 
    AdcTestUnitTMR TestUnit (
 			    .rst_bA(rstA_b), .rst_bB(rstB_b), .rst_bC(rstC_b),
-			    .clockA(ClkInA),.clockB(ClkInB),.clockC(ClkInC),
+			    .AdcClk(AdcClkOut),
 			    .test_enable(AdcTestMode),
 			    .DataInH(AdcDoutH),    .DataInL(AdcDoutL),
 			    .DataOutHo(int_TUdoutHo),    .DataOutHe(int_TUdoutHe),

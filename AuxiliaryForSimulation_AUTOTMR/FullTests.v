@@ -28,16 +28,16 @@ module fulltest;
    parameter    Nbits_5=5;
    parameter bits_ptr=4;
    ///////////NAMES ARE NOW FIX... BUT TB MUCH MORE READABLE
-   parameter file_SER_name       ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_SER.dat"; 
-   parameter file_sample_name    ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_sample.dat";
-   parameter file_datain_10_name ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_in10.dat";
-   parameter file_datain_01_name ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_in01.dat";
+   parameter file_SER_name       ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER.dat"; 
+   parameter file_sample_name    ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample.dat";
+   parameter file_datain_10_name ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10.dat";
+   parameter file_datain_01_name ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01.dat";
 
    ///////////NAMES ARE NOW FIX... BUT TB MUCH MORE READABLE
-   parameter file_SER_name_2       ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_SER_2.dat"; 
-   parameter file_sample_name_2    ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_sample_2.dat";
-   parameter file_datain_10_name_2 ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_in10_2.dat";
-   parameter file_datain_01_name_2 ="/home/na62torino/Data/CMS/LiteDTU/sim_results/fulltest_in01_2.dat";
+   parameter file_SER_name_2       ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_SER_2.dat"; 
+   parameter file_sample_name_2    ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_sample_2.dat";
+   parameter file_datain_10_name_2 ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in10_2.dat";
+   parameter file_datain_01_name_2 ="/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/sim_results/fulltest_in01_2.dat";
 
    
    
@@ -152,7 +152,7 @@ module fulltest;
 
    
    /////////////1st module///////////////////////
-   FileReader #(.infile("/home/na62torino/Data/CMS/LiteDTU/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
 		.ck_period(ck_period)
 		) FR10  (
 			 .clk(DCLK_10),
@@ -162,7 +162,7 @@ module fulltest;
 			 .REJECTED(REJECTED_g10)
 			 );
 
-   FileReader #(.infile("/home/na62torino/Data/CMS/LiteDTU/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
 		.ck_period(ck_period)
 		) FR01  (
 			 .clk(DCLK_1),
@@ -174,7 +174,7 @@ module fulltest;
    
 
    /////////////2nd module///////////////////////
-   FileReader #(.infile("/home/na62torino/Data/CMS/LiteDTU/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
 		.ck_period(ck_period)
 		) FR10_2  (
 			   .clk(DCLK_10_2),
@@ -184,7 +184,7 @@ module fulltest;
 			   .REJECTED(REJECTED_g10_2)
 			   );
 
-   FileReader #(.infile("/home/na62torino/Data/CMS/LiteDTU/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
 		.ck_period(ck_period)
 		) FR01_2  (
 			   .clk(DCLK_1_2),
@@ -265,8 +265,7 @@ module fulltest;
 			    .AdcCalInA(),.AdcCalInB(),.AdcCalInC(),
 			    .AdcCalBusy(),
 			    .AdcOverflow(),
-			    .PllLockStartA(),.PllLockStartB(),.PllLockStartC(),
-			    .CatiaTPA(),.CatiaTPB(),.CatiaTPC(),
+			    .CatiaTP(),
 			    .SerRstA_b(),.SerRstB_b(),.SerRstC_b(),
 			    .TUdoutHo(),.TUdoutHe(),.TUdoutLo(),.TUdoutLe(),
 			    .DtuHshake(),
@@ -318,8 +317,7 @@ module fulltest;
 				.AdcCalInA(),.AdcCalInB(),.AdcCalInC(),
 				.AdcCalBusy(),
 				.AdcOverflow(),
-				.PllLockStartA(),.PllLockStartB(),.PllLockStartC(),
-				.CatiaTPA(),.CatiaTPB(),.CatiaTPC(),
+				.CatiaTP(),
 				.SerRstA_b(),.SerRstB_b(),.SerRstC_b(),
 				.TUdoutHo(),.TUdoutHe(),.TUdoutLo(),.TUdoutLe(),
 				.DtuHshake(),
@@ -531,7 +529,7 @@ module fulltest;
       RST_C_2_b   = 1'b1;
       flush_2_b =1'b1;
       synch_2 =1'b0;
-      fallback_2=1'b1;
+      fallback_2=1'b0;
       
       CALIBRATION_BUSY_1_2 = 1'b0;
       CALIBRATION_BUSY_10_2= 1'b0;
@@ -616,11 +614,11 @@ module fulltest;
       
       $display("***********************CALIBRATION ON - %g",$time);      
       #(5*ck_period);			
-      CALIBRATION_BUSY_1 <= 1'b1;	// --------------- calibration starts here ADC_L
-      CALIBRATION_BUSY_1_2 = 1'b1;
+      CALIBRATION_BUSY_1 <= 1'b0;	// --------------- calibration starts here ADC_L
+      CALIBRATION_BUSY_1_2 = 1'b0;
       #(1*ck_period);	
-      CALIBRATION_BUSY_10 <= 1'b1;	// --------------- calibration starts here ADC_H
-      CALIBRATION_BUSY_10_2= 1'b1; 
+      CALIBRATION_BUSY_10 <= 1'b0;	// --------------- calibration starts here ADC_H
+      CALIBRATION_BUSY_10_2= 1'b0; 
       #(26*ck_period);
       $display("***********************CALIBRATION OFF - %g",$time);      
       CALIBRATION_BUSY_1 <= 1'b0;	// --------------- end of calibration ADC_L
@@ -630,8 +628,8 @@ module fulltest;
       CALIBRATION_BUSY_10_2 <= 1'b0;	// --------------- end of calibration ADC_H
 
       $display("***********************TEST MODE ON- %g",$time);      
-      test_enable = 1'b1;
-      test_enable_2 = 1'b1;
+      test_enable = 1'b0;
+      test_enable_2 = 1'b0;
 
       #(3000*ck_period);
       $display("***********************TEST MODE OFF (DTU MODE ON) - %g",$time); 
@@ -639,9 +637,9 @@ module fulltest;
       test_enable_2 = 1'b0;
       #(10000*ck_period);
       $display("***********************FLUSH DTU0 - %g",$time); 
-      flush_b = 1'b1;
+      flush_b = 1'b0;
       #(24*ck_period);
-      flush_b = 1'b1;
+      flush_b = 1'b0;
 
       #(10000*ck_period);
       $display("***********************SYNCH - %g",$time); 

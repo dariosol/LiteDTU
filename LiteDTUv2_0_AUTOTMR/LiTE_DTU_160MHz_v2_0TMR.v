@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 30/04/2021 13:53:34                                                                    *
+ * date    : 17/06/2021 09:02:06                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: LiTE_DTU_160MHz_v2_0.v                                                                 *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-04-22 11:25:33.303689                                         *
- *           File Size         : 5980                                                               *
- *           MD5 hash          : 65fb242dbb488117bcc002449ac0cd2d                                   *
+ *           Modification time : 2021-06-17 09:01:52.185538                                         *
+ *           File Size         : 5930                                                               *
+ *           MD5 hash          : 3b20aacac6525faeb7190e2ffbba729e                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -69,7 +69,6 @@ parameter    Nbits_8=8;
 parameter    Nbits_12=12;
 parameter    Nbits_32=32;
 parameter    FifoDepth=8;
-parameter    NBitsCnt=3;
 parameter    crcBits=12;
 parameter    FifoDepth_buff=16;
 parameter    bits_ptr=4;
@@ -181,7 +180,7 @@ LDTU_BSTMR #(.Nbits_12(Nbits_12), .Nbits_8(Nbits_8)) B_subtraction (
     .SeuError(tmrError_BS)
     );
 
-LDTU_iFIFOTMR #(.Nbits_12(Nbits_12), .FifoDepth(FifoDepth), .NBitsCnt(NBitsCnt)) Selection (
+LDTU_iFIFOTMR #(.Nbits_12(Nbits_12), .FifoDepth(FifoDepth)) Selection (
     .DCLK_1(DCLK_1),
     .DCLK_10(DCLK_10),
     .CLKA(CLKA),

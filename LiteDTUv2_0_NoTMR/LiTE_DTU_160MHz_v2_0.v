@@ -39,7 +39,6 @@ module LiTE_DTU_160MHz_v2_0 (
    parameter Nbits_12 	= 12;
    parameter Nbits_32 	= 32;
    parameter FifoDepth = 8;
-   parameter NBitsCnt 	= 3;
    parameter crcBits = 12;
    parameter FifoDepth_buff = 16;
    parameter bits_ptr = 4;
@@ -125,7 +124,7 @@ module LiTE_DTU_160MHz_v2_0 (
 
 
    // **** Input FIFOs Module **** //
-   LDTU_iFIFO #(.Nbits_12(Nbits_12), .FifoDepth(FifoDepth), .NBitsCnt(NBitsCnt))
+   LDTU_iFIFO #(.Nbits_12(Nbits_12), .FifoDepth(FifoDepth))
    Selection (.DCLK_1(DCLK_1), .DCLK_10(DCLK_10), .CLK(CLK), .rst_b(reset_b), .GAIN_SEL_MODE(GAIN_SEL_MODE), .DATA_gain_01(DATA_gain_01), .DATA_gain_10(DATA_gain_10), .SATURATION_value(SATURATION_value), .shift_gain_10(shift_gain_10), .DATA_to_enc(DATA_to_enc), .baseline_flag(baseline_flag), .SeuError(tmrError_iFIFO));
 
 
