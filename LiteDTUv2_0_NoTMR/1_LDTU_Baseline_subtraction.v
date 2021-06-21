@@ -18,7 +18,7 @@
 //	15.05.2020	Block synchronized on DCLK only - Gianni
 //   4.02.2021  manual triplication removed - Gianni
 //				reset renamed rst_b since it is active low
-//
+//   21.06.21   ADC clock on the negative edge
 // *************************************************************************************************
 
 `timescale   1ps/1ps
@@ -75,12 +75,12 @@ module LDTU_BS(
 
 		// Input synchronization
 
-	always @ (posedge DCLK_1) begin
+	always @ (negedge DCLK_1) begin
 		if (rst_b == 1'b0) d_g01 <= 12'b0;
 		else d_g01 <= DATA12_g01;
 	end
 
-	always @ (posedge DCLK_10) begin
+	always @ (negedge DCLK_10) begin
 		if (rst_b == 1'b0) d_g10 <= 12'b0;
 		else d_g10 <= DATA12_g10  >> shift_gain_10;
 	end
@@ -94,7 +94,7 @@ module LDTU_BS(
    //if the data before subtraction was lower than after: rollover happened.
    //If rollover: set output to 0.
    
-   always @ (posedge DCLK_1) begin
+   always @ (negedge DCLK_1) begin
       if(dg01 > d_g01) begin // before subtraction < than after
 	 dg01_synch <= 12'b0;
       end
@@ -103,7 +103,7 @@ module LDTU_BS(
       end 
    end
 
-   always @ (posedge DCLK_10) begin
+   always @ (negedge DCLK_10) begin
       if(dg10 > d_g10) begin // before subtraction < than after
 	 dg10_synch <= 12'b0;
       end

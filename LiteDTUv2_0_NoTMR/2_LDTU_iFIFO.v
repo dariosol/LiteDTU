@@ -116,19 +116,19 @@ module LDTU_iFIFO(
    end
  
    // WRITE POINTERS : @(posedge DCLK)
-   always @(posedge DCLK_10) begin
+   always @(negedge DCLK_10) begin
       if (rst_b == 1'b0) wrH_ptr <= 4'b0000;
       else wrH_ptr <= wrH_ptr+4'b0001;
    end
 
-   always @(posedge DCLK_1) begin
+   always @(negedge DCLK_1) begin
       if (rst_b == 1'b0) wrL_ptr <= 4'b0000;
       else wrL_ptr <= wrL_ptr+4'b0001;
    end
  
    // WRITING in FIFO GAIN 1
 
-   always @(posedge DCLK_1) begin
+   always @(negedge DCLK_1) begin
       if (rst_b == 1'b0) begin
 	 for (iL = 0; iL < LookAheadDepth; iL = iL +1) begin
 	    FIFO_g1[iL] <= 12'b0;
@@ -141,7 +141,7 @@ module LDTU_iFIFO(
  
    // WRITING in FIFO GAIN 10
 
-   always @(posedge DCLK_10) begin
+   always @(negedge DCLK_10) begin
       if (rst_b == 1'b0) begin
 	 for (iH = 0; iH < LookAheadDepth; iH = iH +1) begin
 	    FIFO_g10[iH] <= 12'b0;

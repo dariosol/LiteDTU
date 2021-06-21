@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 17/06/2021 09:02:04                                                                    *
+ * date    : 21/06/2021 13:53:40                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 1_LDTU_Baseline_subtraction.v                                                          *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-04-23 13:48:59.699214                                         *
- *           File Size         : 2938                                                               *
- *           MD5 hash          : 31175ff4d61787f2e942d8dd9b73d8b3                                   *
+ *           Modification time : 2021-06-21 13:51:43.385912                                         *
+ *           File Size         : 2982                                                               *
+ *           MD5 hash          : 42b0bde899bf47a0352e9c8a5734b199                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -111,7 +111,7 @@ assign b_val_g10A =  {4'b0,BSL_VAL_g10A};
 assign b_val_g10B =  {4'b0,BSL_VAL_g10B};
 assign b_val_g10C =  {4'b0,BSL_VAL_g10C};
 
-always @( posedge DCLK_1A )
+always @( negedge DCLK_1A )
   begin
     if (rst_bA==1'b0)
       d_g01A <= 12'b0;
@@ -119,7 +119,7 @@ always @( posedge DCLK_1A )
       d_g01A <= DATA12_g01A;
   end
 
-always @( posedge DCLK_1B )
+always @( negedge DCLK_1B )
   begin
     if (rst_bB==1'b0)
       d_g01B <= 12'b0;
@@ -127,7 +127,7 @@ always @( posedge DCLK_1B )
       d_g01B <= DATA12_g01B;
   end
 
-always @( posedge DCLK_1C )
+always @( negedge DCLK_1C )
   begin
     if (rst_bC==1'b0)
       d_g01C <= 12'b0;
@@ -135,7 +135,7 @@ always @( posedge DCLK_1C )
       d_g01C <= DATA12_g01C;
   end
 
-always @( posedge DCLK_10A )
+always @( negedge DCLK_10A )
   begin
     if (rst_bA==1'b0)
       d_g10A <= 12'b0;
@@ -143,7 +143,7 @@ always @( posedge DCLK_10A )
       d_g10A <= DATA12_g10A>>shift_gain_10A;
   end
 
-always @( posedge DCLK_10B )
+always @( negedge DCLK_10B )
   begin
     if (rst_bB==1'b0)
       d_g10B <= 12'b0;
@@ -151,7 +151,7 @@ always @( posedge DCLK_10B )
       d_g10B <= DATA12_g10B>>shift_gain_10B;
   end
 
-always @( posedge DCLK_10C )
+always @( negedge DCLK_10C )
   begin
     if (rst_bC==1'b0)
       d_g10C <= 12'b0;
@@ -165,7 +165,7 @@ assign dg10A =  d_g10A-b_val_g10A;
 assign dg10B =  d_g10B-b_val_g10B;
 assign dg10C =  d_g10C-b_val_g10C;
 
-always @( posedge DCLK_1A )
+always @( negedge DCLK_1A )
   begin
     if (dg01A>d_g01A)
       begin
@@ -177,7 +177,7 @@ always @( posedge DCLK_1A )
       end
   end
 
-always @( posedge DCLK_1B )
+always @( negedge DCLK_1B )
   begin
     if (dg01B>d_g01B)
       begin
@@ -189,7 +189,7 @@ always @( posedge DCLK_1B )
       end
   end
 
-always @( posedge DCLK_1C )
+always @( negedge DCLK_1C )
   begin
     if (dg01C>d_g01C)
       begin
@@ -201,7 +201,7 @@ always @( posedge DCLK_1C )
       end
   end
 
-always @( posedge DCLK_10A )
+always @( negedge DCLK_10A )
   begin
     if (dg10A>d_g10A)
       begin
@@ -213,7 +213,7 @@ always @( posedge DCLK_10A )
       end
   end
 
-always @( posedge DCLK_10B )
+always @( negedge DCLK_10B )
   begin
     if (dg10B>d_g10B)
       begin
@@ -225,7 +225,7 @@ always @( posedge DCLK_10B )
       end
   end
 
-always @( posedge DCLK_10C )
+always @( negedge DCLK_10C )
   begin
     if (dg10C>d_g10C)
       begin

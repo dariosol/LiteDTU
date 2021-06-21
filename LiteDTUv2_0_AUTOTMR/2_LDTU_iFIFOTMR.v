@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 17/06/2021 09:02:05                                                                    *
+ * date    : 21/06/2021 13:53:40                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 2_LDTU_iFIFO.v                                                                         *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-06-17 08:55:59.670513                                         *
+ *           Modification time : 2021-06-21 13:48:42.064899                                         *
  *           File Size         : 5979                                                               *
- *           MD5 hash          : 76f06f58e5fdcc710c39b161cb1836f8                                   *
+ *           MD5 hash          : a9804b0f51b49bae7fc31e594068dd44                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -169,7 +169,7 @@ always @( posedge CLKC )
       SATvalC <= SATURATION_valueC>>shift_gain_10C;
   end
 
-always @( posedge DCLK_10A )
+always @( negedge DCLK_10A )
   begin
     if (rst_bA==1'b0)
       wrH_ptrA <= 4'b0000;
@@ -177,7 +177,7 @@ always @( posedge DCLK_10A )
       wrH_ptrA <= wrH_ptrA+4'b0001;
   end
 
-always @( posedge DCLK_10B )
+always @( negedge DCLK_10B )
   begin
     if (rst_bB==1'b0)
       wrH_ptrB <= 4'b0000;
@@ -185,7 +185,7 @@ always @( posedge DCLK_10B )
       wrH_ptrB <= wrH_ptrB+4'b0001;
   end
 
-always @( posedge DCLK_10C )
+always @( negedge DCLK_10C )
   begin
     if (rst_bC==1'b0)
       wrH_ptrC <= 4'b0000;
@@ -193,7 +193,7 @@ always @( posedge DCLK_10C )
       wrH_ptrC <= wrH_ptrC+4'b0001;
   end
 
-always @( posedge DCLK_1A )
+always @( negedge DCLK_1A )
   begin
     if (rst_bA==1'b0)
       wrL_ptrA <= 4'b0000;
@@ -201,7 +201,7 @@ always @( posedge DCLK_1A )
       wrL_ptrA <= wrL_ptrA+4'b0001;
   end
 
-always @( posedge DCLK_1B )
+always @( negedge DCLK_1B )
   begin
     if (rst_bB==1'b0)
       wrL_ptrB <= 4'b0000;
@@ -209,7 +209,7 @@ always @( posedge DCLK_1B )
       wrL_ptrB <= wrL_ptrB+4'b0001;
   end
 
-always @( posedge DCLK_1C )
+always @( negedge DCLK_1C )
   begin
     if (rst_bC==1'b0)
       wrL_ptrC <= 4'b0000;
@@ -217,7 +217,7 @@ always @( posedge DCLK_1C )
       wrL_ptrC <= wrL_ptrC+4'b0001;
   end
 
-always @( posedge DCLK_1A )
+always @( negedge DCLK_1A )
   begin
     if (rst_bA==1'b0)
       begin
@@ -232,7 +232,7 @@ always @( posedge DCLK_1A )
       end
   end
 
-always @( posedge DCLK_1B )
+always @( negedge DCLK_1B )
   begin
     if (rst_bB==1'b0)
       begin
@@ -247,7 +247,7 @@ always @( posedge DCLK_1B )
       end
   end
 
-always @( posedge DCLK_1C )
+always @( negedge DCLK_1C )
   begin
     if (rst_bC==1'b0)
       begin
@@ -262,7 +262,7 @@ always @( posedge DCLK_1C )
       end
   end
 
-always @( posedge DCLK_10A )
+always @( negedge DCLK_10A )
   begin
     if (rst_bA==1'b0)
       begin
@@ -277,7 +277,7 @@ always @( posedge DCLK_10A )
       end
   end
 
-always @( posedge DCLK_10B )
+always @( negedge DCLK_10B )
   begin
     if (rst_bB==1'b0)
       begin
@@ -292,7 +292,7 @@ always @( posedge DCLK_10B )
       end
   end
 
-always @( posedge DCLK_10C )
+always @( negedge DCLK_10C )
   begin
     if (rst_bC==1'b0)
       begin

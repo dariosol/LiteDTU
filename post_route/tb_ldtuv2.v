@@ -2,7 +2,7 @@
 // Testbench for CMS Ecal LiTE_DTUv1b assembled top
 // March 2020
 
-`timescale  1ps/1ps
+`timescale  1ns/1ps
 
 module tb_ldtu;
   parameter period = 6240;  // in ps
@@ -10,7 +10,7 @@ module tb_ldtu;
   parameter delay = 200; 	// in ps
   parameter seed = 10;
   // power supply and voltage references:
-  wire VDDAH;
+  wire VDDA;
   wire VDDAL;
   wire VSSA;
   wire VDDD;
@@ -86,7 +86,7 @@ module tb_ldtu;
   reg r_VDDref1L;
   reg r_VDDref2H;
   reg r_VDDref2L;
-  reg r_VDDAH;
+  reg r_VDDA;
   reg r_VDDAL;
   reg r_VSSA;
   reg r_VDDD;
@@ -125,7 +125,7 @@ module tb_ldtu;
   //reg eof1, eof2, close_r01, close_r10, close_g01, close_g10, close_SER;
   
   LiTE_DTU_v2 top  (
-.VDDA(VDDAH), 
+.VDDA(VDDA), 
 .VSSA(VSSA), 
 .VDDD(VDDD), 
 .VSSD(VSSD), 
@@ -178,6 +178,8 @@ module tb_ldtu;
 
 // For the output serializers debug
 initial begin
+   $display("POST ROUTING TESTBENCH");
+   
 test = 1'b1;
 GAIN_SEL_MODE = 2'b10;
 
@@ -280,8 +282,7 @@ assign isr_in_enc[7] 	= 1'b0;
     assign VDDref1L = r_VDDref1L;
     assign VDDref2H = r_VDDref2H;
     assign VDDref2L = r_VDDref2L;
-    assign VDDAH    = r_VDDAH;
-    assign VDDAL    = r_VDDAL;
+    assign VDDA    = r_VDDA;
     assign VSSA     = r_VSSA;
     assign VDDD     = r_VDDD;
     assign VSSD     = r_VSSD; 
@@ -302,6 +303,7 @@ initial begin
 ///////////////////////////////////////////////
   // I2C initialization
 //////////////////////////////////////////////
+   $display("I2C init");
     scl_int = 1'b1;
     sda_int = 1'b1;
     scl_en = 1'b1;
@@ -320,45 +322,7 @@ initial begin
 //////////////////////////////////////////////  
   // ADC test initialization - RESET value
 /////////////////////////////////////////////
-    // VINP
-    VINHp = 1'b0;
-    VINLp = 1'b0;
-    // VINN
-    VINHm = 1'b0;
-    VINLm = 1'b0;
-    // AVDDREF_STG1
-    r_VDDref1H = 1'b0;  
-    r_VDDref1L = 1'b0;
-    // AVDDREF_STG2
-    r_VDDref2H = 1'b0;
-    r_VDDref2L = 1'b0;
-    // AVDD
-    r_VDDAH = 1'b0;
-    r_VDDAL = 1'b0;
-    // AVSS VSS_SUB
-    r_VSSA = 1'b1;
-    // DVDD 
-    r_VDDD = 1'b0;
-    // DVSS 
-    r_VSSD = 1'b1;  
-
-////////////////////////////////
-  // PLL reset Values
-////////////////////////////////
-    r_VDDPllRF = 1'b0;
-    r_VSSPllRF = 1'b1;
-    r_VDDPllD = 1'b0;
-    r_VSSPllD = 1'b1;
-    r_VDDE = 1'b0;
-    r_VSSE = 1'b1;
-
-
-  #(2*period);
-   
-   // #(10.3*period_128);
-/////////////////////////////////////////////  
-// ADC test - Activation Values
-/////////////////////////////////////////////
+      $display("ADC Reset Value");
     // VINP
     VINHp = 1'b1;
     VINLp = 1'b1;
@@ -372,8 +336,47 @@ initial begin
     r_VDDref2H = 1'b1;
     r_VDDref2L = 1'b1;
     // AVDD
-    r_VDDAH = 1'b1;
-    r_VDDAL = 1'b1;
+    r_VDDA = 1'b1;
+    // AVSS VSS_SUB
+    r_VSSA = 1'b0;
+    // DVDD 
+    r_VDDD = 1'b1;
+    // DVSS 
+    r_VSSD = 1'b0;  
+
+////////////////////////////////
+  // PLL reset Values
+////////////////////////////////
+   $display("PLL Reset values");
+    r_VDDPllRF = 1'b1;
+    r_VSSPllRF = 1'b0;
+    r_VDDPllD = 1'b1;
+    r_VSSPllD = 1'b0;
+    r_VDDE = 1'b1;
+    r_VSSE = 1'b1;
+
+
+  #(2*period);
+   
+   // #(10.3*period_128);
+/////////////////////////////////////////////  
+// ADC test - Activation Values
+/////////////////////////////////////////////
+   $display("ADC ON");
+    // VINP
+    VINHp = 1'b1;
+    VINLp = 1'b1;
+    // VINN
+    VINHm = 1'b1;
+    VINLm = 1'b1;
+    // AVDDREF_STG1
+    r_VDDref1H = 1'b1;  
+    r_VDDref1L = 1'b1;
+    // AVDDREF_STG2
+    r_VDDref2H = 1'b1;
+    r_VDDref2L = 1'b1;
+    // AVDD
+    r_VDDA = 1'b1;
     // AVSS VSS_SUB
     r_VSSA = 1'b0;
     // DVDD 
@@ -387,6 +390,7 @@ initial begin
 ////////////////////////////////////
   // PLL Activation Values
 ///////////////////////////////////
+   $display("PLL ON");
     r_VDDPllRF = 1'b1;
     r_VSSPllRF = 1'b0;
     r_VDDPllD = 1'b1;
@@ -394,7 +398,7 @@ initial begin
     r_VDDE = 1'b1;
     r_VSSE = 1'b0;
   #(8*period);
-  
+     $display("SOFT RESET");
   PonRstb = 1'b0;
   rst_b = 1'b0;
   //startrnd=$urandom(seed);
@@ -403,7 +407,7 @@ initial begin
   PonRstb = 1'b1;
   rst_b = 1'b1;
   #(2*period);
-
+   $display("I2C operations:");
   // I2C 0
   isr_in = 4'h0;//8'h00;
   isr_load = 1'b1;
@@ -411,6 +415,7 @@ initial begin
   isr_load = 1'b0;
   #(7*period);
   // I2C Start
+   $display("I2C start");
   isr_in = 4'h1;//8'h01;
   isr_load = 1'b1;
   #period;
@@ -418,41 +423,48 @@ initial begin
   #(7*period);
   // I2C reset
   isr_in = 4'h3;//8'h03;
+   $display("I2C reset");
   isr_load = 1'b1;
   #period;
   isr_load = 1'b0;
   #(7*period);
   //DTU Reset
+   $display("DTU reset");
   isr_in = 4'h2;//8'h02;
   isr_load = 1'b1;
   #period;
   isr_load = 1'b0;
   #(7*period);
   // ADC Test Unit Reset
+   $display("TU reset");
   isr_in = 4'h4;//8'h04;
   isr_load = 1'b1;
   #period;
   isr_load = 1'b0;
   #(7*period);
   // ADC L Reset
+         $display("ADCL reset");
   isr_in = 4'hA;//8'h0A;
   isr_load = 1'b1;
   #period;
   isr_load = 1'b0;
   #(7*period);
   // ADC H Reset
+      $display("ADCH reset");
   isr_in = 4'h8;//8'h08;
   isr_load = 1'b1;
   #period;
   isr_load = 1'b0;
   #(7*period);
   //  ADC L Calibration
+         $display("ADCL calibration");
   isr_in = 4'hB;//8'h0B;
   isr_load = 1'b1;
   #period;
   isr_load = 1'b0;
   #(7*period);
   //  ADC H Calibration
+         $display("ADCH calibration");
   isr_in = 4'h9;//8'h09;
   isr_load = 1'b1;
   #period;
@@ -469,7 +481,7 @@ initial begin
   #(2*ck_period_I2C);
   scl_int = 1'b0;
  
- 
+       $display("SET ALL REGSTERS");
   for (i=0; i<(19); i=i+1) begin
     case (i)
 	0 : sr_pin = 8'b11111100;	// Address 0eh, write
@@ -746,6 +758,7 @@ if (rst_b == 1'b1) begin
     end
     input_val10 = rnd_val2+rnd_val3;
     input_val01 = rnd_val2+(rnd_val3/10.0);
+
 end
 end
 always @(posedge CLKINm) begin //AdcClkInp) begin
