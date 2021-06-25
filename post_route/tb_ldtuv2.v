@@ -9,6 +9,7 @@ module tb_ldtu;
    parameter period_128 = 780;
    parameter delay = 200; 	// in ps
    parameter seed = 10;
+   parameter endofcalbusy = 1000000000; 	// in ps
    // power supply and voltage references:
    wire VDDA;
    wire VDDAL;
@@ -180,7 +181,9 @@ module tb_ldtu;
    initial begin
       $display("POST ROUTING TESTBENCH");
       
-      test = 1'b0;
+      test = 1'b1;
+      $display("testmode? %d",test);
+      
       GAIN_SEL_MODE = 2'b00;
 
       if (test == 1'b1) begin
@@ -324,23 +327,23 @@ module tb_ldtu;
       /////////////////////////////////////////////
       $display("ADC Reset Value");
       // VINP
-      VINHp = 1'b1;
-      VINLp = 1'b1;
+      VINHp = 1'b0;
+      VINLp = 1'b0;
       // VINN
-      VINHm = 1'b1;
-      VINLm = 1'b1;
+      VINHm = 1'b0;
+      VINLm = 1'b0;
       // AVDDREF_STG1
-      r_VDDref1H = 1'b1;  
-      r_VDDref1L = 1'b1;
+      r_VDDref1H = 1'b0;  
+      r_VDDref1L = 1'b0;
       // AVDDREF_STG2
-      r_VDDref2H = 1'b1;
-      r_VDDref2L = 1'b1;
+      r_VDDref2H = 1'b0;
+      r_VDDref2L = 1'b0;
       // AVDD
-      r_VDDA = 1'b1;
+      r_VDDA = 1'b0;
       // AVSS VSS_SUB
       r_VSSA = 1'b0;
       // DVDD 
-      r_VDDD = 1'b1;
+      r_VDDD = 1'b0;
       // DVSS 
       r_VSSD = 1'b0;  
 
@@ -348,12 +351,12 @@ module tb_ldtu;
       // PLL reset Values
       ////////////////////////////////
       $display("PLL Reset values");
-      r_VDDPllRF = 1'b1;
+      r_VDDPllRF = 1'b0;
       r_VSSPllRF = 1'b0;
-      r_VDDPllD = 1'b1;
+      r_VDDPllD = 1'b0;
       r_VSSPllD = 1'b0;
-      r_VDDE = 1'b1;
-      r_VSSE = 1'b1;
+      r_VDDE = 1'b0;
+      r_VSSE = 1'b0;
 
 
       #(2*period);
@@ -398,6 +401,7 @@ module tb_ldtu;
       r_VDDE = 1'b1;
       r_VSSE = 1'b0;
       #(8*period);
+
       $display("SOFT RESET");
       PonRstb = 1'b0;
       rst_b = 1'b0;
@@ -434,6 +438,7 @@ module tb_ldtu;
       
 
       $display("I2C operations:");
+      
       // I2C 0
       isr_in = 4'h0;//8'h00;
       isr_load = 1'b1;
@@ -590,7 +595,9 @@ module tb_ldtu;
       sda_int = 1'b1;
       #(10*ck_period_I2C);
       $display("END INITIALIZATION");
-      
+      ////////////////////////////
+
+      ///////////////////////////
       if (ATM == 1'b1) begin
 	 $fclose(write_file_SER);
 	 $fclose(write_file_outputH);
@@ -601,7 +608,7 @@ module tb_ldtu;
       end
       $fclose(write_file_g01);
       $fclose(write_file_g10); 
-//      $finish;
+      //      $finish;
    end
 
    // Shift register process
@@ -615,29 +622,108 @@ module tb_ldtu;
 	 shift_register[0] = 1'b1;
       end
    end
-
-   always @ (posedge CalBusy) begin
-      // I2C 0
-      isr_in = 4'h0;//8'h00;
-      isr_load = 1'b1;
-      #period;
-      isr_load = 1'b0;
-      #(7*period);
-      // I2C Start
-      isr_in = 4'h1;//8'h01;
-      isr_load = 1'b1;
-      #period;
-      isr_load = 1'b0;
-      #(7*period);
-      // ADC Test Unit Reset
-      isr_in = 4'h4;//8'h04;
-      isr_load = 1'b1;
-      #period;
-      isr_load = 1'b0;
-      #(7*period);
+   
+   reg [31:0] counter=32'h00000000;
+   
+   always @(posedge CLKINm) begin //AdcClkInp) begin
+      if (rst_b == 1'b1) begin
+	 counter = counter + 1'b1;
+	 
+      end 
    end
+   
+   reg resetdone =1'b0;
+   
+   always @(posedge CLKINp) begin //AdcClkInp) begin
+      if (counter ==32'h555) begin
+	 if(resetdone==1'b0) begin
+	    $display("end counter");
+	    
+	    // I2C 0         
+	    isr_in = 4'h0;//8'h00;
+	    isr_load = 1'b1;
+	    #period;
+	    isr_load = 1'b0;
+	    #(7*period);
+	    // I2C Start
+	    isr_in = 4'h1;//8'h01;
+	    isr_load = 1'b1;
+	    #period;
+	    isr_load = 1'b0;
+	    #(7*period);
+	    // ADC Test Unit Reset
+	    isr_in = 4'h4;//8'h04;
+	    isr_load = 1'b1;
+	    #period;
+	    isr_load = 1'b0;
+	    #(7*period);
+////////////////////////////////////////////////////
+	    // I2C 0         
+	    isr_in = 4'h0;//8'h00;
+	    isr_load = 1'b1;
+	    #period;
+	    isr_load = 1'b0;
+	    #(7*period);
+	    // I2C Start
+	    isr_in = 4'h1;//8'h01;
+	    isr_load = 1'b1;
+	    #period;
+	    isr_load = 1'b0;
+	    #(7*period);
+	    // ADC Test Unit Reset
+	    isr_in = 4'h4;//8'h04;
+	    isr_load = 1'b1;
+	    #period;
+	    isr_load = 1'b0;
+	    #(7*period);
+	    
+	    ////////////////////////////////////
+	    // I2C 0         
+	    isr_in = 4'h0;//8'h00;
+	    isr_load = 1'b1;
+	    #period;
+	    isr_load = 1'b0;
+	    #(7*period);
+	    // I2C Start
+	    isr_in = 4'h1;//8'h01;
+	    isr_load = 1'b1;
+	    #period;
+	    isr_load = 1'b0;
+	    #(7*period);
+	    // ADC Test Unit Reset
+	    isr_in = 4'h4;//8'h04;
+	    isr_load = 1'b1;
+	    #period;
+	    isr_load = 1'b0;
+	    #(7*period);
+	    resetdone=1'b1;
+	 end
+      end 
+   end
+   
+   //   always @ (posedge CalBusy) begin
+   //      // I2C 0         
+   //      isr_in = 4'h0;//8'h00;
+   //      isr_load = 1'b1;
+   //      #period;
+   //      isr_load = 1'b0;
+   //      #(7*period);
+   //      // I2C Start
+   //      isr_in = 4'h1;//8'h01;
+   //      isr_load = 1'b1;
+   //      #period;
+   //      isr_load = 1'b0;
+   //      #(7*period);
+   //      // ADC Test Unit Reset
+   //      isr_in = 4'h4;//8'h04;
+   //      isr_load = 1'b1;
+   //      #period;
+   //      isr_load = 1'b0;
+   //      #(7*period);
+   //   end
 
-
+   ////////////////////////////////////////////////////////
+   ///Output Recording:
    // For the output serializers debug
    always @ (posedge PllClkp) begin
       //if (ATM == 1'b0) begin
@@ -676,7 +762,7 @@ module tb_ldtu;
 	       word_ser_0[index_ser0]=DOUT0p;
 	       word_ser_1[index_ser0]=DOUT1p;
 	       word_ser_2[index_ser0]=DOUT2p;
-	       word_ser_3[index_ser0]=DOUT3p;
+	       word_ser_3[index_ser0]=DOUT3p;	
 	       w_ser0 = word_ser_0;
 	       w_ser1 = word_ser_1;
 	       w_ser2 = word_ser_2;
@@ -776,7 +862,8 @@ module tb_ldtu;
 	 end
       end
    end //END always
-
+   //////////////////////////////////
+   //////////INPUT RANDOM STIMULATION
    real rnd_val1, rnd_val2, rnd_val3;
    real input_val01, input_val10, integer_01, integer_10;
    reg [11:0] ADC_01;

@@ -394,19 +394,19 @@ end
 	       data_even :
 		 begin
 		    rLoad_FB<=1'b1;
-	            rDATA_32_FB <= {2'b11,2'b11, ~^dDATA_to_enc, ~^Ld_sign_FB, dDATA_to_enc, Ld_sign_FB};
+	            rDATA_32_FB <= {2'b00,2'b01, ~^dDATA_to_enc, ~^Ld_sign_FB, dDATA_to_enc, Ld_sign_FB};
 		 end
 
 	       data_odd_bc0 :
 		 begin
 		    rLoad_FB<=1'b1;
-	            rDATA_32_FB <= {2'b11,2'b00, ~^dDATA_to_enc, ~^Ld_sign_FB, dDATA_to_enc, Ld_sign_FB};
+	            rDATA_32_FB <= {2'b00,2'b11, ~^dDATA_to_enc, ~^Ld_sign_FB, dDATA_to_enc, Ld_sign_FB};
 		 end
 
 	       data_even_bc0 :
 		 begin
 		    rLoad_FB<=1'b1;
-	            rDATA_32_FB <= {2'b11,2'b01, ~^dDATA_to_enc, ~^Ld_sign_FB, dDATA_to_enc, Ld_sign_FB};
+	            rDATA_32_FB <= {2'b00,2'b00, ~^dDATA_to_enc, ~^Ld_sign_FB, dDATA_to_enc, Ld_sign_FB};
 		 end
 
 	       latency2 :
