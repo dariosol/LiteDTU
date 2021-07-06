@@ -6,22 +6,21 @@
  *                                                                                                  *
  * user    : gianni                                                                                 *
  * host    : elt153xl.to.infn.it                                                                    *
- * date    : 08/11/2018 09:19:53                                                                    *
+ * date    : 10/12/2020 15:31:44                                                                    *
  *                                                                                                  *
- * workdir : /export/elt153xl/disk0/users/gianni/projects/LiTE-DTU/syn/netlist_in                   *
+ * workdir : /export/elt153xl/disk0/users/gianni/projects/LiTE-DTU/v2/netlist_in                    *
  * cmd     : /export/elt153xl/disk0/users/gianni/projects/LiTE-DTU/tmrg/bin/tmrg --sdc-generate --sdc- *
  *           headers --config AdcTestUnit.cfg AdcTestUnit.v                                         *
  * tmrg rev: 9a6ee4d64fce05b58c62ee9ecfc4ef5a8551d404                                               *
  *                                                                                                  *
  * src file: AdcTestUnit.v                                                                          *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2018-11-08 09:18:17.519037                                         *
- *           File Size         : 3423                                                               *
- *           MD5 hash          : a1237c7b8e96ee39ed9a3e26240f4d19                                   *
+ *           Modification time : 2020-12-10 15:31:12.792154                                         *
+ *           File Size         : 4990                                                               *
+ *           MD5 hash          : ad553b1d69166aca913b5bf4bca50323                                   *
  *                                                                                                  *
  ****************************************************************************************************/
-
-`timescale 1ps/1ps
+`timescale  1ps/1ps
 module AdcTestUnitTMR #(
   parameter NBitsADC=12,
   parameter NBitsOut=32
@@ -29,10 +28,9 @@ module AdcTestUnitTMR #(
   input  rst_bA,
   input  rst_bB,
   input  rst_bC,
-  input  clockA,
-  input  clockB,
-  input  clockC,
+  input [1:0] AdcClk,
   input  test_enable,
+  input  handshake,
   input [NBitsADC-1:0] DataInL,
   input [NBitsADC-1:0] DataInH,
   output [NBitsOut-1:0] DataOutLe,
@@ -44,7 +42,6 @@ module AdcTestUnitTMR #(
   output  tmrErrorB,
   output  tmrErrorC
 );
-
 parameter    idle=3'b000;
 parameter    state_0=3'b100;
 parameter    state_1=3'b101;
@@ -56,19 +53,27 @@ wire [NBitsADC-1:0] DataInHA;
 wire test_enableC;
 wire test_enableB;
 wire test_enableA;
+wire [1:0] AdcClkC;
+wire [1:0] AdcClkB;
+wire [1:0] AdcClkA;
+wire handshakeC;
+wire handshakeB;
+wire handshakeA;
 wire [NBitsADC-1:0] DataInLC;
 wire [NBitsADC-1:0] DataInLB;
 wire [NBitsADC-1:0] DataInLA;
-//wire tmrErrorC;
-wor nStateTmrErrorC;
-wire [2:0] nStateVotedC;
-//wire tmrErrorB;
-wor nStateTmrErrorB;
-wire [2:0] nStateVotedB;
-//wire tmrErrorA;
-wor nStateTmrErrorA;
-wire [2:0] nStateVotedA;
-//wire tmrError;
+wor nStateLTmrErrorC;
+wire [2:0] nStateLVotedC;
+wor nStateHTmrErrorC;
+wire [2:0] nStateHVotedC;
+wor nStateLTmrErrorB;
+wire [2:0] nStateLVotedB;
+wor nStateHTmrErrorB;
+wire [2:0] nStateHVotedB;
+wor nStateLTmrErrorA;
+wire [2:0] nStateLVotedA;
+wor nStateHTmrErrorA;
+wire [2:0] nStateHVotedA;
 wor DoutHeTmrError;
 wire [NBitsOut-1:0] DoutHe;
 wor DoutHoTmrError;
@@ -77,12 +82,18 @@ wor DoutLeTmrError;
 wire [NBitsOut-1:0] DoutLe;
 wor DoutLoTmrError;
 wire [NBitsOut-1:0] DoutLo;
-reg  [2:0] cStateA;
-reg  [2:0] cStateB;
-reg  [2:0] cStateC;
-reg  [2:0] nStateA;
-reg  [2:0] nStateB;
-reg  [2:0] nStateC;
+reg  [2:0] cStateHA;
+reg  [2:0] cStateHB;
+reg  [2:0] cStateHC;
+reg  [2:0] nStateHA;
+reg  [2:0] nStateHB;
+reg  [2:0] nStateHC;
+reg  [2:0] cStateLA;
+reg  [2:0] cStateLB;
+reg  [2:0] cStateLC;
+reg  [2:0] nStateLA;
+reg  [2:0] nStateLB;
+reg  [2:0] nStateLC;
 reg  [(NBitsOut/2)-1:0] DataIntL0A;
 reg  [(NBitsOut/2)-1:0] DataIntL0B;
 reg  [(NBitsOut/2)-1:0] DataIntL0C;
@@ -119,309 +130,498 @@ reg  [NBitsOut-1:0] DoutHeC;
 reg  [NBitsOut-1:0] DoutHoA;
 reg  [NBitsOut-1:0] DoutHoB;
 reg  [NBitsOut-1:0] DoutHoC;
-reg  load_eA;
-reg  load_eB;
-reg  load_eC;
-reg  load_oA;
-reg  load_oB;
-reg  load_oC;
-reg  [3:0] ld_intA;
-reg  [3:0] ld_intB;
-reg  [3:0] ld_intC;
+reg  [NBitsADC-1:0] DataInL_syncA;
+reg  [NBitsADC-1:0] DataInL_syncB;
+reg  [NBitsADC-1:0] DataInL_syncC;
+reg  [NBitsADC-1:0] DataInH_syncA;
+reg  [NBitsADC-1:0] DataInH_syncB;
+reg  [NBitsADC-1:0] DataInH_syncC;
+reg  loadH_eA;
+reg  loadH_eB;
+reg  loadH_eC;
+reg  loadH_oA;
+reg  loadH_oB;
+reg  loadH_oC;
+reg  loadL_eA;
+reg  loadL_eB;
+reg  loadL_eC;
+reg  loadL_oA;
+reg  loadL_oB;
+reg  loadL_oC;
+reg  [3:0] ldH_intA;
+reg  [3:0] ldH_intB;
+reg  [3:0] ldH_intC;
+reg  [3:0] ldL_intA;
+reg  [3:0] ldL_intB;
+reg  [3:0] ldL_intC;
 assign DataOutLe =  DoutLe;
 assign DataOutLo =  DoutLo;
 assign DataOutHe =  DoutHe;
 assign DataOutHo =  DoutHo;
 
-always @( cStateA or test_enableA or DataInLA or DataInHA )
+always @( posedge AdcClkA[1]  )
   begin
-    load_eA =  1'b0;
-    load_oA =  1'b0;
-    ld_intA =  4'b0000;
-    case (cStateA)
+    #1 DataInH_syncA =  DataInHA;
+  end
+
+always @( posedge AdcClkB[1]  )
+  begin
+    #1 DataInH_syncB =  DataInHB;
+  end
+
+always @( posedge AdcClkC[1]  )
+  begin
+    #1 DataInH_syncC =  DataInHC;
+  end
+
+always @( posedge AdcClkA[0]  )
+  begin
+    #1 DataInL_syncA =  DataInLA;
+  end
+
+always @( posedge AdcClkB[0]  )
+  begin
+    #1 DataInL_syncB =  DataInLB;
+  end
+
+always @( posedge AdcClkC[0]  )
+  begin
+    #1 DataInL_syncC =  DataInLC;
+  end
+
+always @( cStateHA or test_enableA or handshakeA )
+  begin
+    loadH_eA =  1'b0;
+    loadH_oA =  1'b0;
+    ldH_intA =  4'b0000;
+    case (cStateHA)
       idle : 
         begin
+          if ((test_enableA==1)&(handshakeA==1))
+            nStateHA =  state_0;
+          else
+            nStateHA =  idle;
+        end
+      state_0 : 
+        begin
+          ldH_intA =  4'b0001;
+          loadH_oA =  1'b1;
+          nStateHA =  state_1;
+        end
+      state_1 : 
+        begin
+          ldH_intA =  4'b0010;
+          nStateHA =  state_2;
+        end
+      state_2 : 
+        begin
+          ldH_intA =  4'b0100;
+          nStateHA =  state_3;
+        end
+      state_3 : 
+        begin
+          ldH_intA =  4'b1000;
+          loadH_eA =  1'b1;
           if (test_enableA==1)
-            nStateA =  state_0;
+            nStateHA =  state_0;
           else
-            nStateA =  idle;
+            nStateHA =  idle;
+        end
+      default : nStateHA =  idle;
+    endcase
+  end
+
+always @( cStateHB or test_enableB or handshakeB )
+  begin
+    loadH_eB =  1'b0;
+    loadH_oB =  1'b0;
+    ldH_intB =  4'b0000;
+    case (cStateHB)
+      idle : 
+        begin
+          if ((test_enableB==1)&(handshakeB==1))
+            nStateHB =  state_0;
+          else
+            nStateHB =  idle;
         end
       state_0 : 
         begin
-          ld_intA =  4'b0001;
-          load_oA =  1'b1;
-          nStateA =  state_1;
+          ldH_intB =  4'b0001;
+          loadH_oB =  1'b1;
+          nStateHB =  state_1;
         end
       state_1 : 
         begin
-          ld_intA =  4'b0010;
-          nStateA =  state_2;
+          ldH_intB =  4'b0010;
+          nStateHB =  state_2;
         end
       state_2 : 
         begin
-          ld_intA =  4'b0100;
-          nStateA =  state_3;
+          ldH_intB =  4'b0100;
+          nStateHB =  state_3;
         end
       state_3 : 
         begin
-          ld_intA =  4'b1000;
-          load_eA =  1'b1;
+          ldH_intB =  4'b1000;
+          loadH_eB =  1'b1;
+          if (test_enableB==1)
+            nStateHB =  state_0;
+          else
+            nStateHB =  idle;
+        end
+      default : nStateHB =  idle;
+    endcase
+  end
+
+always @( cStateHC or test_enableC or handshakeC )
+  begin
+    loadH_eC =  1'b0;
+    loadH_oC =  1'b0;
+    ldH_intC =  4'b0000;
+    case (cStateHC)
+      idle : 
+        begin
+          if ((test_enableC==1)&(handshakeC==1))
+            nStateHC =  state_0;
+          else
+            nStateHC =  idle;
+        end
+      state_0 : 
+        begin
+          ldH_intC =  4'b0001;
+          loadH_oC =  1'b1;
+          nStateHC =  state_1;
+        end
+      state_1 : 
+        begin
+          ldH_intC =  4'b0010;
+          nStateHC =  state_2;
+        end
+      state_2 : 
+        begin
+          ldH_intC =  4'b0100;
+          nStateHC =  state_3;
+        end
+      state_3 : 
+        begin
+          ldH_intC =  4'b1000;
+          loadH_eC =  1'b1;
+          if (test_enableC==1)
+            nStateHC =  state_0;
+          else
+            nStateHC =  idle;
+        end
+      default : nStateHC =  idle;
+    endcase
+  end
+
+always @( cStateLA or test_enableA or handshakeA )
+  begin
+    loadL_eA =  1'b0;
+    loadL_oA =  1'b0;
+    ldL_intA =  4'b0000;
+    case (cStateLA)
+      idle : 
+        begin
+          if ((test_enableA==1)&(handshakeA==1))
+            nStateLA =  state_0;
+          else
+            nStateLA =  idle;
+        end
+      state_0 : 
+        begin
+          ldL_intA =  4'b0001;
+          loadL_oA =  1'b1;
+          nStateLA =  state_1;
+        end
+      state_1 : 
+        begin
+          ldL_intA =  4'b0010;
+          nStateLA =  state_2;
+        end
+      state_2 : 
+        begin
+          ldL_intA =  4'b0100;
+          nStateLA =  state_3;
+        end
+      state_3 : 
+        begin
+          ldL_intA =  4'b1000;
+          loadL_eA =  1'b1;
           if (test_enableA==1)
-            nStateA =  state_0;
+            nStateLA =  state_0;
           else
-            nStateA =  idle;
+            nStateLA =  idle;
         end
-      default : nStateA =  idle;
+      default : nStateLA =  idle;
     endcase
   end
 
-always @( cStateB or test_enableB or DataInLB or DataInHB )
+always @( cStateLB or test_enableB or handshakeB )
   begin
-    load_eB =  1'b0;
-    load_oB =  1'b0;
-    ld_intB =  4'b0000;
-    case (cStateB)
+    loadL_eB =  1'b0;
+    loadL_oB =  1'b0;
+    ldL_intB =  4'b0000;
+    case (cStateLB)
       idle : 
         begin
-          if (test_enableB==1)
-            nStateB =  state_0;
+          if ((test_enableB==1)&(handshakeB==1))
+            nStateLB =  state_0;
           else
-            nStateB =  idle;
+            nStateLB =  idle;
         end
       state_0 : 
         begin
-          ld_intB =  4'b0001;
-          load_oB =  1'b1;
-          nStateB =  state_1;
+          ldL_intB =  4'b0001;
+          loadL_oB =  1'b1;
+          nStateLB =  state_1;
         end
       state_1 : 
         begin
-          ld_intB =  4'b0010;
-          nStateB =  state_2;
+          ldL_intB =  4'b0010;
+          nStateLB =  state_2;
         end
       state_2 : 
         begin
-          ld_intB =  4'b0100;
-          nStateB =  state_3;
+          ldL_intB =  4'b0100;
+          nStateLB =  state_3;
         end
       state_3 : 
         begin
-          ld_intB =  4'b1000;
-          load_eB =  1'b1;
+          ldL_intB =  4'b1000;
+          loadL_eB =  1'b1;
           if (test_enableB==1)
-            nStateB =  state_0;
+            nStateLB =  state_0;
           else
-            nStateB =  idle;
+            nStateLB =  idle;
         end
-      default : nStateB =  idle;
+      default : nStateLB =  idle;
     endcase
   end
 
-always @( cStateC or test_enableC or DataInLC or DataInHC )
+always @( cStateLC or test_enableC or handshakeC )
   begin
-    load_eC =  1'b0;
-    load_oC =  1'b0;
-    ld_intC =  4'b0000;
-    case (cStateC)
+    loadL_eC =  1'b0;
+    loadL_oC =  1'b0;
+    ldL_intC =  4'b0000;
+    case (cStateLC)
       idle : 
         begin
-          if (test_enableC==1)
-            nStateC =  state_0;
+          if ((test_enableC==1)&(handshakeC==1))
+            nStateLC =  state_0;
           else
-            nStateC =  idle;
+            nStateLC =  idle;
         end
       state_0 : 
         begin
-          ld_intC =  4'b0001;
-          load_oC =  1'b1;
-          nStateC =  state_1;
+          ldL_intC =  4'b0001;
+          loadL_oC =  1'b1;
+          nStateLC =  state_1;
         end
       state_1 : 
         begin
-          ld_intC =  4'b0010;
-          nStateC =  state_2;
+          ldL_intC =  4'b0010;
+          nStateLC =  state_2;
         end
       state_2 : 
         begin
-          ld_intC =  4'b0100;
-          nStateC =  state_3;
+          ldL_intC =  4'b0100;
+          nStateLC =  state_3;
         end
       state_3 : 
         begin
-          ld_intC =  4'b1000;
-          load_eC =  1'b1;
+          ldL_intC =  4'b1000;
+          loadL_eC =  1'b1;
           if (test_enableC==1)
-            nStateC =  state_0;
+            nStateLC =  state_0;
           else
-            nStateC =  idle;
+            nStateLC =  idle;
         end
-      default : nStateC =  idle;
+      default : nStateLC =  idle;
     endcase
   end
 
-always @( posedge clockA )
+always @( posedge AdcClkA[1]  )
   begin
     if (rst_bA==0)
       begin
-        cStateA =  idle;
-        DataIntL0A =  16'h5a5a;
-        DataIntL1A =  16'h5a5a;
-        DataIntL2A =  16'h5a5a;
-        DataIntL3A =  16'h5a5a;
+        cStateHA =  idle;
         DataIntH0A =  16'h5a5a;
         DataIntH1A =  16'h5a5a;
         DataIntH2A =  16'h5a5a;
         DataIntH3A =  16'h5a5a;
-        DoutLeA =  32'h5a5a5a5a;
-        DoutLoA =  32'h5a5a5a5a;
         DoutHeA =  32'h5a5a5a5a;
         DoutHoA =  32'h5a5a5a5a;
       end
     else
       begin
-        cStateA =  nStateA;
-        if (ld_intA[0] ==1)
-          begin
-            DataIntL0A =  {4'b0011,DataInLA};
-            DataIntH0A =  {4'b1100,DataInHA};
-          end
-        if (ld_intA[1] ==1)
-          begin
-            DataIntL1A =  {4'b0110,DataInLA};
-            DataIntH1A =  {4'b1001,DataInHA};
-          end
-        if (ld_intA[2] ==1)
-          begin
-            DataIntL2A =  {4'b1001,DataInLA};
-            DataIntH2A =  {4'b0110,DataInHA};
-          end
-        if (ld_intA[3] ==1)
-          begin
-            DataIntL3A =  {4'b1100,DataInLA};
-            DataIntH3A =  {4'b0011,DataInHA};
-          end
-        if (load_eA==1)
-          begin
-            DoutLeA =  {DataIntL2A,DataIntL0A};
-            DoutHeA =  {DataIntH2A,DataIntH0A};
-          end
-        if (load_oA==1)
-          begin
-            DoutLoA =  {DataIntL3A,DataIntL1A};
-            DoutHoA =  {DataIntH3A,DataIntH1A};
-          end
+        cStateHA =  nStateHA;
+        if (ldH_intA[0] ==1)
+          DataIntH0A =  {4'b1100,DataInH_syncA};
+        if (ldH_intA[1] ==1)
+          DataIntH1A =  {4'b1001,DataInH_syncA};
+        if (ldH_intA[2] ==1)
+          DataIntH2A =  {4'b0110,DataInH_syncA};
+        if (ldH_intA[3] ==1)
+          DataIntH3A =  {4'b0011,DataInH_syncA};
+        if (loadH_eA==1)
+          DoutHeA =  {DataIntH2A,DataIntH0A};
+        if (loadH_oA==1)
+          DoutHoA =  {DataIntH3A,DataIntH1A};
       end
   end
 
-always @( posedge clockB )
+always @( posedge AdcClkB[1]  )
   begin
     if (rst_bB==0)
       begin
-        cStateB =  idle;
-        DataIntL0B =  16'h5a5a;
-        DataIntL1B =  16'h5a5a;
-        DataIntL2B =  16'h5a5a;
-        DataIntL3B =  16'h5a5a;
+        cStateHB =  idle;
         DataIntH0B =  16'h5a5a;
         DataIntH1B =  16'h5a5a;
         DataIntH2B =  16'h5a5a;
         DataIntH3B =  16'h5a5a;
-        DoutLeB =  32'h5a5a5a5a;
-        DoutLoB =  32'h5a5a5a5a;
         DoutHeB =  32'h5a5a5a5a;
         DoutHoB =  32'h5a5a5a5a;
       end
     else
       begin
-        cStateB =  nStateB;
-        if (ld_intB[0] ==1)
-          begin
-            DataIntL0B =  {4'b0011,DataInLB};
-            DataIntH0B =  {4'b1100,DataInHB};
-          end
-        if (ld_intB[1] ==1)
-          begin
-            DataIntL1B =  {4'b0110,DataInLB};
-            DataIntH1B =  {4'b1001,DataInHB};
-          end
-        if (ld_intB[2] ==1)
-          begin
-            DataIntL2B =  {4'b1001,DataInLB};
-            DataIntH2B =  {4'b0110,DataInHB};
-          end
-        if (ld_intB[3] ==1)
-          begin
-            DataIntL3B =  {4'b1100,DataInLB};
-            DataIntH3B =  {4'b0011,DataInHB};
-          end
-        if (load_eB==1)
-          begin
-            DoutLeB =  {DataIntL2B,DataIntL0B};
-            DoutHeB =  {DataIntH2B,DataIntH0B};
-          end
-        if (load_oB==1)
-          begin
-            DoutLoB =  {DataIntL3B,DataIntL1B};
-            DoutHoB =  {DataIntH3B,DataIntH1B};
-          end
+        cStateHB =  nStateHB;
+        if (ldH_intB[0] ==1)
+          DataIntH0B =  {4'b1100,DataInH_syncB};
+        if (ldH_intB[1] ==1)
+          DataIntH1B =  {4'b1001,DataInH_syncB};
+        if (ldH_intB[2] ==1)
+          DataIntH2B =  {4'b0110,DataInH_syncB};
+        if (ldH_intB[3] ==1)
+          DataIntH3B =  {4'b0011,DataInH_syncB};
+        if (loadH_eB==1)
+          DoutHeB =  {DataIntH2B,DataIntH0B};
+        if (loadH_oB==1)
+          DoutHoB =  {DataIntH3B,DataIntH1B};
       end
   end
 
-always @( posedge clockC )
+always @( posedge AdcClkC[1]  )
   begin
     if (rst_bC==0)
       begin
-        cStateC =  idle;
-        DataIntL0C =  16'h5a5a;
-        DataIntL1C =  16'h5a5a;
-        DataIntL2C =  16'h5a5a;
-        DataIntL3C =  16'h5a5a;
+        cStateHC =  idle;
         DataIntH0C =  16'h5a5a;
         DataIntH1C =  16'h5a5a;
         DataIntH2C =  16'h5a5a;
         DataIntH3C =  16'h5a5a;
-        DoutLeC =  32'h5a5a5a5a;
-        DoutLoC =  32'h5a5a5a5a;
         DoutHeC =  32'h5a5a5a5a;
         DoutHoC =  32'h5a5a5a5a;
       end
     else
       begin
-        cStateC =  nStateC;
-        if (ld_intC[0] ==1)
-          begin
-            DataIntL0C =  {4'b0011,DataInLC};
-            DataIntH0C =  {4'b1100,DataInHC};
-          end
-        if (ld_intC[1] ==1)
-          begin
-            DataIntL1C =  {4'b0110,DataInLC};
-            DataIntH1C =  {4'b1001,DataInHC};
-          end
-        if (ld_intC[2] ==1)
-          begin
-            DataIntL2C =  {4'b1001,DataInLC};
-            DataIntH2C =  {4'b0110,DataInHC};
-          end
-        if (ld_intC[3] ==1)
-          begin
-            DataIntL3C =  {4'b1100,DataInLC};
-            DataIntH3C =  {4'b0011,DataInHC};
-          end
-        if (load_eC==1)
-          begin
-            DoutLeC =  {DataIntL2C,DataIntL0C};
-            DoutHeC =  {DataIntH2C,DataIntH0C};
-          end
-        if (load_oC==1)
-          begin
-            DoutLoC =  {DataIntL3C,DataIntL1C};
-            DoutHoC =  {DataIntH3C,DataIntH1C};
-          end
+        cStateHC =  nStateHC;
+        if (ldH_intC[0] ==1)
+          DataIntH0C =  {4'b1100,DataInH_syncC};
+        if (ldH_intC[1] ==1)
+          DataIntH1C =  {4'b1001,DataInH_syncC};
+        if (ldH_intC[2] ==1)
+          DataIntH2C =  {4'b0110,DataInH_syncC};
+        if (ldH_intC[3] ==1)
+          DataIntH3C =  {4'b0011,DataInH_syncC};
+        if (loadH_eC==1)
+          DoutHeC =  {DataIntH2C,DataIntH0C};
+        if (loadH_oC==1)
+          DoutHoC =  {DataIntH3C,DataIntH1C};
       end
   end
 
-majorityVoter #(.WIDTH(((NBitsOut-1)>(0)) ? ((NBitsOut-1)-(0)+1) : ((0)-(NBitsOut-1)+1))) DoutLoVoter (
+always @( posedge AdcClkA[0]  )
+  begin
+    if (rst_bA==0)
+      begin
+        cStateLA =  idle;
+        DataIntL0A =  16'h5a5a;
+        DataIntL1A =  16'h5a5a;
+        DataIntL2A =  16'h5a5a;
+        DataIntL3A =  16'h5a5a;
+        DoutLeA =  32'h5a5a5a5a;
+        DoutLoA =  32'h5a5a5a5a;
+      end
+    else
+      begin
+        cStateLA =  nStateLA;
+        if (ldL_intA[0] ==1)
+          DataIntL0A =  {4'b0011,DataInL_syncA};
+        if (ldL_intA[1] ==1)
+          DataIntL1A =  {4'b0110,DataInL_syncA};
+        if (ldL_intA[2] ==1)
+          DataIntL2A =  {4'b1001,DataInL_syncA};
+        if (ldL_intA[3] ==1)
+          DataIntL3A =  {4'b1100,DataInL_syncA};
+        if (loadL_eA==1)
+          DoutLeA =  {DataIntL2A,DataIntL0A};
+        if (loadL_oA==1)
+          DoutLoA =  {DataIntL3A,DataIntL1A};
+      end
+  end
+
+always @( posedge AdcClkB[0]  )
+  begin
+    if (rst_bB==0)
+      begin
+        cStateLB =  idle;
+        DataIntL0B =  16'h5a5a;
+        DataIntL1B =  16'h5a5a;
+        DataIntL2B =  16'h5a5a;
+        DataIntL3B =  16'h5a5a;
+        DoutLeB =  32'h5a5a5a5a;
+        DoutLoB =  32'h5a5a5a5a;
+      end
+    else
+      begin
+        cStateLB =  nStateLB;
+        if (ldL_intB[0] ==1)
+          DataIntL0B =  {4'b0011,DataInL_syncB};
+        if (ldL_intB[1] ==1)
+          DataIntL1B =  {4'b0110,DataInL_syncB};
+        if (ldL_intB[2] ==1)
+          DataIntL2B =  {4'b1001,DataInL_syncB};
+        if (ldL_intB[3] ==1)
+          DataIntL3B =  {4'b1100,DataInL_syncB};
+        if (loadL_eB==1)
+          DoutLeB =  {DataIntL2B,DataIntL0B};
+        if (loadL_oB==1)
+          DoutLoB =  {DataIntL3B,DataIntL1B};
+      end
+  end
+
+always @( posedge AdcClkC[0]  )
+  begin
+    if (rst_bC==0)
+      begin
+        cStateLC =  idle;
+        DataIntL0C =  16'h5a5a;
+        DataIntL1C =  16'h5a5a;
+        DataIntL2C =  16'h5a5a;
+        DataIntL3C =  16'h5a5a;
+        DoutLeC =  32'h5a5a5a5a;
+        DoutLoC =  32'h5a5a5a5a;
+      end
+    else
+      begin
+        cStateLC =  nStateLC;
+        if (ldL_intC[0] ==1)
+          DataIntL0C =  {4'b0011,DataInL_syncC};
+        if (ldL_intC[1] ==1)
+          DataIntL1C =  {4'b0110,DataInL_syncC};
+        if (ldL_intC[2] ==1)
+          DataIntL2C =  {4'b1001,DataInL_syncC};
+        if (ldL_intC[3] ==1)
+          DataIntL3C =  {4'b1100,DataInL_syncC};
+        if (loadL_eC==1)
+          DoutLeC =  {DataIntL2C,DataIntL0C};
+        if (loadL_oC==1)
+          DoutLoC =  {DataIntL3C,DataIntL1C};
+      end
+  end
+
+ATU_mVoter #(.WIDTH(((NBitsOut-1)>(0)) ? ((NBitsOut-1)-(0)+1) : ((0)-(NBitsOut-1)+1))) DoutLoVoter (
     .inA(DoutLoA),
     .inB(DoutLoB),
     .inC(DoutLoC),
@@ -429,7 +629,7 @@ majorityVoter #(.WIDTH(((NBitsOut-1)>(0)) ? ((NBitsOut-1)-(0)+1) : ((0)-(NBitsOu
     .tmrErr(DoutLoTmrError)
     );
 
-majorityVoter #(.WIDTH(((NBitsOut-1)>(0)) ? ((NBitsOut-1)-(0)+1) : ((0)-(NBitsOut-1)+1))) DoutLeVoter (
+ATU_mVoter #(.WIDTH(((NBitsOut-1)>(0)) ? ((NBitsOut-1)-(0)+1) : ((0)-(NBitsOut-1)+1))) DoutLeVoter (
     .inA(DoutLeA),
     .inB(DoutLeB),
     .inC(DoutLeC),
@@ -437,7 +637,7 @@ majorityVoter #(.WIDTH(((NBitsOut-1)>(0)) ? ((NBitsOut-1)-(0)+1) : ((0)-(NBitsOu
     .tmrErr(DoutLeTmrError)
     );
 
-majorityVoter #(.WIDTH(((NBitsOut-1)>(0)) ? ((NBitsOut-1)-(0)+1) : ((0)-(NBitsOut-1)+1))) DoutHoVoter (
+ATU_mVoter #(.WIDTH(((NBitsOut-1)>(0)) ? ((NBitsOut-1)-(0)+1) : ((0)-(NBitsOut-1)+1))) DoutHoVoter (
     .inA(DoutHoA),
     .inB(DoutHoB),
     .inC(DoutHoC),
@@ -445,7 +645,7 @@ majorityVoter #(.WIDTH(((NBitsOut-1)>(0)) ? ((NBitsOut-1)-(0)+1) : ((0)-(NBitsOu
     .tmrErr(DoutHoTmrError)
     );
 
-majorityVoter #(.WIDTH(((NBitsOut-1)>(0)) ? ((NBitsOut-1)-(0)+1) : ((0)-(NBitsOut-1)+1))) DoutHeVoter (
+ATU_mVoter #(.WIDTH(((NBitsOut-1)>(0)) ? ((NBitsOut-1)-(0)+1) : ((0)-(NBitsOut-1)+1))) DoutHeVoter (
     .inA(DoutHeA),
     .inB(DoutHeB),
     .inC(DoutHeC),
@@ -454,48 +654,86 @@ majorityVoter #(.WIDTH(((NBitsOut-1)>(0)) ? ((NBitsOut-1)-(0)+1) : ((0)-(NBitsOu
     );
 assign tmrError =  DoutHeTmrError|DoutHoTmrError|DoutLeTmrError|DoutLoTmrError;
 
-majorityVoter #(.WIDTH(3)) nStateVoterA (
-    .inA(nStateA),
-    .inB(nStateB),
-    .inC(nStateC),
-    .out(nStateVotedA),
-    .tmrErr(nStateTmrErrorA)
+ATU_mVoter #(.WIDTH(3)) nStateHVoterA (
+    .inA(nStateHA),
+    .inB(nStateHB),
+    .inC(nStateHC),
+    .out(nStateHVotedA),
+    .tmrErr(nStateHTmrErrorA)
     );
-assign tmrErrorA =  nStateTmrErrorA;
 
-majorityVoter #(.WIDTH(3)) nStateVoterB (
-    .inA(nStateA),
-    .inB(nStateB),
-    .inC(nStateC),
-    .out(nStateVotedB),
-    .tmrErr(nStateTmrErrorB)
+ATU_mVoter #(.WIDTH(3)) nStateLVoterA (
+    .inA(nStateLA),
+    .inB(nStateLB),
+    .inC(nStateLC),
+    .out(nStateLVotedA),
+    .tmrErr(nStateLTmrErrorA)
     );
-assign tmrErrorB =  nStateTmrErrorB;
+assign tmrErrorA =  nStateHTmrErrorA|nStateLTmrErrorA;
 
-majorityVoter #(.WIDTH(3)) nStateVoterC (
-    .inA(nStateA),
-    .inB(nStateB),
-    .inC(nStateC),
-    .out(nStateVotedC),
-    .tmrErr(nStateTmrErrorC)
+ATU_mVoter #(.WIDTH(3)) nStateHVoterB (
+    .inA(nStateHA),
+    .inB(nStateHB),
+    .inC(nStateHC),
+    .out(nStateHVotedB),
+    .tmrErr(nStateHTmrErrorB)
     );
-assign tmrErrorC =  nStateTmrErrorC;
 
-fanout #(.WIDTH(((NBitsADC-1)>(0)) ? ((NBitsADC-1)-(0)+1) : ((0)-(NBitsADC-1)+1))) DataInLFanout (
+ATU_mVoter #(.WIDTH(3)) nStateLVoterB (
+    .inA(nStateLA),
+    .inB(nStateLB),
+    .inC(nStateLC),
+    .out(nStateLVotedB),
+    .tmrErr(nStateLTmrErrorB)
+    );
+assign tmrErrorB =  nStateHTmrErrorB|nStateLTmrErrorB;
+
+ATU_mVoter #(.WIDTH(3)) nStateHVoterC (
+    .inA(nStateHA),
+    .inB(nStateHB),
+    .inC(nStateHC),
+    .out(nStateHVotedC),
+    .tmrErr(nStateHTmrErrorC)
+    );
+
+ATU_mVoter #(.WIDTH(3)) nStateLVoterC (
+    .inA(nStateLA),
+    .inB(nStateLB),
+    .inC(nStateLC),
+    .out(nStateLVotedC),
+    .tmrErr(nStateLTmrErrorC)
+    );
+assign tmrErrorC =  nStateHTmrErrorC|nStateLTmrErrorC;
+
+ATU_fout #(.WIDTH(((NBitsADC-1)>(0)) ? ((NBitsADC-1)-(0)+1) : ((0)-(NBitsADC-1)+1))) DataInLFanout (
     .in(DataInL),
     .outA(DataInLA),
     .outB(DataInLB),
     .outC(DataInLC)
     );
 
-fanout test_enableFanout (
+ATU_fout handshakeFanout (
+    .in(handshake),
+    .outA(handshakeA),
+    .outB(handshakeB),
+    .outC(handshakeC)
+    );
+
+ATU_fout #(.WIDTH(2)) AdcClkFanout (
+    .in(AdcClk),
+    .outA(AdcClkA),
+    .outB(AdcClkB),
+    .outC(AdcClkC)
+    );
+
+ATU_fout test_enableFanout (
     .in(test_enable),
     .outA(test_enableA),
     .outB(test_enableB),
     .outC(test_enableC)
     );
 
-fanout #(.WIDTH(((NBitsADC-1)>(0)) ? ((NBitsADC-1)-(0)+1) : ((0)-(NBitsADC-1)+1))) DataInHFanout (
+ATU_fout #(.WIDTH(((NBitsADC-1)>(0)) ? ((NBitsADC-1)-(0)+1) : ((0)-(NBitsADC-1)+1))) DataInHFanout (
     .in(DataInH),
     .outA(DataInHA),
     .outB(DataInHB),
@@ -504,9 +742,9 @@ fanout #(.WIDTH(((NBitsADC-1)>(0)) ? ((NBitsADC-1)-(0)+1) : ((0)-(NBitsADC-1)+1)
 endmodule
 
 
-/*
+
 // /export/elt153xl/disk0/users/gianni/projects/LiTE-DTU/tmrg/src/../common/voter.v
-module majorityVoter (inA, inB, inC, out, tmrErr);
+module ATU_mVoter (inA, inB, inC, out, tmrErr);
   parameter WIDTH = 1;
   input   [(WIDTH-1):0]   inA, inB, inC;
   output  [(WIDTH-1):0]   out;
@@ -523,12 +761,12 @@ module majorityVoter (inA, inB, inC, out, tmrErr);
 endmodule
 
 
-// /export/elt153xl/disk0/users/gianni/projects/LiTE-DTU/tmrg/src/../common/fanout.v
-module fanout (in, outA, outB, outC);
+// /export/elt153xl/disk0/users/gianni/projects/LiTE-DTU/tmrg/src/../common/ATU_fout.v
+module ATU_fout (in, outA, outB, outC);
   parameter WIDTH = 1;
   input   [(WIDTH-1):0]   in;
   output  [(WIDTH-1):0]   outA,outB,outC;
   assign outA=in;
   assign outB=in;
   assign outC=in;
-endmodule*/
+endmodule
