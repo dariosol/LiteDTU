@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 25/06/2021 13:29:05                                                                    *
+ * date    : 07/07/2021 16:27:05                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 5_1_LDTU_Hamm_oFIFO.v                                                                  *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-08 14:42:50.736064                                         *
- *           File Size         : 3120                                                               *
- *           MD5 hash          : 435061f9a27341d4d664601e150f3f89                                   *
+ *           Modification time : 2021-07-07 16:26:53.460029                                         *
+ *           File Size         : 3323                                                               *
+ *           MD5 hash          : 7e31122b475d533e6d520a6a8bbfe599                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -48,22 +48,37 @@ module LDTU_oFIFOTMR(
 parameter    Nbits_ham=38;
 parameter    FifoDepth_buff=16;
 parameter    bits_ptr=4;
+wire tmrErrorC;
+wor ptr_writeTmrErrorC;
+wor ptr_readTmrErrorC;
+wire [bits_ptr-1:0] ptr_readVotedC;
+wire [bits_ptr-1:0] ptr_writeVotedC;
+wire tmrErrorB;
+wor ptr_writeTmrErrorB;
+wor ptr_readTmrErrorB;
+wire [bits_ptr-1:0] ptr_readVotedB;
+wire [bits_ptr-1:0] ptr_writeVotedB;
+wire tmrErrorA;
+wor ptr_writeTmrErrorA;
+wor ptr_readTmrErrorA;
+wire [bits_ptr-1:0] ptr_readVotedA;
+wire [bits_ptr-1:0] ptr_writeVotedA;
 wire tmrError;
 wor start_writeTmrError;
 wor rst_bTmrError;
 wor r_full_signalTmrError;
 wor r_empty_signalTmrError;
 wor r_decode_signalTmrError;
-wor ptr_writeTmrError;
-wor ptr_readTmrError;
+wor ptr_writeVotedTmrError;
+wor ptr_readVotedTmrError;
 wor data_inputTmrError;
 wor CLKTmrError;
 wire [Nbits_ham-1:0] data_input;
+wire [bits_ptr-1:0] ptr_readVoted;
 wire CLK;
-wire [bits_ptr-1:0] ptr_read;
 wire r_empty_signal;
 wire r_decode_signal;
-wire [bits_ptr-1:0] ptr_write;
+wire [bits_ptr-1:0] ptr_writeVoted;
 wire start_write;
 wire rst_b;
 wire r_full_signal;
@@ -104,12 +119,12 @@ reg  [bits_ptr-1:0] ptr_readB;
 reg  [bits_ptr-1:0] ptr_readC;
 reg  [Nbits_ham-1:0] memory [ FifoDepth_buff-1 : 0 ] ;
 assign SeuError =  tmrError;
-assign r_empty_signalA =  (ptr_readA==ptr_writeA);
-assign r_empty_signalB =  (ptr_readB==ptr_writeB);
-assign r_empty_signalC =  (ptr_readC==ptr_writeC);
-assign r_full_signalA =  ((ptr_readA==ptr_writeA+4'b1)||((ptr_readA==4'b0)&&(ptr_writeA==(4'b1111))));
-assign r_full_signalB =  ((ptr_readB==ptr_writeB+4'b1)||((ptr_readB==4'b0)&&(ptr_writeB==(4'b1111))));
-assign r_full_signalC =  ((ptr_readC==ptr_writeC+4'b1)||((ptr_readC==4'b0)&&(ptr_writeC==(4'b1111))));
+assign r_empty_signalA =  (ptr_readVotedA==ptr_writeVotedA);
+assign r_empty_signalB =  (ptr_readVotedB==ptr_writeVotedB);
+assign r_empty_signalC =  (ptr_readVotedC==ptr_writeVotedC);
+assign r_full_signalA =  ((ptr_readVotedA==ptr_writeVotedA+4'b1)||((ptr_readVotedA==4'b0)&&(ptr_writeVotedA==(4'b1111))));
+assign r_full_signalB =  ((ptr_readVotedB==ptr_writeVotedB+4'b1)||((ptr_readVotedB==4'b0)&&(ptr_writeVotedB==(4'b1111))));
+assign r_full_signalC =  ((ptr_readVotedC==ptr_writeVotedC+4'b1)||((ptr_readVotedC==4'b0)&&(ptr_writeVotedC==(4'b1111))));
 
 always @( posedge CLKA )
   begin
@@ -120,12 +135,12 @@ always @( posedge CLKA )
         if (start_writeA==1'b1)
           begin
             if (r_full_signalA==1'b0)
-              ptr_writeA <= ptr_writeA+4'b1;
+              ptr_writeA <= ptr_writeVotedA+4'b1;
             else
-              ptr_writeA <= ptr_writeA;
+              ptr_writeA <= ptr_writeVotedA;
           end
         else
-          ptr_writeA <= ptr_writeA;
+          ptr_writeA <= ptr_writeVotedA;
       end
   end
 
@@ -138,12 +153,12 @@ always @( posedge CLKB )
         if (start_writeB==1'b1)
           begin
             if (r_full_signalB==1'b0)
-              ptr_writeB <= ptr_writeB+4'b1;
+              ptr_writeB <= ptr_writeVotedB+4'b1;
             else
-              ptr_writeB <= ptr_writeB;
+              ptr_writeB <= ptr_writeVotedB;
           end
         else
-          ptr_writeB <= ptr_writeB;
+          ptr_writeB <= ptr_writeVotedB;
       end
   end
 
@@ -156,12 +171,12 @@ always @( posedge CLKC )
         if (start_writeC==1'b1)
           begin
             if (r_full_signalC==1'b0)
-              ptr_writeC <= ptr_writeC+4'b1;
+              ptr_writeC <= ptr_writeVotedC+4'b1;
             else
-              ptr_writeC <= ptr_writeC;
+              ptr_writeC <= ptr_writeVotedC;
           end
         else
-          ptr_writeC <= ptr_writeC;
+          ptr_writeC <= ptr_writeVotedC;
       end
   end
 
@@ -178,18 +193,18 @@ always @( posedge CLKA )
           begin
             if (r_empty_signalA==1'b0)
               begin
-                ptr_readA <= ptr_readA+4'b1;
+                ptr_readA <= ptr_readVotedA+4'b1;
                 r_decode_signalA <= 1'b1;
               end
             else
               begin
-                ptr_readA <= ptr_readA;
+                ptr_readA <= ptr_readVotedA;
                 r_decode_signalA <= 1'b0;
               end
           end
         else
           begin
-            ptr_readA <= ptr_readA;
+            ptr_readA <= ptr_readVotedA;
             r_decode_signalA <= 1'b0;
           end
       end
@@ -208,18 +223,18 @@ always @( posedge CLKB )
           begin
             if (r_empty_signalB==1'b0)
               begin
-                ptr_readB <= ptr_readB+4'b1;
+                ptr_readB <= ptr_readVotedB+4'b1;
                 r_decode_signalB <= 1'b1;
               end
             else
               begin
-                ptr_readB <= ptr_readB;
+                ptr_readB <= ptr_readVotedB;
                 r_decode_signalB <= 1'b0;
               end
           end
         else
           begin
-            ptr_readB <= ptr_readB;
+            ptr_readB <= ptr_readVotedB;
             r_decode_signalB <= 1'b0;
           end
       end
@@ -238,18 +253,18 @@ always @( posedge CLKC )
           begin
             if (r_empty_signalC==1'b0)
               begin
-                ptr_readC <= ptr_readC+4'b1;
+                ptr_readC <= ptr_readVotedC+4'b1;
                 r_decode_signalC <= 1'b1;
               end
             else
               begin
-                ptr_readC <= ptr_readC;
+                ptr_readC <= ptr_readVotedC;
                 r_decode_signalC <= 1'b0;
               end
           end
         else
           begin
-            ptr_readC <= ptr_readC;
+            ptr_readC <= ptr_readVotedC;
             r_decode_signalC <= 1'b0;
           end
       end
@@ -258,13 +273,13 @@ always @( posedge CLKC )
 always @( posedge CLK )
   begin
     if (rst_b==1'b0)
-      memory[ptr_write]  <= 38'b0;
+      memory[ptr_writeVoted]  <= 38'b0;
     else
       begin
         if (start_write==1'b1)
           begin
             if (r_full_signal==1'b0)
-              memory[ptr_write]  <= data_input;
+              memory[ptr_writeVoted]  <= data_input;
           end
       end
   end
@@ -274,7 +289,7 @@ always @( posedge CLK )
     if (rst_b==1'b0)
       data_output =  38'b01000000000000000000000000000000;
     else
-      data_output =  memory[ptr_read] ;
+      data_output =  memory[ptr_readVoted] ;
   end
 assign empty_signal =  r_empty_signal;
 assign full_signal =  r_full_signal;
@@ -304,12 +319,12 @@ majorityVoter start_writeVoter (
     .tmrErr(start_writeTmrError)
     );
 
-majorityVoter #(.WIDTH(((bits_ptr-1)>(0)) ? ((bits_ptr-1)-(0)+1) : ((0)-(bits_ptr-1)+1))) ptr_writeVoter (
-    .inA(ptr_writeA),
-    .inB(ptr_writeB),
-    .inC(ptr_writeC),
-    .out(ptr_write),
-    .tmrErr(ptr_writeTmrError)
+majorityVoter #(.WIDTH(((bits_ptr-1)>(0)) ? ((bits_ptr-1)-(0)+1) : ((0)-(bits_ptr-1)+1))) ptr_writeVotedVoter (
+    .inA(ptr_writeVotedA),
+    .inB(ptr_writeVotedB),
+    .inC(ptr_writeVotedC),
+    .out(ptr_writeVoted),
+    .tmrErr(ptr_writeVotedTmrError)
     );
 
 majorityVoter r_decode_signalVoter (
@@ -328,20 +343,20 @@ majorityVoter r_empty_signalVoter (
     .tmrErr(r_empty_signalTmrError)
     );
 
-majorityVoter #(.WIDTH(((bits_ptr-1)>(0)) ? ((bits_ptr-1)-(0)+1) : ((0)-(bits_ptr-1)+1))) ptr_readVoter (
-    .inA(ptr_readA),
-    .inB(ptr_readB),
-    .inC(ptr_readC),
-    .out(ptr_read),
-    .tmrErr(ptr_readTmrError)
-    );
-
 majorityVoter CLKVoter (
     .inA(CLKA),
     .inB(CLKB),
     .inC(CLKC),
     .out(CLK),
     .tmrErr(CLKTmrError)
+    );
+
+majorityVoter #(.WIDTH(((bits_ptr-1)>(0)) ? ((bits_ptr-1)-(0)+1) : ((0)-(bits_ptr-1)+1))) ptr_readVotedVoter (
+    .inA(ptr_readVotedA),
+    .inB(ptr_readVotedB),
+    .inC(ptr_readVotedC),
+    .out(ptr_readVoted),
+    .tmrErr(ptr_readVotedTmrError)
     );
 
 majorityVoter #(.WIDTH(((Nbits_ham-1)>(0)) ? ((Nbits_ham-1)-(0)+1) : ((0)-(Nbits_ham-1)+1))) data_inputVoter (
@@ -351,6 +366,57 @@ majorityVoter #(.WIDTH(((Nbits_ham-1)>(0)) ? ((Nbits_ham-1)-(0)+1) : ((0)-(Nbits
     .out(data_input),
     .tmrErr(data_inputTmrError)
     );
-assign tmrError =  CLKTmrError|data_inputTmrError|ptr_readTmrError|ptr_writeTmrError|r_decode_signalTmrError|r_empty_signalTmrError|r_full_signalTmrError|rst_bTmrError|start_writeTmrError;
+assign tmrError =  CLKTmrError|data_inputTmrError|ptr_readVotedTmrError|ptr_writeVotedTmrError|r_decode_signalTmrError|r_empty_signalTmrError|r_full_signalTmrError|rst_bTmrError|start_writeTmrError;
+
+majorityVoter #(.WIDTH(((bits_ptr-1)>(0)) ? ((bits_ptr-1)-(0)+1) : ((0)-(bits_ptr-1)+1))) ptr_writeVoterA (
+    .inA(ptr_writeA),
+    .inB(ptr_writeB),
+    .inC(ptr_writeC),
+    .out(ptr_writeVotedA),
+    .tmrErr(ptr_writeTmrErrorA)
+    );
+
+majorityVoter #(.WIDTH(((bits_ptr-1)>(0)) ? ((bits_ptr-1)-(0)+1) : ((0)-(bits_ptr-1)+1))) ptr_readVoterA (
+    .inA(ptr_readA),
+    .inB(ptr_readB),
+    .inC(ptr_readC),
+    .out(ptr_readVotedA),
+    .tmrErr(ptr_readTmrErrorA)
+    );
+assign tmrErrorA =  ptr_readTmrErrorA|ptr_writeTmrErrorA;
+
+majorityVoter #(.WIDTH(((bits_ptr-1)>(0)) ? ((bits_ptr-1)-(0)+1) : ((0)-(bits_ptr-1)+1))) ptr_writeVoterB (
+    .inA(ptr_writeA),
+    .inB(ptr_writeB),
+    .inC(ptr_writeC),
+    .out(ptr_writeVotedB),
+    .tmrErr(ptr_writeTmrErrorB)
+    );
+
+majorityVoter #(.WIDTH(((bits_ptr-1)>(0)) ? ((bits_ptr-1)-(0)+1) : ((0)-(bits_ptr-1)+1))) ptr_readVoterB (
+    .inA(ptr_readA),
+    .inB(ptr_readB),
+    .inC(ptr_readC),
+    .out(ptr_readVotedB),
+    .tmrErr(ptr_readTmrErrorB)
+    );
+assign tmrErrorB =  ptr_readTmrErrorB|ptr_writeTmrErrorB;
+
+majorityVoter #(.WIDTH(((bits_ptr-1)>(0)) ? ((bits_ptr-1)-(0)+1) : ((0)-(bits_ptr-1)+1))) ptr_writeVoterC (
+    .inA(ptr_writeA),
+    .inB(ptr_writeB),
+    .inC(ptr_writeC),
+    .out(ptr_writeVotedC),
+    .tmrErr(ptr_writeTmrErrorC)
+    );
+
+majorityVoter #(.WIDTH(((bits_ptr-1)>(0)) ? ((bits_ptr-1)-(0)+1) : ((0)-(bits_ptr-1)+1))) ptr_readVoterC (
+    .inA(ptr_readA),
+    .inB(ptr_readB),
+    .inC(ptr_readC),
+    .out(ptr_readVotedC),
+    .tmrErr(ptr_readTmrErrorC)
+    );
+assign tmrErrorC =  ptr_readTmrErrorC|ptr_writeTmrErrorC;
 endmodule
 

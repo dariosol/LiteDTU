@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 25/06/2021 13:29:04                                                                    *
+ * date    : 07/07/2021 16:27:04                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 2_LDTU_iFIFO.v                                                                         *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-06-21 13:48:42.064899                                         *
- *           File Size         : 5979                                                               *
- *           MD5 hash          : a9804b0f51b49bae7fc31e594068dd44                                   *
+ *           Modification time : 2021-07-07 15:56:24.058896                                         *
+ *           File Size         : 6238                                                               *
+ *           MD5 hash          : 2c85ab1151036f853f54c8f7060d8399                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -70,6 +70,27 @@ wire DCLK_10A;
 wire [Nbits_12-1:0] SATURATION_valueC;
 wire [Nbits_12-1:0] SATURATION_valueB;
 wire [Nbits_12-1:0] SATURATION_valueA;
+wire tmrErrorC;
+wor wrL_ptrTmrErrorC;
+wor wrH_ptrTmrErrorC;
+wor rd_ptrTmrErrorC;
+wire [NBitsCnt-1:0] wrL_ptrVotedC;
+wire [NBitsCnt-1:0] wrH_ptrVotedC;
+wire [NBitsCnt-1:0] rd_ptrVotedC;
+wire tmrErrorB;
+wor wrL_ptrTmrErrorB;
+wor wrH_ptrTmrErrorB;
+wor rd_ptrTmrErrorB;
+wire [NBitsCnt-1:0] wrL_ptrVotedB;
+wire [NBitsCnt-1:0] wrH_ptrVotedB;
+wire [NBitsCnt-1:0] rd_ptrVotedB;
+wire tmrErrorA;
+wor wrL_ptrTmrErrorA;
+wor wrH_ptrTmrErrorA;
+wor rd_ptrTmrErrorA;
+wire [NBitsCnt-1:0] wrL_ptrVotedA;
+wire [NBitsCnt-1:0] rd_ptrVotedA;
+wire [NBitsCnt-1:0] wrH_ptrVotedA;
 wire tmrError;
 wor d2encTmrError;
 wor bsflagTmrError;
@@ -174,7 +195,7 @@ always @( negedge DCLK_10A )
     if (rst_bA==1'b0)
       wrH_ptrA <= 4'b0000;
     else
-      wrH_ptrA <= wrH_ptrA+4'b0001;
+      wrH_ptrA <= wrH_ptrVotedA+4'b0001;
   end
 
 always @( negedge DCLK_10B )
@@ -182,7 +203,7 @@ always @( negedge DCLK_10B )
     if (rst_bB==1'b0)
       wrH_ptrB <= 4'b0000;
     else
-      wrH_ptrB <= wrH_ptrB+4'b0001;
+      wrH_ptrB <= wrH_ptrVotedB+4'b0001;
   end
 
 always @( negedge DCLK_10C )
@@ -190,7 +211,7 @@ always @( negedge DCLK_10C )
     if (rst_bC==1'b0)
       wrH_ptrC <= 4'b0000;
     else
-      wrH_ptrC <= wrH_ptrC+4'b0001;
+      wrH_ptrC <= wrH_ptrVotedC+4'b0001;
   end
 
 always @( negedge DCLK_1A )
@@ -198,7 +219,7 @@ always @( negedge DCLK_1A )
     if (rst_bA==1'b0)
       wrL_ptrA <= 4'b0000;
     else
-      wrL_ptrA <= wrL_ptrA+4'b0001;
+      wrL_ptrA <= wrL_ptrVotedA+4'b0001;
   end
 
 always @( negedge DCLK_1B )
@@ -206,7 +227,7 @@ always @( negedge DCLK_1B )
     if (rst_bB==1'b0)
       wrL_ptrB <= 4'b0000;
     else
-      wrL_ptrB <= wrL_ptrB+4'b0001;
+      wrL_ptrB <= wrL_ptrVotedB+4'b0001;
   end
 
 always @( negedge DCLK_1C )
@@ -214,7 +235,7 @@ always @( negedge DCLK_1C )
     if (rst_bC==1'b0)
       wrL_ptrC <= 4'b0000;
     else
-      wrL_ptrC <= wrL_ptrC+4'b0001;
+      wrL_ptrC <= wrL_ptrVotedC+4'b0001;
   end
 
 always @( negedge DCLK_1A )
@@ -228,7 +249,7 @@ always @( negedge DCLK_1A )
       end
     else
       begin
-        FIFO_g1A[wrL_ptrA]  <= DATA_gain_01A;
+        FIFO_g1A[wrL_ptrVotedA]  <= DATA_gain_01A;
       end
   end
 
@@ -243,7 +264,7 @@ always @( negedge DCLK_1B )
       end
     else
       begin
-        FIFO_g1B[wrL_ptrB]  <= DATA_gain_01B;
+        FIFO_g1B[wrL_ptrVotedB]  <= DATA_gain_01B;
       end
   end
 
@@ -258,7 +279,7 @@ always @( negedge DCLK_1C )
       end
     else
       begin
-        FIFO_g1C[wrL_ptrC]  <= DATA_gain_01C;
+        FIFO_g1C[wrL_ptrVotedC]  <= DATA_gain_01C;
       end
   end
 
@@ -273,7 +294,7 @@ always @( negedge DCLK_10A )
       end
     else
       begin
-        FIFO_g10A[wrH_ptrA]  <= DATA_gain_10A;
+        FIFO_g10A[wrH_ptrVotedA]  <= DATA_gain_10A;
       end
   end
 
@@ -288,7 +309,7 @@ always @( negedge DCLK_10B )
       end
     else
       begin
-        FIFO_g10B[wrH_ptrB]  <= DATA_gain_10B;
+        FIFO_g10B[wrH_ptrVotedB]  <= DATA_gain_10B;
       end
   end
 
@@ -303,7 +324,7 @@ always @( negedge DCLK_10C )
       end
     else
       begin
-        FIFO_g10C[wrH_ptrC]  <= DATA_gain_10C;
+        FIFO_g10C[wrH_ptrVotedC]  <= DATA_gain_10C;
       end
   end
 
@@ -312,7 +333,7 @@ always @( posedge CLKA )
     if (rst_bA==1'b0)
       rd_ptrA <= 4'b0110;
     else
-      rd_ptrA <= rd_ptrA+4'b0001;
+      rd_ptrA <= rd_ptrVotedA+4'b0001;
   end
 
 always @( posedge CLKB )
@@ -320,7 +341,7 @@ always @( posedge CLKB )
     if (rst_bB==1'b0)
       rd_ptrB <= 4'b0110;
     else
-      rd_ptrB <= rd_ptrB+4'b0001;
+      rd_ptrB <= rd_ptrVotedB+4'b0001;
   end
 
 always @( posedge CLKC )
@@ -328,11 +349,11 @@ always @( posedge CLKC )
     if (rst_bC==1'b0)
       rd_ptrC <= 4'b0110;
     else
-      rd_ptrC <= rd_ptrC+4'b0001;
+      rd_ptrC <= rd_ptrVotedC+4'b0001;
   end
-assign ref_ptrA =  (GAIN_SEL_MODEA==2'b01) ? (rd_ptrA+RefSample2) : (rd_ptrA+RefSample);
-assign ref_ptrB =  (GAIN_SEL_MODEB==2'b01) ? (rd_ptrB+RefSample2) : (rd_ptrB+RefSample);
-assign ref_ptrC =  (GAIN_SEL_MODEC==2'b01) ? (rd_ptrC+RefSample2) : (rd_ptrC+RefSample);
+assign ref_ptrA =  (GAIN_SEL_MODEA==2'b01) ? (rd_ptrVotedA+RefSample2) : (rd_ptrVotedA+RefSample);
+assign ref_ptrB =  (GAIN_SEL_MODEB==2'b01) ? (rd_ptrVotedB+RefSample2) : (rd_ptrVotedB+RefSample);
+assign ref_ptrC =  (GAIN_SEL_MODEC==2'b01) ? (rd_ptrVotedC+RefSample2) : (rd_ptrVotedC+RefSample);
 assign FIFO_g10_refA =  FIFO_g10A[ref_ptrA] ;
 assign FIFO_g10_refB =  FIFO_g10B[ref_ptrB] ;
 assign FIFO_g10_refC =  FIFO_g10C[ref_ptrC] ;
@@ -432,12 +453,12 @@ always @( posedge CLKC )
           gain_sel2C <= 16'b0;
       end
   end
-assign dout_g1A =  FIFO_g1A[rd_ptrA] ;
-assign dout_g1B =  FIFO_g1B[rd_ptrB] ;
-assign dout_g1C =  FIFO_g1C[rd_ptrC] ;
-assign dout_g10A =  FIFO_g10A[rd_ptrA] ;
-assign dout_g10B =  FIFO_g10B[rd_ptrB] ;
-assign dout_g10C =  FIFO_g10C[rd_ptrC] ;
+assign dout_g1A =  FIFO_g1A[rd_ptrVotedA] ;
+assign dout_g1B =  FIFO_g1B[rd_ptrVotedB] ;
+assign dout_g1C =  FIFO_g1C[rd_ptrVotedC] ;
+assign dout_g10A =  FIFO_g10A[rd_ptrVotedA] ;
+assign dout_g10B =  FIFO_g10B[rd_ptrVotedB] ;
+assign dout_g10C =  FIFO_g10C[rd_ptrVotedC] ;
 wire decision1A;
 wire decision2A;
 wire decision1B;
@@ -487,6 +508,81 @@ majorityVoter #(.WIDTH(((Nbits_12)>(0)) ? ((Nbits_12)-(0)+1) : ((0)-(Nbits_12)+1
     .tmrErr(d2encTmrError)
     );
 assign tmrError =  bsflagTmrError|d2encTmrError;
+
+majorityVoter #(.WIDTH(((NBitsCnt-1)>(0)) ? ((NBitsCnt-1)-(0)+1) : ((0)-(NBitsCnt-1)+1))) wrH_ptrVoterA (
+    .inA(wrH_ptrA),
+    .inB(wrH_ptrB),
+    .inC(wrH_ptrC),
+    .out(wrH_ptrVotedA),
+    .tmrErr(wrH_ptrTmrErrorA)
+    );
+
+majorityVoter #(.WIDTH(((NBitsCnt-1)>(0)) ? ((NBitsCnt-1)-(0)+1) : ((0)-(NBitsCnt-1)+1))) rd_ptrVoterA (
+    .inA(rd_ptrA),
+    .inB(rd_ptrB),
+    .inC(rd_ptrC),
+    .out(rd_ptrVotedA),
+    .tmrErr(rd_ptrTmrErrorA)
+    );
+
+majorityVoter #(.WIDTH(((NBitsCnt-1)>(0)) ? ((NBitsCnt-1)-(0)+1) : ((0)-(NBitsCnt-1)+1))) wrL_ptrVoterA (
+    .inA(wrL_ptrA),
+    .inB(wrL_ptrB),
+    .inC(wrL_ptrC),
+    .out(wrL_ptrVotedA),
+    .tmrErr(wrL_ptrTmrErrorA)
+    );
+assign tmrErrorA =  rd_ptrTmrErrorA|wrH_ptrTmrErrorA|wrL_ptrTmrErrorA;
+
+majorityVoter #(.WIDTH(((NBitsCnt-1)>(0)) ? ((NBitsCnt-1)-(0)+1) : ((0)-(NBitsCnt-1)+1))) rd_ptrVoterB (
+    .inA(rd_ptrA),
+    .inB(rd_ptrB),
+    .inC(rd_ptrC),
+    .out(rd_ptrVotedB),
+    .tmrErr(rd_ptrTmrErrorB)
+    );
+
+majorityVoter #(.WIDTH(((NBitsCnt-1)>(0)) ? ((NBitsCnt-1)-(0)+1) : ((0)-(NBitsCnt-1)+1))) wrH_ptrVoterB (
+    .inA(wrH_ptrA),
+    .inB(wrH_ptrB),
+    .inC(wrH_ptrC),
+    .out(wrH_ptrVotedB),
+    .tmrErr(wrH_ptrTmrErrorB)
+    );
+
+majorityVoter #(.WIDTH(((NBitsCnt-1)>(0)) ? ((NBitsCnt-1)-(0)+1) : ((0)-(NBitsCnt-1)+1))) wrL_ptrVoterB (
+    .inA(wrL_ptrA),
+    .inB(wrL_ptrB),
+    .inC(wrL_ptrC),
+    .out(wrL_ptrVotedB),
+    .tmrErr(wrL_ptrTmrErrorB)
+    );
+assign tmrErrorB =  rd_ptrTmrErrorB|wrH_ptrTmrErrorB|wrL_ptrTmrErrorB;
+
+majorityVoter #(.WIDTH(((NBitsCnt-1)>(0)) ? ((NBitsCnt-1)-(0)+1) : ((0)-(NBitsCnt-1)+1))) rd_ptrVoterC (
+    .inA(rd_ptrA),
+    .inB(rd_ptrB),
+    .inC(rd_ptrC),
+    .out(rd_ptrVotedC),
+    .tmrErr(rd_ptrTmrErrorC)
+    );
+
+majorityVoter #(.WIDTH(((NBitsCnt-1)>(0)) ? ((NBitsCnt-1)-(0)+1) : ((0)-(NBitsCnt-1)+1))) wrH_ptrVoterC (
+    .inA(wrH_ptrA),
+    .inB(wrH_ptrB),
+    .inC(wrH_ptrC),
+    .out(wrH_ptrVotedC),
+    .tmrErr(wrH_ptrTmrErrorC)
+    );
+
+majorityVoter #(.WIDTH(((NBitsCnt-1)>(0)) ? ((NBitsCnt-1)-(0)+1) : ((0)-(NBitsCnt-1)+1))) wrL_ptrVoterC (
+    .inA(wrL_ptrA),
+    .inB(wrL_ptrB),
+    .inC(wrL_ptrC),
+    .out(wrL_ptrVotedC),
+    .tmrErr(wrL_ptrTmrErrorC)
+    );
+assign tmrErrorC =  rd_ptrTmrErrorC|wrH_ptrTmrErrorC|wrL_ptrTmrErrorC;
 
 fanout #(.WIDTH(((Nbits_12-1)>(0)) ? ((Nbits_12-1)-(0)+1) : ((0)-(Nbits_12-1)+1))) SATURATION_valueFanout (
     .in(SATURATION_value),

@@ -152,7 +152,7 @@ module fulltest;
 
    
    /////////////1st module///////////////////////
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/d_ERan2000DistanceRan1000_g10_new.dat"),
 		.ck_period(ck_period)
 		) FR10  (
 			 .clk(DCLK_10),
@@ -162,7 +162,7 @@ module fulltest;
 			 .REJECTED(REJECTED_g10)
 			 );
 
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/d_ERan2000DistanceRan1000_g01_new.dat"),
 		.ck_period(ck_period)
 		) FR01  (
 			 .clk(DCLK_1),
@@ -174,7 +174,7 @@ module fulltest;
    
 
    /////////////2nd module///////////////////////
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g10_less.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/d_ERan2000DistanceRan1000_g10_new.dat"),
 		.ck_period(ck_period)
 		) FR10_2  (
 			   .clk(DCLK_10_2),
@@ -184,7 +184,7 @@ module fulltest;
 			   .REJECTED(REJECTED_g10_2)
 			   );
 
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/Ene2000GeV_DT_120bx_g01_less.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/d_ERan2000DistanceRan1000_g01_new.dat"),
 		.ck_period(ck_period)
 		) FR01_2  (
 			   .clk(DCLK_1_2),
@@ -658,46 +658,46 @@ module fulltest;
       RST_A_2_b   = 1'b1;
       RST_B_2_b   = 1'b1;
       RST_C_2_b   = 1'b1;
-      
-      // DTU reset
-      
-      isr_in_2 = 1;
-      // Start
-      isr_load_2 = 1'b1;
-      
-      #ck_period;
-      
-      isr_load_2 = 1'b0;
-      
-      #(7*ck_period);
-      
-      isr_in_2 = 2;
-      // DTU reset
-      isr_load_2= 1'b1;
-      
-      #ck_period;
-      
-      isr_load_2 = 1'b0;
-      
-      #(7*ck_period);
-      
-      isr_in_2 = 6;
-      // Normal mode
-      isr_load_2 = 1'b1;
-      
-      #ck_period;
-      
-      isr_load_2 = 1'b0;
-      
-      #(7*ck_period);
-      
-      isr_in_2 = 0;
-      // Stop
-      isr_load_2 = 1'b1;
-      
-      #ck_period;
-      
-      isr_load_2 = 1'b0;
+//      
+//      // DTU reset
+//      
+//      isr_in_2 = 1;
+//      // Start
+//      isr_load_2 = 1'b1;
+//      
+//      #ck_period;
+//      
+//      isr_load_2 = 1'b0;
+//      
+//      #(7*ck_period);
+//      
+//      isr_in_2 = 2;
+//      // DTU reset
+//      isr_load_2= 1'b1;
+//      
+//      #ck_period;
+//      
+//      isr_load_2 = 1'b0;
+//      
+//      #(7*ck_period);
+//      
+//      isr_in_2 = 6;
+//      // Normal mode
+//      isr_load_2 = 1'b1;
+//      
+//      #ck_period;
+//      
+//      isr_load_2 = 1'b0;
+//      
+//      #(7*ck_period);
+//      
+//      isr_in_2 = 0;
+//      // Stop
+//      isr_load_2 = 1'b1;
+//      
+//      #ck_period;
+//      
+//      isr_load_2 = 1'b0;
 
 
       

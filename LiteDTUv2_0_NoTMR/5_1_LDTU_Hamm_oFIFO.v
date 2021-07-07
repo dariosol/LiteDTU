@@ -54,6 +54,11 @@ input 		      CLK;
 
    reg [bits_ptr-1:0] 	      ptr_write;
    reg [bits_ptr-1:0] 	      ptr_read;
+   wire [bits_ptr-1:0] 	      ptr_writeVoted = ptr_write;
+   wire [bits_ptr-1:0] 	      ptr_readVoted = ptr_read;
+
+   
+   
    reg [Nbits_ham-1:0] 	      memory [ FifoDepth_buff-1 : 0 ] ;
    wire 		      tmrError = 1'b0;
    assign SeuError = tmrError;
@@ -61,8 +66,8 @@ input 		      CLK;
 
    
 
-   assign r_empty_signal = (ptr_read == ptr_write);
-   assign r_full_signal = ((ptr_read == ptr_write + 4'b1)||((ptr_read == 4'b0)&&(ptr_write == (4'b1111))));
+   assign r_empty_signal = (ptr_readVoted == ptr_writeVoted);
+   assign r_full_signal = ((ptr_readVoted == ptr_writeVoted + 4'b1)||((ptr_readVoted == 4'b0)&&(ptr_writeVoted == (4'b1111))));
 
    
    
@@ -70,9 +75,9 @@ input 		      CLK;
       if (rst_b==1'b0) ptr_write <= 4'b0;
       else begin
 	 if (start_write ==1'b1) begin
-	    if (r_full_signal ==1'b0) ptr_write <= ptr_write +4'b1;
-	    else ptr_write <= ptr_write;
-	 end else ptr_write <= ptr_write;
+	    if (r_full_signal ==1'b0) ptr_write <= ptr_writeVoted +4'b1;
+	    else ptr_write <= ptr_writeVoted;
+	 end else ptr_write <= ptr_writeVoted;
       end
    end
 
@@ -83,14 +88,14 @@ input 		      CLK;
       end else begin
 	 if (read_signal ==1'b1) begin
 	    if (r_empty_signal ==1'b0) begin
-	       ptr_read <= ptr_read + 4'b1;
+	       ptr_read <= ptr_readVoted + 4'b1;
 	       r_decode_signal <= 1'b1;
 	    end else begin
-	       ptr_read <= ptr_read;
+	       ptr_read <= ptr_readVoted;
 	       r_decode_signal <= 1'b0;
 	    end
 	 end else begin
-	    ptr_read <= ptr_read;
+	    ptr_read <= ptr_readVoted;
 	    r_decode_signal <= 1'b0;
 	 end
       end
@@ -98,16 +103,16 @@ input 		      CLK;
 
    always @( posedge CLK ) begin
       if (rst_b==1'b0)
-	memory[ptr_write]	<= 38'b0;
+	memory[ptr_writeVoted]	<= 38'b0;
       else begin
 	 if (start_write==1'b1) begin
-	    if (r_full_signal==1'b0) memory[ptr_write] <= data_input;
+	    if (r_full_signal==1'b0) memory[ptr_writeVoted] <= data_input;
 	 end
       end
    end
    always @( posedge CLK ) begin
       if (rst_b==1'b0) data_output = 38'b01000000000000000000000000000000;
-      else data_output = memory[ptr_read] ;
+      else data_output = memory[ptr_readVoted] ;
    end
 
    assign empty_signal = r_empty_signal;

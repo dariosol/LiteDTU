@@ -80,6 +80,13 @@ module LDTU_iFIFO(
    reg [NBitsCnt-1:0] 	wrH_ptr;	// Write pointer for gain 10
    reg [NBitsCnt-1:0] 	wrL_ptr;	// Write pointer for gain 1
 
+   wire [NBitsCnt-1:0] 	wrH_ptrVoted = wrH_ptr;	// Write pointer for gain 10
+   wire [NBitsCnt-1:0] 	wrL_ptrVoted = wrL_ptr;	// Write pointer for gain 1
+
+
+   
+
+   
  
    reg [Nbits_12-1:0] 	SATval;
  
@@ -87,6 +94,8 @@ module LDTU_iFIFO(
    reg [Nbits_12-1:0] 	FIFO_g10 [LookAheadDepth-1:0];
  
    reg [NBitsCnt-1:0] 	rd_ptr;
+   wire [NBitsCnt-1:0] 	rd_ptrVoted = rd_ptr;
+   
  
    wire [NBitsCnt-1:0] 	ref_ptr;
    wire [Nbits_12-1:0] 	FIFO_g10_ref;
@@ -118,12 +127,12 @@ module LDTU_iFIFO(
    // WRITE POINTERS : @(posedge DCLK)
    always @(negedge DCLK_10) begin
       if (rst_b == 1'b0) wrH_ptr <= 4'b0000;
-      else wrH_ptr <= wrH_ptr+4'b0001;
+      else wrH_ptr <= wrH_ptrVoted+4'b0001;
    end
 
    always @(negedge DCLK_1) begin
       if (rst_b == 1'b0) wrL_ptr <= 4'b0000;
-      else wrL_ptr <= wrL_ptr+4'b0001;
+      else wrL_ptr <= wrL_ptrVoted+4'b0001;
    end
  
    // WRITING in FIFO GAIN 1
@@ -134,7 +143,7 @@ module LDTU_iFIFO(
 	    FIFO_g1[iL] <= 12'b0;
 	 end
       end else begin
-	 FIFO_g1[wrL_ptr] <= DATA_gain_01;
+	 FIFO_g1[wrL_ptrVoted] <= DATA_gain_01;
       end
    end
 
@@ -147,7 +156,7 @@ module LDTU_iFIFO(
 	    FIFO_g10[iH] <= 12'b0;
 	 end
       end else begin
-	 FIFO_g10[wrH_ptr] <= DATA_gain_10;
+	 FIFO_g10[wrH_ptrVoted] <= DATA_gain_10;
       end
    end
  
@@ -156,12 +165,12 @@ module LDTU_iFIFO(
 
    always @(posedge CLK) begin
       if (rst_b == 1'b0) rd_ptr <= 4'b0110;
-      else rd_ptr <= rd_ptr+4'b0001;
+      else rd_ptr <= rd_ptrVoted+4'b0001;
    end
  
  
    // REF POINTERS : @(posedge CLK)
-   assign ref_ptr = (GAIN_SEL_MODE == 2'b01) ? (rd_ptr + RefSample2) : (rd_ptr + RefSample);
+   assign ref_ptr = (GAIN_SEL_MODE == 2'b01) ? (rd_ptrVoted + RefSample2) : (rd_ptrVoted + RefSample);
    assign FIFO_g10_ref = FIFO_g10[ref_ptr];
    assign ref_sat = (GAIN_SEL_MODE == 2'b11) ? 1'b1 : (GAIN_SEL_MODE == 2'b10) ? 1'b0 : (FIFO_g10_ref >= SATval) ? 1'b1 : 1'b0;
  
@@ -186,8 +195,8 @@ module LDTU_iFIFO(
       end
    end
    
-   assign dout_g1 = FIFO_g1[rd_ptr];
-   assign dout_g10 = FIFO_g10[rd_ptr];
+   assign dout_g1 = FIFO_g1[rd_ptrVoted];
+   assign dout_g10 = FIFO_g10[rd_ptrVoted];
  
    wire decision1, decision2;
    assign decision1 = (gain_sel == 8'b0) ? 1'b1 : 1'b0;
