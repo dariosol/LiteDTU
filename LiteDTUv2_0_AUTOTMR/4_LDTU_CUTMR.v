@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 07/07/2021 16:27:04                                                                    *
+ * date    : 12/07/2021 12:08:10                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,13 +15,13 @@
  *                                                                                                  *
  * src file: 4_LDTU_CU.v                                                                            *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-08 14:42:28.504065                                         *
+ *           Modification time : 2021-07-12 12:03:31.503268                                         *
  *           File Size         : 7590                                                               *
- *           MD5 hash          : db5474da4f469177969c7b6d2ddee872                                   *
+ *           MD5 hash          : 3cad83f34a20ca00906e02d42487ac0d                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
-`timescale  1ps/1ps
+`timescale  1ns/1ps
 
 module LDTU_CUTMR(
   CLKA,

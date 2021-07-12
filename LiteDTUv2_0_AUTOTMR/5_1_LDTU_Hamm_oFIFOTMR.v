@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 07/07/2021 16:27:05                                                                    *
+ * date    : 12/07/2021 12:08:10                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,13 +15,13 @@
  *                                                                                                  *
  * src file: 5_1_LDTU_Hamm_oFIFO.v                                                                  *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-07-07 16:26:53.460029                                         *
+ *           Modification time : 2021-07-12 12:03:31.503268                                         *
  *           File Size         : 3323                                                               *
- *           MD5 hash          : 7e31122b475d533e6d520a6a8bbfe599                                   *
+ *           MD5 hash          : 45275c33c6641fd23e3103796e074604                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
-`timescale       1ps/1ps
+`timescale       1ns/1ps
 
 module LDTU_oFIFOTMR(
   CLKA,

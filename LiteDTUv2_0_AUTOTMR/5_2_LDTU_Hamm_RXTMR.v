@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 07/07/2021 16:27:05                                                                    *
+ * date    : 12/07/2021 12:08:10                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,13 +15,13 @@
  *                                                                                                  *
  * src file: 5_2_LDTU_Hamm_RX.v                                                                     *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-08 12:01:27.601214                                         *
+ *           Modification time : 2021-07-12 12:03:31.503268                                         *
  *           File Size         : 4553                                                               *
- *           MD5 hash          : 58bc258fae1f2cc3b69d1208663dda2f                                   *
+ *           MD5 hash          : 8d81d551581193ce4aec15dc610104dd                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
-`timescale   1ps/1ps
+`timescale   1ns/1ps
 
 module Hamm_RX(
   CLK,

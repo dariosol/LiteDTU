@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 07/07/2021 16:27:04                                                                    *
+ * date    : 12/07/2021 12:08:09                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,13 +15,13 @@
  *                                                                                                  *
  * src file: 2_LDTU_iFIFO.v                                                                         *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-07-07 15:56:24.058896                                         *
+ *           Modification time : 2021-07-12 12:03:31.503268                                         *
  *           File Size         : 6238                                                               *
- *           MD5 hash          : 2c85ab1151036f853f54c8f7060d8399                                   *
+ *           MD5 hash          : 110e06ddc98982288932a9a8bc8e9406                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
-`timescale    1ps/1ps
+`timescale    1ns/1ps
 
 module LDTU_iFIFOTMR(
   DCLK_1,

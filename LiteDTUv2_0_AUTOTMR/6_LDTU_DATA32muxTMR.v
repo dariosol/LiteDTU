@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 07/07/2021 16:27:05                                                                    *
+ * date    : 12/07/2021 12:08:10                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,13 +15,13 @@
  *                                                                                                  *
  * src file: 6_LDTU_DATA32mux.v                                                                     *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-04-06 14:05:37.038385                                         *
+ *           Modification time : 2021-07-12 12:03:31.503268                                         *
  *           File Size         : 2590                                                               *
- *           MD5 hash          : b3266c92078524c1ab2a8f2f33ea5ac8                                   *
+ *           MD5 hash          : 9b5be774245d9312cd8a13b4eef258d6                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
-`timescale     1ps/1ps
+`timescale     1ns/1ps
 
 module LDTU_DATA32_ATU_DTUTMR(
   CLKA,

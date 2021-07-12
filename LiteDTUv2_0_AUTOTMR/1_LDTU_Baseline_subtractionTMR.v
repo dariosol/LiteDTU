@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 07/07/2021 16:27:04                                                                    *
+ * date    : 12/07/2021 12:08:09                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,13 +15,13 @@
  *                                                                                                  *
  * src file: 1_LDTU_Baseline_subtraction.v                                                          *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-06-21 13:51:43.385912                                         *
+ *           Modification time : 2021-07-12 12:03:31.503268                                         *
  *           File Size         : 2982                                                               *
- *           MD5 hash          : 42b0bde899bf47a0352e9c8a5734b199                                   *
+ *           MD5 hash          : 7fc74b136cd933f88d041a9299c3d902                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
-`timescale    1ps/1ps
+`timescale    1ns/1ps
 module LDTU_BSTMR(
   DCLK_1,
   DCLK_10,

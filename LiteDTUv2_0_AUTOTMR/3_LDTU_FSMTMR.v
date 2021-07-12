@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 07/07/2021 16:27:04                                                                    *
+ * date    : 12/07/2021 12:08:09                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,13 +15,13 @@
  *                                                                                                  *
  * src file: 3_LDTU_FSM.v                                                                           *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-03-25 10:52:48.222507                                         *
+ *           Modification time : 2021-07-12 12:03:31.503268                                         *
  *           File Size         : 8728                                                               *
- *           MD5 hash          : 919eeeb485a2bc315868462cafdb66e1                                   *
+ *           MD5 hash          : bc7619fc7d6613250c7798c1c61f3ae3                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
-`timescale       1ps/1ps
+`timescale       1ns/1ps
 
 module LDTU_FSMTMR(
   CLKA,

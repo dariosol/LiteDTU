@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 07/07/2021 16:27:04                                                                    *
+ * date    : 12/07/2021 12:08:09                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,13 +15,13 @@
  *                                                                                                  *
  * src file: 3_LDTU_Encoder.v                                                                       *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-06-25 13:28:51.467922                                         *
+ *           Modification time : 2021-07-12 12:03:31.503268                                         *
  *           File Size         : 11840                                                              *
- *           MD5 hash          : e0706be39938bbcf9e6d1f9189e39b5a                                   *
+ *           MD5 hash          : 433ad72fed1a09cdc83849a569763b27                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
-`timescale       1ps/1ps
+`timescale       1ns/1ps
 
 module Delay_enc(
   clk,
