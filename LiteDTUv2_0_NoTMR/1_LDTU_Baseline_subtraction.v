@@ -21,7 +21,7 @@
 //   21.06.21   ADC clock on the negative edge
 // *************************************************************************************************
 
-`timescale   1ps/1ps
+`timescale   1ns/1ps
 
 module LDTU_BS(
 	DCLK_1,

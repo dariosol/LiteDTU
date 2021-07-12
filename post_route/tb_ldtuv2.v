@@ -9,7 +9,6 @@ module tb_ldtu;
    parameter period_128 = 780;
    parameter delay = 200; 	// in ps
    parameter seed = 10;
-   parameter endofcalbusy = 1000000000; 	// in ps
    // power supply and voltage references:
    wire VDDA;
    wire VDDAL;
@@ -181,10 +180,10 @@ module tb_ldtu;
    initial begin
       $display("POST ROUTING TESTBENCH");
       
-      test = 1'b1;
+      test = 1'b0;
       $display("testmode? %d",test);
       
-      GAIN_SEL_MODE = 2'b00;
+      GAIN_SEL_MODE = 2'b10;
 
       if (test == 1'b1) begin
 	 write_file_SER = $fopen("/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/post_route/sim_results/2021_06_17_fullASIC_ATM.dat","w");
@@ -369,27 +368,30 @@ module tb_ldtu;
       // VINP
       VINHp = 1'b1;
       VINLp = 1'b1;
+
       // VINN
       VINHm = 1'b1;
       VINLm = 1'b1;
+
       // AVDDREF_STG1
       r_VDDref1H = 1'b1;  
       r_VDDref1L = 1'b1;
+
       // AVDDREF_STG2
       r_VDDref2H = 1'b1;
       r_VDDref2L = 1'b1;
+
       // AVDD
       r_VDDA = 1'b1;
-      // AVSS VSS_SUB
-      r_VSSA = 1'b0;
-      // DVDD 
+      // VDDD
       r_VDDD = 1'b1;
+      
+      // AVSS VSS_SUB
+      r_VSSA = 1'b0;      
+      
       // DVSS 
       r_VSSD = 1'b0; 
-      //CAL_A = 1'b1;
-      //CAL_B = 1'b1;
-      //CAL_C = 1'b1;
-
+   
       ////////////////////////////////////
       // PLL Activation Values
       ///////////////////////////////////
@@ -428,7 +430,7 @@ module tb_ldtu;
       // | 0x9|0x4C|0 1 0 0 1 1 0 0| ADC H calibration   |
       // | 0xA|0x52|0 1 0 1 0 0 1 0| ADC L reset         |
       // | 0xB|0x55|0 1 0 1 0 1 0 1| ADC L calibration   |
-      // | 0xC|0x61|0 1 1 0 0 0 0 1| PLL lock sequence   |
+      // | 0xC|0x61|0 1 1 0 0 0 0 1| RESERVED            |
       // | 0xD|0x66|0 1 1 0 0 1 1 0| CATIA test pulse    |
       // | 0xE|0x78|0 1 1 1 1 0 0 0| BC0 marker          | <-
       // | 0xF|0x7F|0 1 1 1 1 1 1 1| RESERVED            |
@@ -440,20 +442,20 @@ module tb_ldtu;
       $display("I2C operations:");
       
       // I2C 0
-      isr_in = 4'h0;//8'h00;
+      isr_in = 4'h0;
       isr_load = 1'b1;
       #period;
       isr_load = 1'b0;
       #(7*period);
       // I2C Start
       $display("I2C start");
-      isr_in = 4'h1;//8'h01;
+      isr_in = 4'h1;
       isr_load = 1'b1;
       #period;
       isr_load = 1'b0;
       #(7*period);
       // I2C reset
-      isr_in = 4'h3;//8'h03;
+      isr_in = 4'h3;
       $display("I2C reset");
       isr_load = 1'b1;
       #period;
@@ -461,42 +463,42 @@ module tb_ldtu;
       #(7*period);
       //DTU Reset
       $display("DTU reset");
-      isr_in = 4'h2;//8'h02;
+      isr_in = 4'h2;
       isr_load = 1'b1;
       #period;
       isr_load = 1'b0;
       #(7*period);
       // ADC Test Unit Reset
       $display("TU reset");
-      isr_in = 4'h4;//8'h04;
+      isr_in = 4'h4;
       isr_load = 1'b1;
       #period;
       isr_load = 1'b0;
       #(7*period);
       // ADC L Reset
       $display("ADCL reset");
-      isr_in = 4'hA;//8'h0A;
+      isr_in = 4'hA;
       isr_load = 1'b1;
       #period;
       isr_load = 1'b0;
       #(7*period);
       // ADC H Reset
       $display("ADCH reset");
-      isr_in = 4'h8;//8'h08;
+      isr_in = 4'h8;
       isr_load = 1'b1;
       #period;
       isr_load = 1'b0;
       #(7*period);
       //  ADC L Calibration
       $display("ADCL calibration");
-      isr_in = 4'hB;//8'h0B;
+      isr_in = 4'hB;
       isr_load = 1'b1;
       #period;
       isr_load = 1'b0;
       #(7*period);
       //  ADC H Calibration
       $display("ADCH calibration");
-      isr_in = 4'h9;//8'h09;
+      isr_in = 4'h9;
       isr_load = 1'b1;
       #period;
       isr_load = 1'b0;
@@ -504,7 +506,7 @@ module tb_ldtu;
       
       //Normal Mode
       $display("Normal Mode set");
-      isr_in = 4'h6;//8'h09;
+      isr_in = 4'h6;
       isr_load = 1'b1;
       #period;
       isr_load = 1'b0;
@@ -519,13 +521,7 @@ module tb_ldtu;
       //#(7*period);
       //
       //
-      ////Normal Mode
-      //$display("Normal Mode set");
-      //isr_in = 4'h6;//8'h09;
-      //isr_load = 1'b1;
-      //#period;
-      //isr_load = 1'b0;
-      //#(7*period);
+
       
       // Other I2C configurations
 
@@ -536,33 +532,39 @@ module tb_ldtu;
       scl_int = 1'b0;
       
       $display("SET ALL REGSTERS");
-      for (i=0; i<(19); i=i+1) begin
+      for (i=0; i<(28); i=i+1) begin
+
 	 $display("set reg %d\n",i);
 	 
 	 case (i)
 	   0 : sr_pin = 8'b11111100;	// Address 0eh, write
 	   1 : sr_pin = 8'b00000000;	// Start from Reg_0
-	   2 : sr_pin = 8'b00011111;	// Reg_0: ND,ND,RxEnAdcClk,TxEnPLL,TxEnDrv3,TxEnDrv2,TxEnDrv1,TxEnDrv0
-	   3 : sr_pin = {GAIN_SEL_MODE[0],GAIN_SEL_MODE[1],6'b000011};
-	   // Reg_1: ADC_SEL,SYSCAL,ExtCalEn,ClkInv,ExtClk,DF,OM_H,OM_L
-	   4 : sr_pin = 8'b00000111;	// Register 2
-	   5 : sr_pin = 8'b00100000;	// Register 3
+	   2 : sr_pin = 8'b10011111;	// Reg_0: ND,ND,RxEnAdcClk,TxEnPLL,TxEnDrv3,TxEnDrv2,TxEnDrv1,TxEnDrv0
+	   3 : sr_pin = {GAIN_SEL_MODE[0],GAIN_SEL_MODE[1],6'b000011};//7-6:gain_sel_mode,5:half_sampling_rate 4: adc_clk_inversion 3: extADCclk 2:adc_data_format 1-0:OM_H-OM_L
+	   4 : sr_pin = 8'b00000111;	// Register 2: 7-3: invert data; 2-0: driver strength
+	   5 : sr_pin = 8'b00100000;	// Register 3: PreEmphasis: 7-6: mode, 5-3: width, 2-0:current
 	   6 : sr_pin = 8'b00000000;	// Register 4
-	   7 : sr_pin = 8'b00000000;	// Reg_5: BaselineH
-	   8 : sr_pin = 8'b00000000;	// Reg_6: BaselineL
-	   9 : sr_pin = 8'b10001000;	// Register 7
-	   10 : sr_pin = 8'b01000000;	// Register 8
-	   11 : sr_pin = 8'b00111100;	// Register 9
-	   12 : sr_pin = 8'b01010101;	// Register 10
-	   13 : sr_pin = 8'b00000000;	// Register 11
-	   14 : sr_pin = 8'b00000000;	// Register 12
-	   15 : sr_pin = 8'b00000000;	// Register 13
-	   16 : sr_pin = 8'b00000100;	// Register 14
-	   17 : sr_pin = 8'b01100110;	// Register 15
+	   7 : sr_pin = 8'b00000000;	// Register 5: BaselineH
+	   8 : sr_pin = 8'b00000000;	// Register 6: BaselineL
+	   9 : sr_pin = 8'b11111111;	// Register 7: Saturation Value LSB
+	   10 : sr_pin = 8'b00001111;	// Register 8: 7-6:ADC div4, ADCdiv2. 5-4: not used. 3-0: Saturation Value MSB
+	   11 : sr_pin = 8'b00000000;	// Register 9 read only
+	   12 : sr_pin = 8'b00000000;	// Register 10 read only
+	   13 : sr_pin = 8'b10001000;	// Register 11-----------------
+	   14 : sr_pin = 8'b01000100;	// Register 12
+	   15 : sr_pin = 8'b01010101;	// Register 13
+	   16 : sr_pin = 8'b01010101;	// Register 14  PLL Registers
+	   17 : sr_pin = 8'b00000000;	// Register 15
 	   18 : sr_pin = 8'b00111100;	// Register 16
-	   19 : sr_pin = 8'b11111111;	// Reg_17: SATURATION_VALUE
-	   20 : sr_pin = 8'b11111111;	// Reg_18: SATURATION_VALUE
-	   21 : sr_pin = 8'b00000000;	// Register 19 -- not written (it is read only)
+	   19 : sr_pin = 8'b00110010;	// Regoster 17
+	   20 : sr_pin = 8'b00000000;	// Register 18 
+	   21 : sr_pin = 8'b00001100;	// Register 19-----------------
+	   22 : sr_pin = 8'b00000000;	// Register 20
+	   23 : sr_pin = 8'b00001100;	// Register 21---------------
+	   24 : sr_pin = 8'b11001100;	// Register 22 Synch Pattern
+	   25 : sr_pin = 8'b11001100;	// Register 23
+	   26 : sr_pin = 8'b11001110;	// Register 24--------------
+	   27 : sr_pin = 8'b00011111;	// Register 25 Test pulse duration
 	 endcase // case(i)
 	 sr_pload = 1'b1;
 	 #ck_period_I2C;
@@ -598,16 +600,16 @@ module tb_ldtu;
       ////////////////////////////
 
       ///////////////////////////
-      if (ATM == 1'b1) begin
-	 $fclose(write_file_SER);
-	 $fclose(write_file_outputH);
-	 $fclose(write_file_outputL);
-      end else begin
-	 $fclose(write_file_SER);
-	 $fclose(write_file_output);
-      end
-      $fclose(write_file_g01);
-      $fclose(write_file_g10); 
+//      if (ATM == 1'b1) begin
+//	 $fclose(write_file_SER);
+//	 $fclose(write_file_outputH);
+//	 $fclose(write_file_outputL);
+//      end else begin
+//	 $fclose(write_file_SER);
+//	 $fclose(write_file_output);
+//      end
+//      $fclose(write_file_g01);
+//      $fclose(write_file_g10); 
       //      $finish;
    end
 
@@ -625,73 +627,46 @@ module tb_ldtu;
    
    reg [31:0] counter=32'h00000000;
    
-   always @(posedge CLKINm) begin //AdcClkInp) begin
+   always @(posedge CLKINp) begin //AdcClkInp) begin
       if (rst_b == 1'b1) begin
-	 counter = counter + 1'b1;
-	 
-      end 
+	 counter = counter + 1'b1;	 
+      end
+     // else begin
+     //	 counter =32'h00000000;
+     // end      
    end
    
    reg resetdone =1'b0;
-   
-   always @(posedge CLKINp) begin //AdcClkInp) begin
-      if (counter ==32'h555) begin
+
+   //REDO THE RESET PROCEDURE
+   always @(posedge CLKINp) begin 
+      if (counter ==32'h735) begin
 	 if(resetdone==1'b0) begin
+	    
 	    $display("end counter");
-	    
-	    // I2C 0         
+	    // I2C 0
 	    isr_in = 4'h0;//8'h00;
 	    isr_load = 1'b1;
 	    #period;
 	    isr_load = 1'b0;
 	    #(7*period);
 	    // I2C Start
+	    $display("I2C start");
 	    isr_in = 4'h1;//8'h01;
 	    isr_load = 1'b1;
 	    #period;
 	    isr_load = 1'b0;
 	    #(7*period);
 	    // ADC Test Unit Reset
+	    $display("TU reset");
 	    isr_in = 4'h4;//8'h04;
 	    isr_load = 1'b1;
 	    #period;
 	    isr_load = 1'b0;
-	    #(7*period);
-////////////////////////////////////////////////////
-	    // I2C 0         
-	    isr_in = 4'h0;//8'h00;
-	    isr_load = 1'b1;
-	    #period;
-	    isr_load = 1'b0;
-	    #(7*period);
-	    // I2C Start
-	    isr_in = 4'h1;//8'h01;
-	    isr_load = 1'b1;
-	    #period;
-	    isr_load = 1'b0;
-	    #(7*period);
-	    // ADC Test Unit Reset
-	    isr_in = 4'h4;//8'h04;
-	    isr_load = 1'b1;
-	    #period;
-	    isr_load = 1'b0;
-	    #(7*period);
-	    
-	    ////////////////////////////////////
-	    // I2C 0         
-	    isr_in = 4'h0;//8'h00;
-	    isr_load = 1'b1;
-	    #period;
-	    isr_load = 1'b0;
-	    #(7*period);
-	    // I2C Start
-	    isr_in = 4'h1;//8'h01;
-	    isr_load = 1'b1;
-	    #period;
-	    isr_load = 1'b0;
-	    #(7*period);
-	    // ADC Test Unit Reset
-	    isr_in = 4'h4;//8'h04;
+	    #(7*period);      
+	    //Normal Mode
+	    $display("Normal Mode set");
+	    isr_in = 4'h6;//8'h09;
 	    isr_load = 1'b1;
 	    #period;
 	    isr_load = 1'b0;
@@ -725,7 +700,24 @@ module tb_ldtu;
    ////////////////////////////////////////////////////////
    ///Output Recording:
    // For the output serializers debug
-   always @ (posedge PllClkp) begin
+
+   reg [31:0] divider1000=16'h0000;
+   reg 	      PllClkpDivided =1'b1;
+   
+   always @(posedge PllClkp) begin 
+      if (rst_b == 1'b1) begin
+	 divider1000 = divider1000 + 1'b1;
+	 if(divider1000==16'h03e8) begin
+	    PllClkpDivided = ~PllClkpDivided;
+	    divider1000=16'h0000;
+	  end  
+      end else begin
+	 divider1000=16'h0000;
+      end 
+   end
+
+   
+   always @ (posedge PllClkp) begin	 
       //if (ATM == 1'b0) begin
       if (rst_b == 1'b0) begin					// IF reset
          index_ser0 = 31;
@@ -734,7 +726,8 @@ module tb_ldtu;
 	 check_pattern_1 = 8'b0;
 	 check_pattern_2 = 8'b0;
 	 check_pattern_3 = 8'b0;
-      end else begin						// END IF reset -> not reset
+      end else begin
+        if(resetdone==1'b1) begin						// END IF reset -> not reset
 	 if (ATM == 1'b1) pattern = pattern_idleATM;		// IF ATM
 	 else pattern = pattern_idleDTU_0;			// END IF ATM
 	 if (data_aligned == 1'b0) begin				// IF data not aligned
@@ -744,6 +737,7 @@ module tb_ldtu;
 	    check_pattern_3 = {check_pattern_3[6:0],DOUT3p};
 	    if (check_pattern_0 == pattern) begin	// IF pattern = data
 	       data_aligned = 1'b1;
+	       /*
 	       word_ser_0[31]=check_pattern_0[7];
 	       word_ser_0[30]=check_pattern_0[6];
 	       word_ser_0[29]=check_pattern_0[5];
@@ -755,6 +749,12 @@ module tb_ldtu;
 	       word_ser_1[31:27]={check_pattern_1};
 	       word_ser_2[31:27]={check_pattern_2};
 	       word_ser_3[31:27]={check_pattern_3};
+		*/
+	       word_ser_0[31:24]=check_pattern_0;
+	       word_ser_1[31:24]=check_pattern_1;
+	       word_ser_2[31:24]=check_pattern_2;
+	       word_ser_3[31:24]=check_pattern_3;
+
 	       index_ser0 = index_ser0 - 8;
 	    end							// END IF pattern = data
 	 end else begin						// END IF data not aligned -> now aligned
@@ -776,17 +776,20 @@ module tb_ldtu;
 	       index_ser0 = index_ser0 - 1;
 	    end							// END IF index != 0
 	 end							// END IF data now aligned
-      end								// END IF not reset
-      //end								// END ATM
-   end								// END always @ (posedge PllClkp)
+      end			
+    end
+//      end // if (PllClkpDivided==1'b1)
+      end
+								// END always @ (posedge PllClkp)
    reg [2:0] word_0_state;
    integer   frame_counter = 0;
    integer   SER_error = 0;
-   always @(negedge PllClkp) begin
+   always @(negedge PllClkp) begin 
       if (index_ser0 == 31) begin
+	 if(resetdone==1'b1) begin
 	 if (data_aligned == 1'b1) begin
-	    if (CalBusy == 1'b0) begin
-	       if (ATM == 1'b0) begin
+	     if (CalBusy == 1'b0) begin
+	        if (ATM == 1'b0) begin
 		  if (word_ser_0[31:30]== 2'b01) begin			//BASELINE
 		     word_0_state=3'b001;
 		     $fwrite(write_file_SER,"%g %h - BASELINE_5\n", $time/1000, word_ser_0);//, word_ser_1, word_ser_2, word_ser_3);
@@ -857,11 +860,16 @@ module tb_ldtu;
 		  $fwrite(write_file_outputL,"%g %h\n", $time/1000, word_ser_2[11:0]);
 		  $fwrite(write_file_outputL,"%g %h\n", $time/1000, word_ser_3[27:16]);
 		  $fwrite(write_file_outputL,"%g %h\n", $time/1000, word_ser_2[27:16]);
-	       end
-	    end
-	 end
-      end
-   end //END always
+	     end // else: !if(ATM == 1'b0)
+	     
+	  end // if (CalBusy == 1'b0)
+	     
+       end // if (resetdone==1'b1)
+	     
+     end // if (data_aligned == 1'b1 begin...
+   end // if (index_ser0 == 31)	     	     
+   end // always @ (negedge PllClkp)
+   
    //////////////////////////////////
    //////////INPUT RANDOM STIMULATION
    real rnd_val1, rnd_val2, rnd_val3;
@@ -898,8 +906,10 @@ module tb_ldtu;
       ADC_10 = (integer_10<0) ? 0 : (integer_10>4095) ? 4095 : integer_10;
       ADC_01 = (integer_01<0) ? 0 : (integer_01>4095) ? 4095 : integer_01;
       if (CalBusy == 1'b0) begin
+       if(resetdone==1'b1) begin
 	 $fwrite(write_file_g01,"%g %h\n", $time/1000, ADC_01);
 	 $fwrite(write_file_g10,"%g %h\n", $time/1000, ADC_10); 
+	  end   
       end
-   end
+    end
 endmodule // end tb_ldtu

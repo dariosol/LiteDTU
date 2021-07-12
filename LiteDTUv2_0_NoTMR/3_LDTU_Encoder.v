@@ -14,7 +14,7 @@
 //
 // *************************************************************************************************
 
-`timescale	 1ps/1ps
+`timescale	 1ns/1ps
 
 module Delay_enc (clk, reset, D, Dd);
    // tmrg do_not_touch
