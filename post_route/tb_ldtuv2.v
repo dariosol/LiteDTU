@@ -2,7 +2,7 @@
 // Testbench for CMS Ecal LiTE_DTUv1b assembled top
 // March 2020
 
-`timescale  1ns/1ps
+`timescale  1ps/1ps
 
 module tb_ldtu;
    parameter period = 6240;  // in ps
@@ -122,6 +122,7 @@ module tb_ldtu;
    integer    write_file_g01, write_file_g10, write_file_SER, write_file_output, write_file_outputH, write_file_outputL;
    integer    startrnd;
    reg 	      test;
+   reg        Orbit;
    //reg eof1, eof2, close_r01, close_r10, close_g01, close_g10, close_SER;
    
    LiTE_DTU_v2 top  (
@@ -183,7 +184,7 @@ module tb_ldtu;
       test = 1'b0;
       $display("testmode? %d",test);
       
-      GAIN_SEL_MODE = 2'b10;
+      GAIN_SEL_MODE = 2'b01;
 
       if (test == 1'b1) begin
 	 write_file_SER = $fopen("/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/post_route/sim_results/2021_06_17_fullASIC_ATM.dat","w");
@@ -512,16 +513,7 @@ module tb_ldtu;
       isr_load = 1'b0;
       #(7*period);
       
-      //Flush Mode
-      //$display("Flush Mode set");
-      //isr_in = 4'h7;//8'h09;
-      //isr_load = 1'b1;
-      //#period;
-      //isr_load = 1'b0;
-      //#(7*period);
-      //
-      //
-
+      
       
       // Other I2C configurations
 
@@ -663,7 +655,13 @@ module tb_ldtu;
 	    isr_load = 1'b1;
 	    #period;
 	    isr_load = 1'b0;
-	    #(7*period);      
+	    #(7*period); 
+	    $display("DTU reset");
+	    isr_in = 4'h2;
+	    isr_load = 1'b1;
+	    #period;
+	    isr_load = 1'b0;
+	    #(7*period);     
 	    //Normal Mode
 	    $display("Normal Mode set");
 	    isr_in = 4'h6;//8'h09;
@@ -672,6 +670,21 @@ module tb_ldtu;
 	    isr_load = 1'b0;
 	    #(7*period);
 	    resetdone=1'b1;
+	    //Flush Mode
+	    //$display("Flush Mode set");
+	    //isr_in = 4'h7;//8'h09;
+	    //isr_load = 1'b1;
+	    //#period;
+	    //isr_load = 1'b0;
+	    //#(7*period);
+	    //$display("Synch Mode set");
+	    //isr_in = 4'h5;//8'h09;
+	    //isr_load = 1'b1;
+	    //#period;
+	    //isr_load = 1'b0;
+	    //#(7*period);
+
+	    
 	 end
       end 
    end
@@ -697,6 +710,63 @@ module tb_ldtu;
    //      #(7*period);
    //   end
 
+   /////////////////////////////////////////////
+   ////////////////////////////////////////////
+   //Orbit signal generation
+   /////////////////////////////////////////////
+   ////////////////////////////////////////////
+   initial begin
+      Orbit = 1'b0;      
+      forever begin
+	 #(14240*period); //89us
+	 Orbit = 1'b1;
+	 #(4*period);
+	 Orbit = 1'b0;
+      end
+   end // initial begin
+   
+   ////ORBIT FROM SYNCH UNIT
+   always @(posedge CLKINp) begin
+      if(Orbit==1'b1) begin
+	 $display("Orbit seen");
+	 isr_in = 1;
+	 // Start
+	 isr_load = 1'b1;
+	 #period;
+	 isr_load = 1'b0;
+	 #(7*period);
+	 isr_in = 1;
+	 // Start
+	 isr_load = 1'b1;
+	 #period;
+	 isr_load = 1'b0;
+	 #(7*period)
+	 isr_in = 14;
+	 // BC0 marker
+	 isr_load = 1'b1;
+	 #period;
+	 isr_load = 1'b0;
+	 #(7*period);
+	 isr_in = 0;
+	 // Stop
+	 isr_load = 1'b1;
+	 #period;
+	 isr_load = 1'b0;
+	 
+      end // if (Orbit==1'b1)
+   end // always @ posedge(clk)
+
+
+
+
+
+
+
+
+
+
+
+   
    ////////////////////////////////////////////////////////
    ///Output Recording:
    // For the output serializers debug
@@ -718,7 +788,6 @@ module tb_ldtu;
 
    
    always @ (posedge PllClkp) begin	 
-      //if (ATM == 1'b0) begin
       if (rst_b == 1'b0) begin					// IF reset
          index_ser0 = 31;
 	 data_aligned = 1'b0;
@@ -778,15 +847,14 @@ module tb_ldtu;
 	 end							// END IF data now aligned
       end			
     end
-//      end // if (PllClkpDivided==1'b1)
-      end
+   end
 								// END always @ (posedge PllClkp)
    reg [2:0] word_0_state;
    integer   frame_counter = 0;
    integer   SER_error = 0;
-   always @(negedge PllClkp) begin 
+   always @(negedge PllClkp) begin
+      if(resetdone==1'b1) begin 
       if (index_ser0 == 31) begin
-	 if(resetdone==1'b1) begin
 	 if (data_aligned == 1'b1) begin
 	     if (CalBusy == 1'b0) begin
 	        if (ATM == 1'b0) begin
@@ -874,8 +942,10 @@ module tb_ldtu;
    //////////INPUT RANDOM STIMULATION
    real rnd_val1, rnd_val2, rnd_val3;
    real input_val01, input_val10, integer_01, integer_10;
+   real input_val01_rdm, input_val10_rdm;
+   
    reg [11:0] ADC_01;
-   reg [11:0] ADC_10;
+ reg [11:0] ADC_10;
    always @(posedge CLKINm) begin //AdcClkInp) begin
       if (rst_b == 1'b1) begin
 	 if (CalBusy == 1'b0) begin
@@ -894,14 +964,98 @@ module tb_ldtu;
 	 input_val10 = rnd_val2+rnd_val3;
 	 input_val01 = rnd_val2+(rnd_val3/10.0);
 
+
+	 
       end
    end
+
+
+   parameter  infile01 = "/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/d_ERan2000DistanceRan1000_g01_new.dat";
+   parameter  infile10 = "/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/d_ERan2000DistanceRan1000_g10_new.dat";
+
+  
+   real input_val10_sim;
+   real input_val01_sim;
+   integer 	     scan_file10;
+   integer 	     scan_file01;
+   real 	     DATA12,DATA12_01;
+   reg 		     eof;
+   
+      initial begin
+
+      data_file_read10 = $fopen(infile10,"r");
+	 data_file_read01 = $fopen(infile01,"r");	
+
+      if (data_file_read10 == 0) begin
+	 $display("FileReader: File to read was NULL");
+	 $finish;
+      end else begin
+	 $display("FileReader: File found: %s",infile10);
+      end
+
+	 if (data_file_read01 == 0) begin
+	 $display("FileReader: File to read was NULL");
+	 $finish;
+      end else begin
+	 $display("FileReader: File found: %s",infile01);
+      end
+   end // initial begin
+   
+
+   always @(posedge CLKINm) begin
+      eof= $feof(data_file_read10);
+      if (resetdone == 1'b0) begin //I write xxx but i still read the file 
+	 DATA12 = 0;
+      end   
+      else begin
+	 if (CalBusy != 1'b0) begin
+	    DATA12 = 0;
+	 end      
+	 else begin			
+	    if (!eof) begin
+	       scan_file10 = $fscanf(data_file_read10, "%b\n", DATA12);
+	       input_val10_sim=(DATA12*(0.00029304)-0.6);
+
+	       
+	    end 
+	    else begin // End of the input file
+	       $display("End of reading process");
+	    end // end CAL_busy == 2'b00
+	 end // end RST == 1'b1
+      end // else: !if(rst == 1'b0;
+   end // always @ (negedge clk)
+
+
+      always @(posedge CLKINm) begin
+      eof= $feof(data_file_read01);
+      if (resetdone == 1'b0) begin //I write xxx but i still read the file 
+	 DATA12_01 = 0;
+      end   
+      else begin
+	 if (CalBusy != 1'b0) begin
+	    DATA12_01 = 0;
+	 end      
+	 else begin			
+	    if (!eof) begin
+	       scan_file01 = $fscanf(data_file_read01, "%b\n", DATA12_01);
+	       input_val01_sim=(DATA12_01*(0.00029304)-0.6);
+
+	       
+	    end 
+	    else begin // End of the input file
+	       $display("End of reading process");
+	    end // end CAL_busy == 2'b00
+	 end // end RST == 1'b1
+      end // else: !if(rst == 1'b0;
+   end // always @ (negedge clk)
+   
+   
    always @(posedge CLKINm) begin //AdcClkInp) begin
-      force tb_ldtu.top.LDTU.ADC_HL.ADC_H.\input_signal = input_val10;
-      force tb_ldtu.top.LDTU.ADC_HL.ADC_L.\input_signal = input_val01;
+      force tb_ldtu.top.LDTU.ADC_HL.ADC_H.\input_signal = input_val10_sim;
+      force tb_ldtu.top.LDTU.ADC_HL.ADC_L.\input_signal = input_val01_sim;
       //input signal quantization
-      integer_10 =  ((input_val10 + 0.6) / 1.2) * 4095;
-      integer_01 =  ((input_val01 + 0.6) / 1.2) * 4095;
+      integer_10 =  ((input_val10_sim + 0.6) / 1.2) * 4095;
+      integer_01 =  ((input_val01_sim + 0.6) / 1.2) * 4095;
       //input signal conversion
       ADC_10 = (integer_10<0) ? 0 : (integer_10>4095) ? 4095 : integer_10;
       ADC_01 = (integer_01<0) ? 0 : (integer_01>4095) ? 4095 : integer_01;

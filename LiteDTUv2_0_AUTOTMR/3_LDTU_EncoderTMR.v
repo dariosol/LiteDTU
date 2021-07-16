@@ -6,7 +6,7 @@
  *                                                                                                  *
  * user    : soldi                                                                                  *
  * host    : elt159xl.to.infn.it                                                                    *
- * date    : 12/07/2021 12:08:09                                                                    *
+ * date    : 16/07/2021 11:37:24                                                                    *
  *                                                                                                  *
  * workdir : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/LiteDTUv2_0_NoTMR *
  * cmd     : /export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/tmrg/bin/tmrg -c     *
@@ -15,9 +15,9 @@
  *                                                                                                  *
  * src file: 3_LDTU_Encoder.v                                                                       *
  *           File is NOT under version control!                                                     *
- *           Modification time : 2021-07-12 12:03:31.503268                                         *
- *           File Size         : 11840                                                              *
- *           MD5 hash          : 433ad72fed1a09cdc83849a569763b27                                   *
+ *           Modification time : 2021-07-16 10:49:16.052045                                         *
+ *           File Size         : 11834                                                              *
+ *           MD5 hash          : 2ffae340882ddb366b870a7ed6a8c716                                   *
  *                                                                                                  *
  ****************************************************************************************************/
 
@@ -848,17 +848,17 @@ always @( posedge CLKA )
           data_even : 
             begin
               rLoad_FBA <= 1'b1;
-              rDATA_32_FBA <= {2'b00,2'b01,~^ dDATA_to_encA ,~^ Ld_sign_FBA ,dDATA_to_encA,Ld_sign_FBA};
+              rDATA_32_FBA <= {2'b00,2'b01,^ dDATA_to_encA ,^ Ld_sign_FBA ,dDATA_to_encA,Ld_sign_FBA};
             end
           data_odd_bc0 : 
             begin
               rLoad_FBA <= 1'b1;
-              rDATA_32_FBA <= {2'b00,2'b11,~^ dDATA_to_encA ,~^ Ld_sign_FBA ,dDATA_to_encA,Ld_sign_FBA};
+              rDATA_32_FBA <= {2'b00,2'b11,^ dDATA_to_encA ,^ Ld_sign_FBA ,dDATA_to_encA,Ld_sign_FBA};
             end
           data_even_bc0 : 
             begin
               rLoad_FBA <= 1'b1;
-              rDATA_32_FBA <= {2'b00,2'b00,~^ dDATA_to_encA ,~^ Ld_sign_FBA ,dDATA_to_encA,Ld_sign_FBA};
+              rDATA_32_FBA <= {2'b00,2'b00,^ dDATA_to_encA ,^ Ld_sign_FBA ,dDATA_to_encA,Ld_sign_FBA};
             end
           latency2 : 
             begin
@@ -896,17 +896,17 @@ always @( posedge CLKB )
           data_even : 
             begin
               rLoad_FBB <= 1'b1;
-              rDATA_32_FBB <= {2'b00,2'b01,~^ dDATA_to_encB ,~^ Ld_sign_FBB ,dDATA_to_encB,Ld_sign_FBB};
+              rDATA_32_FBB <= {2'b00,2'b01,^ dDATA_to_encB ,^ Ld_sign_FBB ,dDATA_to_encB,Ld_sign_FBB};
             end
           data_odd_bc0 : 
             begin
               rLoad_FBB <= 1'b1;
-              rDATA_32_FBB <= {2'b00,2'b11,~^ dDATA_to_encB ,~^ Ld_sign_FBB ,dDATA_to_encB,Ld_sign_FBB};
+              rDATA_32_FBB <= {2'b00,2'b11,^ dDATA_to_encB ,^ Ld_sign_FBB ,dDATA_to_encB,Ld_sign_FBB};
             end
           data_even_bc0 : 
             begin
               rLoad_FBB <= 1'b1;
-              rDATA_32_FBB <= {2'b00,2'b00,~^ dDATA_to_encB ,~^ Ld_sign_FBB ,dDATA_to_encB,Ld_sign_FBB};
+              rDATA_32_FBB <= {2'b00,2'b00,^ dDATA_to_encB ,^ Ld_sign_FBB ,dDATA_to_encB,Ld_sign_FBB};
             end
           latency2 : 
             begin
@@ -944,17 +944,17 @@ always @( posedge CLKC )
           data_even : 
             begin
               rLoad_FBC <= 1'b1;
-              rDATA_32_FBC <= {2'b00,2'b01,~^ dDATA_to_encC ,~^ Ld_sign_FBC ,dDATA_to_encC,Ld_sign_FBC};
+              rDATA_32_FBC <= {2'b00,2'b01,^ dDATA_to_encC ,^ Ld_sign_FBC ,dDATA_to_encC,Ld_sign_FBC};
             end
           data_odd_bc0 : 
             begin
               rLoad_FBC <= 1'b1;
-              rDATA_32_FBC <= {2'b00,2'b11,~^ dDATA_to_encC ,~^ Ld_sign_FBC ,dDATA_to_encC,Ld_sign_FBC};
+              rDATA_32_FBC <= {2'b00,2'b11,^ dDATA_to_encC ,^ Ld_sign_FBC ,dDATA_to_encC,Ld_sign_FBC};
             end
           data_even_bc0 : 
             begin
               rLoad_FBC <= 1'b1;
-              rDATA_32_FBC <= {2'b00,2'b00,~^ dDATA_to_encC ,~^ Ld_sign_FBC ,dDATA_to_encC,Ld_sign_FBC};
+              rDATA_32_FBC <= {2'b00,2'b00,^ dDATA_to_encC ,^ Ld_sign_FBC ,dDATA_to_encC,Ld_sign_FBC};
             end
           latency2 : 
             begin

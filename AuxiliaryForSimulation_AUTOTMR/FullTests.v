@@ -152,7 +152,7 @@ module fulltest;
 
    
    /////////////1st module///////////////////////
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/d_ERan2000DistanceRan1000_g10_new.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/Simona/LiTE-DTU_2019_simulations/Data/ScanTxt/Ene100GeV_DT_10bx_g10.dat"),
 		.ck_period(ck_period)
 		) FR10  (
 			 .clk(DCLK_10),
@@ -162,7 +162,7 @@ module fulltest;
 			 .REJECTED(REJECTED_g10)
 			 );
 
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/d_ERan2000DistanceRan1000_g01_new.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/Simona/LiTE-DTU_2019_simulations/Data/ScanTxt/Ene100GeV_DT_10bx_g01.dat"),
 		.ck_period(ck_period)
 		) FR01  (
 			 .clk(DCLK_1),
@@ -174,7 +174,7 @@ module fulltest;
    
 
    /////////////2nd module///////////////////////
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/d_ERan2000DistanceRan1000_g10_new.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/Simona/LiTE-DTU_2019_simulations/Data/ScanTxt/Ene100GeV_DT_10bx_g10.dat"),
 		.ck_period(ck_period)
 		) FR10_2  (
 			   .clk(DCLK_10_2),
@@ -184,7 +184,7 @@ module fulltest;
 			   .REJECTED(REJECTED_g10_2)
 			   );
 
-   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/LiTE-DTU_v2.0_2021_Simulations/pre-synth/data_input/d_ERan2000DistanceRan1000_g01_new.dat"),
+   FileReader #(.infile("/export/elt159xl/disk0/users/soldi/Simona/LiTE-DTU_2019_simulations/Data/ScanTxt/Ene100GeV_DT_10bx_g01.dat"),
 		.ck_period(ck_period)
 		) FR01_2  (
 			   .clk(DCLK_1_2),
@@ -516,7 +516,7 @@ module fulltest;
       RST_C_b   = 1'b1;
       flush_b =1'b1;
       synch =1'b0;
-      fallback=1'b0;
+      fallback=1'b1;
       
       CALIBRATION_BUSY_1 = 1'b0;
       CALIBRATION_BUSY_10 = 1'b0;
